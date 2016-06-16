@@ -1,0 +1,1853 @@
+[15-Jun-2016 19:18:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:18:28 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[15-Jun-2016 19:18:28 America/Chicago] 
+***************
+MVC Duration:0.010729 seconds
+***************
+
+[15-Jun-2016 19:19:46 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'ZFTool' => 
+  ZFTool\Module::__set_state(array(
+     'sm' => NULL,
+  )),
+)
+***************
+
+[15-Jun-2016 19:19:46 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class ZFTool\Controller\CreateController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[15-Jun-2016 19:19:46 America/Chicago] 
+***************
+MVC Duration:0.009091 seconds
+***************
+
+[15-Jun-2016 19:22:23 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+  'ZFTool' => 
+  ZFTool\Module::__set_state(array(
+     'sm' => NULL,
+  )),
+)
+***************
+
+[15-Jun-2016 19:22:23 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class ZFTool\Controller\ClassmapController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[15-Jun-2016 19:22:23 America/Chicago] 
+***************
+MVC Duration:0.010282 seconds
+***************
+
+[15-Jun-2016 19:36:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:36:21 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[15-Jun-2016 19:36:21 America/Chicago] 
+***************
+MVC Duration:0.012811 seconds
+***************
+
+[15-Jun-2016 19:45:48 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+  'ZFTool' => 
+  ZFTool\Module::__set_state(array(
+     'sm' => NULL,
+  )),
+)
+***************
+
+[15-Jun-2016 19:45:48 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class ZFTool\Controller\CreateController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[15-Jun-2016 19:45:48 America/Chicago] 
+***************
+MVC Duration:0.013403 seconds
+***************
+
+[15-Jun-2016 19:52:09 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:52:09 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[15-Jun-2016 19:52:09 America/Chicago] 
+***************
+MVC Duration:0.008343 seconds
+***************
+
+[15-Jun-2016 19:52:13 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:52:13 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[15-Jun-2016 19:52:13 America/Chicago] 
+***************
+MVC Duration:0.020799 seconds
+***************
+
+[15-Jun-2016 19:52:40 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:52:40 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[15-Jun-2016 19:52:40 America/Chicago] 
+***************
+MVC Duration:0.012136 seconds
+***************
+
+[15-Jun-2016 19:52:42 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:52:42 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[15-Jun-2016 19:52:42 America/Chicago] 
+***************
+MVC Duration:0.009468 seconds
+***************
+
+[15-Jun-2016 19:55:10 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:55:10 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[15-Jun-2016 19:55:10 America/Chicago] 
+***************
+MVC Duration:0.012164 seconds
+***************
+
+[15-Jun-2016 19:55:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:55:28 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(Zend\Mvc\Controller\ControllerManager::createFromInvokable: failed retrieving "usercontrolleraccount(alias: User\Controller\Account)" via invokable class "User\Controller\AccountController"; class does not exist): #0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(638): Zend\ServiceManager\AbstractPluginManager->createFromInvokable('usercontrollera...', 'User\\Controller...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('User\\Controller...', 'usercontrollera...')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/AbstractPluginManager.php(161): Zend\ServiceManager\ServiceManager->get('User\\Controller...', true)
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(94): Zend\ServiceManager\AbstractPluginManager->get('User\\Controller...')
+#5 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#8 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#10 {main}
+***************
+
+[15-Jun-2016 19:55:28 America/Chicago] 
+***************
+MVC Duration:0.018015 seconds
+***************
+
+[15-Jun-2016 19:58:57 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 19:58:57 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(Zend\Mvc\Controller\ControllerManager::createFromInvokable: failed retrieving "usercontrolleraccount(alias: User\Controller\Account)" via invokable class "User\Controller\AccountController"; class does not exist): #0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(638): Zend\ServiceManager\AbstractPluginManager->createFromInvokable('usercontrollera...', 'User\\Controller...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('User\\Controller...', 'usercontrollera...')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/AbstractPluginManager.php(161): Zend\ServiceManager\ServiceManager->get('User\\Controller...', true)
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(94): Zend\ServiceManager\AbstractPluginManager->get('User\\Controller...')
+#5 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#8 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#10 {main}
+***************
+
+[15-Jun-2016 19:58:57 America/Chicago] 
+***************
+MVC Duration:0.009876 seconds
+***************
+
+[15-Jun-2016 20:02:02 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 20:02:02 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(Zend\Mvc\Controller\ControllerManager::createFromInvokable: failed retrieving "usercontrolleraccount(alias: User\Controller\Account)" via invokable class "User\Controller\AccountController"; class does not exist): #0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(638): Zend\ServiceManager\AbstractPluginManager->createFromInvokable('usercontrollera...', 'User\\Controller...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('User\\Controller...', 'usercontrollera...')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/AbstractPluginManager.php(161): Zend\ServiceManager\ServiceManager->get('User\\Controller...', true)
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(94): Zend\ServiceManager\AbstractPluginManager->get('User\\Controller...')
+#5 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#8 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#10 {main}
+***************
+
+[15-Jun-2016 20:02:02 America/Chicago] 
+***************
+MVC Duration:0.012496 seconds
+***************
+
+[15-Jun-2016 20:02:47 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 20:02:47 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(Zend\Mvc\Controller\ControllerManager::createFromInvokable: failed retrieving "usercontrolleraccount(alias: User\Controller\Account)" via invokable class "User\Controller\AccountController"; class does not exist): #0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(638): Zend\ServiceManager\AbstractPluginManager->createFromInvokable('usercontrollera...', 'User\\Controller...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('User\\Controller...', 'usercontrollera...')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/AbstractPluginManager.php(161): Zend\ServiceManager\ServiceManager->get('User\\Controller...', true)
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(94): Zend\ServiceManager\AbstractPluginManager->get('User\\Controller...')
+#5 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#8 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#10 {main}
+***************
+
+[15-Jun-2016 20:02:47 America/Chicago] 
+***************
+MVC Duration:0.011923 seconds
+***************
+
+[15-Jun-2016 20:02:49 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 20:02:49 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(Zend\Mvc\Controller\ControllerManager::createFromInvokable: failed retrieving "usercontrolleraccount(alias: User\Controller\Account)" via invokable class "User\Controller\AccountController"; class does not exist): #0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(638): Zend\ServiceManager\AbstractPluginManager->createFromInvokable('usercontrollera...', 'User\\Controller...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('User\\Controller...', 'usercontrollera...')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/AbstractPluginManager.php(161): Zend\ServiceManager\ServiceManager->get('User\\Controller...', true)
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(94): Zend\ServiceManager\AbstractPluginManager->get('User\\Controller...')
+#5 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#8 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#10 {main}
+***************
+
+[15-Jun-2016 20:02:49 America/Chicago] 
+***************
+MVC Duration:0.009761 seconds
+***************
+
+[15-Jun-2016 20:04:24 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Users) could not be initialized.' in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php:203
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(175): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(97): Zend\ModuleManager\ModuleManager->loadModule('Users')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('loadModules', Object( in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php on line 203
+[15-Jun-2016 20:04:55 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Users) could not be initialized.' in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php:203
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(175): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(97): Zend\ModuleManager\ModuleManager->loadModule('Users')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('loadModules', Object( in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php on line 203
+[15-Jun-2016 20:05:40 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+  'ZFTool' => 
+  ZFTool\Module::__set_state(array(
+     'sm' => NULL,
+  )),
+)
+***************
+
+[15-Jun-2016 20:05:40 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class ZFTool\Controller\CreateController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[15-Jun-2016 20:05:40 America/Chicago] 
+***************
+MVC Duration:0.016191 seconds
+***************
+
+[15-Jun-2016 20:05:44 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+  'ZFTool' => 
+  ZFTool\Module::__set_state(array(
+     'sm' => NULL,
+  )),
+)
+***************
+
+[15-Jun-2016 20:05:44 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class ZFTool\Controller\ClassmapController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[15-Jun-2016 20:05:44 America/Chicago] 
+***************
+MVC Duration:0.0076499999999999 seconds
+***************
+
+[15-Jun-2016 20:11:43 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'Users' => 
+  Users\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[15-Jun-2016 20:11:43 America/Chicago] 
+***************
+MVC Duration:0.016022 seconds
+***************
+
+[16-Jun-2016 11:29:42 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Users) could not be initialized.' in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php:203
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(175): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(97): Zend\ModuleManager\ModuleManager->loadModule('Users')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('loadModules', Object( in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php on line 203
+[16-Jun-2016 11:41:23 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Users) could not be initialized.' in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php:203
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(175): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(97): Zend\ModuleManager\ModuleManager->loadModule('Users')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('loadModules', Object( in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php on line 203
+[16-Jun-2016 11:41:24 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Users) could not be initialized.' in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php:203
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(175): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(97): Zend\ModuleManager\ModuleManager->loadModule('Users')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('loadModules', Object( in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php on line 203
+[16-Jun-2016 11:43:25 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Users) could not be initialized.' in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php:203
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(175): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php(97): Zend\ModuleManager\ModuleManager->loadModule('Users')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('loadModules', Object( in /var/www/html/company/company/vendor/zendframework/zend-modulemanager/src/ModuleManager.php on line 203
+[16-Jun-2016 11:43:56 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 11:43:56 America/Chicago] PHP Fatal error:  Class 'User\Controller\UserForm' not found in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 15
+[16-Jun-2016 11:44:55 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 11:44:55 America/Chicago] PHP Fatal error:  Class 'User\Controller\User' not found in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 16
+[16-Jun-2016 11:45:25 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 11:45:25 America/Chicago] 
+***************
+MVC Duration:0.026381 seconds
+***************
+
+[16-Jun-2016 11:52:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 11:52:24 America/Chicago] 
+***************
+MVC Duration:0.034119 seconds
+***************
+
+[16-Jun-2016 11:54:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 11:54:51 America/Chicago] 
+***************
+MVC Duration:0.029937 seconds
+***************
+
+[16-Jun-2016 11:59:50 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 11:59:50 America/Chicago] 
+***************
+MVC Duration:0.040119 seconds
+***************
+
+[16-Jun-2016 12:06:05 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:06:06 America/Chicago] 
+***************
+MVC Duration:0.068801 seconds
+***************
+
+[16-Jun-2016 12:06:07 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:06:07 America/Chicago] 
+***************
+MVC Duration:0.058131 seconds
+***************
+
+[16-Jun-2016 12:06:09 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:06:09 America/Chicago] 
+***************
+MVC Duration:0.046706 seconds
+***************
+
+[16-Jun-2016 12:06:27 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:06:28 America/Chicago] 
+***************
+MVC Duration:0.018697 seconds
+***************
+
+[16-Jun-2016 12:11:35 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:11:35 America/Chicago] 
+***************
+MVC Duration:0.049375 seconds
+***************
+
+[16-Jun-2016 12:12:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:12:28 America/Chicago] 
+***************
+MVC Duration:0.032279 seconds
+***************
+
+[16-Jun-2016 12:15:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:15:31 America/Chicago] 
+***************
+MVC Duration:0.053566 seconds
+***************
+
+[16-Jun-2016 12:20:34 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:20:34 America/Chicago] 
+***************
+MVC Duration:0.044484 seconds
+***************
+
+[16-Jun-2016 12:21:48 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:21:49 America/Chicago] 
+***************
+MVC Duration:-0.951922 seconds
+***************
+
+[16-Jun-2016 12:23:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:23:21 America/Chicago] 
+***************
+MVC Duration:0.045844 seconds
+***************
+
+[16-Jun-2016 12:24:03 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:24:03 America/Chicago] 
+***************
+MVC Duration:0.046738 seconds
+***************
+
+[16-Jun-2016 12:24:41 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:24:41 America/Chicago] 
+***************
+MVC Duration:0.047885 seconds
+***************
+
+[16-Jun-2016 12:24:43 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:24:43 America/Chicago] 
+***************
+MVC Duration:0.056781 seconds
+***************
+
+[16-Jun-2016 12:24:50 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:24:50 America/Chicago] 
+***************
+MVC Duration:0.04615 seconds
+***************
+
+[16-Jun-2016 12:25:48 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:25:48 America/Chicago] 
+***************
+MVC Duration:0.035716 seconds
+***************
+
+[16-Jun-2016 12:26:16 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:26:16 America/Chicago] PHP Catchable fatal error:  Object of class User\Form\User could not be converted to string in /var/www/html/company/company/module/User/view/user/account/add.phtml on line 2
+[16-Jun-2016 12:26:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:26:31 America/Chicago] 
+***************
+MVC Duration:0.057371 seconds
+***************
+
+[16-Jun-2016 12:48:57 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:48:57 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(File '/tmp/phpJ9uKuM' could not be renamed. An error occurred while processing the file.): #0 /var/www/html/company/company/vendor/zendframework/zend-filter/src/File/RenameUpload.php(194): Zend\Filter\File\RenameUpload->moveUploadedFile('/tmp/phpJ9uKuM', 'data/image/phot...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-filter/src/AbstractFilter.php(89): Zend\Filter\File\RenameUpload->filter(Array)
+#2 [internal function]: Zend\Filter\AbstractFilter->__invoke(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-filter/src/FilterChain.php(226): call_user_func(Object(Zend\Filter\File\RenameUpload), Array)
+#4 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/Input.php(316): Zend\Filter\FilterChain->filter(Array)
+#5 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/Input.php(389): Zend\InputFilter\Input->getValue()
+#6 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/BaseInputFilter.php(259): Zend\InputFilter\Input->isValid(Array)
+#7 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/BaseInputFilter.php(213): Zend\InputFilter\BaseInputFilter->validateInputs(Array, Array, NULL)
+#8 /var/www/html/company/company/vendor/zendframework/zend-form/src/Form.php(512): Zend\InputFilter\BaseInputFilter->isValid()
+#9 /var/www/html/company/company/module/User/src/User/Controller/AccountController.php(24): Zend\Form\Form->isValid()
+#10 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(82): User\Controller\AccountController->addAction()
+#11 [internal function]: Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#12 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#13 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#14 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(118): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#15 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(118): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#16 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#17 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#18 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#19 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#20 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#21 {main}
+***************
+
+[16-Jun-2016 12:48:57 America/Chicago] 
+***************
+MVC Duration:0.024432 seconds
+***************
+
+[16-Jun-2016 12:49:05 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 12:49:05 America/Chicago] 
+***************
+MVC Duration:0.053578 seconds
+***************
+
+[16-Jun-2016 13:01:40 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 13:01:40 America/Chicago] 
+***************
+MVC Duration:0.042401 seconds
+***************
+
+[16-Jun-2016 13:02:04 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 13:02:04 America/Chicago] 
+***************
+MVC Duration:0.035282 seconds
+***************
+
+[16-Jun-2016 13:02:22 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 13:02:22 America/Chicago] 
+***************
+MVC Duration:0.049657 seconds
+***************
+
+[16-Jun-2016 14:26:06 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:26:06 America/Chicago] PHP Notice:  Undefined variable: service in /var/www/html/company/company/module/User/Module.php on line 9
+[16-Jun-2016 14:26:06 America/Chicago] PHP Fatal error:  Call to a member function get() on null in /var/www/html/company/company/module/User/Module.php on line 9
+[16-Jun-2016 14:26:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:26:51 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotCreatedException' with message 'While attempting to create database(alias: database) an invalid factory was registered for this instance type.' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1096
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(634): Zend\ServiceManager\ServiceManager->createFromFactory('database', 'database')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/Module.php(9): Zend\ServiceManager\ServiceManager->get('database')
+#4 [internal function]: User\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1096
+[16-Jun-2016 14:29:33 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /var/www/html/company/company/module/User/config/module.config.php on line 57
+[16-Jun-2016 14:29:54 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:29:54 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotCreatedException' with message 'While attempting to create database(alias: database) an invalid factory was registered for this instance type.' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1096
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(634): Zend\ServiceManager\ServiceManager->createFromFactory('database', 'database')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/Module.php(9): Zend\ServiceManager\ServiceManager->get('database')
+#4 [internal function]: User\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1096
+[16-Jun-2016 14:30:52 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:30:52 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotCreatedException' with message 'While attempting to create database(alias: database) an invalid factory was registered for this instance type.' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1096
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(634): Zend\ServiceManager\ServiceManager->createFromFactory('database', 'database')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/Module.php(9): Zend\ServiceManager\ServiceManager->get('database')
+#4 [internal function]: User\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1096
+[16-Jun-2016 14:30:54 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:30:54 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotCreatedException' with message 'While attempting to create database(alias: database) an invalid factory was registered for this instance type.' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1096
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(634): Zend\ServiceManager\ServiceManager->createFromFactory('database', 'database')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/Module.php(9): Zend\ServiceManager\ServiceManager->get('database')
+#4 [internal function]: User\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1096
+[16-Jun-2016 14:32:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:32:29 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotCreatedException' with message 'While attempting to create database(alias: database) an invalid factory was registered for this instance type.' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1096
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(634): Zend\ServiceManager\ServiceManager->createFromFactory('database', 'database')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/Module.php(9): Zend\ServiceManager\ServiceManager->get('database')
+#4 [internal function]: User\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1096
+[16-Jun-2016 14:35:01 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:35:01 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotCreatedException' with message 'While attempting to create database(alias: database) an invalid factory was registered for this instance type.' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1096
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(634): Zend\ServiceManager\ServiceManager->createFromFactory('database', 'database')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/Module.php(9): Zend\ServiceManager\ServiceManager->get('database')
+#4 [internal function]: User\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1096
+[16-Jun-2016 14:38:09 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:38:09 America/Chicago] PHP Notice:  Undefined index: db in /var/www/html/company/company/module/User/src/User/Service/Factory/Database.php on line 13
+[16-Jun-2016 14:38:09 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /var/www/html/company/company/vendor/zendframework/zend-db/src/Adapter/Adapter.php:82
+Stack trace:
+#0 /var/www/html/company/company/module/User/src/User/Service/Factory/Database.php(13): Zend\Db\Adapter\Adapter->__construct(NULL)
+#1 [internal function]: User\Service\Factory\Database->createService(Object(Zend\ServiceManager\ServiceManager), 'database', 'database')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(934): call_user_func(Array, Object(Zend\ServiceManager\ServiceManager), 'database', 'database')
+#3 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(1092): Zend\ServiceManager\ServiceManager->createServiceViaCallback(Array, 'database', 'database')
+#4 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 941
+[16-Jun-2016 14:40:13 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /var/www/html/company/company/config/autoload/database.local.php on line 11
+[16-Jun-2016 14:40:35 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:40:35 America/Chicago] 
+***************
+MVC Duration:0.167159 seconds
+***************
+
+[16-Jun-2016 14:41:12 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:41:12 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(File '/tmp/php7SiT3B' could not be renamed. An error occurred while processing the file.): #0 /var/www/html/company/company/vendor/zendframework/zend-filter/src/File/RenameUpload.php(194): Zend\Filter\File\RenameUpload->moveUploadedFile('/tmp/php7SiT3B', 'data/image/phot...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-filter/src/AbstractFilter.php(89): Zend\Filter\File\RenameUpload->filter(Array)
+#2 [internal function]: Zend\Filter\AbstractFilter->__invoke(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-filter/src/FilterChain.php(226): call_user_func(Object(Zend\Filter\File\RenameUpload), Array)
+#4 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/Input.php(316): Zend\Filter\FilterChain->filter(Array)
+#5 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/Input.php(389): Zend\InputFilter\Input->getValue()
+#6 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/BaseInputFilter.php(259): Zend\InputFilter\Input->isValid(Array)
+#7 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/BaseInputFilter.php(213): Zend\InputFilter\BaseInputFilter->validateInputs(Array, Array, NULL)
+#8 /var/www/html/company/company/vendor/zendframework/zend-form/src/Form.php(512): Zend\InputFilter\BaseInputFilter->isValid()
+#9 /var/www/html/company/company/module/User/src/User/Controller/AccountController.php(25): Zend\Form\Form->isValid()
+#10 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(82): User\Controller\AccountController->addAction()
+#11 [internal function]: Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#12 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#13 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#14 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(118): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#15 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(118): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#16 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#17 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#18 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#19 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#20 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#21 {main}
+***************
+
+[16-Jun-2016 14:41:12 America/Chicago] 
+***************
+MVC Duration:0.049042 seconds
+***************
+
+[16-Jun-2016 14:41:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:41:51 America/Chicago] 
+***************
+MVC Duration:0.060684 seconds
+***************
+
+[16-Jun-2016 14:41:55 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:41:55 America/Chicago] 
+***************
+MVC Duration:0.046962 seconds
+***************
+
+[16-Jun-2016 14:43:22 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:43:22 America/Chicago] 
+***************
+MVC Duration:0.04862 seconds
+***************
+
+[16-Jun-2016 14:43:45 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:43:45 America/Chicago] 
+***************
+MVC Duration:0.071218 seconds
+***************
+
+[16-Jun-2016 14:46:59 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:46:59 America/Chicago] 
+***************
+MVC Duration:0.045938 seconds
+***************
+
+[16-Jun-2016 14:47:04 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:47:04 America/Chicago] 
+***************
+MVC Duration:0.054575 seconds
+***************
+
+[16-Jun-2016 14:47:40 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:47:40 America/Chicago] 
+***************
+MVC Duration:0.043277 seconds
+***************
+
+[16-Jun-2016 14:47:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:47:51 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(File '/tmp/phpx5gTJv' could not be renamed. An error occurred while processing the file.): #0 /var/www/html/company/company/vendor/zendframework/zend-filter/src/File/RenameUpload.php(194): Zend\Filter\File\RenameUpload->moveUploadedFile('/tmp/phpx5gTJv', 'data/image/phot...')
+#1 /var/www/html/company/company/vendor/zendframework/zend-filter/src/AbstractFilter.php(89): Zend\Filter\File\RenameUpload->filter(Array)
+#2 [internal function]: Zend\Filter\AbstractFilter->__invoke(Array)
+#3 /var/www/html/company/company/vendor/zendframework/zend-filter/src/FilterChain.php(226): call_user_func(Object(Zend\Filter\File\RenameUpload), Array)
+#4 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/Input.php(316): Zend\Filter\FilterChain->filter(Array)
+#5 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/Input.php(389): Zend\InputFilter\Input->getValue()
+#6 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/BaseInputFilter.php(259): Zend\InputFilter\Input->isValid(Array)
+#7 /var/www/html/company/company/vendor/zendframework/zend-inputfilter/src/BaseInputFilter.php(213): Zend\InputFilter\BaseInputFilter->validateInputs(Array, Array, NULL)
+#8 /var/www/html/company/company/vendor/zendframework/zend-form/src/Form.php(512): Zend\InputFilter\BaseInputFilter->isValid()
+#9 /var/www/html/company/company/module/User/src/User/Controller/AccountController.php(25): Zend\Form\Form->isValid()
+#10 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(82): User\Controller\AccountController->addAction()
+#11 [internal function]: Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#12 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#13 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#14 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(118): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#15 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(118): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#16 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#17 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#18 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#19 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#20 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#21 {main}
+***************
+
+[16-Jun-2016 14:47:51 America/Chicago] 
+***************
+MVC Duration:0.055516 seconds
+***************
+
+[16-Jun-2016 14:52:16 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:52:16 America/Chicago] 
+***************
+MVC Duration:0.375099 seconds
+***************
+
+[16-Jun-2016 14:52:49 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:52:49 America/Chicago] 
+***************
+MVC Duration:0.257439 seconds
+***************
+
+[16-Jun-2016 14:54:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:54:29 America/Chicago] 
+***************
+MVC Duration:0.241182 seconds
+***************
+
+[16-Jun-2016 14:57:05 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:57:05 America/Chicago] 
+***************
+MVC Duration:0.259574 seconds
+***************
+
+[16-Jun-2016 14:57:25 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:57:25 America/Chicago] PHP Warning:  Missing argument 1 for User\Model\User::__construct(), called in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 26 and defined in /var/www/html/company/company/module/User/src/User/Model/User.php on line 9
+[16-Jun-2016 14:57:25 America/Chicago] PHP Fatal error:  Class 'User\Model\Featur\FeatureSet' not found in /var/www/html/company/company/module/User/src/User/Model/User.php on line 12
+[16-Jun-2016 14:58:09 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:58:09 America/Chicago] 
+***************
+MVC Duration:0.076111 seconds
+***************
+
+[16-Jun-2016 14:58:34 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:58:34 America/Chicago] PHP Warning:  Missing argument 1 for User\Model\User::__construct(), called in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 26 and defined in /var/www/html/company/company/module/User/src/User/Model/User.php on line 9
+[16-Jun-2016 14:58:34 America/Chicago] PHP Fatal error:  Class 'User\Model\Featur\FeatureSet' not found in /var/www/html/company/company/module/User/src/User/Model/User.php on line 12
+[16-Jun-2016 14:59:27 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 14:59:27 America/Chicago] PHP Warning:  Missing argument 1 for User\Model\User::__construct(), called in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 26 and defined in /var/www/html/company/company/module/User/src/User/Model/User.php on line 9
+[16-Jun-2016 14:59:27 America/Chicago] PHP Notice:  Object of class Zend\Db\TableGateway\Feature\FeatureSet could not be converted to int in /var/www/html/company/company/module/User/src/User/Model/User.php on line 12
+[16-Jun-2016 14:59:27 America/Chicago] PHP Fatal error:  Call to a member function addFeature() on null in /var/www/html/company/company/module/User/src/User/Model/User.php on line 13
+[16-Jun-2016 15:01:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 15:01:29 America/Chicago] PHP Warning:  Missing argument 1 for User\Model\User::__construct(), called in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 26 and defined in /var/www/html/company/company/module/User/src/User/Model/User.php on line 9
+[16-Jun-2016 15:01:29 America/Chicago] 
+***************
+MVC Duration:-0.596075 seconds
+***************
+
+[16-Jun-2016 15:03:08 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 15:03:08 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[16-Jun-2016 15:03:08 America/Chicago] 
+***************
+MVC Duration:0.026001 seconds
+***************
+
+[16-Jun-2016 15:04:14 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 15:04:14 America/Chicago] 
+***************
+MVC Duration:0.046106 seconds
+***************
+
+[16-Jun-2016 15:04:43 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 15:04:44 America/Chicago] 
+***************
+MVC Duration:-0.726348 seconds
+***************
+
