@@ -47,15 +47,18 @@ return array(
             'Debug' => __DIR__ . '/../view',
         ),
     ),
-	'service_manager' => array(
-	    'factories' => array(
-	    	'timer' => 'Debug\Service\Factory\Timer' 
-	    ),
-		'aliases' => array(
-				'Application\Timer' => 'timer',
-		)		
-	),
-	'timer' => array (
-		'times_as_float' => true,
-	)
+    'service_manager' => array(
+        'factories' => array(
+            'timer' => 'Debug\Service\Factory\Timer'
+        ),
+        'aliases' => array(
+                'Application\Timer' => 'timer',
+        ),
+        'initializers' => array(
+            'Debug\Service\Initializer\DbProfiler',
+        )
+    ),
+    'timer' => array (
+        'times_as_float' => true,
+    )
 );

@@ -1851,3 +1851,2460 @@ array (
 MVC Duration:-0.726348 seconds
 ***************
 
+[16-Jun-2016 17:39:34 America/Chicago] PHP Fatal error:  Class 'Debug\Service\Initializer\DbProfiler' not found in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 365
+[16-Jun-2016 17:40:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:40:51 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\Stdlib\Exception\InvalidCallbackException' with message 'Invalid callback provided; not callable' in /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php:61
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php(48): Zend\Stdlib\CallbackHandler->registerCallback(Array)
+#1 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(316): Zend\Stdlib\CallbackHandler->__construct(Array, Array)
+#2 /var/www/html/company/company/module/Debug/Module.php(40): Zend\EventManager\EventManager->attach('render', Array, 100)
+#3 [internal function]: Debug\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#5 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListene in /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php on line 61
+[16-Jun-2016 17:41:25 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:41:25 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\Stdlib\Exception\InvalidCallbackException' with message 'Invalid callback provided; not callable' in /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php:61
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php(48): Zend\Stdlib\CallbackHandler->registerCallback(Array)
+#1 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(316): Zend\Stdlib\CallbackHandler->__construct(Array, Array)
+#2 /var/www/html/company/company/module/Debug/Module.php(40): Zend\EventManager\EventManager->attach('render', Array, 100)
+#3 [internal function]: Debug\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#5 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListene in /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php on line 61
+[16-Jun-2016 17:42:11 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:42:11 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\Stdlib\Exception\InvalidCallbackException' with message 'Invalid callback provided; not callable' in /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php:61
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php(48): Zend\Stdlib\CallbackHandler->registerCallback(Array)
+#1 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(316): Zend\Stdlib\CallbackHandler->__construct(Array, Array)
+#2 /var/www/html/company/company/module/Debug/Module.php(40): Zend\EventManager\EventManager->attach('render', Array, 100)
+#3 [internal function]: Debug\Module->onBootstrap(Object(Zend\Mvc\MvcEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#5 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListene in /var/www/html/company/company/vendor/zendframework/zend-stdlib/src/CallbackHandler.php on line 61
+[16-Jun-2016 17:42:45 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:42:45 America/Chicago] 
+***************
+MVC Duration:0.06505 seconds
+***************
+
+[16-Jun-2016 17:42:45 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for datbase-profiler' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:555
+Stack trace:
+#0 /var/www/html/company/company/module/Debug/Module.php(54): Zend\ServiceManager\ServiceManager->get('datbase-profile...')
+#1 [internal function]: Debug\Module->dbProfilerStats(Object(Zend\Mvc\MvcEvent))
+#2 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(251): Zend\EventManager\EventManager->triggerListeners('finish', Object(Zend\Mvc\MvcEvent))
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(388): Zend\EventManager\EventManager->triggerEvent(Object(Zend\Mvc\MvcEvent))
+#5 /var/www/html/ in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 555
+[16-Jun-2016 17:43:38 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:43:38 America/Chicago] 
+***************
+MVC Duration:0.05121 seconds
+***************
+
+[16-Jun-2016 17:44:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:44:29 America/Chicago] 
+***************
+MVC Duration:0.304904 seconds
+***************
+
+[16-Jun-2016 17:44:29 America/Chicago] PHP Fatal error:  Call to undefined function Debug\errorLogWrite() in /var/www/html/company/company/module/Debug/Module.php on line 58
+[16-Jun-2016 17:45:19 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:45:20 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception(Statement could not be executed (23000 - 1062 - Duplicate entry 'email@gmail.com' for key 'users_email_uq1')): #0 /var/www/html/company/company/vendor/zendframework/zend-db/src/TableGateway/AbstractTableGateway.php(307): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#1 /var/www/html/company/company/vendor/zendframework/zend-db/src/TableGateway/AbstractTableGateway.php(263): Zend\Db\TableGateway\AbstractTableGateway->executeInsert(Object(Zend\Db\Sql\Insert))
+#2 /var/www/html/company/company/module/User/src/User/Model/User.php(23): Zend\Db\TableGateway\AbstractTableGateway->insert(Array)
+#3 /var/www/html/company/company/module/User/src/User/Controller/AccountController.php(27): User\Model\User->insert(Array)
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(82): User\Controller\AccountController->addAction()
+#5 [internal function]: Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#8 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(118): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(118): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#10 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#11 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#12 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#13 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#14 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#15 {main}
+***************
+
+[16-Jun-2016 17:45:20 America/Chicago] 
+***************
+MVC Duration:-0.654461 seconds
+***************
+
+[16-Jun-2016 17:45:20 America/Chicago] 
+***************
+"INSERT INTO `users` (`name`, `phone`, `email`, `password`, `photo`) VALUES (:name, :phone, :email, :password, :photo)(Blah,7777777711,email@gmail.com,098f6bcd4621d373cade4e832627b4f6,data/image/photos_57632bffb65a8)" took 0.011535167694092 seconds
+
+***************
+
+[16-Jun-2016 17:45:52 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 17:45:53 America/Chicago] 
+***************
+MVC Duration:-0.705666 seconds
+***************
+
+[16-Jun-2016 17:45:53 America/Chicago] 
+***************
+"INSERT INTO `users` (`name`, `phone`, `email`, `password`, `photo`) VALUES (:name, :phone, :email, :password, :photo)(Blah,7777777711,emai2l@gmail.com,098f6bcd4621d373cade4e832627b4f6,data/image/photos_57632c21042c1)" took 0.0052828788757324 seconds
+
+***************
+
+[16-Jun-2016 18:40:39 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 18:40:39 America/Chicago] 
+***************
+MVC Duration:0.036947 seconds
+***************
+
+[16-Jun-2016 18:40:45 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 18:40:45 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[16-Jun-2016 18:40:45 America/Chicago] 
+***************
+MVC Duration:0.023138 seconds
+***************
+
+[16-Jun-2016 18:40:54 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 18:40:54 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[16-Jun-2016 18:40:54 America/Chicago] 
+***************
+MVC Duration:0.034491 seconds
+***************
+
+[16-Jun-2016 18:40:56 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 18:40:57 America/Chicago] 
+***************
+MVC Duration:0.046517 seconds
+***************
+
+[16-Jun-2016 18:41:07 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 18:41:07 America/Chicago] 
+***************
+MVC Duration:0.040699 seconds
+***************
+
+[16-Jun-2016 19:08:14 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:14 America/Chicago] 
+***************
+MVC Duration:0.041268 seconds
+***************
+
+[16-Jun-2016 19:08:16 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:16 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[16-Jun-2016 19:08:16 America/Chicago] 
+***************
+MVC Duration:0.026272 seconds
+***************
+
+[16-Jun-2016 19:08:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:24 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[16-Jun-2016 19:08:24 America/Chicago] 
+***************
+MVC Duration:0.021793 seconds
+***************
+
+[16-Jun-2016 19:08:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:31 America/Chicago] 
+***************
+MVC Duration:0.015087 seconds
+***************
+
+[16-Jun-2016 19:08:39 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:39 America/Chicago] 
+***************
+MVC Duration:0.018546 seconds
+***************
+
+[16-Jun-2016 19:08:44 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:44 America/Chicago] 
+***************
+MVC Duration:0.060701 seconds
+***************
+
+[16-Jun-2016 19:08:55 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:08:55 America/Chicago] 
+***************
+MVC Duration:0.017894 seconds
+***************
+
+[16-Jun-2016 19:09:00 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:09:00 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[16-Jun-2016 19:09:00 America/Chicago] 
+***************
+MVC Duration:0.022553 seconds
+***************
+
+[16-Jun-2016 19:10:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:10:31 America/Chicago] 
+***************
+MVC Duration:0.028332 seconds
+***************
+
+[16-Jun-2016 19:10:33 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:10:33 America/Chicago] 
+***************
+MVC Duration:0.029138 seconds
+***************
+
+[16-Jun-2016 19:11:10 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:11:10 America/Chicago] 
+***************
+MVC Duration:0.010642 seconds
+***************
+
+[16-Jun-2016 19:11:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:11:28 America/Chicago] 
+***************
+MVC Duration:0.015637 seconds
+***************
+
+[16-Jun-2016 19:12:46 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:12:46 America/Chicago] 
+***************
+MVC Duration:0.019686 seconds
+***************
+
+[16-Jun-2016 19:14:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:14:24 America/Chicago] 
+***************
+MVC Duration:0.022812 seconds
+***************
+
+[16-Jun-2016 19:14:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:14:28 America/Chicago] 
+***************
+MVC Duration:0.010978 seconds
+***************
+
+[16-Jun-2016 19:14:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:14:31 America/Chicago] 
+***************
+MVC Duration:0.010452 seconds
+***************
+
+[16-Jun-2016 19:14:41 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:14:41 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Me". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:14:41 America/Chicago] 
+***************
+MVC Duration:0.013568 seconds
+***************
+
+[16-Jun-2016 19:15:32 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:15:32 America/Chicago] 
+***************
+MVC Duration:0.01163 seconds
+***************
+
+[16-Jun-2016 19:16:49 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:16:49 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\User". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:16:49 America/Chicago] 
+***************
+MVC Duration:0.014534 seconds
+***************
+
+[16-Jun-2016 19:16:58 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:16:58 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Me". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:16:58 America/Chicago] 
+***************
+MVC Duration:0.012056 seconds
+***************
+
+[16-Jun-2016 19:17:34 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:17:34 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Me". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:17:34 America/Chicago] 
+***************
+MVC Duration:0.027629 seconds
+***************
+
+[16-Jun-2016 19:17:37 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:17:37 America/Chicago] 
+***************
+MVC Duration:0.010132 seconds
+***************
+
+[16-Jun-2016 19:23:41 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:23:41 America/Chicago] 
+***************
+MVC Duration:0.016375 seconds
+***************
+
+[16-Jun-2016 19:23:57 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:23:57 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Log". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:23:57 America/Chicago] 
+***************
+MVC Duration:0.013753 seconds
+***************
+
+[16-Jun-2016 19:24:25 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:24:25 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[16-Jun-2016 19:24:25 America/Chicago] 
+***************
+MVC Duration:0.013778 seconds
+***************
+
+[16-Jun-2016 19:27:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:27:28 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Log". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:27:28 America/Chicago] 
+***************
+MVC Duration:0.032836 seconds
+***************
+
+[16-Jun-2016 19:34:30 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[16-Jun-2016 19:34:30 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Log". Error was: "error-controller-not-found"
+***************
+
+[16-Jun-2016 19:34:30 America/Chicago] 
+***************
+MVC Duration:0.014618 seconds
+***************
+
+[17-Jun-2016 11:30:42 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:30:42 America/Chicago] 
+***************
+MVC Duration:0.011853 seconds
+***************
+
+[17-Jun-2016 11:31:56 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:31:56 America/Chicago] 
+***************
+MVC Duration:0.013204 seconds
+***************
+
+[17-Jun-2016 11:32:02 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:32:02 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Me". Error was: "error-controller-not-found"
+***************
+
+[17-Jun-2016 11:32:02 America/Chicago] 
+***************
+MVC Duration:0.025527 seconds
+***************
+
+[17-Jun-2016 11:32:46 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:32:46 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Me". Error was: "error-controller-not-found"
+***************
+
+[17-Jun-2016 11:32:46 America/Chicago] 
+***************
+MVC Duration:0.01498 seconds
+***************
+
+[17-Jun-2016 11:32:52 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:32:52 America/Chicago] 
+***************
+MVC Duration:0.011983 seconds
+***************
+
+[17-Jun-2016 11:34:04 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:34:04 America/Chicago] 
+***************
+MVC Duration:0.013822 seconds
+***************
+
+[17-Jun-2016 11:42:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:42:29 America/Chicago] 
+***************
+MVC Duration:0.013949 seconds
+***************
+
+[17-Jun-2016 11:42:33 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:42:33 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Me". Error was: "error-controller-not-found"
+***************
+
+[17-Jun-2016 11:42:33 America/Chicago] 
+***************
+MVC Duration:0.041559 seconds
+***************
+
+[17-Jun-2016 11:42:39 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:42:39 America/Chicago] 
+***************
+MVC Duration:0.013201 seconds
+***************
+
+[17-Jun-2016 11:42:42 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:42:42 America/Chicago] 
+***************
+MVC Duration:0.014089 seconds
+***************
+
+[17-Jun-2016 11:46:48 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:46:48 America/Chicago] 
+***************
+MVC Duration:0.062194 seconds
+***************
+
+[17-Jun-2016 11:47:39 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:47:39 America/Chicago] 
+***************
+MVC Duration:0.032977 seconds
+***************
+
+[17-Jun-2016 11:47:41 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:47:41 America/Chicago] 
+***************
+MVC Duration:0.023869 seconds
+***************
+
+[17-Jun-2016 11:47:50 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:47:50 America/Chicago] 
+***************
+MVC Duration:0.058968 seconds
+***************
+
+[17-Jun-2016 11:47:55 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:47:55 America/Chicago] 
+***************
+MVC Duration:0.018621 seconds
+***************
+
+[17-Jun-2016 11:49:42 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 11:49:42 America/Chicago] 
+***************
+MVC Duration:0.02686 seconds
+***************
+
+[17-Jun-2016 12:13:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:13:29 America/Chicago] 
+***************
+MVC Duration:0.023798 seconds
+***************
+
+[17-Jun-2016 12:13:32 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:13:32 America/Chicago] 
+***************
+MVC Duration:0.015256 seconds
+***************
+
+[17-Jun-2016 12:13:43 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:13:43 America/Chicago] 
+***************
+MVC Duration:0.020899 seconds
+***************
+
+[17-Jun-2016 12:13:46 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:13:46 America/Chicago] 
+***************
+MVC Duration:0.067374 seconds
+***************
+
+[17-Jun-2016 12:13:57 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:13:57 America/Chicago] 
+***************
+MVC Duration:0.024272 seconds
+***************
+
+[17-Jun-2016 12:14:23 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:14:23 America/Chicago] 
+***************
+MVC Duration:0.055024 seconds
+***************
+
+[17-Jun-2016 12:14:26 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:14:26 America/Chicago] 
+***************
+MVC Duration:0.053333 seconds
+***************
+
+[17-Jun-2016 12:14:27 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:14:27 America/Chicago] 
+***************
+MVC Duration:0.057374 seconds
+***************
+
+[17-Jun-2016 12:14:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:14:29 America/Chicago] 
+***************
+MVC Duration:0.05207 seconds
+***************
+
+[17-Jun-2016 12:14:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:14:31 America/Chicago] 
+***************
+MVC Duration:0.068897 seconds
+***************
+
+[17-Jun-2016 12:27:36 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:27:36 America/Chicago] 
+***************
+MVC Duration:0.050891 seconds
+***************
+
+[17-Jun-2016 12:28:13 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:28:13 America/Chicago] 
+***************
+MVC Duration:0.06263 seconds
+***************
+
+[17-Jun-2016 12:28:16 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:28:16 America/Chicago] 
+***************
+MVC Duration:0.046813 seconds
+***************
+
+[17-Jun-2016 12:28:59 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:28:59 America/Chicago] 
+***************
+MVC Duration:0.049458 seconds
+***************
+
+[17-Jun-2016 12:29:01 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:29:01 America/Chicago] 
+***************
+MVC Duration:0.057649 seconds
+***************
+
+[17-Jun-2016 12:29:05 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:29:05 America/Chicago] 
+***************
+MVC Duration:0.054996 seconds
+***************
+
+[17-Jun-2016 12:29:07 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:29:08 America/Chicago] 
+***************
+MVC Duration:-0.962506 seconds
+***************
+
+[17-Jun-2016 12:29:48 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:29:48 America/Chicago] 
+***************
+MVC Duration:0.050728 seconds
+***************
+
+[17-Jun-2016 12:29:49 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:29:49 America/Chicago] 
+***************
+MVC Duration:0.047395 seconds
+***************
+
+[17-Jun-2016 12:29:52 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:29:52 America/Chicago] 
+***************
+MVC Duration:0.071137 seconds
+***************
+
+[17-Jun-2016 12:30:03 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:30:03 America/Chicago] 
+***************
+MVC Duration:0.048386 seconds
+***************
+
+[17-Jun-2016 12:31:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:31:21 America/Chicago] 
+***************
+MVC Duration:0.057175 seconds
+***************
+
+[17-Jun-2016 12:31:25 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 12:31:25 America/Chicago] 
+***************
+MVC Duration:0.042312 seconds
+***************
+
+[17-Jun-2016 17:34:16 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 17:34:16 America/Chicago] 
+***************
+MVC Duration:0.04961 seconds
+***************
+
+[17-Jun-2016 17:34:23 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 17:34:23 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception([Semantical Error] Couldn't find constant type.): #0 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php(102): Doctrine\Common\Annotations\AnnotationException::semanticalError('Couldn't find c...')
+#1 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(945): Doctrine\Common\Annotations\AnnotationException::semanticalErrorConstants('type', '')
+#2 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1011): Doctrine\Common\Annotations\DocParser->Constant()
+#3 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(992): Doctrine\Common\Annotations\DocParser->PlainValue()
+#4 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1136): Doctrine\Common\Annotations\DocParser->Value()
+#5 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1082): Doctrine\Common\Annotations\DocParser->ArrayEntry()
+#6 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1003): Doctrine\Common\Annotations\DocParser->Arrayx()
+#7 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(992): Doctrine\Common\Annotations\DocParser->PlainValue()
+#8 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(848): Doctrine\Common\Annotations\DocParser->Value()
+#9 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(833): Doctrine\Common\Annotations\DocParser->Values()
+#10 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(744): Doctrine\Common\Annotations\DocParser->MethodCall()
+#11 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(641): Doctrine\Common\Annotations\DocParser->Annotation()
+#12 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(334): Doctrine\Common\Annotations\DocParser->Annotations()
+#13 /var/www/html/company/company/vendor/zendframework/zend-code/src/Annotation/Parser/DoctrineAnnotationParser.php(104): Doctrine\Common\Annotations\DocParser->parse('@\\Zend\\Form\\Ann...')
+#14 [internal function]: Zend\Code\Annotation\Parser\DoctrineAnnotationParser->onCreateAnnotation(Object(Zend\EventManager\Event))
+#15 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\EventManager\Event))
+#16 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('createAnnotatio...', Object(Zend\EventManager\Event), Object(Closure))
+#17 /var/www/html/company/company/vendor/zendframework/zend-code/src/Annotation/AnnotationManager.php(103): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\EventManager\Event))
+#18 /var/www/html/company/company/vendor/zendframework/zend-code/src/Scanner/AnnotationScanner.php(125): Zend\Code\Annotation\AnnotationManager->createAnnotation(Array)
+#19 /var/www/html/company/company/vendor/zendframework/zend-code/src/Scanner/AnnotationScanner.php(57): Zend\Code\Scanner\AnnotationScanner->scan(Array)
+#20 /var/www/html/company/company/vendor/zendframework/zend-code/src/Reflection/PropertyReflection.php(87): Zend\Code\Scanner\AnnotationScanner->__construct(Object(Zend\Code\Annotation\AnnotationManager), '/**\n\t * @Annota...', Object(Zend\Code\NameInformation))
+#21 /var/www/html/company/company/vendor/zendframework/zend-form/src/Annotation/AnnotationBuilder.php(220): Zend\Code\Reflection\PropertyReflection->getAnnotations(Object(Zend\Code\Annotation\AnnotationManager))
+#22 /var/www/html/company/company/vendor/zendframework/zend-form/src/Annotation/AnnotationBuilder.php(244): Zend\Form\Annotation\AnnotationBuilder->getFormSpecification(Object(User\Model\Entity\User))
+#23 /var/www/html/company/company/module/User/src/User/Controller/AccountController.php(20): Zend\Form\Annotation\AnnotationBuilder->createForm(Object(User\Model\Entity\User))
+#24 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(82): User\Controller\AccountController->addAction()
+#25 [internal function]: Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#26 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#27 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#28 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(118): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#29 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(118): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#30 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#31 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#32 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#33 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#34 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#35 {main}
+***************
+
+[17-Jun-2016 17:34:23 America/Chicago] 
+***************
+MVC Duration:0.057557 seconds
+***************
+
+[17-Jun-2016 17:34:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 17:34:31 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Log". Error was: "error-controller-not-found"
+***************
+
+[17-Jun-2016 17:34:31 America/Chicago] 
+***************
+MVC Duration:0.013102 seconds
+***************
+
+[17-Jun-2016 19:07:08 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:07:09 America/Chicago] 
+***************
+Error dispatching controller "User\Controller\Account". Error was: "error-exception", Exception([Semantical Error] Couldn't find constant type.): #0 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php(102): Doctrine\Common\Annotations\AnnotationException::semanticalError('Couldn't find c...')
+#1 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(945): Doctrine\Common\Annotations\AnnotationException::semanticalErrorConstants('type', '')
+#2 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1011): Doctrine\Common\Annotations\DocParser->Constant()
+#3 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(992): Doctrine\Common\Annotations\DocParser->PlainValue()
+#4 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1136): Doctrine\Common\Annotations\DocParser->Value()
+#5 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1082): Doctrine\Common\Annotations\DocParser->ArrayEntry()
+#6 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(1003): Doctrine\Common\Annotations\DocParser->Arrayx()
+#7 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(992): Doctrine\Common\Annotations\DocParser->PlainValue()
+#8 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(848): Doctrine\Common\Annotations\DocParser->Value()
+#9 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(833): Doctrine\Common\Annotations\DocParser->Values()
+#10 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(744): Doctrine\Common\Annotations\DocParser->MethodCall()
+#11 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(641): Doctrine\Common\Annotations\DocParser->Annotation()
+#12 /var/www/html/company/company/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php(334): Doctrine\Common\Annotations\DocParser->Annotations()
+#13 /var/www/html/company/company/vendor/zendframework/zend-code/src/Annotation/Parser/DoctrineAnnotationParser.php(104): Doctrine\Common\Annotations\DocParser->parse('@\\Zend\\Form\\Ann...')
+#14 [internal function]: Zend\Code\Annotation\Parser\DoctrineAnnotationParser->onCreateAnnotation(Object(Zend\EventManager\Event))
+#15 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\EventManager\Event))
+#16 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('createAnnotatio...', Object(Zend\EventManager\Event), Object(Closure))
+#17 /var/www/html/company/company/vendor/zendframework/zend-code/src/Annotation/AnnotationManager.php(103): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\EventManager\Event))
+#18 /var/www/html/company/company/vendor/zendframework/zend-code/src/Scanner/AnnotationScanner.php(125): Zend\Code\Annotation\AnnotationManager->createAnnotation(Array)
+#19 /var/www/html/company/company/vendor/zendframework/zend-code/src/Scanner/AnnotationScanner.php(57): Zend\Code\Scanner\AnnotationScanner->scan(Array)
+#20 /var/www/html/company/company/vendor/zendframework/zend-code/src/Reflection/PropertyReflection.php(87): Zend\Code\Scanner\AnnotationScanner->__construct(Object(Zend\Code\Annotation\AnnotationManager), '/**\n\t * @Annota...', Object(Zend\Code\NameInformation))
+#21 /var/www/html/company/company/vendor/zendframework/zend-form/src/Annotation/AnnotationBuilder.php(220): Zend\Code\Reflection\PropertyReflection->getAnnotations(Object(Zend\Code\Annotation\AnnotationManager))
+#22 /var/www/html/company/company/vendor/zendframework/zend-form/src/Annotation/AnnotationBuilder.php(244): Zend\Form\Annotation\AnnotationBuilder->getFormSpecification(Object(User\Model\Entity\User))
+#23 /var/www/html/company/company/module/User/src/User/Controller/AccountController.php(20): Zend\Form\Annotation\AnnotationBuilder->createForm(Object(User\Model\Entity\User))
+#24 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(82): User\Controller\AccountController->addAction()
+#25 [internal function]: Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#26 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#27 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#28 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(118): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#29 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/DispatchListener.php(118): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#30 [internal function]: Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#31 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#32 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('dispatch', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#33 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(340): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#34 /var/www/html/company/company/public/index.php(12): Zend\Mvc\Application->run()
+#35 {main}
+***************
+
+[17-Jun-2016 19:07:09 America/Chicago] 
+***************
+MVC Duration:0.051959 seconds
+***************
+
+[17-Jun-2016 19:47:43 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:47:43 America/Chicago] PHP Fatal error:  Class User\Model\Entity\User contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (User\Model\PasswordAwareInterface::getPasswrodAdapter) in /var/www/html/company/company/module/User/src/User/Model/Entity/User.php on line 244
+[17-Jun-2016 19:48:38 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:48:38 America/Chicago] PHP Fatal error:  Class User\Model\Entity\User contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (User\Model\PasswordAwareInterface::getPasswrodAdapter) in /var/www/html/company/company/module/User/src/User/Model/Entity/User.php on line 244
+[17-Jun-2016 19:49:06 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:49:06 America/Chicago] PHP Fatal error:  Call to undefined method Zend\Form\Annotation\AnnotationBuilder::add() in /var/www/html/company/company/module/User/src/User/Controller/AccountController.php on line 22
+[17-Jun-2016 19:50:14 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:50:14 America/Chicago] 
+***************
+MVC Duration:0.07919 seconds
+***************
+
+[17-Jun-2016 19:51:14 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:51:14 America/Chicago] 
+***************
+MVC Duration:0.064163 seconds
+***************
+
+[17-Jun-2016 19:51:33 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:51:34 America/Chicago] 
+***************
+MVC Duration:-0.927157 seconds
+***************
+
+[17-Jun-2016 19:51:35 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:51:36 America/Chicago] 
+***************
+MVC Duration:0.082776 seconds
+***************
+
+[17-Jun-2016 19:51:38 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:51:38 America/Chicago] 
+***************
+MVC Duration:0.097817 seconds
+***************
+
+[17-Jun-2016 19:54:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:54:21 America/Chicago] 
+***************
+MVC Duration:0.07579 seconds
+***************
+
+[17-Jun-2016 19:54:23 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:54:23 America/Chicago] 
+***************
+MVC Duration:0.069099 seconds
+***************
+
+[17-Jun-2016 19:54:26 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:54:26 America/Chicago] 
+***************
+MVC Duration:0.070114 seconds
+***************
+
+[17-Jun-2016 19:58:31 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 19:58:31 America/Chicago] 
+***************
+MVC Duration:0.065464 seconds
+***************
+
+[17-Jun-2016 20:06:24 America/Chicago] PHP Fatal error:  Class 'User\Service\Initializer\Password' not found in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 365
+[17-Jun-2016 20:08:02 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:08:02 America/Chicago] PHP Notice:  Undefined index: bcrypt in /var/www/html/company/company/module/User/src/User/Service/Factory/PasswordAdapter.php on line 13
+[17-Jun-2016 20:08:02 America/Chicago] 
+***************
+MVC Duration:0.078887 seconds
+***************
+
+[17-Jun-2016 20:19:19 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:19:19 America/Chicago] 
+***************
+MVC Duration:0.061838 seconds
+***************
+
+[17-Jun-2016 20:21:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:21:24 America/Chicago] 
+***************
+MVC Duration:0.061979 seconds
+***************
+
+[17-Jun-2016 20:21:26 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:21:26 America/Chicago] 
+***************
+MVC Duration:0.075928 seconds
+***************
+
+[17-Jun-2016 20:22:37 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:22:37 America/Chicago] 
+***************
+MVC Duration:0.117925 seconds
+***************
+
+[17-Jun-2016 20:23:10 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:23:15 America/Chicago] 
+***************
+MVC Duration:-0.014634 seconds
+***************
+
+[17-Jun-2016 20:23:15 America/Chicago] 
+***************
+""START TRANSACTION"()" took 0.00010919570922852 seconds
+
+***************
+
+[17-Jun-2016 20:23:15 America/Chicago] 
+***************
+"INSERT INTO users (role, email, password, name, phone, photo) VALUES (?, ?, ?, ?, ?, ?)(,t2@test.com,$2y$16$x.V3mThwM1HGr3v/UC8Y9.FvbUVCqc21LWtYkQ2Qh20qWRhbXYN1u,test test,777-777-7777,/tmp/phpiD6SVj)" took 0.00032997131347656 seconds
+
+***************
+
+[17-Jun-2016 20:23:15 America/Chicago] 
+***************
+""COMMIT"()" took 0.017003059387207 seconds
+
+***************
+
+[17-Jun-2016 20:23:15 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:23:16 America/Chicago] 
+***************
+MVC Duration:0.012137 seconds
+***************
+
+[17-Jun-2016 20:25:02 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:25:02 America/Chicago] 
+***************
+MVC Duration:0.010637 seconds
+***************
+
+[17-Jun-2016 20:25:04 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:25:04 America/Chicago] 
+***************
+MVC Duration:0.012971 seconds
+***************
+
+[17-Jun-2016 20:32:43 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:32:43 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[17-Jun-2016 20:32:43 America/Chicago] 
+***************
+MVC Duration:0.024467 seconds
+***************
+
+[17-Jun-2016 20:34:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:34:24 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[17-Jun-2016 20:34:25 America/Chicago] 
+***************
+MVC Duration:-0.963731 seconds
+***************
+
+[17-Jun-2016 20:37:57 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[17-Jun-2016 20:37:57 America/Chicago] 
+***************
+MVC Duration:0.07238 seconds
+***************
+

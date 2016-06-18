@@ -1,10 +1,10 @@
 <?php
 /**
  * init and onBootstrap functions used to register event listners. Keep light as possible
- * , ie. don't instantiate resources not needed on every execution. 
+ * , ie. don't instantiate resources not needed on every execution.
  * Use Service manager for that like a database resource.
- * 
- * If module needs to create directories or files to write/cache data for example, write 
+ *
+ * If module needs to create directories or files to write/cache data for example, write
  * them outside of the module directory tree like <root>/data/ to prevent composure or similar
  * tools from removing or overwriting.
  */
@@ -21,48 +21,85 @@ use Zend\View\Model\ViewModel;
 
 class Module implements AutoloaderProviderInterface
 {
-    
+
     public function errorLogWrite($message = '', $delimiter = "\n***************\n")
     {
         error_log($delimiter.$message.$delimiter);
     }
-    
+
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager = $e->getApplication()->getEventManager();
         $eventManager->attach(MvcEvent::EVENT_DISPATCH_ERROR, array($this, 'handleError'));
-        
+
         //Setup monitoring time of execution by request
         $serviceManager = $e->getApplication()->getServiceManager();
         $timer = $serviceManager->get('timer');
         $timer->start('mvc-execution');
-        
+
+        $eventManager->attach(MvcEvent::EVENT_RENDER, array($this, 'injectViewVariables'), 100);
+
         $eventManager->attach(MvcEvent::EVENT_FINISH, array($this, 'getMvcDuration'),2);
-        
+
         $eventManager->attach(MvcEvent::EVENT_RENDER, array($this, 'addDebugOverlay'), 100);
-        
+
+        $eventManager->attach(MvcEvent::EVENT_FINISH, array($this, 'dbProfilerStats'),2);
+
     }
-    
-public function addDebugOverlay(MvcEvent $event)
+
+    public function dbProfilerStats(MvcEvent $event)
     {
-    	$viewModel = $event->getViewModel();
-    	 
-    	$sidebarView = new ViewModel();
-    	$sidebarView->setTemplate('debug/layout/sidebar');
-    	$sidebarView->addChild($viewModel, 'content');
-    	 
-    	$event->setViewModel($sidebarView);
+        $services = $event->getApplication()->getServiceManager();
+        if($services->has('database-profiler')) {
+            $profiler = $services->get('database-profiler');
+            foreach ($profiler->getProfiles() as $profile) {
+                $message= '"'.$profile['sql'].'('.implode(',',$profile['parameters']->getNamedArray()).')" took '.$profile['elapse'].' seconds'."\n";
+
+                $this->errorLogWrite($message);
+            }
+        }
     }
-    
+
+    /**
+     * Injects common variable in the view model
+     * @param MvcEvent $event
+     */
+    public function injectViewVariables(MvcEvent $event)
+    {
+        $viewModel = $event->getViewModel();
+
+        $services = $event->getApplication()->getServiceManager();
+        $variables = array();
+        if($services->has('database-profiler')) {
+            $profiler = $services->get('database-profiler');
+            $variables['profiler'] = $profiler;
+        }
+        if(!empty($variables)) {
+            $viewModel->setVariables($variables);
+        }
+    }
+
+
+    public function addDebugOverlay(MvcEvent $event)
+    {
+        $viewModel = $event->getViewModel();
+
+        $sidebarView = new ViewModel();
+        $sidebarView->setTemplate('debug/layout/sidebar');
+        $sidebarView->addChild($viewModel, 'content');
+
+        $event->setViewModel($sidebarView);
+    }
+
     public function getMvcDuration(MvcEvent $event)
     {
         $serviceManager = $event->getApplication()->getServiceManager();
         $timer = $serviceManager->get('timer');
         $duration = $timer->stop('mvc-execution');
-        
+
         $this->errorLogWrite("MVC Duration:".$duration." seconds");
     }
-    
+
     public function handleError(MvcEvent $event)
     {
         $controller = $event->getController();
@@ -72,7 +109,7 @@ public function addDebugOverlay(MvcEvent $event)
         if ($exception instanceof \Exception) {
             $message .= ', Exception('.$exception->getMessage().'): '.$exception->getTraceAsString();
         }
-        
+
         $this->errorLogWrite($message);
     }
     /**
@@ -84,7 +121,7 @@ public function addDebugOverlay(MvcEvent $event)
         $eventManager = $moduleManager->getEventManager();
         $eventManager->attach(ModuleEvent::EVENT_LOAD_MODULES_POST, array($this, 'loadedModulesInfo'));
     }
-    
+
     /**
      * Callback for registered listener to allow logging of loaded modules
      * @param Event $event
@@ -108,7 +145,7 @@ public function addDebugOverlay(MvcEvent $event)
             ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-		    // if we're in a namespace deeper than one level we need to fix the \ in the path
+            // if we're in a namespace deeper than one level we need to fix the \ in the path
                     __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/' , __NAMESPACE__),
                 ),
             ),

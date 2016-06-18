@@ -1,9 +1,9 @@
-<?php 
+<?php
 namespace Debug\Service;
 
 /** Measures time between start and stop calls.
  * @author nathan
- * 
+ *
  */
 
 class Timer
@@ -13,17 +13,17 @@ class Timer
      * @var array
      */
     protected $start;
-    
+
     /**
      * Float format switch/flag
      */
      protected $timeAsFloat;
-     
+
      public function __construction($timeAsFloat=false)
      {
          $this->timeAsFloat = $timeAsFloat;
      }
-     
+
      /**
       * Start timer
       * @param string $key
@@ -32,7 +32,7 @@ class Timer
      {
          $this->start[$key] = microtime($this->timeAsFloat);
      }
-     
+
      /**
       * Stops timer
       * @param string $key
@@ -43,7 +43,7 @@ class Timer
          if (!isset($this->start[$key])) {
              return null;
          }
-         
+
          return microtime($this->timeAsFloat) - $this->start[$key];
      }
 }

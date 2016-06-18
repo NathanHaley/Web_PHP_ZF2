@@ -2,8 +2,10 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'User\Controller\Account' => 'User\Controller\AccountController',
-        )
+           // below is key              and below is the fully qualified class name
+           'User\Controller\Account' => 'User\Controller\AccountController',
+           'User\Controller\Log'     => 'User\Controller\LogController',
+        ),
     ),
     'router' => array(
         'routes' => array(
@@ -17,7 +19,7 @@ return array(
                         // the controllers for your module are found
                         '__NAMESPACE__' => 'User\Controller',
                         'controller'    => 'Account',
-                        'action'        => 'index',
+                        'action'        => 'me',
                     ),
                 ),
                 'may_terminate' => true,
@@ -29,10 +31,11 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/[:controller[/:action[/:id]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'         => '[0-9]*',
                             ),
                             'defaults' => array(
                             ),
@@ -49,15 +52,35 @@ return array(
     ),
     'service_manager' => array (
         'factories' => array(
-            'database' => 'User\Service\Factory\Database',
+            'database' 	       => 'User\Service\Factory\Database',
+            'entity-manager'   => 'User\Service\Factory\EntityManager',
+            'log'	       => 'User\Service\Factory\Log',
+            'password-adapter' => 'User\Service\Factory\PasswordAdapter',
         ),
         'invokables' => array(
-            'table-gateway' => 'User\Service\Invokable\TableGateway',
-        )
+            'table-gateway'     => 'User\Service\Invokable\TableGateway',
+            'user-entity'       => 'User\Model\Entity\User',
+            'doctrine-profiler' => 'User\Service\Invokable\DoctrineProfiler',
+        ),
+        'shared' => array(
+            'user-entity' => false,
+        ),
+        'initializers' => array (
+            'User\Service\Initializer\Password'
+        ),
     ),
     'table-gateway' => array(
         'map' => array(
             'users' => 'User\Model\User',
         )
-    )
+    ),
+    'doctrine' => array(
+        'entity_path' => array (
+                __DIR__ . '/../src/User/Model/Entity/',
+        ),
+        'initializers' => array (
+            // add here the list of initializers for Doctrine 2 entities..
+            'User\Service\Initializer\Password'
+        ),
+    ),
 );

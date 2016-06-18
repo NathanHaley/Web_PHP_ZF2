@@ -65,6 +65,7 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'cipher' => 'Application\Service\Factory\SymmetricCipher',
         ),
     ),
     'translator' => array(

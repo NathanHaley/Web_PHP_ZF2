@@ -7,11 +7,11 @@ class Module
     {
         $services = $e->getApplication()->getServiceManager();
         $dbAdapter = $services->get('database');
-        
+
         //Set default database adapter
         \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::setStaticAdapter($dbAdapter);
     }
-    
+
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
@@ -25,11 +25,10 @@ class Module
             ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-		    // if we're in a namespace deeper than one level we need to fix the \ in the path
+            // if we're in a namespace deeper than one level we need to fix the \ in the path
                     __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/' , __NAMESPACE__),
                 ),
             ),
         );
     }
 }
-

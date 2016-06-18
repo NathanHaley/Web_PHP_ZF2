@@ -12,9 +12,9 @@ class User extends Form
     public function __construct($name = 'user')
     {
         parent::__construct($name);
-        
+
         $this->setAttribute('method', 'post');
-        
+
         $this->add(array(
             'name' => 'email',
             'type' => 'Zend\Form\Element\Email',
@@ -27,7 +27,7 @@ class User extends Form
                 'placeholder' => 'Email Address...'
             )
         ));
-        
+
         $this->add(array(
             'name' => 'phone',
             'options' => array(
@@ -39,7 +39,7 @@ class User extends Form
                 'pattern' => '^[\d-/]+$'
             )
         ));
-        
+
         $this->add(array(
             'name' => 'password',
             'type' => 'Zend\Form\Element\Password',
@@ -51,7 +51,7 @@ class User extends Form
                 'label' => 'Password'
             )
         ));
-        
+
         $this->add(array(
             'name' => 'password_verify',
             'type' => 'Zend\Form\Element\Password',
@@ -63,7 +63,7 @@ class User extends Form
                 'label' => 'Verify Password'
             )
         ));
-        
+
         $this->add(array(
             'name' => 'name',
             'type' => 'Zend\Form\Element\Text',
@@ -75,7 +75,7 @@ class User extends Form
                 'label' => 'Name'
             )
         ));
-        
+
         $this->add(array(
             'type' => 'Zend\Form\Element\File',
             'name' => 'photo',
@@ -87,12 +87,12 @@ class User extends Form
                 'id' => 'photo'
             )
         ));
-        
+
         $this->add(array(
             'name' => 'csrf',
             'type' => 'Zend\Form\Element\Csrf'
         ));
-        
+
         $this->add(array(
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
@@ -101,6 +101,26 @@ class User extends Form
                 'required' => 'false'
             )
         ));
+        
+        $form->add(array(
+            'name' => 'password_verify',
+            'type' => 'Zend\Form\Element\Password',
+            'attributes' => array(
+                'placeholder' => 'Verify Password Heare...',
+                'required' => array(
+                    'label' => 'Verify Password',
+                )
+            )
+        ));
+        
+        $form->add(array(
+            'name' => 'submit',
+            'type' => 'Zend\Form\Element\Submit',
+            'attributes' => array(
+                'value' => 'Submit',
+                'required' => 'false',
+            ),
+        ));
     }
 
     public function getInputFilter()
@@ -108,7 +128,7 @@ class User extends Form
         if (! $this->filter) {
             $inputFilter = new InputFilter();
             $factory = new InputFactory();
-            
+
             $inputFilter->add($factory->createInput(array(
                 'name' => 'name',
                 'filters' => array(
@@ -130,7 +150,7 @@ class User extends Form
                     )
                 )
             )));
-            
+
             $inputFilter->add($factory->createInput(array(
                 'name' => 'phone',
                 'filters' => array(
@@ -150,7 +170,7 @@ class User extends Form
                     )
                 )
             )));
-            
+
             $inputFilter->add($factory->createInput(array(
                 'name' => 'email',
                 'filters' => array(
@@ -180,7 +200,7 @@ class User extends Form
                     )
                 )
             )));
-            
+
             $inputFilter->add($factory->createInput(array(
                 'name' => 'password_verify',
                 'filters' => array(
@@ -200,7 +220,7 @@ class User extends Form
                     )
                 )
             )));
-            
+
 
             $inputFilter->add($factory->createInput(array(
                 'name' => 'password',
@@ -223,7 +243,7 @@ class User extends Form
                     )
                 )
             )));
-            
+
             $inputFilter->add($factory->createInput(array(
                 'name' => 'photo',
                 'validators' => array(
@@ -257,9 +277,9 @@ class User extends Form
                             ),
                         ),
                     ),
-                
+
             )));
-            
+
             $this->filter = $inputFilter;
         }
         return $this->filter;

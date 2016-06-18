@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace User\Model;
 
 use Zend\Db\TableGateway\AbstractTableGateway;
@@ -13,16 +13,16 @@ class User extends AbstractTableGateway
         $this->featureSet->addFeature(new Feature\GlobalAdapterFeature());
         $this->initialize();
     }
-    
+
     public function insert($set)
     {
         $set['photo'] = $set['photo']['tmp_name'];
         unset($set['password_verify']);
         $set['password'] = md5($set['password']);
-        
+
         return parent::insert($set);
     }
-    
+
     public function deleteAction()
     {
         $id = $this->getRequest()->getQuery()->get('id');
@@ -30,7 +30,7 @@ class User extends AbstractTableGateway
             $userModel = new UserModel();
             $userModel->delete(array('id' => $id));
         }
-        
+
         return array();
     }
 }
