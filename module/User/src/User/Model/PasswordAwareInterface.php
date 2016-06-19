@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace User\Model;
 
 use Zend\Crypt\Password\PasswordInterface;
@@ -10,7 +10,7 @@ interface PasswordAwareInterface
      * @param PasswordInterface $adapter
      */
     public function setPasswordAdapter(PasswordInterface $adapter);
-    
+
     /**
      * Gets the password adapter
      * @return PassswordInterface

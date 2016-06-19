@@ -101,7 +101,7 @@ class User extends Form
                 'required' => 'false'
             )
         ));
-        
+
         $form->add(array(
             'name' => 'password_verify',
             'type' => 'Zend\Form\Element\Password',
@@ -112,7 +112,7 @@ class User extends Form
                 )
             )
         ));
-        
+
         $form->add(array(
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',

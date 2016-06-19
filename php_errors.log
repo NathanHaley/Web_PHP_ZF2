@@ -4308,3 +4308,1127 @@ array (
 MVC Duration:0.07238 seconds
 ***************
 
+[18-Jun-2016 16:06:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:06:28 America/Chicago] PHP Catchable fatal error:  Argument 1 passed to User\Module::onBootstrap() must be an instance of User\MvcEvent, instance of Zend\Mvc\MvcEvent given in /var/www/html/company/company/module/User/Module.php on line 6
+[18-Jun-2016 16:09:15 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:09:15 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::createFromInvokable: failed retrieving "authadapter(alias: auth-adapter)" via invokable class "User\Authentication\Adapter"; class does not exist' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:1064
+Stack trace:
+#0 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(638): Zend\ServiceManager\ServiceManager->createFromInvokable('authadapter', 'auth-adapter')
+#1 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(597): Zend\ServiceManager\ServiceManager->doCreate('auth-adapter', 'authadapter')
+#2 /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(530): Zend\ServiceManager\ServiceManager->create(Array)
+#3 /var/www/html/company/company/module/User/src/User/Service/Factory/Authentication.php(12): Zend\ServiceManager\ in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 1064
+[18-Jun-2016 16:15:00 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:15:00 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:15:00 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for user' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:555
+Stack trace:
+#0 /var/www/html/company/company/module/User/Module.php(63): Zend\ServiceManager\ServiceManager->get('user')
+#1 [internal function]: User\Module->protectPage(Object(Zend\Mvc\MvcEvent))
+#2 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('route', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(319): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 555
+[18-Jun-2016 16:20:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:20:21 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:20:21 America/Chicago] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for user' in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:555
+Stack trace:
+#0 /var/www/html/company/company/module/User/Module.php(63): Zend\ServiceManager\ServiceManager->get('user')
+#1 [internal function]: User\Module->protectPage(Object(Zend\Mvc\MvcEvent))
+#2 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(490): call_user_func(Array, Object(Zend\Mvc\MvcEvent))
+#3 /var/www/html/company/company/vendor/zendframework/zend-eventmanager/src/EventManager.php(263): Zend\EventManager\EventManager->triggerListeners('route', Object(Zend\Mvc\MvcEvent), Object(Closure))
+#4 /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Application.php(319): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#5 /var/www in /var/www/html/company/company/vendor/zendframework/zend-servicemanager/src/ServiceManager.php on line 555
+[18-Jun-2016 16:21:49 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:21:49 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:21:49 America/Chicago] 
+***************
+MVC Duration:0.036298 seconds
+***************
+
+[18-Jun-2016 16:22:15 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:22:16 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:22:16 America/Chicago] 
+***************
+MVC Duration:-0.958928 seconds
+***************
+
+[18-Jun-2016 16:22:18 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:22:18 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:22:18 America/Chicago] 
+***************
+MVC Duration:0.032302 seconds
+***************
+
+[18-Jun-2016 16:22:37 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:22:37 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:22:37 America/Chicago] 
+***************
+MVC Duration:0.030782 seconds
+***************
+
+[18-Jun-2016 16:22:42 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 16:22:42 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 16:22:42 America/Chicago] 
+***************
+MVC Duration:0.026022 seconds
+***************
+
+[18-Jun-2016 17:43:56 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:43:57 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:43:57 America/Chicago] 
+***************
+MVC Duration:0.021098 seconds
+***************
+
+[18-Jun-2016 17:44:04 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:44:04 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:44:04 America/Chicago] 
+***************
+MVC Duration:0.028615 seconds
+***************
+
+[18-Jun-2016 17:44:17 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:44:17 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:44:17 America/Chicago] PHP Notice:  Undefined variable: authAdapter in /var/www/html/company/company/module/User/src/User/Controller/LogController.php on line 32
+[18-Jun-2016 17:44:17 America/Chicago] PHP Fatal error:  Call to a member function setIdentity() on null in /var/www/html/company/company/module/User/src/User/Controller/LogController.php on line 32
+[18-Jun-2016 17:45:06 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:45:06 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:45:06 America/Chicago] 
+***************
+MVC Duration:0.022253 seconds
+***************
+
+[18-Jun-2016 17:45:19 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:45:19 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:45:19 America/Chicago] PHP Notice:  Undefined variable: authAdapter in /var/www/html/company/company/module/User/src/User/Controller/LogController.php on line 32
+[18-Jun-2016 17:45:19 America/Chicago] PHP Fatal error:  Call to a member function setIdentity() on null in /var/www/html/company/company/module/User/src/User/Controller/LogController.php on line 32
+[18-Jun-2016 17:46:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:46:51 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:46:51 America/Chicago] PHP Fatal error:  Call to undefined method Zend\Authentication\AuthenticationService::authentication() in /var/www/html/company/company/module/User/src/User/Controller/LogController.php on line 35
+[18-Jun-2016 17:51:03 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:51:03 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:51:08 America/Chicago] 
+***************
+MVC Duration:-0.291357 seconds
+***************
+
+[18-Jun-2016 17:51:08 America/Chicago] 
+***************
+"SELECT t0.id AS id_1, t0.role AS role_2, t0.email AS email_3, t0.password AS password_4, t0.name AS name_5, t0.phone AS phone_6, t0.photo AS photo_7 FROM users t0 WHERE t0.email = ? LIMIT 1(t2@test.com)" took 0.00096797943115234 seconds
+
+***************
+
+[18-Jun-2016 17:51:08 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:51:08 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:51:08 America/Chicago] 
+***************
+MVC Duration:0.024061 seconds
+***************
+
+[18-Jun-2016 17:51:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:51:21 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:51:21 America/Chicago] 
+***************
+MVC Duration:0.02665 seconds
+***************
+
+[18-Jun-2016 17:51:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:51:21 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:51:21 America/Chicago] 
+***************
+MVC Duration:0.022873 seconds
+***************
+
+[18-Jun-2016 17:51:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:51:24 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:51:24 America/Chicago] 
+***************
+MVC Duration:0.033679 seconds
+***************
+
+[18-Jun-2016 17:51:24 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:51:24 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:51:24 America/Chicago] 
+***************
+MVC Duration:0.023812 seconds
+***************
+
+[18-Jun-2016 17:55:20 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:55:20 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:55:20 America/Chicago] 
+***************
+MVC Duration:0.02507 seconds
+***************
+
+[18-Jun-2016 17:55:23 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:55:23 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:55:23 America/Chicago] 
+***************
+MVC Duration:0.033745 seconds
+***************
+
+[18-Jun-2016 17:56:44 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:56:44 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:56:44 America/Chicago] 
+***************
+MVC Duration:0.036259 seconds
+***************
+
+[18-Jun-2016 17:56:56 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:56:56 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:56:56 America/Chicago] 
+***************
+MVC Duration:0.02297 seconds
+***************
+
+[18-Jun-2016 17:57:22 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:57:22 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:57:22 America/Chicago] 
+***************
+MVC Duration:0.014783 seconds
+***************
+
+[18-Jun-2016 17:57:22 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:57:22 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 17:57:22 America/Chicago] 
+***************
+MVC Duration:0.019405 seconds
+***************
+
+[18-Jun-2016 17:57:28 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:57:28 America/Chicago] 
+***************
+Error dispatching controller "". Error was: "error-router-no-match"
+***************
+
+[18-Jun-2016 17:57:28 America/Chicago] 
+***************
+MVC Duration:0.053078 seconds
+***************
+
+[18-Jun-2016 17:57:38 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:57:38 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:57:38 America/Chicago] 
+***************
+MVC Duration:0.033201 seconds
+***************
+
+[18-Jun-2016 17:57:49 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:57:49 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:57:54 America/Chicago] 
+***************
+MVC Duration:-0.23535 seconds
+***************
+
+[18-Jun-2016 17:57:54 America/Chicago] 
+***************
+"SELECT t0.id AS id_1, t0.role AS role_2, t0.email AS email_3, t0.password AS password_4, t0.name AS name_5, t0.phone AS phone_6, t0.photo AS photo_7 FROM users t0 WHERE t0.email = ? LIMIT 1(t2@test.com)" took 0.00068402290344238 seconds
+
+***************
+
+[18-Jun-2016 17:57:54 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:57:54 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:57:54 America/Chicago] 
+***************
+MVC Duration:0.036466 seconds
+***************
+
+[18-Jun-2016 17:58:06 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:58:06 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:58:06 America/Chicago] 
+***************
+MVC Duration:0.02414 seconds
+***************
+
+[18-Jun-2016 17:58:10 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:58:10 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 17:58:10 America/Chicago] 
+***************
+MVC Duration:0.02381 seconds
+***************
+
+[18-Jun-2016 17:58:13 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 17:58:13 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 17:58:13 America/Chicago] 
+***************
+MVC Duration:0.049368 seconds
+***************
+
+[18-Jun-2016 18:30:18 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:30:18 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:30:18 America/Chicago] 
+***************
+MVC Duration:0.051114 seconds
+***************
+
+[18-Jun-2016 18:41:09 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:41:09 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:41:09 America/Chicago] 
+***************
+MVC Duration:0.030229 seconds
+***************
+
+[18-Jun-2016 18:41:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:41:51 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:41:51 America/Chicago] 
+***************
+MVC Duration:0.042586 seconds
+***************
+
+[18-Jun-2016 18:47:29 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:47:29 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:47:29 America/Chicago] 
+***************
+MVC Duration:0.033548 seconds
+***************
+
+[18-Jun-2016 18:48:21 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:48:21 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:48:21 America/Chicago] 
+***************
+MVC Duration:0.041713 seconds
+***************
+
+[18-Jun-2016 18:48:27 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:48:27 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:48:27 America/Chicago] 
+***************
+MVC Duration:0.027035 seconds
+***************
+
+[18-Jun-2016 18:56:51 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:56:51 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:56:51 America/Chicago] 
+***************
+MVC Duration:0.030812 seconds
+***************
+
+[18-Jun-2016 18:57:06 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:57:06 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:57:06 America/Chicago] 
+***************
+MVC Duration:0.043674 seconds
+***************
+
+[18-Jun-2016 18:57:58 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 18:57:58 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 18:57:58 America/Chicago] 
+***************
+MVC Duration:0.040869 seconds
+***************
+
+[18-Jun-2016 19:01:15 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:01:15 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 19:01:15 America/Chicago] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /var/www/html/company/company/module/Application/view/layout/layout.phtml on line 63
+[18-Jun-2016 19:04:20 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:04:21 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 19:04:21 America/Chicago] 
+***************
+MVC Duration:0.0272 seconds
+***************
+
+[18-Jun-2016 19:05:26 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:05:26 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 19:05:26 America/Chicago] 
+***************
+MVC Duration:0.0567 seconds
+***************
+
+[18-Jun-2016 19:05:34 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:05:34 America/Chicago] 
+***************
+MVC Duration:0.0337 seconds
+***************
+
+[18-Jun-2016 19:05:42 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:05:42 America/Chicago] PHP Deprecated:  You are retrieving the service locator from within the class Application\Controller\IndexController. Please be aware that ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. You will need to update your class to accept all dependencies at creation, either via constructor arguments or setters, and use a factory to perform the injections. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php on line 258
+[18-Jun-2016 19:05:42 America/Chicago] 
+***************
+MVC Duration:0.033591 seconds
+***************
+
+[18-Jun-2016 19:06:03 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:06:03 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 19:06:03 America/Chicago] 
+***************
+MVC Duration:0.045371 seconds
+***************
+
+[18-Jun-2016 19:07:12 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:07:12 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 19:07:12 America/Chicago] 
+***************
+MVC Duration:0.042728 seconds
+***************
+
+[18-Jun-2016 19:14:02 America/Chicago] 
+***************
+Loaded modules:
+array (
+  'Application' => 
+  Application\Module::__set_state(array(
+  )),
+  'Debug' => 
+  Debug\Module::__set_state(array(
+  )),
+  'User' => 
+  User\Module::__set_state(array(
+  )),
+)
+***************
+
+[18-Jun-2016 19:14:02 America/Chicago] PHP Deprecated:  ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class User\Authentication\Adapter to remove the implementation, and start injecting your dependencies via factory instead. in /var/www/html/company/company/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php on line 159
+[18-Jun-2016 19:14:02 America/Chicago] 
+***************
+MVC Duration:0.041273 seconds
+***************
+

@@ -10,7 +10,7 @@ use Doctrine\Common\EventArgs;
 
 class EntityManager implements FactoryInterface
 {
-    public function createService (ServiceLocatorInterface $serviceLocator)
+    public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('config');
         // The parameters in Doctrine 2 and ZF2 are slightly different.

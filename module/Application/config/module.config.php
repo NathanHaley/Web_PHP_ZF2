@@ -10,6 +10,26 @@
 namespace Application;
 
 return array(
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'home',
+                'pages' => array(
+                    array (
+                        'label' => 'About',
+                        'route' => 'application/default',
+                        'controller' => 'index',
+                        'action' => 'about'
+                    ),
+                    array(
+                        'label' => 'Book',
+                        'uri' => 'http://learnzf2.com',
+                    )
+                )
+            )
+        )
+    ),
     'application' => array (
         'version' => '0.0.1',
         'name'    => 'Training Center Company',
@@ -66,6 +86,7 @@ return array(
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
             'cipher' => 'Application\Service\Factory\SymmetricCipher',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
     ),
     'translator' => array(

@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return array(
-    'log' => array( 
+    'log' => array(
         'priority' => \Zend\Log\Logger::WARN,
     )
 );
