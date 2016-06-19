@@ -9,6 +9,6 @@ nbproject
 .settings
 vendor
 composer.phar
-php_error.*
+php_errors.*
 *.old
 database.local.*
