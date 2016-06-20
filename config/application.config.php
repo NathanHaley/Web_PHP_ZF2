@@ -10,6 +10,7 @@ return array(
         'Application',
         'Debug',
         'User',
+        'Exam',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
