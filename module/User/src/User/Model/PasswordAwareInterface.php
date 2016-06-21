@@ -13,7 +13,8 @@ interface PasswordAwareInterface
 
     /**
      * Gets the password adapter
-     * @return PassswordInterface
+     * @return PasswordInterface
      */
     public function getPasswordAdapter();
+
 }

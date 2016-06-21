@@ -1,13 +1,43 @@
 <?php
+/**
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/User for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
+
 namespace User;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\Permissions\Acl\Exception\ExceptionInterface as AclException;
+use Zend\EventManager\EventManager;
+use Zend\View\Model\ViewModel;
 
-class Module
+class Module implements AutoloaderProviderInterface
 {
-public function onBootstrap(MvcEvent $event)
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\ClassMapAutoloader' => array(
+                __DIR__ . '/autoload_classmap.php',
+            ),
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+            // if we're in a namespace deeper than one level we need to fix the \ in the path
+                    __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/' , __NAMESPACE__),
+                ),
+            ),
+        );
+    }
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function onBootstrap(MvcEvent $event)
     {
         $services = $event->getApplication()->getServiceManager();
         $dbAdapter = $services->get('database');
@@ -30,6 +60,8 @@ public function onBootstrap(MvcEvent $event)
             $log = $services->get('log');
             $log->warn('Registered user ['.$user->getName().'/'.$user->getId().']');
         });
+
+        $eventManager->attach('render', array($this, 'injectUserAcl'));
     }
 
     public function protectPage(MvcEvent $event)
@@ -50,12 +82,6 @@ public function onBootstrap(MvcEvent $event)
         $services = $event->getApplication()->getServiceManager();
         $config = $services->get('config');
 
-        // check if the current module wants to use the ACL
-        $aclModules = $config['acl']['modules'];
-        if (!empty($aclModules) && !in_array($moduleNamespace, $aclModules)) {
-            return;
-        }
-
         $auth     = $services->get('auth');
         $acl      = $services->get('acl');
 
@@ -63,14 +89,12 @@ public function onBootstrap(MvcEvent $event)
         $currentUser = $services->get('user');
         $role = $currentUser->getRole();
 
-        //Adding default acl and role to navigation view helpers
-
+        // This is how we add default acl and role to the navigation view helpers
         \Zend\View\Helper\Navigation\AbstractHelper::setDefaultAcl($acl);
         \Zend\View\Helper\Navigation\AbstractHelper::setDefaultRole($role);
 
-        //Check if current module wants to use the ACL
+        // check if the current module wants to use the ACL
         $aclModules = $config['acl']['modules'];
-
         if (!empty($aclModules) && !in_array($moduleNamespace, $aclModules)) {
             return;
         }
@@ -98,6 +122,13 @@ public function onBootstrap(MvcEvent $event)
 
         // If the role is not allowed access to the resource we have to redirect the
         // current user to the log in page.
+        $e = new EventManager('user');
+        $e->trigger('deny', $this, array(
+                                          'match' => $match,
+                                          'role'  => $role,
+                                          'acl'   =>$acl
+                                       )
+                );
 
         // Set the response code to HTTP 403: Forbidden
         $response = $event->getResponse();
@@ -107,23 +138,15 @@ public function onBootstrap(MvcEvent $event)
         $match->setParam('action', 'denied');
     }
 
-    public function getConfig()
+    public function injectUserAcl(MvcEvent $event)
     {
-        return include __DIR__ . '/config/module.config.php';
-    }
-
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/autoload_classmap.php',
-            ),
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-            // if we're in a namespace deeper than one level we need to fix the \ in the path
-                    __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/' , __NAMESPACE__),
-                ),
-            ),
-        );
+        if(!$event->getResponse()->contentSent()) {
+            $services = $event->getApplication()->getServiceManager();
+            $viewModel = $event->getResult();
+            if($viewModel instanceof ViewModel) {
+                $viewModel->setVariable('user', $services->get('user'));
+                $viewModel->setVariable('acl', $services->get('acl'));
+            }
+        }
     }
 }

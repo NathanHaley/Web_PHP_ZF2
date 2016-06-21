@@ -30,7 +30,7 @@ class Module implements AutoloaderProviderInterface
     }
 
     public function getConfig()
-    {//die('getconfig');
+    {
         return include __DIR__ . '/config/module.config.php';
     }
 
@@ -41,7 +41,5 @@ class Module implements AutoloaderProviderInterface
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-
-        //die('bootstrap');
     }
 }

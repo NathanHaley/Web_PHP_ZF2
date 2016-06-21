@@ -18,19 +18,8 @@ class User extends AbstractTableGateway
     {
         $set['photo'] = $set['photo']['tmp_name'];
         unset($set['password_verify']);
-        $set['password'] = md5($set['password']);
-
+        $set['password'] = md5($set['password']); // better than clear text
+                                                  //passwords
         return parent::insert($set);
-    }
-
-    public function deleteAction()
-    {
-        $id = $this->getRequest()->getQuery()->get('id');
-        if($id) {
-            $userModel = new UserModel();
-            $userModel->delete(array('id' => $id));
-        }
-
-        return array();
     }
 }

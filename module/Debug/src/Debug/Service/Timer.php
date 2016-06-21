@@ -1,11 +1,11 @@
 <?php
 namespace Debug\Service;
 
-/** Measures time between start and stop calls.
- * @author nathan
+/**
+ * Simple class that measures the time between start and stop calls.
+ * @author slaff
  *
  */
-
 class Timer
 {
     /**
@@ -15,35 +15,38 @@ class Timer
     protected $start;
 
     /**
-     * Float format switch/flag
+     * Defines if the time must be presented as float
+     * @var boolean
      */
-     protected $timeAsFloat;
+    protected $timeAsFloat;
 
-     public function __construction($timeAsFloat=false)
-     {
-         $this->timeAsFloat = $timeAsFloat;
-     }
+    public function __construct($timeAsFloat=false)
+    {
+        $this->timeAsFloat = $timeAsFloat;
+    }
 
-     /**
-      * Start timer
-      * @param string $key
-      */
-     public function start($key)
-     {
-         $this->start[$key] = microtime($this->timeAsFloat);
-     }
+    /**
+     * Starts measuring the time.
+     *
+     * @param string $key
+     */
+    public function start($key)
+    {
+        $this->start[$key] = microtime($this->timeAsFloat);
+    }
 
-     /**
-      * Stops timer
-      * @param string $key
-      * @return float|null the duration of the event
-      */
-     public function stop($key)
-     {
-         if (!isset($this->start[$key])) {
-             return null;
-         }
+    /**
+     * Stops measuring the time and returns the duration.
+     *
+     * @param string $key
+     * @return float|null the duration of the event
+     */
+    public function stop($key)
+    {
+        if (!isset($this->start[$key])) {
+            return null;
+        }
 
-         return microtime($this->timeAsFloat) - $this->start[$key];
-     }
+        return microtime($this->timeAsFloat) - $this->start[$key];
+    }
 }

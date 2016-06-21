@@ -2,11 +2,14 @@
 <?= $this->content ?>
 
 <h1>Bottom Line</h1>
-<?php 
+<?php
 if ($this->profiler) {
-    echo '<div id="profiler">Db Profiler:';
-    foreach($this->profiler->getProfilers() as $profile) {
-        echo '"'.$profiler['sql'].' ('.implode(',',$profile['parameters']->getNamedArray()).')" took '.$profile['elapse'].' seconds<br>';
-    }
-    echo '</div>';
+    echo '<div id="profiler">Db Profiler:<br>';
+	foreach($this->profiler->getProfiles() as $profile) {
+		echo '"'. $profile['sql'].
+			 ' ('.implode(',',$profile['parameters']->getNamedArray()).')" took '.
+             $profile['elapse'].' seconds<br>';
+	}
+	echo '</div>';
 }
+?>

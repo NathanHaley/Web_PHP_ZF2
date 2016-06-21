@@ -39,6 +39,20 @@ return array(
                             ),
                         ),
                     ),
+                    'list' => array(
+                        'type'    => 'Segment',
+                        'options' => array (
+                            'route' => '/test/list[/:page]',
+                            'constraints' => array(
+                                'page'     => '[0-9]*',
+                            ),
+                            'defaults' => array(
+                                'controller'    => 'Test',
+                                'action'        => 'list',
+                                'page'          => '1',
+                            ),
+                        )
+                    )
                 ),
             ),
         ),
@@ -56,4 +70,51 @@ return array(
             'formQuestionElement' => 'Exam\Form\View\Helper\Question\FormQuestionElement',
         )
     ),
+    'service_manager' => array(
+        'invokables' => array(
+            'test-manager' => 'Exam\Model\TestManager',
+        )
+    ),
+    'acl' => array(
+        'resource' => array (
+            'test' => null,
+        ),
+        'allow' => array(
+            array('guest', 'test', 'list'),
+            array('member', 'test', array('list','take')),
+            array('admin', 'test', 'reset'),
+        ),
+        'modules' => array (
+            'Exam',
+        ),
+    ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Exam',
+                'route' => 'exam',
+                'pages' => array(
+                    array(
+                        'label' => 'List',
+                        'route' => 'exam/list',
+                        // acl
+                        'resource'   => 'test',
+                        'privilege'  => 'list',
+                    ),
+                    array(
+                        'label' => 'Reset',
+                        'title' => 'Resets the test to the default set',
+                        // uri
+                        'route' => 'exam/default',
+                        'controller' => 'test',
+                        'action'     => 'reset',
+                        // acl
+                        'resource'   => 'test',
+                        'privilege'  => 'reset',
+                    ),
+                )
+            ),
+        )
+    ),
+
 );

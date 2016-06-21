@@ -13,6 +13,9 @@ return array(
         'Exam',
     ),
     'module_listener_options' => array(
+        'config_glob_paths' => array(
+           'config/autoload/{,*.}{global,local}.php',
+        ),
         'module_paths' => array(
             './module',
             './vendor',
@@ -20,5 +23,12 @@ return array(
         'config_glob_paths' => array(
             'config/autoload/{{,*.}global,{,*.}local}.php',
         ),
-    ),
+       /* Disable caching in dev
+        * 'config_cache_enabled' => true,
+        'config_cache_key' => 1,
+        'module_map_cache_enabled' => true,
+        'module_map_cache_key' => "1",
+        'cache_dir' => "data/cache/module",
+       */
+   ),
 );

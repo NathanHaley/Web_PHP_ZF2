@@ -4,13 +4,13 @@ namespace Debug\Service\Initializer;
 use Zend\ServiceManager\InitializerInterface;
 use Zend\Db\Adapter\Profiler\Profiler;
 use Zend\Db\Adapter\Profiler\ProfilerAwareInterface;
-use zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class DbProfiler implements InitializerInterface
 {
     /**
      *
-     * @var zend\Db\Adapter\Profiler\Profiler
+     * @var Zend\Db\Adapter\Profiler\Profiler
      */
     protected $profiler;
 
@@ -18,7 +18,7 @@ class DbProfiler implements InitializerInterface
      * Initialize
      *
      * @param $instance
-     * @param serviceLocatorIntterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator
      * @return mixed
      */
     public function initialize($instance, ServiceLocatorInterface $serviceLocator)
