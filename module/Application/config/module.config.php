@@ -10,7 +10,7 @@
 return array(
     'application' => array (
         'name' 	  => 'Training Center',
-        'version' => '0.0.1'
+        'version' => '0.0.2'
     ),
     'router' => array(
         'routes' => array(

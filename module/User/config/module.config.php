@@ -116,6 +116,7 @@ return array(
         'defaults' => array (
                 'guest_role' => 'guest',
                 'member_role' => 'member',
+                'default_role' => 'member'
         ),
         'resource_aliases' => array (
                 'User\Controller\Account' => 'account',
@@ -173,6 +174,14 @@ return array(
                             'action' => 'delete',
                             'resource' => 'account',
                             'privilege' => 'delete',
+                        ),
+                        array(
+                            'label' => 'List',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'list',
+                            'resource' => 'account',
+                            'privilege' => 'list', //Only for admins
                         ),
                         array(
                             'label' => 'Log in',

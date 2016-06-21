@@ -1,0 +1,51 @@
+<h1>Admin List Of Users</h1>
+
+<?php if (count($this->users)): ?>
+
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th><?= $this->translate('Photo') ?></th>
+        <th><?= $this->translate('Id') ?></th>
+        <th><?= $this->translate('Email') ?></th>
+        <th><?= $this->translate('Name') ?></th>
+        <th><?= $this->translate('Role') ?></th>
+        <th></th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+<?php foreach ($this->users as $user): ?>
+   <tr>
+            <td><img src="<?= $this->escapehtml($user['photo']) ?>" /></td>
+            <td><?= $this->escapehtml($user['id']) ?></td>
+            <td><?= $this->escapehtml($user['email']) ?></td>
+            <td><?= $this->escapehtml($user['name']) ?></td>
+            <td><?= $this->escapehtml($user['role']) ?></td>
+            <td><?php
+                if($this->user->getId() == $user['id'] || $this->acl->isAllowed($this->user->getRole(),'account','edit')) :
+            ?>
+            <a href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit', 'id'=> $user['id'])) ?>"><?= $this->translate('Edit') ?></a>
+            <?php
+                endif;
+            ?>
+            </td>
+            <td><?php
+                if($this->acl->isAllowed($this->user->getRole(),'account','delete')) :
+            ?>
+            <a href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'delete', 'id'=> $user['id'])) ?>"><?= $this->translate('Delete') ?></a>
+            <?php
+                endif;
+            ?>
+            </td>
+    </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+<?php echo $this->paginationControl($this->users,
+                                    'Sliding',
+                                    'paginator/sliding',
+                                    array('route' => 'user/list')
+                                    );

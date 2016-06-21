@@ -3,6 +3,8 @@ Web_PHP_ZF2
 
 This project is for demonstration and learning for PHP and Zend Framework 2.
 
+2016-06-21: Added debug display switch, initial view and me pages, and initial admin pages for user list, edit, delete
+
 2016-06-20: Completed through the pagination chapter, includes exam, reseting/loading exam from file, exam list page
 
 2016-06-18: Added basic nav, initial ACL, log in/out

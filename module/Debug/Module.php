@@ -50,6 +50,7 @@ class Module implements AutoloaderProviderInterface
 
         // Below is how we get access to the service manager
         $serviceManager = $e->getApplication()->getServiceManager();
+        $config = $serviceManager->get('config');
         // Here we start the timer
         $timer = $serviceManager->get('timer');
         $timer->start('mvc-execution');
@@ -59,7 +60,13 @@ class Module implements AutoloaderProviderInterface
         // actual finish event is triggered.
         $eventManager->attach(MvcEvent::EVENT_FINISH, array($this,'getMvcDuration'),2);
 
-        $eventManager->attach(MvcEvent::EVENT_RENDER,array($this,'addDebugOverlay'),100);
+        $debugDisplay = $config['debug']['isDisplayed']|false;
+
+        if ($debugDisplay) {
+            $eventManager->attach(MvcEvent::EVENT_RENDER,array($this,'addDebugOverlay'),100);
+        }
+
+
 
         $eventManager->attach(MvcEvent::EVENT_RENDER,array($this,'injectViewVariables'),100);
 

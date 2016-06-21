@@ -18,5 +18,8 @@ return array(
     ),
     'timer' => array (
         'times_as_float' => true,
-    )
+    ),
+    'debug' => array(
+        'isDisplayed' => false,
+    ),
 );

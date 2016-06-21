@@ -15,7 +15,7 @@ class User extends AbstractTableGateway
     }
 
     public function insert($set)
-    {
+    {die('insert');
         $set['photo'] = $set['photo']['tmp_name'];
         unset($set['password_verify']);
         $set['password'] = md5($set['password']); // better than clear text
