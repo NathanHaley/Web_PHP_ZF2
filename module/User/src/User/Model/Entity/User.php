@@ -75,10 +75,7 @@ class User implements PasswordAwareInterface
     protected $phone;
 
     /**
-     * @Annotation\Type("Zend\Form\Element\File")
-     * @Annotation\Options({"label":"Your photo:"})
-     * @Annotation\Attributes({"id":"photo","required": true})
-     * @Annotation\Flags({"priority": "100"})
+     * @Annotation\Exclude()
      *
      * @Column(type="string")
      */

@@ -17,11 +17,11 @@
             <td><?= $this->escapehtml($test['name']) ?></td>
             <td><?= $this->escapehtml($test['description']) ?></td>
             <td><?= $test['duration'] ?> <?php $this->translate('minutes')?></td>
-            <td><a href="<?= $this->url('exam/default', array('controller'=> 'test', 'action'=>'take', 'id'=> $test['id'])) ?>"><?= $this->translate('Take') ?></a></td>
+            <td><a class="btn btn-sm btn-info" href="<?= $this->url('exam/default', array('controller'=> 'test', 'action'=>'take', 'id'=> $test['id'])) ?>"><?= $this->translate('Take') ?></a></td>
             <td><?php
                 if($this->user->getId() == $test['id'] || $this->acl->isAllowed($this->user->getRole(),'test','edit')) :
             ?>
-            <a href="<?= $this->url('exam/default', array('controller'=> 'test', 'action'=>'edit', 'id'=> $test['id'])) ?>"><?= $this->translate('Edit') ?></a>
+            <a class="btn btn-sm btn-primary" href="<?= $this->url('exam/default', array('controller'=> 'test', 'action'=>'edit', 'id'=> $test['id'])) ?>"><?= $this->translate('Edit') ?></a>
             <?php
                 endif;
             ?>
@@ -29,7 +29,7 @@
             <td><?php
                 if($this->acl->isAllowed($this->user->getRole(),'test','delete')) :
             ?>
-            <a href="<?= $this->url('exam/default', array('controller'=> 'test', 'action'=>'delete', 'id'=> $test['id'])) ?>"><?= $this->translate('Delete') ?></a>
+            <a class="btn btn-sm btn-danger" href="<?= $this->url('exam/default', array('controller'=> 'test', 'action'=>'delete', 'id'=> $test['id'])) ?>"><?= $this->translate('Delete') ?></a>
             <?php
                 endif;
             ?>

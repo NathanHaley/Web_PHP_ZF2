@@ -144,46 +144,6 @@ return array(
                             'privilege' => 'me',
                         ),
                         array(
-                            'label' => 'Add',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'add',
-                            'resource' => 'account',
-                            'privilege' => 'add',
-                        ),
-                        array(
-                            'label' => 'View',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'view',
-                            'resource' => 'account',
-                            'privilege' => 'view',
-                        ),
-                        array(
-                            'label' => 'Edit',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'edit',
-                            'resource' => 'account',
-                            'privilege' => 'edit',
-                        ),
-                        array(
-                            'label' => 'Delete',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'delete',
-                            'resource' => 'account',
-                            'privilege' => 'delete',
-                        ),
-                        array(
-                            'label' => 'List',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'list',
-                            'resource' => 'account',
-                            'privilege' => 'list', //Only for admins
-                        ),
-                        array(
                             'label' => 'Log in',
                             // uri
                             'route' => 'user/default',
@@ -213,6 +173,48 @@ return array(
                             'resource'  => 'log',
                             'privilege' => 'out'
                         ),
+                        array(
+                            'label' => 'List',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'list',
+                            'resource' => 'account',
+                            'privilege' => 'list', //Only for admins
+                        ),
+                        array(
+                            'label' => 'Add',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'add',
+                            'resource' => 'account',
+                            'privilege' => 'add',
+                        ),
+                        /* Accessed from the list page
+                        array(
+                            'label' => 'View',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'view',
+                            'resource' => 'account',
+                            'privilege' => 'view',//Only for admins
+                        ),
+                        array(
+                            'label' => 'Edit',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'edit',
+                            'resource' => 'account',
+                            'privilege' => 'edit',
+                        ),
+                        array(
+                            'label' => 'Delete',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'delete',
+                            'resource' => 'account',
+                            'privilege' => 'delete',
+                        ),*/
+
                 )
             )
         )

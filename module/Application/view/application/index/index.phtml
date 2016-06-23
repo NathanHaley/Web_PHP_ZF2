@@ -1,6 +1,23 @@
 <div class="hero-unit">
-    <h1><?php 
-        echo sprintf($this->translate('Welcome to %s<br>'), $this->applicationName);
+    <h2><?php 
+        echo sprintf($this->translate('Welcome to %s '), $this->applicationName);
         echo sprintf($this->translate('version: %s'), $this->version) ?>
-    </h1>
+    </h2>
+</div>
+
+<div class="well">
+
+<h3>This project is for demonstration and learning for PHP and Zend Framework 2.</h3>
+<br>
+
+<h4>2016-06-22: Account menu mods: view/edit/delete only accessible from list page. View page updated with buttons to edit|delete. Some AccountController refactoring for reusable chunks for methods findUserEntity and formAddFields. Button style updates on list pages for users and tests.</h4>
+
+<h4>2016-06-21: Added debug display switch, initial view and me pages, and initial admin pages for user list, edit, delete<h4>
+
+<h4>2016-06-20: Completed through the pagination chapter, includes exam, reseting/loading exam from file, exam list page<h4>
+
+<h4>2016-06-18: Added basic nav, initial ACL, log in/out<h4>
+
+<h4>2016-06-17: Implemented initial add user account functionality at route: account/add<h4>
+
 </div>

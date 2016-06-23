@@ -1,13 +1,30 @@
-<h1>
-<?php echo sprintf($this->translate('Hello: %s'), $user->getName()) ?>
-</h1>
 
-<h2><?php echo sprintf($this->translate('Id: %s'), $user->getId()) ?></h2>
-<h2><?php echo sprintf($this->translate('Emal: %s'), $user->getEmail()) ?></h2>
-<h2><?php echo sprintf($this->translate('Name: %s'), $user->getName()) ?></h2>
-<h2><?php echo sprintf($this->translate('Role: %s'), $user->getRole()) ?></h2>
-<h2><?php echo sprintf($this->translate('Phone: %s'), $user->getPhone()) ?></h2>
-<h2><img src="<?php echo sprintf('%s', $user->getPhoto()) ?>" /></h2>
+<div class="container-fluid">
+ <div class="row">
+   <div class="col-sm-12">
+    <h1>
+    <?php echo sprintf($this->translate('User Detail View: %s'), $this->userToView->getName()) ?>
+    </h1>
+   </div>
+  </div>
+ <div class="row">
+  <div class="col-sm-12">
+    <h2><?php echo sprintf($this->translate('Id: %s'), $this->userToView->getId()) ?></h2>
+    <h2><?php echo sprintf($this->translate('Emal: %s'), $this->userToView->getEmail()) ?></h2>
+    <h2><?php echo sprintf($this->translate('Name: %s'), $this->userToView->getName()) ?></h2>
+    <h2><?php echo sprintf($this->translate('Role: %s'), $this->userToView->getRole()) ?></h2>
+    <h2><?php echo sprintf($this->translate('Phone: %s'), $this->userToView->getPhone()) ?></h2>
+   </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-12">
+   <a class="btn btn-lg btn-primary" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Edit') ?></a>
+
+   <a class="btn btn-lg btn-danger" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'delete', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Delete') ?></a>
+  </div>
+ </div>
+</div>
+
 
 
 
