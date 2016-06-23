@@ -13,3 +13,4 @@ php_errors.*
 *.old
 database.local.*
 *_bak
+*.zip

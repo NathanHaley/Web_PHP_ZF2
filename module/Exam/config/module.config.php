@@ -50,6 +50,9 @@ return array(
                                 'controller'    => 'Test',
                                 'action'        => 'list',
                                 'page'          => '1',
+                                // 'pagecache'     => true,
+                                'actioncache'   => true,
+                                'tags'		 => array('exam-list'),
                             ),
                         )
                     )
@@ -71,8 +74,13 @@ return array(
         )
     ),
     'service_manager' => array(
+        'factories'  => array(
+            'mail-transport' => 'Exam\Service\Factory\MailTransport'
+        ),
         'invokables' => array(
             'test-manager' => 'Exam\Model\TestManager',
+            'pdf'          => 'Exam\Service\Invokable\Pdf',
+            'mail'		   => 'Exam\Service\Invokable\Mail',
         )
     ),
     'acl' => array(
@@ -82,7 +90,7 @@ return array(
         'allow' => array(
             array('guest', 'test', 'list'),
             array('member', 'test', array('list','take')),
-            array('admin', 'test', 'reset'),
+            array('admin', 'test', array('reset','certificate')),
         ),
         'modules' => array (
             'Exam',
@@ -116,5 +124,7 @@ return array(
             ),
         )
     ),
-
+    'pdf' => array(
+        'exam_certificate' => __DIR__.'/../samples/pdf/exam_certificate.pdf',
+    ),
 );

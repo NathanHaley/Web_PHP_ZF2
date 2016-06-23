@@ -41,6 +41,20 @@ return array(
                             ),
                         ),
                     ),
+                    'list' => array(
+                        'type'    => 'Segment',
+                        'options' => array (
+                            'route' => '/user/list[/:page]',
+                            'constraints' => array(
+                                'page'     => '[0-9]*',
+                            ),
+                            'defaults' => array(
+                                'controller'    => 'Account',
+                                'action'        => 'list',
+                                'page'          => '1',
+                            ),
+                        )
+                    )
                 ),
             ),
         ),

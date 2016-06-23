@@ -20,18 +20,14 @@ class AccountController extends AbstractActionController
 
         $entity = $this->serviceLocator->get('user-entity');
 
-        $builder = new AnnotationBuilder();
-        $entity = $this->serviceLocator->get('user-entity');
-        $form = $builder->createForm($entity);
-        $form = $this->formAddFields($form);
-        $form->bind($entity);
+        $form = $this->setupUserDetailForm($entity);
 
         if($this->getRequest()->isPost()) {
             $data = array_merge_recursive(
                 $this->getRequest()->getPost()->toArray(),
                 // Notice: make certain to merge the Files also to the post data
                 $this->getRequest()->getFiles()->toArray()
-                );
+            );
             $form->setData($data);
             if($form->isValid()) {
                 // We use now the Doctrine 2 entity manager to save user data to the database
@@ -48,9 +44,9 @@ class AccountController extends AbstractActionController
 
                 // redirect the user to the view user action
                 return $this->redirect()->toRoute('user/default', array (
-                    'controller' => 'account',
-                    'action'     => 'view',
-                    'id'		 => $entity->getId()
+                        'controller' => 'account',
+                        'action'     => 'view',
+                        'id'		 => $entity->getId()
                 ));
             }
         }
@@ -59,80 +55,23 @@ class AccountController extends AbstractActionController
         return array('form1'=> $form);
     }
 
-    /**
-     * Expects an array containing user entity, controller action, success message
-     * @param unknown $details
-     *
-     * @todo: work in progress
-     */
-    protected function processUserDetailForm($details, $caller)
+    protected function setupUserDetailForm($entity)
     {
-        $user = $details['userEntity'];
-
-        // The annotation builder help us create a form from the annotations in the user entity.
+        $userEntity = $entity;
         $builder = new AnnotationBuilder();
 
-        $form = $builder->createForm($user);
+        $form = $builder->createForm($userEntity);
 
         $form = $this->formAddFields($form);
 
-        $builder = new AnnotationBuilder();
-        $entity = $this->serviceLocator->get('user-entity');
-        $form = $builder->createForm($entity);
-        $form = $this->formAddFields($form);
-        $form->bind($entity);
+
 
         // We bind the entity to the user. If the form tries to read/write data from/to the entity
         // it will use the hydrator specified in the entity to achieve this. In our case we use ClassMethods
         // hydrator which means that reading will happen calling the getter methods and writing will happen by
         // calling the setter methods.
-        $form->bind($user);
+        $form->bind($userEntity);
 
-        if($this->getRequest()->isPost()) {
-            $data = array_merge_recursive(
-                $this->getRequest()->getPost()->toArray(),
-                // Notice: make certain to merge the Files also to the post data
-                $this->getRequest()->getFiles()->toArray()
-                );
-            $form->setData($data);
-            if($form->isValid()) {
-
-                $config = $this->serviceLocator->get('config');
-
-                // We use now the Doctrine 2 entity manager to save user data to the database
-                $entityManager = $this->serviceLocator->get('entity-manager');
-
-                if ($user->getId()) {
-                    //Edit
-                    die('editing');
-                } else {
-                    //Add/Register
-                    //Set the default role
-                    $user->setRole($config['acl']['defaults']['default_role']);
-                    $entityManager->persist($user);
-                    $entityManager->flush();
-
-                    $event = new EventManager('user');
-                    $event->trigger('register', $this, array(
-                        'user'=> $entity,
-                    ));
-
-                    $this->flashmessenger()->addSuccessMessage($details['message']);
-                    // redirect the user to the view user action
-                    return $caller->redirect()->toRoute('user/default', array (
-                        'controller' => 'account',
-                        'action'     => 'view',
-                        'id'		 => $entity->getId()
-                    ));
-
-                }
-
-                $this->flashmessenger()->addSuccessMessage($details['message']);
-
-
-
-            }
-        }
 
         return $form;
 
@@ -142,7 +81,7 @@ class AccountController extends AbstractActionController
      * Anonymous users can use this action to register new accounts
      */
     public function registerAction()
-    {
+    {die("Here");
         $result = $this->forward()->dispatch('User\Controller\Account', array(
             'action' => 'add',
         ));
@@ -173,6 +112,7 @@ class AccountController extends AbstractActionController
     {
 
         $id = $this->params('id');
+
         if(!$id) {
             return $this->redirect()->toRoute('user/default', array(
                 'controller' => 'account',
@@ -180,22 +120,9 @@ class AccountController extends AbstractActionController
             ));
         }
 
-        $config = $this->serviceLocator->get('config');
+        $entity = $this->findUserEntity($id);
 
-        // The annotation builder help us create a form from the annotations in the user entity.
-        $builder = new AnnotationBuilder();
-
-        $userToEdit = $this->findUserEntity($id);
-
-        $form = $builder->createForm($userToEdit);
-
-        $form = $this->formAddFields($form);
-
-        // We bind the entity to the user. If the form tries to read/write data from/to the entity
-        // it will use the hydrator specified in the entity to achieve this. In our case we use ClassMethods
-        // hydrator which means that reading will happen calling the getter methods and writing will happen by
-        // calling the setter methods.
-        $form->bind($userToEdit);
+        $form = $this->setupUserDetailForm($entity);
 
         if($this->getRequest()->isPost()) {
             $data = array_merge_recursive(
@@ -208,10 +135,10 @@ class AccountController extends AbstractActionController
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
 
-                $entity = $entityManager->merge($userToEdit);
+                $entity = $entityManager->merge($entity);
                 $entityManager->flush();
 
-                $this->flashmessenger()->addSuccessMessage("User: {$userToEdit->getEmail()} was updated successfully.");
+                $this->flashmessenger()->addSuccessMessage("User: {$entity->getEmail()} was updated successfully.");
 
                 // redirect the user to the view user action
                 return $this->redirect()->toRoute('user/default', array (
@@ -273,7 +200,7 @@ class AccountController extends AbstractActionController
         $paginator = new Paginator($adapter);
         $currentPage = $this->params('page', 1);
         $paginator->setCurrentPageNumber($currentPage);
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage(4);
 
         $acl = $this->serviceLocator->get('acl');
         return array('users'=> $paginator,
