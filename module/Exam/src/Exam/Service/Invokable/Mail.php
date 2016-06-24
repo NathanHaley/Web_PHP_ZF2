@@ -21,14 +21,17 @@ class Mail implements ServiceLocatorAwareInterface
      * @param array $exam
      * @param \ZendPdf\Document $pdf
      */
-    public function sendCertificate($user, $exam, $pdf)
+    public function sendCertificate($user, $examId, $pdf)
     {
         $translator = $this->services->get('translator');
         $mail = new Message();
         $mail->addTo($user->getEmail(), $user->getName());
 
+        $testManager = $this->services->get('test-manager');
+        $exam = $testManager->get($examId);
+
 $text = 'You are genius!
-You answered all the questions correctly.
+For exam '.$exam['name'].' you answered all the questions correctly.
 Therefore we are sending you as a gratitude this free award certificate.
 
 ';
@@ -44,7 +47,7 @@ Therefore we are sending you as a gratitude this free award certificate.
 
         $mail->setBody($mimeMessage);
 
-        $mail->setFrom('slavey@zend.com', 'Slavey Karadzhov');
+        $mail->setFrom('nathan@nathanhaley.com', 'Nathan Haley');
         $mail->setSubject($translator->translate('Congratulations: Here is your award certificate'));
 
         $transport = $this->services->get('mail-transport');

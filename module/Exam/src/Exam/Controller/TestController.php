@@ -6,7 +6,6 @@
  * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 namespace Exam\Controller;
 
 use Exam\Form\Element\Question\QuestionInterface;
@@ -14,9 +13,11 @@ use Exam\Model\Test;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
+use Zend\EventManager\EventManager;
 
 class TestController extends AbstractActionController
 {
+
     public function indexAction()
     {
         return array();
@@ -25,7 +26,7 @@ class TestController extends AbstractActionController
     public function takeAction()
     {
         $id = $this->params('id');
-        if(!$id) {
+        if (! $id) {
             return $this->redirect()->toRoute('exam/list');
         }
 
@@ -35,16 +36,16 @@ class TestController extends AbstractActionController
         $form->setAttribute('method', 'POST');
 
         $form->add(array(
-                'type' => 'Zend\Form\Element\Csrf',
-                'name' => 'security',
+            'type' => 'Zend\Form\Element\Csrf',
+            'name' => 'security'
         ));
 
         $form->add(array(
-                'type' => 'submit',
-                'name' => 'submit',
-                'attributes' => array (
-                        'value' => 'Ready',
-                )
+            'type' => 'submit',
+            'name' => 'submit',
+            'attributes' => array(
+                'value' => 'Ready'
+            )
         ));
 
         if ($this->getRequest()->isPost()) {
@@ -52,37 +53,49 @@ class TestController extends AbstractActionController
             $data = $this->getRequest()->getPost();
             $form->setData($data);
             $correct = 0;
-            $total   = 0;
-            if($form->isValid()) {
+            $total = 0;
+
+            if ($form->isValid()) {
                 // All answers were answered correctly.
-                $this->flashmessenger()->addSuccessMessage('Great! You have 100% correct answers.');
-                // @todo: trigger an event in that case
+                $this->flashmessenger()->addSuccessMessage('Great! You have 100% correct answers. You should recieve your certificate in email soon.');
+
+                $user = $this->serviceLocator->get('user');
+
+                //var_dump($id);die();
+
+                $newEvent = new EventManager('exam');
+                $newEvent->trigger('taken-excellent', $this, array (
+                    'user' => $user,
+                    'examId' => $id
+                ));
+
             } else {
                 // Check how many answers were correct using validation groups for partial validation.
-                foreach ($form as $element) {
+                foreach ($form as $k => $element) {
+
                     if ($element instanceof QuestionInterface) {
-                        $total++;
+                        $total ++;
                         $form->setValidationGroup($element->getName());
-                        $form->setData($data);
+
                         if ($form->isValid()) {
-                            $correct++;
+                            $correct ++;
                         }
                     }
                 }
 
-                if(!$correct) {
+                if ($correct === 0) {
                     $this->flashmessenger()->addErrorMessage('You failed. That is sad but you can try again.');
                 } else {
-                    $this->flashmessenger()->addMessage(sprintf('Correct %d out of total %d',$correct, $total));
+                    $this->flashmessenger()->addMessage(sprintf('Correct %d out of total %d.100%% correct needed for certificate.', $correct, $total));
                 }
-
             }
 
             return $this->redirect()->toRoute('exam/list');
         }
 
-
-        return array('form' => $form);
+        return array(
+            'form' => $form
+        );
     }
 
     /**
@@ -102,14 +115,18 @@ class TestController extends AbstractActionController
             $manager->store($data);
         }
 
-        $this->flashmessenger()->addSuccessMessage('The default tests were added');
+        $this->flashmessenger()->addSuccessMessage('Tests reset to default tests.');
         return $this->redirect()->toRoute('exam/list');
     }
 
     public function listAction()
     {
         $testModel = new Test();
-        $result = $testModel->getSql()->select()->where(array('active'=> 1));
+        $result = $testModel->getSql()
+            ->select()
+            ->where(array(
+            'active' => 1
+        ));
 
         $adapter = new PaginatorDbAdapter($result, $testModel->getAdapter());
         $paginator = new Paginator($adapter);
@@ -118,18 +135,25 @@ class TestController extends AbstractActionController
         $paginator->setItemCountPerPage(10);
 
         $acl = $this->serviceLocator->get('acl');
-        return array('tests'=> $paginator,
-                'acl' => $acl,
-                'page'=> $currentPage
+        return array(
+            'tests' => $paginator,
+            'acl' => $acl,
+            'page' => $currentPage
         );
     }
 
     public function certificateAction()
     {
+        $id = $this->params('id');
+        if (! $id) {
+            return $this->redirect()->toRoute('exam/list');
+        }
+
         $pdfService = $this->serviceLocator->get('pdf');
         $user = $this->serviceLocator->get('user');
-        $user->setName('John Smith');
-        $pdf = $pdfService->generateCertificate($user, "Exam Name");
+
+
+        $pdf = $pdfService->generateCertificate($user, $id);
 
         $response = $this->getResponse();
 

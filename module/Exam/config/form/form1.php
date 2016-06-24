@@ -36,7 +36,7 @@ return array(
                 'options' => array(
                     'question' => 'Which predifined constant will give you the current namespace?',
                     'answers' => array(
-                        '__namespace__'
+                        '__NAMESPACE__'
                     )
                 )
             )

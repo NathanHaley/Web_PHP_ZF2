@@ -3,6 +3,7 @@ namespace User\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\EventManager\EventManager;
+use Zend\Session\Container;
 
 class LogController extends AbstractActionController
 {
@@ -37,6 +38,7 @@ class LogController extends AbstractActionController
             // upon successful validation the getIdentity method returns
             // the user entity for the provided credentials
             $user = $result->getIdentity();
+
 
             // @todo: upon successful validation store additional information about him in the auth storage
 

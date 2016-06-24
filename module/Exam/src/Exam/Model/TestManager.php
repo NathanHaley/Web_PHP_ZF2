@@ -41,6 +41,7 @@ class TestManager implements ServiceLocatorAwareInterface
             $model = new Test();
             $result = $model->select(array('id' => $id));
             $data = $result->current();
+
             $data['definition'] = $this->services->get('cipher')->decrypt($data['definition']);
             $this->cache[$id] = $data;
         }

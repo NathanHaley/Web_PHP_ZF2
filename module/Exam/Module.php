@@ -43,23 +43,24 @@ class Module implements AutoloaderProviderInterface
         $sharedEventManager->attach('exam','certificate-generated', function ($event) use ($services) {
             $mail = $services->get('mail');
             $user = $event->getParam('user');
-            $exam = $event->getParam('exam');
+            $examId = $event->getParam('examId');
             $pdf  = $event->getParam('pdf');
 
-            $mail->sendCertificate($user, $exam, $pdf);
+
+            $mail->sendCertificate($user, $examId, $pdf);
         });
 
         $sharedEventManager->attach('exam','taken-excellent', function ($event) use ($services) {
             $user = $event->getParam('user');
-            $exam = $event->getParam('exam');
+            $examId = $event->getParam('examId');
 
             $pdf = $services->get('pdf');
-            $pdfDocument = $pdf->generateCertificate($user, $exam['name']);
+            $pdfDocument = $pdf->generateCertificate($user, $examId);
 
             $newEvent = new EventManager('exam');
             $newEvent->trigger('certificate-generated', $this, array (
                     'user' => $event->getParam('user'),
-                    'exam' => $event->getParam('exam'),
+                    'examId' => $event->getParam('examId'),
                     'pdf'  => $pdfDocument
             ));
         });

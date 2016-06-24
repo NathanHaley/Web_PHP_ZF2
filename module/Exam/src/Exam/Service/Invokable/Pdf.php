@@ -6,6 +6,8 @@ use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use ZendPdf\PdfDocument;
 use ZendPdf\Font as PdfFont;
 use ZendPdf\Page as PdfPage;
+use Exam\Model\Test;
+use Exam\Model\TestManager;
 
 class Pdf implements ServiceLocatorAwareInterface
 {
@@ -21,8 +23,18 @@ class Pdf implements ServiceLocatorAwareInterface
      * @param \User\Model\Entity\User $user
      * @param string $examName
      */
-    public function generateCertificate($user, $examName)
+    public function generateCertificate($user, $examId)
     {
+        //Get the form matching id
+        //$testModel = new Test();
+        //$select = $testModel->getSql()->select()->where(array('id' => $examId));
+        //$result = $testModel->selectWith($select);
+        //$exam = $result->toArray()[0];
+
+        $testManager = $this->services->get('test-manager');
+
+        $exam = $testManager->get($examId);
+
         $config = $this->services->get('config');
         $pdf = PdfDocument::load($config['pdf']['exam_certificate']);
 
@@ -38,7 +50,7 @@ class Pdf implements ServiceLocatorAwareInterface
         // after that use Time Bold to write the name of the exam
         $font = PdfFont::fontWithName(PdfFont::FONT_TIMES_BOLD);
         $page->setFont($font, 40);
-        $page->drawText($examName, 200, 120);
+        $page->drawText($exam['name'], 200, 120);
 
         // We use the png image from the public/images folder
         $imageFile = 'public/images/zf2-logo.png';

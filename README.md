@@ -3,6 +3,8 @@ Web_PHP_ZF2
 
 This project is for demonstration and learning for PHP and Zend Framework 2.
 
+2016-06-24: Fixed exam/test scoring, added exam name and user's name to certificate.
+
 2016-06-23: Completed pdf certificate generation and send by email.
 
 2016-06-22: Account menu mods: view/edit/delete only accessible from list page. View page updated with buttons to edit|delete. Some AccountController refactoring for reusable chunks for methods findUserEntity and formAddFields. Button style updates on list pages for users and tests.
