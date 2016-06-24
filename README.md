@@ -3,6 +3,23 @@ Web_PHP_ZF2
 
 This project is for demonstration and learning for PHP and Zend Framework 2.
 
+Demonstration site at the link below:
+link: 
+http://zf2.nathanhaley.com
+
+demo user: 
+demouser@nathanhaley.com
+pass123
+
+demo admin:
+demoadmin@nathanhaley.com
+
+
+
+
+
+Change log:
+
 2016-06-24: Fixed exam/test scoring, added exam name and user's name to certificate.
 
 2016-06-23: Completed pdf certificate generation and send by email.
