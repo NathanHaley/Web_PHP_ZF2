@@ -1,0 +1,67 @@
+<h1>
+	<?php echo $this->translate('Contact Us Form')?>
+</h1>
+<br>
+
+<?php 
+// We call the prepare here in order to fill the initial data and adjust the form properties, if needed
+$this->form1->setAttribute('class','');
+$this->form1->prepare();
+
+echo $this->form()->openTag($this->form1);
+echo '<fieldset>';
+
+foreach($this->form1 as $element) {
+	if(!($element instanceof Zend\Form\Element\Submit)) {
+?>
+    <div class="control-group">
+	    <?php if($element->getLabel()) { ?>
+	    <label class="control-label" for="<?= $element->getName() ?>"><?= $this->translate($element->getLabel()) ?></label>
+	    <?php } ?>
+	    <div class="controls">
+            <?= $this->formElement($element) ?>
+            <?= $this->formElementErrors($element) ?>
+            <?php if($element->getName() === 'comments'): ?>
+                   <br> <small><span class="badge" id="contact_form_comments_char_count" style="height: 14px;"></span> characters remaining</small>
+            <?php endif;?>
+	    </div>
+	</div>
+<?php 	
+	}
+	else {
+        $element->setAttribute('class', 'btn btn-primary');
+?>
+    <div class="form-actions">
+<?= 
+          $this->formelement($element) 
+?>
+    </div>
+<?php 		
+
+	}
+}
+
+echo '</fieldset>';
+echo $this->form()->closeTag();
+?>
+
+<script>
+var commentsFld = $('textarea[name=comments]');
+var cntBadge = $('#contact_form_comments_char_count');
+
+var maxLength = commentsFld.attr('maxlength');
+cntBadge.text(maxLength);
+var originalColor = cntBadge.css("background-color");
+
+commentsFld.keyup(function() {
+  var length = $(this).val().length;
+  var length = maxLength-length;
+  var bgColor = originalColor;
+  cntBadge.text(length);
+  if (length < 51) { bgColor = 'red'; }
+  cntBadge.css('background-color', bgColor);
+});
+
+//Fire incase we loaded with data
+commentsFld.keyup();
+</script>

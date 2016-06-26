@@ -81,7 +81,7 @@ class AccountController extends AbstractActionController
      * Anonymous users can use this action to register new accounts
      */
     public function registerAction()
-    {die("Here");
+    {
         $result = $this->forward()->dispatch('User\Controller\Account', array(
             'action' => 'add',
         ));

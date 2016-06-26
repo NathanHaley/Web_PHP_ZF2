@@ -13,12 +13,14 @@ pass123
 
 demo admin:
 demoadmin@nathanhaley.com
-
+pass123
 
 
 
 
 Change log:
+
+2016-06-26: Added: Contact Us module with contact form submission, and admin functions for list/edit/delete; breadcrumb; Minor style updates;
 
 2016-06-24: Fixed exam/test scoring, added exam name and user's name to certificate.
 

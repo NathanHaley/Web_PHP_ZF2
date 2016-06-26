@@ -28,4 +28,9 @@ class IndexController extends AbstractActionController
     {
         return array();
     }
+
+    public function privacyAction()
+    {
+        return array();
+    }
 }

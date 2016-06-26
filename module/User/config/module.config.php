@@ -106,7 +106,7 @@ return array(
         'role' => array (
                 // role -> multiple parents
                 'guest'   => null,
-                'member'  => array('guest'),
+                'member'  => null,
                 'admin'   => null,
         ),
         'resource' => array (
@@ -118,13 +118,14 @@ return array(
                 // array('role', 'resource', array('permission-1', 'permission-2', ...)),
                 array('guest', 'log', 'in'),
                 array('guest', 'account', 'register'),
-                array('member', 'account', array('me')), // the member can only see his account
+                array('member', 'account', 'me'), // the member can only see his account
                 array('member', 'log', 'out'), // the member can log out
                 array('admin', null, null), // the admin can do anything with the accounts
         ),
         'deny'  => array (
                 array('guest', null, 'delete') // null as second parameter means
                 // all resources
+
 
         ),
         'defaults' => array (

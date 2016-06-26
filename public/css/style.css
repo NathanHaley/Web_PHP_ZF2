@@ -31,9 +31,13 @@ body {
 }
 
 div.container a.brand {
-    background: url("../images/circle.png") no-repeat scroll 0 10px transparent;
+    background: url("../images/phptcicon.png") no-repeat scroll 0 10px transparent;
     background-size: 30px;
     margin-left: 0;
     padding: 8px 20px 12px 40px;
     background-position: left center;
+}
+
+.navbar-inner {
+	background-color: #fff !important;
 }

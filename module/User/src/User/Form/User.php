@@ -23,7 +23,7 @@ class User extends Form
 // You can also use short names as “email” instead of “Zend\Form\Element\Email
             'options' => array(
                 // This is list of options that we can add to the element.
-                'label' => 'Email:'
+                'label' => 'Email'
                 // Label is the text that should who before the form field
             ),
             'attributes' => array(

@@ -111,6 +111,12 @@ return array(
                     array(
                         'label' => 'Book',
                         'uri'   => 'http://learnzf2.com',
+                    ),
+                    array(
+                        'label' => 'Privacy',
+                        'route' => 'application/default',
+                        'controller' => 'index',
+                        'action' => 'privacy'
                     )
                 )
             ),

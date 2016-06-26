@@ -10,8 +10,9 @@
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css') 
+                        ->prependStylesheet($this->basePath() . '/css/style.css') ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -20,7 +21,7 @@
 
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -28,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('A Company Site') ?></a>
+                    <a class="brand" href="<?php echo $this->url('home') ?>">PHPtc</a>
                     <div class="nav-collapse collapse">
                     	<ul class="nav">
 <?php 
@@ -69,8 +70,13 @@
 					</div><!--/.nav-collapse -->
                 </div>
             </div>
+            <div class="breadcrumb" style="background-color: #fff;">
+            	<?php 
+            	   echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(1)->setseparator(' >>'.PHP_EOL);
+            	?>
+            </div>
         </div>
-        
+        <br>       
 <?php 
 $namespaces = array ('error','success','info','default');
 foreach ($namespaces as $namespace) {
@@ -87,11 +93,19 @@ foreach ($namespaces as $namespace) {
 ?>  
         
         
-        <div class="container">
+        <div class="container"><br>
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+               	<div class="col-md-4">
+                	<a href="<?php printf("%s", '/application/index/privacy'); ?>"><?php echo $this->translate('Privacy'); ?></a>
+                </div>
+                <div class="col-md-4">
+                	&nbsp;
+                </div>
+                <div class="col-md-4">
+                	<p>&copy; <?php if(date('Y')==2016){ echo '2016'; } else { echo '2016 - '.date('Y');} ?> by PHPtc.com. <?php echo $this->translate('All rights reserved.'); ?></p>
+                </div>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
