@@ -1,17 +1,19 @@
-<?php echo $this->doctype(); ?>
+<?php 
+    echo $this->doctype(); 
+    
+    
+?>
 
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle($this->translate('A Company Site'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->translate('PHPtc'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))               
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css') 
                         ->prependStylesheet($this->basePath() . '/css/style.css') ?>
 
         <!-- Scripts -->
@@ -21,24 +23,33 @@
 
     </head>
     <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="<?php echo $this->url('home') ?>">PHPtc</a>
-                    <div class="nav-collapse collapse">
-                    	<ul class="nav">
+                    	<span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" id="navbar-brand-1" href="<?php echo $this->url('home') ?>">PHPtc</a>
+                 </div>
+                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    	<ul class="nav navbar-nav">
 <?php 
         $navHelper = $this->navigation('navigation');
         $containers = $navHelper->getContainer(); 
+        
         foreach($containers->getPages() as $page) {
             $class = "";
             if ($page->isActive()) {
                 $class = "active";
+                
+                /* Only works for User section
+                $currentPageLabel  = $page->getLabel();
+                $currentPageLabel  = $this->translate($currentPageLabel); // translated label
+                $currentPageLabel  = $this->escapehtml($currentPageLabel); // sanitized label
+                */
             } 
                                     
             if(count($page)) {
@@ -49,7 +60,7 @@
                  printf('<li class="dropdown%s">'."\n",
                          ($class?' '.$class:'')
                  );
-                 printf('    <a href="%s" class="dropdown-toggle" data-toggle="dropdown">%s<b class="caret"></b></a>'."\n",
+                 printf('    <a href="%s" class="dropdown-toggle" data-toggle="dropdown" role="button">%s<b class="caret"></b></a>'."\n",
                              $page->getHref(), 
                              $label
                  );
@@ -70,13 +81,11 @@
 					</div><!--/.nav-collapse -->
                 </div>
             </div>
-            <div class="breadcrumb" style="background-color: #fff;">
+            <div class="breadcrumb">
             	<?php 
             	   echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(1)->setseparator(' >>'.PHP_EOL);
             	?>
-            </div>
-        </div>
-        <br>       
+            </div>    
 <?php 
 $namespaces = array ('error','success','info','default');
 foreach ($namespaces as $namespace) {
@@ -89,25 +98,25 @@ foreach ($namespaces as $namespace) {
 </div>
 <?php 	
 	}
-}        
+}    
 ?>  
-        
-        
-        <div class="container"><br>
+        <div class="container">
+        	<?php if(isset($currentPageLabel)){ printf("<div class=\"page-header\"><h1>%s</h1></div>", $currentPageLabel); /*alway null currently*/} ?>
             <?php echo $this->content; ?>
-            <hr>
-            <footer>
-               	<div class="col-md-4">
-                	<a href="<?php printf("%s", '/application/index/privacy'); ?>"><?php echo $this->translate('Privacy'); ?></a>
+        </div>
+        <hr>
+        <footer>
+        	<div class="container">
+            	<div class="row">
+                    <div class="col-md-4">
+                    	<p>&copy; <?php if(date('Y')==2016){ echo '2016'; } else { echo '2016 - '.date('Y');} ?> by PHPtc.com. <?php echo $this->translate('All rights reserved.'); ?></p>
+                    </div>
+                   	<div class="col-md-offset-4 col-md-4">
+                    	<a href="<?php printf("%s", '/application/index/privacy'); ?>"><?php echo $this->translate('Privacy'); ?></a>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                	&nbsp;
-                </div>
-                <div class="col-md-4">
-                	<p>&copy; <?php if(date('Y')==2016){ echo '2016'; } else { echo '2016 - '.date('Y');} ?> by PHPtc.com. <?php echo $this->translate('All rights reserved.'); ?></p>
-                </div>
-            </footer>
-        </div> <!-- /container -->
+            </div>
+        </footer>
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

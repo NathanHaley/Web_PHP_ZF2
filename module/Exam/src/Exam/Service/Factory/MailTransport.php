@@ -5,6 +5,8 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Mail\Transport\File as FileTransport;
 use Zend\Mail\Transport\FileOptions;
+use Zend\Mail\Transport\Sendmail;
+
 
 class MailTransport implements FactoryInterface
 {
@@ -12,7 +14,7 @@ class MailTransport implements FactoryInterface
      * @see \Zend\ServiceManager\FactoryInterface::createService()
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
-    {
+    {   /* For local file storage for dev
         $transport = new FileTransport();
         $options   = new FileOptions(array(
                 'path'              => 'data/mail/',
@@ -21,6 +23,11 @@ class MailTransport implements FactoryInterface
                 },
         ));
         $transport->setOptions($options);
+        */
+
+
+        //Send email
+        $transport = new SendMail;
 
         return $transport;
     }

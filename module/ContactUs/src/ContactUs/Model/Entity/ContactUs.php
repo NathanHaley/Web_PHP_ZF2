@@ -46,7 +46,7 @@ class ContactUs
      * @Annotation\Filter({"name":"StripTags"})
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Options({"label":"Comments:"})
-     * @Annotation\Attributes({"required": true,"cols":"200", "rows":"7","style":"width:500px;","placeholder":"Type comments here...","maxlength":"500"})
+     * @Annotation\Attributes({"required": true,"placeholder":"Type comments here...","maxlength":"500"})
      * @Annotation\Flags({"priority": "100"})
      * @Annotation\Validator({"name":"StringLength", "options":{"max":500}})
      *

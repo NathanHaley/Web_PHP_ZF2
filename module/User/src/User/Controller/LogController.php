@@ -3,7 +3,6 @@ namespace User\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\EventManager\EventManager;
-use Zend\Session\Container;
 
 class LogController extends AbstractActionController
 {
@@ -42,13 +41,14 @@ class LogController extends AbstractActionController
 
             // @todo: upon successful validation store additional information about him in the auth storage
 
-            $this->flashmessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
+            $this->flashMessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
 
             return $this->redirect()->toRoute('user/default', array (
                     'controller' => 'account',
                     'action'     => 'me',
             ));
         } else {
+            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('username'=> $username));
 

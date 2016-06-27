@@ -67,7 +67,7 @@ class User implements PasswordAwareInterface
      * @Annotation\Filter({"name":"StripTags"})
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Validator({"name":"RegEx", "options": {"pattern": "/^[\d-\/]+$/"}})
-     * @Annotation\Attributes({"type":"tel","required": true,"pattern": "^[\d-/]+$"})
+     * @Annotation\Attributes({"type":"tel","required": false,"pattern": "^[\d-/]+$"})
      * @Annotation\Flags({"priority": "200"})
      *
      * @Column(type="string")
@@ -85,7 +85,7 @@ class User implements PasswordAwareInterface
      * @Annotation\Exclude()
      * @var PasswordInterface
      */
-    protected $adapter;
+    protected $passwordAdapter;
 
     /**
      * @return the $id
@@ -207,7 +207,7 @@ class User implements PasswordAwareInterface
      */
     public function verifyPassword($password)
     {
-        return $this->adapter->verify($password, $this->password);
+        return $this->passwordAdapter->verify($password, $this->password);
     }
 
     /**
@@ -217,7 +217,7 @@ class User implements PasswordAwareInterface
      */
     private function hashPassword($password)
     {
-        return $this->adapter->create($password);
+        return $this->passwordAdapter->create($password);
     }
 
     /**
@@ -226,7 +226,7 @@ class User implements PasswordAwareInterface
      */
     public function setPasswordAdapter(PasswordInterface $adapter)
     {
-        $this->adapter = $adapter;
+        $this->passwordAdapter = $adapter;
     }
 
     /**
@@ -235,7 +235,7 @@ class User implements PasswordAwareInterface
      */
     public function getPasswordAdapter()
     {
-        return $this->adapter;
+        return $this->passwordAdapter;
     }
 
 }

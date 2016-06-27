@@ -25,7 +25,7 @@ class Mail implements ServiceLocatorAwareInterface
     {
         $translator = $this->services->get('translator');
         $mail = new Message();
-        $mail->addTo($user->getEmail(), $user->getName());
+        $mail->addTo($user->getEmail());
 
         $testManager = $this->services->get('test-manager');
         $exam = $testManager->get($examId);
@@ -47,7 +47,7 @@ Therefore we are sending you as a gratitude this free award certificate.
 
         $mail->setBody($mimeMessage);
 
-        $mail->setFrom('nathan@nathanhaley.com', 'Nathan Haley');
+        $mail->setFrom('nathan@nathanhaley.com');
         $mail->setSubject($translator->translate('Congratulations: Here is your award certificate'));
 
         $transport = $this->services->get('mail-transport');

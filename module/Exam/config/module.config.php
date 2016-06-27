@@ -90,7 +90,7 @@ return array(
         'allow' => array(
             array('guest', 'test', 'list'),
             array('member', 'test', array('list','take')),
-            array('admin', 'test', array('reset','certificate')),
+            array('admin', 'test', array('reset','certificate', 'view', 'edit', 'delete')),
         ),
         'modules' => array (
             'Exam',

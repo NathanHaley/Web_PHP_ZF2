@@ -107,7 +107,7 @@ return array(
                 // role -> multiple parents
                 'guest'   => null,
                 'member'  => null,
-                'admin'   => null,
+                'admin'   => 'member',
         ),
         'resource' => array (
                 // resource -> single parent
@@ -120,7 +120,7 @@ return array(
                 array('guest', 'account', 'register'),
                 array('member', 'account', 'me'), // the member can only see his account
                 array('member', 'log', 'out'), // the member can log out
-                array('admin', null, null), // the admin can do anything with the accounts
+                array('admin', 'account', array('list', 'view', 'delete', 'edit', 'add')),
         ),
         'deny'  => array (
                 array('guest', null, 'delete') // null as second parameter means
@@ -131,7 +131,8 @@ return array(
         'defaults' => array (
                 'guest_role' => 'guest',
                 'member_role' => 'member',
-                'default_role' => 'member'
+                'default_role' => 'member',
+                'admin_role' => 'admin'
         ),
         'resource_aliases' => array (
                 'User\Controller\Account' => 'account',

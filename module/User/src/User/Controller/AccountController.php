@@ -10,6 +10,7 @@ use Zend\Paginator\Paginator;
 
 class AccountController extends AbstractActionController
 {
+
     public function indexAction()
     {
         return array();

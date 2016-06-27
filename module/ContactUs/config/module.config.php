@@ -91,7 +91,7 @@ return array(
         'allow' => array(
             array('guest','index','index'),
             array('member','index','index'),
-            array('admin',null,null)
+            array('admin','index',array('index', 'list', 'view', 'edit', 'delete'))
         ),
         'modules' => array(
             'ContactUs'

@@ -10,14 +10,14 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        $serviceLocator = $this->getServiceLocator();
-        $config = $serviceLocator->get('config');
+        //$serviceLocator = $this->getServiceLocator();
+        $config = $this->serviceLocator->get('config');
         return array(
                     'version'=> $config['application']['version'],
                     'applicationName' => $config['application']['name']

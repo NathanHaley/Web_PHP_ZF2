@@ -30,14 +30,16 @@ body {
   background-color: #57a900;
 }
 
-div.container a.brand {
-    background: url("../images/phptcicon.png") no-repeat scroll 0 10px transparent;
-    background-size: 30px;
-    margin-left: 0;
-    padding: 8px 20px 12px 40px;
-    background-position: left center;
+ #navbar-brand-1 {
+    background: url("../images/phptcicon.png") no-repeat scroll 0 10px transparent !important;
+    background-size: 28px !important;
+    margin-left: 0 !important;
+    padding: 15px 20px 12px 36px !important;
+    background-position: left center !important;
 }
 
-.navbar-inner {
-	background-color: #fff !important;
+div.breadcrumb {
+	background-color: #fff;
 }
+
+
