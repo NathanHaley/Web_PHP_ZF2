@@ -1,1 +1,0 @@
-If you decide to use another database configuration for the test it has to reside under this directory.

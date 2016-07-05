@@ -5,6 +5,10 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Crypt\BlockCipher;
 
+/*
+ * @todo see about removing
+ */
+
 class SymmetricCipher implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)

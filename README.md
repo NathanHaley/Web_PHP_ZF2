@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-05: Adding unit tests for Application Index Controller and User log in.
+
 2016-06-27: Updated to latest Bootstrap css/js. Fix/update nav for current Bootstrap. Login: failure message added, responsive styling started: Contact Us add/edit, User login/add/register/edit. Contextual menu fix;
 
 2016-06-26: Added: Contact Us module with contact form submission, and admin functions for list/edit/delete; breadcrumb; Minor style updates;

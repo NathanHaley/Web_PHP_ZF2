@@ -14,3 +14,10 @@ php_errors.*
 database.local.*
 *_bak
 *.zip
+data/cache/module/*
+data/mail/*
+data/image/photo/*
+php-cs*
+prep*
+Vagrantfile
+module/Album/*

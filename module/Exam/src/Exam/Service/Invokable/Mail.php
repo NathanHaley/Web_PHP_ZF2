@@ -32,7 +32,7 @@ class Mail implements ServiceLocatorAwareInterface
 
 $text = 'You are genius!
 For exam '.$exam['name'].' you answered all the questions correctly.
-Therefore we are sending you as a gratitude this free award certificate.
+Therefore we are sending you as a gratitude this free award certificate. NOTE: not attaching PDF at this time.
 
 ';
         // we create a new mime message
@@ -41,14 +41,16 @@ Therefore we are sending you as a gratitude this free award certificate.
         $textPart = new MimePart($text);
         $textPart->type = "text/plain";
         // add the pdf document as a second part
-        $pdfPart = new MimePart($pdf->render());
-        $pdfPart->type = 'application/pdf';
-        $mimeMessage->setParts(array($textPart, $pdfPart));
+        //$pdfPart = new MimePart($pdf->render());
+        //$pdfPart->type = 'application/pdf';
+        //$mimeMessage->setParts(array($textPart, $pdfPart));
+
+        $mimeMessage->setParts(array($textPart));
 
         $mail->setBody($mimeMessage);
 
-        $mail->setFrom('nathan@nathanhaley.com');
-        $mail->setSubject($translator->translate('Congratulations: Here is your award certificate'));
+        $mail->setFrom('demoadmin@nathanhaley.com');
+        $mail->setSubject($translator->translate('Congratulations'));
 
         $transport = $this->services->get('mail-transport');
         $transport->send($mail);

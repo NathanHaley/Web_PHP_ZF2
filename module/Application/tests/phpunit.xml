@@ -2,9 +2,9 @@
 
 <phpunit bootstrap="Bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="User Module Tests">
+        <testsuite name="Application Controller Tests">
             <directory>./</directory>
-            <file>LogControllerTest.php</file>
+            <file>ApplicationControllerTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

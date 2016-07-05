@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit colors="true" convertWarningsToExceptions="false" beStrictAboutTestSize="true">
+    <php>
+        <var name="DB_DSN" value="mysql:db-name=myguestbook;host=localhost" />
+        <var name="DB_USER" value="user" />
+        <bar name="DB_PASSWORD" value="passwd" />
+        <var name="DB_DBNAME" value="myguest-book" />
+    </php>
+    <testsuites>
+        <testsuite name="My First Tests">
+            <file>StackTest.php</file>
+            <file>DataTest.php</file>
+            <file>ExceptionTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

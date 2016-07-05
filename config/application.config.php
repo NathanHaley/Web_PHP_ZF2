@@ -12,6 +12,7 @@ return array(
         'User',
         'Exam',
         'ContactUs',
+        //'Album',
         //'Stub',
     ),
     'module_listener_options' => array(
