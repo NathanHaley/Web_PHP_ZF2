@@ -18,64 +18,71 @@ class AccountController extends AbstractActionController
 
     public function addAction()
     {
-
+        $currentUser = $this->serviceLocator->get('user');
         $entity = $this->serviceLocator->get('user-entity');
-
+        
         $form = $this->setupUserDetailForm($entity);
-
-        if($this->getRequest()->isPost()) {
-            $data = array_merge_recursive(
-                $this->getRequest()->getPost()->toArray(),
+        
+        if ($this->getRequest()->isPost()) {
+            
+            $data = array_merge_recursive($this->getRequest()
+                ->getPost()
+                ->toArray(), 
                 // Notice: make certain to merge the Files also to the post data
-                $this->getRequest()->getFiles()->toArray()
-            );
+                $this->getRequest()
+                    ->getFiles()
+                    ->toArray());
+            
             $form->setData($data);
-            if($form->isValid()) {
+            
+            if ($form->isValid()) {
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
                 $entityManager->flush();
-
-                $this->flashmessenger()->addSuccessMessage('User was added successfully.');
-
+                
+                $this->flashmessenger()->addSuccessMessage("Account created successfully.");
+                
                 $event = new EventManager('user');
                 $event->trigger('register', $this, array(
-                    'user'=> $entity,
+                    'user' => $entity
                 ));
-
-                // redirect the user to the view user action
-                return $this->redirect()->toRoute('user/default', array (
+                
+                
+                if ($currentUser->getRole() === 'guest') {
+                    //Log in new account
+                    $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
+                } else {
+                    //Admin adding acount, route to detail view
+                    return $this->redirect()->toRoute('user/default', array(
                         'controller' => 'account',
-                        'action'     => 'view',
-                        'id'		 => $entity->getId()
-                ));
+                        'action' => 'view',
+                        'id' => $entity->getId()
+                    ));
+                }
             }
         }
-
+        
         // pass the data to the view for visualization
-        return array('form1'=> $form);
+        return array('form1' => $form);
     }
 
     protected function setupUserDetailForm($entity)
     {
         $userEntity = $entity;
         $builder = new AnnotationBuilder();
-
+        
         $form = $builder->createForm($userEntity);
-
+        
         $form = $this->formAddFields($form);
-
-
-
+        
         // We bind the entity to the user. If the form tries to read/write data from/to the entity
         // it will use the hydrator specified in the entity to achieve this. In our case we use ClassMethods
         // hydrator which means that reading will happen calling the getter methods and writing will happen by
         // calling the setter methods.
         $form->bind($userEntity);
-
-
+        
         return $form;
-
     }
 
     /*
@@ -84,106 +91,110 @@ class AccountController extends AbstractActionController
     public function registerAction()
     {
         $result = $this->forward()->dispatch('User\Controller\Account', array(
-            'action' => 'add',
+            'action' => 'add'
         ));
-
+        
         return $result;
     }
 
     public function viewAction()
     {
         $id = $this->params('id');
-
-        //If no id then send to Me page to see themselves
-        if(!$id) {
+        
+        // If no id then send to Me page to see themselves
+        if (! $id) {
             return $this->redirect()->toRoute('user/default', array(
                 'controller' => 'account',
-                'action' => 'me',
+                'action' => 'me'
             ));
         }
-
+        
         $userToView = $this->findUserEntity($id);
-
-        //var_dump($userToView);
-
-        return array('userToView' => $userToView);
+        
+        // var_dump($userToView);
+        
+        return array(
+            'userToView' => $userToView
+        );
     }
 
     public function editAction()
     {
-
         $id = $this->params('id');
-
-        if(!$id) {
+        
+        if (! $id) {
             return $this->redirect()->toRoute('user/default', array(
                 'controller' => 'account',
-                'action' => 'view',
+                'action' => 'view'
             ));
         }
-
+        
         $entity = $this->findUserEntity($id);
-
+        
         $form = $this->setupUserDetailForm($entity);
-
-        if($this->getRequest()->isPost()) {
-            $data = array_merge_recursive(
-                $this->getRequest()->getPost()->toArray(),
+        
+        if ($this->getRequest()->isPost()) {
+            $data = array_merge_recursive($this->getRequest()
+                ->getPost()
+                ->toArray(), 
                 // Notice: make certain to merge the Files also to the post data
-                $this->getRequest()->getFiles()->toArray()
-            );
+                $this->getRequest()
+                    ->getFiles()
+                    ->toArray());
             $form->setData($data);
-            if($form->isValid()) {
+            if ($form->isValid()) {
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
-
+                
                 $entity = $entityManager->merge($entity);
                 $entityManager->flush();
-
+                
                 $this->flashmessenger()->addSuccessMessage("User: {$entity->getEmail()} was updated successfully.");
-
+                
                 // redirect the user to the view user action
-                return $this->redirect()->toRoute('user/default', array (
-                        'controller' => 'account',
-                        'action'     => 'list',
-                        'id'		 => $entity->getId()
+                return $this->redirect()->toRoute('user/default', array(
+                    'controller' => 'account',
+                    'action' => 'list',
+                    'id' => $entity->getId()
                 ));
             }
         }
-
+        
         // pass the data to the view for visualization
-        return array('form1'=> $form);
+        return array(
+            'form1' => $form
+        );
     }
 
     public function deleteAction()
     {
         $id = $this->params('id');
-        if(!$id) {
+        if (! $id) {
             return $this->redirect()->toRoute('user/default', array(
                 'controller' => 'account',
-                'action' => 'view',
+                'action' => 'view'
             ));
         }
-
+        
         $entityManager = $this->serviceLocator->get('entity-manager');
         $userEntity = $this->serviceLocator->get('user-entity');
         $userEntity->setId($id);
         $userEntity = $entityManager->merge($userEntity);
-
+        
         $this->flashmessenger()->addSuccessMessage("User id: $id removed successfully.");
-
+        
         $entityManager->remove($userEntity);
         $entityManager->flush();
-
+        
         // For now redirect to only the list page
-        return $this->redirect()->toRoute('user/default', array (
+        return $this->redirect()->toRoute('user/default', array(
             'controller' => 'account',
-            'action'     => 'list'
+            'action' => 'list'
         ));
     }
 
     public function meAction()
     {
-
         return array();
     }
 
@@ -196,17 +207,18 @@ class AccountController extends AbstractActionController
     {
         $userModel = new UserModel();
         $result = $userModel->getSql()->select();
-
+        
         $adapter = new PaginatorDbAdapter($result, $userModel->getAdapter());
         $paginator = new Paginator($adapter);
         $currentPage = $this->params('page', 1);
         $paginator->setCurrentPageNumber($currentPage);
         $paginator->setItemCountPerPage(4);
-
+        
         $acl = $this->serviceLocator->get('acl');
-        return array('users'=> $paginator,
-                'acl' => $acl,
-                'page'=> $currentPage
+        return array(
+            'users' => $paginator,
+            'acl' => $acl,
+            'page' => $currentPage
         );
     }
 
@@ -215,7 +227,7 @@ class AccountController extends AbstractActionController
         $entityManager = $this->serviceLocator->get('entity-manager');
         $config = $this->serviceLocator->get('config');
         $entity = $entityManager->find($config['service_manager']['invokables']['user-entity'], $id);
-
+        
         return $entity;
     }
 
@@ -226,33 +238,32 @@ class AccountController extends AbstractActionController
             'type' => 'Zend\Form\Element\Password',
             'attributes' => array(
                 'placeholder' => 'Verify Password Here...',
-                'required' => 'required',
+                'required' => 'required'
             ),
             'options' => array(
-                'label' => 'Verify Password',
+                'label' => 'Verify Password'
             )
-        ),
-            array (
-                'priority' => $form->get('password')->getOption('priority'),
-            )
-            );
-
+        ), array(
+            'priority' => $form->get('password')
+                ->getOption('priority')
+        ));
+        
         // This is the special code that protects our form being submitted from automated scripts
         $form->add(array(
             'name' => 'csrf',
-            'type' => 'Zend\Form\Element\Csrf',
+            'type' => 'Zend\Form\Element\Csrf'
         ));
-
+        
         // This is the submit button
         $form->add(array(
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'value' => 'Submit',
-                'required' => 'false',
-            ),
+                'required' => 'false'
+            )
         ));
-
+        
         return $form;
     }
 }

@@ -4,6 +4,7 @@ namespace User\Controller;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Zend\Authentication\Result;
 use User\Model\Entity\User;
+use Zend\EventManager\EventManager;
 
 class LogControllerTest extends AbstractHttpControllerTestCase
 {
@@ -67,8 +68,7 @@ class LogControllerTest extends AbstractHttpControllerTestCase
         $adapterMock = $this->getMockBuilder('User\Authentication\Adapter')
         ->disableOriginalConstructor()
         ->getMock();
-         
-    
+        
         $user = new User();
         $result = new Result(Result::FAILURE, $user);
     
@@ -82,7 +82,7 @@ class LogControllerTest extends AbstractHttpControllerTestCase
         $serviceManager->setAllowOverride(true);
         $serviceManager->setService('auth-adapter', $adapterMock);
     
-        //Shouldn't matter since forcing isValid === true but will use for now.
+        //Shouldn't matter since forcing isValid === false but will use for now.
         $postData = array(
             'username'  => 'demouser@nathanhaley.com',
             'password' => 'pass1234',

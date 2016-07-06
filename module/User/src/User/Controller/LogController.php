@@ -20,8 +20,15 @@ class LogController extends AbstractActionController
             // just show the login form
             return array();
         }
-
+        
         $username = $this->params()->fromPost('username');
+        
+        //forward from register action
+        If($this->params()->fromPost('email')) {
+            $username = $this->params()->fromPost('email');
+            
+        }
+        
         $password = $this->params()->fromPost('password');
 
         $auth = $this->serviceLocator->get('auth');
@@ -51,6 +58,7 @@ class LogController extends AbstractActionController
             $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('username'=> $username));
+            
 
             return array('errors' => $result->getMessages());
         }
