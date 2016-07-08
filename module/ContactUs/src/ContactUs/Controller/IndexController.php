@@ -110,8 +110,6 @@ class IndexController extends AbstractActionController
             $orderby_tmp = 'FULLNAME';
         }
 
-
-
         $contactUsModel = new ContactUsModel;
         $result = $contactUsModel->getSql()->select()->order("$orderby_tmp $order");
 
@@ -122,11 +120,25 @@ class IndexController extends AbstractActionController
         $paginator->setItemCountPerPage(4);
 
         $acl = $this->serviceLocator->get('acl');
-        return array('contactMessages'=> $paginator,
-            'acl' => $acl,
-            'page'=> $currentPage,
-            'orderby' => $orderby,
-            'order' => $order
+
+        //top keys match db columns
+        $columns = [
+            'email'     =>['text'=>'email', 'attributes'=>['nowrap'=>'true']],
+            'fullname'  =>['text'=>'name', 'attributes'=>['nowrap'=>'true']],
+            'comments'  =>['text'=>'comments', 'attributes'=>['width'=>'40%']],
+            'cdate'     =>['text'=>'time', 'attributes'=>['nowrap'=>'true']],
+
+        ];
+        return array(
+            'entities'  => $paginator,
+            'acl'       => $acl,
+            'page'      => $currentPage,
+            'orderby'   => $orderby,
+            'order'     => $order,
+            'columns'   => $columns,
+            'pageTitle' => 'Admin List Of Contact Us Messages',
+            'route'     => 'contactus',
+            'controller'=> 'index'
         );
     }
 

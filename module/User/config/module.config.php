@@ -44,17 +44,22 @@ return array(
                     'list' => array(
                         'type'    => 'Segment',
                         'options' => array (
-                            'route' => '/user/list[/:page]',
+                            'route' => '/user/list[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => array(
                                 'page'     => '[0-9]*',
+                                'orderby' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'order' => 'ASC|DESC'
                             ),
                             'defaults' => array(
                                 'controller'    => 'Account',
                                 'action'        => 'list',
                                 'page'          => '1',
+                                'orderby' => 'id',
+                                'order' => 'DESC'
                             ),
                         )
                     )
+
                 ),
             ),
         ),
@@ -169,7 +174,6 @@ return array(
                             'resource'  => 'log',
                             'privilege' => 'in'
                         ),
-
                         array(
                             'label' => 'Register',
                             // uri
@@ -180,7 +184,6 @@ return array(
                             'resource' => 'account',
                             'privilege' => 'register'
                         ),
-
                         array(
                             'label' => 'Log out',
                             'route' => 'user/default',
@@ -191,9 +194,7 @@ return array(
                         ),
                         array(
                             'label' => 'List',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'list',
+                            'route' => 'user/list',
                             'resource' => 'account',
                             'privilege' => 'list', //Only for admins
                         ),

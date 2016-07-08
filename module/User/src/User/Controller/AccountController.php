@@ -205,20 +205,39 @@ class AccountController extends AbstractActionController
 
     public function listAction()
     {
+        $currentPage = $this->params('page', 1);
+        $orderby = $this->params('orderby', 'ID');
+        $order = $this->params('order', 'DESC');
+
+        $orderby_tmp = strtoupper($orderby);
+
         $userModel = new UserModel();
-        $result = $userModel->getSql()->select();
+        $result = $userModel->getSql()->select()->order("$orderby_tmp $order");
 
         $adapter = new PaginatorDbAdapter($result, $userModel->getAdapter());
         $paginator = new Paginator($adapter);
-        $currentPage = $this->params('page', 1);
+
         $paginator->setCurrentPageNumber($currentPage);
         $paginator->setItemCountPerPage(4);
 
         $acl = $this->serviceLocator->get('acl');
+        $columns = [
+                'id'    =>['text'=>'id',    'attributes'=>['nowrap'=>'true', 'width'=>'6%']],
+                'email' =>['text'=>'email', 'attributes'=>['nowrap'=>'true']],
+                'name'  =>['text'=>'name',  'attributes'=>['nowrap'=>'true']],
+                'role'  =>['text'=>'role',  'attributes'=>['nowrap'=>'true']]
+
+        ];
         return array(
-            'users' => $paginator,
-            'acl' => $acl,
-            'page' => $currentPage
+            'entities'  => $paginator,
+            'acl'       => $acl,
+            'page'      => $currentPage,
+            'orderby'   => $orderby,
+            'order'     => $order,
+            'columns'   => $columns,
+            'pageTitle' => 'Admin User List',
+            'route'     => 'user',
+            'controller'=> 'account'
         );
     }
 

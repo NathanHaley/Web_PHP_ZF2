@@ -91,6 +91,8 @@ return array(
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             // paginator views
             'paginator/sliding'       => __DIR__ . '/../view/paginator/sliding.phtml',
+            //data/entity lists
+            'forms/entity_list'       => __DIR__ . '/../view/share/forms/entity_list.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
