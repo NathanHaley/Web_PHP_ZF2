@@ -44,14 +44,18 @@ return array(
                     'list' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/contactus/list[/:page]',
+                            'route' => '/contactus/list[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => array(
-                                'page' => '[0-9]*'
+                                'page' => '[0-9]*',
+                                'orderby' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'order' => 'ASC|DESC'
                             ),
                             'defaults' => array(
                                 'controller' => 'Index',
                                 'action' => 'list',
-                                'page' => '1'
+                                'page' => '1',
+                                'orderby' => 'time',
+                                'order' => 'DESC'
                             )
                         )
                     )

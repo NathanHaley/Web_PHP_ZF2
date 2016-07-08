@@ -42,4 +42,20 @@ div.breadcrumb {
 	background-color: #fff;
 }
 
+a.list_order {
+    color: #000;
+}
+
+a.list_order:hover,
+a.list_order:active,
+a.list_order:visited {
+    text-decoration: none;
+    color: #000
+}
+
+span.ordered_by {
+    color: #68b604;
+    border-bottom:2px solid #68b604;
+}
+
 

@@ -17,11 +17,11 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
     {
         $this->dispatch('/');
         $this->assertResponseStatusCode(200);
-        
+
         $this->assertModuleNmae('application');
         $this->assertModuleName('application_index');
         $this->assertControllerClass('IndexController');
         $this->assertMatchRouteName('home');
-        
+
     }
 }

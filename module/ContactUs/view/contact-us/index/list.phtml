@@ -1,25 +1,44 @@
 <h1>Admin List Of Contact Us Messages</h1>
 
-<?php if (count($this->contactMessages)): ?>
+<?php 
+
+    $columnsA = ['email', 'name', 'comments', 'time'];
+    
+    $page = $this->page;
+    $orderby = strtolower($this->orderby);
+    $order = $this->order;
+    
+    
+?>
 
 <table class="table table-striped">
 <thead>
     <tr>
-        <th><?= $this->translate('Email') ?></th>
-        <th><?= $this->translate('Name') ?></th>
-        <th><?= $this->translate('Comments') ?></th>
-        <th><?= $this->translate('Time') ?></th>
+        <?php foreach ($columnsA as $text): ?>
+    
+        <th nowrap="true"><?= $this->translate(ucfirst($text)) ?> 
+        	&nbsp;
+        	<a class="list_order" href="<?= $this->url('contactus/list', array('controller'=> 'index', 'action'=>'list', 'page'=> $page, 'orderby' => $text, 'order'=> 'DESC')) ?>">
+        		<span class="glyphicon glyphicon-triangle-bottom <?php if (($orderby === $text) && ($order === 'DESC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text descending") ?>"></span>
+        	</a>
+        	<a class="list_order" href="<?= $this->url('contactus/list', array('controller'=> 'index', 'action'=>'list', 'page'=> $page, 'orderby' => $text, 'order'=> 'ASC')) ?>">
+        		<span class="glyphicon glyphicon-triangle-top <?php if (($orderby === $text) && ($order === 'ASC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text ascending") ?>"></span>
+        	</a>
+      	</th>
+          	
+        <?php endforeach; ?>
         <th></th>
         <th></th>
         <th></th>
     </tr>
 </thead>
 <tbody>
+<?php if (count($this->contactMessages)): ?>
 <?php foreach ($this->contactMessages as $message): ?>
    <tr>
             <td nowrap="true"><?= $this->escapehtml($message['email']) ?></td>
             <td nowrap="true"><?= $this->escapehtml($message['fullname']) ?></td>
-            <td><?= $this->escapehtml($message['comments']) ?></td>
+            <td width="60%"><?= $this->escapehtml($message['comments']) ?></td>
             <td nowrap="true"><?= $this->escapehtml($message['cdate']) ?></td>
             <td><?php
                 if($this->user->getId() == $message['id'] || $this->acl->isAllowed($this->user->getRole(),'index','view')) :
@@ -47,10 +66,14 @@
             </td>
     </tr>
 <?php endforeach; ?>
+<?php else: ?>
+	<tr>
+		<td colspan="6">
+			No records at this time...
+		</td>
+<?php endif; ?>
 </tbody>
 </table>
-<?php endif; ?>
-
 <?php echo $this->paginationControl($this->contactMessages,
                                     'Sliding',
                                     'paginator/sliding',

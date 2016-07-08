@@ -6,7 +6,7 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\Factory as InputFactory;
 
-class User extends Form
+class User_testRemove extends Form
 {
     public function __construct($name='user')
     {

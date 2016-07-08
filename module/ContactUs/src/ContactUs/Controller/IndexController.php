@@ -3,7 +3,6 @@ namespace ContactUs\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Form\Annotation\AnnotationBuilder;
-use Zend\EventManager\EventManager;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use ContactUs\Model\ContactUs as ContactUsModel;
@@ -96,19 +95,38 @@ class IndexController extends AbstractActionController
     //Lists messages for admins
     public function listAction()
     {
+        $currentPage = $this->params('page', 1);
+        $orderby = $this->params('orderby', 'CDATE');
+        $order = $this->params('order', 'DESC');
+
+
+        $orderby_tmp = strtoupper($orderby);
+
+        if ($orderby_tmp === 'TIME') {
+            $orderby_tmp = 'CDATE';
+        }
+
+        if ($orderby_tmp === 'NAME') {
+            $orderby_tmp = 'FULLNAME';
+        }
+
+
+
         $contactUsModel = new ContactUsModel;
-        $result = $contactUsModel->getSql()->select();
+        $result = $contactUsModel->getSql()->select()->order("$orderby_tmp $order");
 
         $adapter = new PaginatorDbAdapter($result, $contactUsModel->getAdapter());
         $paginator = new Paginator($adapter);
-        $currentPage = $this->params('page', 1);
+
         $paginator->setCurrentPageNumber($currentPage);
         $paginator->setItemCountPerPage(4);
 
         $acl = $this->serviceLocator->get('acl');
         return array('contactMessages'=> $paginator,
             'acl' => $acl,
-            'page'=> $currentPage
+            'page'=> $currentPage,
+            'orderby' => $orderby,
+            'order' => $order
         );
     }
 

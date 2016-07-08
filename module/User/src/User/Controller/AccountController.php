@@ -20,35 +20,35 @@ class AccountController extends AbstractActionController
     {
         $currentUser = $this->serviceLocator->get('user');
         $entity = $this->serviceLocator->get('user-entity');
-        
+
         $form = $this->setupUserDetailForm($entity);
-        
+
         if ($this->getRequest()->isPost()) {
-            
+
             $data = array_merge_recursive($this->getRequest()
                 ->getPost()
-                ->toArray(), 
+                ->toArray(),
                 // Notice: make certain to merge the Files also to the post data
                 $this->getRequest()
                     ->getFiles()
                     ->toArray());
-            
+
             $form->setData($data);
-            
+
             if ($form->isValid()) {
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
                 $entityManager->flush();
-                
+
                 $this->flashmessenger()->addSuccessMessage("Account created successfully.");
-                
+
                 $event = new EventManager('user');
                 $event->trigger('register', $this, array(
                     'user' => $entity
                 ));
-                
-                
+
+
                 if ($currentUser->getRole() === 'guest') {
                     //Log in new account
                     $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
@@ -62,7 +62,7 @@ class AccountController extends AbstractActionController
                 }
             }
         }
-        
+
         // pass the data to the view for visualization
         return array('form1' => $form);
     }
@@ -71,17 +71,17 @@ class AccountController extends AbstractActionController
     {
         $userEntity = $entity;
         $builder = new AnnotationBuilder();
-        
+
         $form = $builder->createForm($userEntity);
-        
+
         $form = $this->formAddFields($form);
-        
+
         // We bind the entity to the user. If the form tries to read/write data from/to the entity
         // it will use the hydrator specified in the entity to achieve this. In our case we use ClassMethods
         // hydrator which means that reading will happen calling the getter methods and writing will happen by
         // calling the setter methods.
         $form->bind($userEntity);
-        
+
         return $form;
     }
 
@@ -93,14 +93,14 @@ class AccountController extends AbstractActionController
         $result = $this->forward()->dispatch('User\Controller\Account', array(
             'action' => 'add'
         ));
-        
+
         return $result;
     }
 
     public function viewAction()
     {
         $id = $this->params('id');
-        
+
         // If no id then send to Me page to see themselves
         if (! $id) {
             return $this->redirect()->toRoute('user/default', array(
@@ -108,11 +108,11 @@ class AccountController extends AbstractActionController
                 'action' => 'me'
             ));
         }
-        
+
         $userToView = $this->findUserEntity($id);
-        
+
         // var_dump($userToView);
-        
+
         return array(
             'userToView' => $userToView
         );
@@ -121,22 +121,22 @@ class AccountController extends AbstractActionController
     public function editAction()
     {
         $id = $this->params('id');
-        
+
         if (! $id) {
             return $this->redirect()->toRoute('user/default', array(
                 'controller' => 'account',
                 'action' => 'view'
             ));
         }
-        
+
         $entity = $this->findUserEntity($id);
-        
+
         $form = $this->setupUserDetailForm($entity);
-        
+
         if ($this->getRequest()->isPost()) {
             $data = array_merge_recursive($this->getRequest()
                 ->getPost()
-                ->toArray(), 
+                ->toArray(),
                 // Notice: make certain to merge the Files also to the post data
                 $this->getRequest()
                     ->getFiles()
@@ -145,12 +145,12 @@ class AccountController extends AbstractActionController
             if ($form->isValid()) {
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
-                
+
                 $entity = $entityManager->merge($entity);
                 $entityManager->flush();
-                
+
                 $this->flashmessenger()->addSuccessMessage("User: {$entity->getEmail()} was updated successfully.");
-                
+
                 // redirect the user to the view user action
                 return $this->redirect()->toRoute('user/default', array(
                     'controller' => 'account',
@@ -159,7 +159,7 @@ class AccountController extends AbstractActionController
                 ));
             }
         }
-        
+
         // pass the data to the view for visualization
         return array(
             'form1' => $form
@@ -175,17 +175,17 @@ class AccountController extends AbstractActionController
                 'action' => 'view'
             ));
         }
-        
+
         $entityManager = $this->serviceLocator->get('entity-manager');
         $userEntity = $this->serviceLocator->get('user-entity');
         $userEntity->setId($id);
         $userEntity = $entityManager->merge($userEntity);
-        
+
         $this->flashmessenger()->addSuccessMessage("User id: $id removed successfully.");
-        
+
         $entityManager->remove($userEntity);
         $entityManager->flush();
-        
+
         // For now redirect to only the list page
         return $this->redirect()->toRoute('user/default', array(
             'controller' => 'account',
@@ -207,13 +207,13 @@ class AccountController extends AbstractActionController
     {
         $userModel = new UserModel();
         $result = $userModel->getSql()->select();
-        
+
         $adapter = new PaginatorDbAdapter($result, $userModel->getAdapter());
         $paginator = new Paginator($adapter);
         $currentPage = $this->params('page', 1);
         $paginator->setCurrentPageNumber($currentPage);
         $paginator->setItemCountPerPage(4);
-        
+
         $acl = $this->serviceLocator->get('acl');
         return array(
             'users' => $paginator,
@@ -227,7 +227,7 @@ class AccountController extends AbstractActionController
         $entityManager = $this->serviceLocator->get('entity-manager');
         $config = $this->serviceLocator->get('config');
         $entity = $entityManager->find($config['service_manager']['invokables']['user-entity'], $id);
-        
+
         return $entity;
     }
 
@@ -247,13 +247,13 @@ class AccountController extends AbstractActionController
             'priority' => $form->get('password')
                 ->getOption('priority')
         ));
-        
+
         // This is the special code that protects our form being submitted from automated scripts
         $form->add(array(
             'name' => 'csrf',
             'type' => 'Zend\Form\Element\Csrf'
         ));
-        
+
         // This is the submit button
         $form->add(array(
             'name' => 'submit',
@@ -263,7 +263,7 @@ class AccountController extends AbstractActionController
                 'required' => 'false'
             )
         ));
-        
+
         return $form;
     }
 }

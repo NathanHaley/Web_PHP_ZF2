@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-07: Added order by functionality for admin list page for contact us form submissions.
+
 2016-07-06: Added logging in newly registered users and fix allowing admins to add accounts.
 
 2016-07-05: Adding unit tests for Application Index Controller and User log in.
