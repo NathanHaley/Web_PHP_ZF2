@@ -7,6 +7,7 @@ use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\EventManager\EventManager;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
+use Application\Model\Application;
 
 class AccountController extends AbstractActionController
 {
@@ -228,16 +229,24 @@ class AccountController extends AbstractActionController
                 'role'  =>['text'=>'role',  'attributes'=>['nowrap'=>'true']]
 
         ];
+
+        $listActions = [
+            'view'       =>['text'=>'view', 'styleClass'=>Application::BTN_TAKE_DEFAULT],
+            'edit'       =>['text'=>'edit', 'styleClass'=>Application::BTN_EDIT_DEFAULT],
+            'delete'     =>['text'=>'delete', 'styleClass'=>Application::BTN_DELETE_DEFAULT],
+        ];
+
         return array(
-            'entities'  => $paginator,
-            'acl'       => $acl,
-            'page'      => $currentPage,
-            'orderby'   => $orderby,
-            'order'     => $order,
-            'columns'   => $columns,
-            'pageTitle' => 'Admin User List',
-            'route'     => 'user',
-            'controller'=> 'account'
+            'entities'      => $paginator,
+            'acl'           => $acl,
+            'page'          => $currentPage,
+            'orderby'       => $orderby,
+            'order'         => $order,
+            'columns'       => $columns,
+            'listActions'   => $listActions,
+            'pageTitle'     => 'Admin User List',
+            'route'         => 'user',
+            'controller'    => 'account'
         );
     }
 

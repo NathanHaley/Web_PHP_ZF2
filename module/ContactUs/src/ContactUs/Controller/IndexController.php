@@ -6,6 +6,7 @@ use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use ContactUs\Model\ContactUs as ContactUsModel;
+use Application\Model\Application;
 
 
 
@@ -129,6 +130,13 @@ class IndexController extends AbstractActionController
             'cdate'     =>['text'=>'time', 'attributes'=>['nowrap'=>'true']],
 
         ];
+
+        $listActions = [
+            'view'       =>['text'=>'view', 'styleClass'=>Application::BTN_TAKE_DEFAULT],
+            'edit'       =>['text'=>'edit', 'styleClass'=>Application::BTN_EDIT_DEFAULT],
+            'delete'     =>['text'=>'delete', 'styleClass'=>Application::BTN_DELETE_DEFAULT],
+        ];
+
         return array(
             'entities'  => $paginator,
             'acl'       => $acl,
@@ -136,6 +144,7 @@ class IndexController extends AbstractActionController
             'orderby'   => $orderby,
             'order'     => $order,
             'columns'   => $columns,
+            'listActions'   => $listActions,
             'pageTitle' => 'Admin List Of Contact Us Messages',
             'route'     => 'contactus',
             'controller'=> 'index'

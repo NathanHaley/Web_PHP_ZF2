@@ -2,28 +2,29 @@
 
 <?php 
 
-    $columnsA   = $this->columns;
-    $page       = $this->page;
-    $orderby    = strtolower($this->orderby);
-    $order      = $this->order;
-    $routeBase  = $this->route;
-    $controller = $this->controller;
+    $columnsA       = $this->columns;
+    $listActionsA   = $this->listActions;
+    $page           = $this->page;
+    $orderby        = strtolower($this->orderby);
+    $order          = $this->order;
+    $routeBase      = $this->route;
+    $controller     = $this->controller;
     
 ?>
 
 <table class="table table-striped">
 <thead>
     <tr>
-        <?php foreach ($columnsA as $column): 
-                $text = $column['text'];    
+        <?php foreach ($columnsA as $columnKey=>$column): 
+                $text = $column['text'];
         ?>
             <th<?php foreach ($column['attributes'] as $k=>$v){ echo " $k='$v'"; } ?>><?= $this->translate(ucfirst($text)) ?> 
             	&nbsp;
-            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $text, 'order'=> 'DESC')) ?>">
-            		<span class="glyphicon glyphicon-triangle-bottom <?php if (($orderby === $text) && ($order === 'DESC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text descending") ?>"></span>
+            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $columnKey, 'order'=> 'DESC')) ?>">
+            		<span class="glyphicon glyphicon-triangle-bottom <?php if (($orderby === $columnKey) && ($order === 'DESC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text descending") ?>"></span>
             	</a>
-            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $text, 'order'=> 'ASC')) ?>">
-            		<span class="glyphicon glyphicon-triangle-top <?php if (($orderby === $text) && ($order === 'ASC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text ascending") ?>"></span>
+            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $columnKey, 'order'=> 'ASC')) ?>">
+            		<span class="glyphicon glyphicon-triangle-top <?php if (($orderby === $columnKey) && ($order === 'ASC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text ascending") ?>"></span>
             	</a>
           	</th>          	
         <?php endforeach; ?>
@@ -39,30 +40,18 @@
         <?php foreach ($columnsA as $k=>$column): ?>
             <td><?= $this->escapehtml($entity[$k]) ?></td>
         <?php endforeach; ?>
-        <td><?php
-            if($this->acl->isAllowed($this->user->getRole(),'index','view')) :
+        
+        <?php foreach ($listActionsA as $actionKey=>$action): 
+                $actionText = $action['text'];
         ?>
-        <a class="btn btn-sm btn-info" href="<?= $this->url($routeBase.'/default', array('controller'=> $controller, 'action'=>'view', 'id'=> $entity['id'])) ?>"><?= $this->translate('View') ?></a>
-        <?php
-            endif;
-        ?>
-        </td>
-        <td><?php
-            if($this->acl->isAllowed($this->user->getRole(),'index','edit')) :
-        ?>
-        <a class="btn btn-sm btn-primary" href="<?= $this->url($routeBase.'/default', array('controller'=> $controller, 'action'=>'edit', 'id'=> $entity['id'])) ?>"><?= $this->translate('Edit') ?></a>
-        <?php
-            endif;
-        ?>
-        </td>
-        <td><?php
-            if($this->acl->isAllowed($this->user->getRole(),'index','delete')) :
-        ?>
-        <a class="btn btn-sm btn-danger" href="<?= $this->url($routeBase.'/default', array('controller'=> $controller, 'action'=>'delete', 'id'=> $entity['id'])) ?>"><?= $this->translate('Delete') ?></a>
-        <?php
-            endif;
-        ?>
-        </td>
+            <td><?php
+            if($this->acl->isAllowed($this->user->getRole(),$controller, $actionText)) :
+            ?>
+            <a class="<?php echo $this->escapehtml($action['styleClass']); ?>" href="<?= $this->url($routeBase.'/default', array('controller'=> $controller, 'action'=>$actionKey, 'id'=> $entity['id'])) ?>"><?= $this->translate(ucfirst($actionText)) ?></a>
+            <?php
+                endif;
+            ?>
+        <?php endforeach; ?>
     </tr>
 <?php endforeach; ?>
 <?php else: ?>

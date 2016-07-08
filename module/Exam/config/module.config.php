@@ -42,17 +42,18 @@ return array(
                     'list' => array(
                         'type'    => 'Segment',
                         'options' => array (
-                            'route' => '/test/list[/:page]',
+                            'route' => '/test/list[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => array(
                                 'page'     => '[0-9]*',
+                                'orderby' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'order' => 'ASC|DESC'
                             ),
                             'defaults' => array(
                                 'controller'    => 'Test',
                                 'action'        => 'list',
                                 'page'          => '1',
-                                // 'pagecache'     => true,
-                                'actioncache'   => true,
-                                'tags'		 => array('exam-list'),
+                                'orderby' => 'name',
+                                'order' => 'DESC'
                             ),
                         )
                     )
@@ -90,7 +91,7 @@ return array(
         'allow' => array(
             array('guest', 'test', 'list'),
             array('member', 'test', array('list','take')),
-            array('admin', 'test', array('reset','certificate', 'view', 'edit', 'delete')),
+            array('admin', 'test', array('reset','certificate', 'view', 'edit', 'delete', 'take', 'list')),
         ),
         'modules' => array (
             'Exam',

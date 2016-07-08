@@ -14,11 +14,22 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use Zend\EventManager\EventManager;
+use Application\Model\Application;
 
 class TestController extends AbstractActionController
 {
 
     public function indexAction()
+    {
+        return array();
+    }
+
+    public function editAction()
+    {
+        return array();
+    }
+
+    public function deleteAction()
     {
         return array();
     }
@@ -121,24 +132,50 @@ class TestController extends AbstractActionController
 
     public function listAction()
     {
+        $currentPage = $this->params('page', 1);
+        $orderby = $this->params('orderby', 'NAME');
+        $order = $this->params('order', 'DESC');
+
+        $orderby_tmp = strtoupper($orderby);
+
         $testModel = new Test();
         $result = $testModel->getSql()
             ->select()
             ->where(array(
             'active' => 1
-        ));
+        ))->order("$orderby_tmp $order");
 
         $adapter = new PaginatorDbAdapter($result, $testModel->getAdapter());
         $paginator = new Paginator($adapter);
-        $currentPage = $this->params('page', 1);
+
         $paginator->setCurrentPageNumber($currentPage);
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage(2);
 
         $acl = $this->serviceLocator->get('acl');
+
+        //top keys match db columns
+        $columns = [
+            'name'         =>['text'=>'name', 'attributes'=>['nowrap'=>'true']],
+            'description'  =>['text'=>'description', 'attributes'=>['nowrap'=>'true']],
+            'duration'     =>['text'=>'duration (minutes)', 'attributes'=>['nowrap'=>'true']],
+        ];
+
+        $listActions = [
+            'take'       =>['text'=>'take', 'styleClass'=>Application::BTN_TAKE_DEFAULT],
+            'edit'       =>['text'=>'edit', 'styleClass'=>Application::BTN_EDIT_DEFAULT],
+            'delete'     =>['text'=>'delete', 'styleClass'=>Application::BTN_DELETE_DEFAULT],
+        ];
         return array(
-            'tests' => $paginator,
-            'acl' => $acl,
-            'page' => $currentPage
+            'entities'      => $paginator,
+            'acl'           => $acl,
+            'page'          => $currentPage,
+            'orderby'       => $orderby,
+            'order'         => $order,
+            'columns'       => $columns,
+            'listActions'   => $listActions,
+            'pageTitle'     => 'Exam List',
+            'route'         => 'exam',
+            'controller'    => 'test'
         );
     }
 
