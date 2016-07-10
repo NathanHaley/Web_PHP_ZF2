@@ -21,33 +21,16 @@ class User implements PasswordAwareInterface
     protected $id;
 
     /**
-     * @Annotation\Exclude()
-     *
-     * @Column(type="string")
-     */
-    protected $role;
-
-    /**
     * @Annotation\Type("Zend\Form\Element\Email")
     * @Annotation\Validator({"name":"EmailAddress"})
     * @Annotation\Options({"label":"Email:"})
+    * @Annotation\Validator({"name":"StringLength","options":{"min":6,"max":255}})
     * @Annotation\Attributes({"type":"email","required": true,"placeholder": "Email Address..."})
-    * @Annotation\Flags({"priority": "500"})
+    * @Annotation\Flags({"priority": "600"})
     *
     * @Column(type="string")
     */
     protected $email;
-
-    /**
-     * @Annotation\Type("Zend\Form\Element\Password")
-     * @Annotation\Filter({"name":"StripTags"})
-     * @Annotation\Filter({"name":"StringTrim"})
-     * @Annotation\Options({"label":"Password:", "priority": "400"})
-     * @Annotation\Flags({"priority": "400"})
-     *
-     * @Column(type="string")
-     */
-    protected $password;
 
     /**
      * @Annotation\Type("Zend\Form\Element\Text")
@@ -55,19 +38,56 @@ class User implements PasswordAwareInterface
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Options({"label":"Name:"})
      * @Annotation\Attributes({"required": true,"placeholder":"Type name..."})
-     * @Annotation\Flags({"priority": "300"})
+     * @Annotation\Validator({"name":"StringLength","options":{"min":1,"max":255}})
+     * @Annotation\Flags({"priority": "500"})
      *
      * @Column(type="string")
      */
     protected $name;
 
     /**
-     * @Annotation\Type("Zend\Form\Element\Text")
-     * @Annotation\Options({"label":"Your phone number:"})
+     * @Annotation\Type("Zend\Form\Element\Select")
+     * @Annotation\Required({"required":"true"})
      * @Annotation\Filter({"name":"StripTags"})
      * @Annotation\Filter({"name":"StringTrim"})
-     * @Annotation\Validator({"name":"RegEx", "options": {"pattern": "/^[\d-\/]+$/"}})
-     * @Annotation\Attributes({"type":"tel","required": false,"pattern": "^[\d-/]+$"})
+     * @Annotation\Options({"label":"Role:",
+     *                      "value_options":{"member":"Member","admin":"Administrator"}})
+     * @Annotation\Validator({"name":"InArray","options":{"haystack":{"member","admin"},
+     *                                          "messages":{"notInArray":"Role does not exist"}}})
+     * @Annotation\Attributes({"value":"member"})
+     * @Annotation\Flags({"priority": "400"})
+     *
+     * @Column(type="string")
+     */
+    protected $role;
+
+    /**
+     * @Annotation\Type("Zend\Form\Element\Password")
+     * @Annotation\Filter({"name":"StripTags"})
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength","options":{"min":4,"max":100}})
+     * @Annotation\Options({"label":"Password:", "priority": "400"})
+     * @Annotation\Flags({"priority": "300"})
+     *
+     * @Column(type="string")
+     */
+    protected $password;
+
+    /**
+     * @Annotation\Type("Zend\Form\Element\Text")
+     * @Annotation\AllowEmpty({"true"})
+     * @Annotation\Filter({"name":"StripTags"})
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Options({"label":"Your Phone Number:"})
+     * @Annotation\Validator({"name":"StringLength","options":{"min":5,"max":50}})
+     * @Annotation\Validator({"name":"RegEx",
+     *                          "options": {
+     *                              "pattern": "/^[\d-\/]+$/",
+     *                              "messages":
+     *                                  {"regexNotMatch":"Only numbers, 0-9, and dashes '-'"}
+     *                           }
+     *                       })
+     * @Annotation\Attributes({"type":"tel","pattern":"^[\d-/]+$","messages":{"regexNotMatch":"Only numbers, 0-9, and dashes '-'"}})
      * @Annotation\Flags({"priority": "200"})
      *
      * @Column(type="string")

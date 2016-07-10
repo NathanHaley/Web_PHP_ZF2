@@ -21,3 +21,4 @@ php-cs*
 prep*
 Vagrantfile
 module/Album/*
+demo*.zip

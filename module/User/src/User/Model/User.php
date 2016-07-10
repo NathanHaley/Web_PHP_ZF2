@@ -14,12 +14,4 @@ class User extends AbstractTableGateway
         $this->initialize();
     }
 
-    public function insert($set)
-    {die('insert');
-        $set['photo'] = $set['photo']['tmp_name'];
-        unset($set['password_verify']);
-        $set['password'] = md5($set['password']); // better than clear text
-                                                  //passwords
-        return parent::insert($set);
-    }
 }

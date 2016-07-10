@@ -123,7 +123,7 @@ return array(
                 // array('role', 'resource', array('permission-1', 'permission-2', ...)),
                 array('guest', 'log', 'in'),
                 array('guest', 'account', 'register'),
-                array('member', 'account', 'me'), // the member can only see his account
+                array('member', 'account', array('me', 'edit')), // the member can only see his account
                 array('member', 'log', 'out'), // the member can log out
                 array('admin', 'account', array('list', 'view', 'delete', 'edit', 'add')),
         ),
@@ -205,6 +205,14 @@ return array(
                             'action' => 'add',
                             'resource' => 'account',
                             'privilege' => 'add',
+                        ),
+                        array(
+                            'label' => 'Edit',
+                            'route' => 'user/default',
+                            'controller' => 'account',
+                            'action' => 'edit',
+                            'resource' => 'account',
+                            'privilege' => 'edit',
                         ),
                         /* Accessed from the list page
                         array(

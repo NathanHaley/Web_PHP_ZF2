@@ -24,6 +24,16 @@ class AccountController extends AbstractActionController
 
         $form = $this->setupUserDetailForm($entity);
 
+        if ($currentUser->getRole() === 'guest') {
+            //Remove the role fields, only for admins
+            $form->remove('role');
+
+            $form->setValidationGroup(['email','name','password','password_verify','phone','csrf']);
+        }
+
+        //Add password verify field
+        $form = $this->formAddFields($form, ['password_verify']);
+
         if ($this->getRequest()->isPost()) {
 
             $data = array_merge_recursive($this->getRequest()
@@ -75,12 +85,8 @@ class AccountController extends AbstractActionController
 
         $form = $builder->createForm($userEntity);
 
-        $form = $this->formAddFields($form);
+        $form = $this->formAddFields($form, ['csrf','submit']);
 
-        // We bind the entity to the user. If the form tries to read/write data from/to the entity
-        // it will use the hydrator specified in the entity to achieve this. In our case we use ClassMethods
-        // hydrator which means that reading will happen calling the getter methods and writing will happen by
-        // calling the setter methods.
         $form->bind($userEntity);
 
         return $form;
@@ -112,8 +118,6 @@ class AccountController extends AbstractActionController
 
         $userToView = $this->findUserEntity($id);
 
-        // var_dump($userToView);
-
         return array(
             'userToView' => $userToView
         );
@@ -121,18 +125,46 @@ class AccountController extends AbstractActionController
 
     public function editAction()
     {
+        $currentUser = $this->serviceLocator->get('user');
+        $selfEdit = false;
+
         $id = $this->params('id');
 
-        if (! $id) {
-            return $this->redirect()->toRoute('user/default', array(
-                'controller' => 'account',
-                'action' => 'view'
-            ));
+        if ((! $id) || (($id) && ($currentUser->getRole() !== 'admin'))){
+
+            $id = $currentUser->getId();
+
+            if (! $id) {
+                return $this->redirect()->toRoute('user/default', array(
+                    'controller' => 'account',
+                    'action' => 'view'
+                ));
+            } else {
+                $selfEdit = true;
+            }
         }
 
         $entity = $this->findUserEntity($id);
 
         $form = $this->setupUserDetailForm($entity);
+
+        //Adjust according to user's role
+        if ($currentUser->getRole() !== 'admin') {
+
+            //Add password verify field
+            $form = $this->formAddFields($form, ['password_verify']);
+
+            //Remove role field, only mutable by admins
+            $form->remove('role');
+            $form->setValidationGroup(['email','name','password','password_verify','phone','csrf']);
+
+
+        } else {
+            //Remove password fields, admin do not set passwords for now
+            $form->remove('password');
+            $form->setValidationGroup(['email','name','role','phone','csrf']);
+        }
+
 
         if ($this->getRequest()->isPost()) {
             $data = array_merge_recursive($this->getRequest()
@@ -142,7 +174,7 @@ class AccountController extends AbstractActionController
                 $this->getRequest()
                     ->getFiles()
                     ->toArray());
-            $form->setData($data);
+            $form->setData($data);//die("|".$form->isValid()."|");
             if ($form->isValid()) {
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
@@ -152,12 +184,25 @@ class AccountController extends AbstractActionController
 
                 $this->flashmessenger()->addSuccessMessage("User: {$entity->getEmail()} was updated successfully.");
 
-                // redirect the user to the view user action
-                return $this->redirect()->toRoute('user/default', array(
-                    'controller' => 'account',
-                    'action' => 'list',
-                    'id' => $entity->getId()
-                ));
+                //If member updating their own info OR an admin updating their own info
+                if ($selfEdit) {
+
+                    $auth = $this->serviceLocator->get('auth');
+                    $auth->getStorage()->write($entity);
+
+                    // redirect the user to the view user action
+                    return $this->redirect()->toRoute('user/default', array(
+                        'controller' => 'account',
+                        'action' => 'me'
+                    ));
+                } else {
+                    //Admins updating members get routed back to list page
+                    return $this->redirect()->toRoute('user/default', array(
+                        'controller' => 'account',
+                        'action' => 'list',
+                        'id' => $entity->getId()
+                    ));
+                }
             }
         }
 
@@ -259,39 +304,53 @@ class AccountController extends AbstractActionController
         return $entity;
     }
 
-    protected function formAddFields($form)
+    protected function formAddFields($form, $fieldsAdd)
     {
-        $form->add(array(
-            'name' => 'password_verify',
-            'type' => 'Zend\Form\Element\Password',
-            'attributes' => array(
-                'placeholder' => 'Verify Password Here...',
-                'required' => 'required'
-            ),
-            'options' => array(
-                'label' => 'Verify Password'
-            )
-        ), array(
-            'priority' => $form->get('password')
-                ->getOption('priority')
-        ));
 
-        // This is the special code that protects our form being submitted from automated scripts
-        $form->add(array(
-            'name' => 'csrf',
-            'type' => 'Zend\Form\Element\Csrf'
-        ));
+        $fieldsSetUpArray = [
+            'csrf' =>
+            [
+                'name' => 'csrf',
+                'type' => 'Zend\Form\Element\Csrf'
+            ],
+            'submit' => [
+                'name' => 'submit',
+                'type' => 'Zend\Form\Element\Submit',
+                'attributes' =>
+                 [
+                    'value' => 'Submit',
+                    'required' => 'false'
+                 ]
+            ],
+            'password_verify' => [
+                'name' => 'password_verify',
+                'type' => 'Zend\Form\Element\Password',
+                'attributes' => [
+                    'placeholder' => 'Verify Password Here...',
+                    'required' => 'required'
+                ],
+                'options' => [
+                    'label' => 'Verify Password:'
+                ]
+            ],
+            'password_verify_flag' => [
+                'priority' => $form->get('password')->getOption('priority')
+            ]
+        ];
 
-        // This is the submit button
-        $form->add(array(
-            'name' => 'submit',
-            'type' => 'Zend\Form\Element\Submit',
-            'attributes' => array(
-                'value' => 'Submit',
-                'required' => 'false'
-            )
-        ));
+        foreach ( $fieldsAdd as $field) {
+
+            $flag = [];
+            if (isset($fieldsSetUpArray[$field.'_flag'])) {
+                $flag = $fieldsSetUpArray[$field.'_flag'];
+            }
+
+            $form->add($fieldsSetUpArray[$field],$flag);
+
+        }
 
         return $form;
     }
+
+
 }

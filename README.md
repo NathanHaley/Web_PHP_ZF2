@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-09: Add member update/edit account page. Added Role administration to admin account edit. Removed password fields from admin edit user account. Phone fields not required, validations added.
+
 2016-07-08: Implemented list template for exams. Extended list template for dynamic actions designation.
 
 2016-07-08: Created list page shared template including pagination/sort, implemented for user and contact us lists. Bug fix: User list breadcrumb.
