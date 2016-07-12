@@ -54,7 +54,14 @@ class TestAttemptAnswerManager implements ServiceLocatorAwareInterface
         }
 
         if ($data['answer'] !== null) {
-            $data['answer'] = $this->services->get('cipher')->encrypt($data['answer']);
+            try {
+                $data['answer'] = $this->services->get('cipher')->encrypt(strval($data['answer']));
+            } catch (Exception $e) {
+                //@todo How best to handle
+                var_dump($data);
+                echo $e->getMessage();
+                            die('<br> Could not store data, try retaking and providing a different answer. Data dump of answer object above');
+            }
         }
 
         return $model->insert($data);

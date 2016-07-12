@@ -15,6 +15,7 @@ use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use Zend\EventManager\EventManager;
 use Application\Model\Application;
+use Zend\Db\ResultSet\ResultSet;
 
 class TestController extends AbstractActionController
 {
@@ -37,9 +38,7 @@ class TestController extends AbstractActionController
     public function takeAction()
     {
 
-        if(! isset($user->examStartTime)){
-            $user->examStartTime = time();
-        }
+        $startTime = time();//@todo doesn't work as is just yet
 
         $id = $this->params('id');
         if (! $id) {
@@ -174,24 +173,83 @@ class TestController extends AbstractActionController
 
     public function listAction()
     {
+        $user = $this->serviceLocator->get('user');
         $currentPage = $this->params('page', 1);
         $orderby = $this->params('orderby', 'NAME');
         $order = $this->params('order', 'DESC');
 
         $orderby_tmp = strtoupper($orderby);
 
+        $dbAdapter = $this->serviceLocator->get('database');
+
+        /* saving for later use as doesn't return proper results just yet
         $testModel = new Test();
         $result = $testModel->getSql()
             ->select()
-            ->where(array(
-            'active' => 1
-        ))->order("$orderby_tmp $order");
+                ->columns([
+                        'id',
+                        'name',
+                        'description',
+                        'duration',
+                        //'score' => new \Zend\Db\Sql\Expression("MAX(score_pct)"),
+                        //'pass'
+                ])
+            ->join(
+                ['ta' => 'x_users_tests_attempts'],
+                'tests.id = ta.test_id',
+                [
+                    'score' => new \Zend\Db\Sql\Expression("MAX(score_pct)"),
+                    'pass'  => 'pass'
 
-        $adapter = new PaginatorDbAdapter($result, $testModel->getAdapter());
-        $paginator = new Paginator($adapter);
+                ],
+                'LEFT')
+            ->where([
+                'active' => 1, 'user_id' => 1
+            ])->order("$orderby_tmp $order");
+         */
+
+        $sql = "SELECT
+                      id,
+                      name,
+                      description,
+                      duration,
+                      pass,
+                      score
+                    FROM
+                      tests AS t
+                    LEFT JOIN
+                      (
+                      SELECT
+                        MAX(score_pct) AS 'score',
+                        pass,
+                        test_id
+                      FROM
+                        x_users_tests_attempts
+                      WHERE
+                        user_id = ?
+                      GROUP BY test_id
+                    ) AS ua
+                    ON
+                      t.id = ua.test_id
+                    WHERE
+                      t.active = 1
+                    ORDER BY
+                        ? ?";
+
+        $stmt = $dbAdapter->createStatement($sql, [$user->getId(), $orderby, $order]);
+        $stmt->prepare($sql);
+
+        $result = $stmt->execute();
+        $resultSet = new ResultSet();
+        $resultSet->initialize($result);
+
+        $result = $resultSet->toArray();
+
+
+        $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($result));
 
         $paginator->setCurrentPageNumber($currentPage);
-        $paginator->setItemCountPerPage(2);
+        $paginator->setItemCountPerPage(4);
 
         $acl = $this->serviceLocator->get('acl');
 
@@ -200,6 +258,7 @@ class TestController extends AbstractActionController
             'name'         =>['text'=>'name', 'attributes'=>['nowrap'=>'true']],
             'description'  =>['text'=>'description', 'attributes'=>['nowrap'=>'true']],
             'duration'     =>['text'=>'duration (minutes)', 'attributes'=>['nowrap'=>'true']],
+            'score'        =>['text'=>'Score %', 'attributes'=>['nowrap'=>'true']],
         ];
 
         $listActions = [
