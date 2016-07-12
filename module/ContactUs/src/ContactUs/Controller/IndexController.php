@@ -153,9 +153,6 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-
-        $config = $this->serviceLocator->get('config');
-
         $entity = $this->serviceLocator->get('contactus-entity');
 
         $builder = new AnnotationBuilder();
@@ -180,11 +177,7 @@ class IndexController extends AbstractActionController
         $form->bind($entity);
 
         if($this->getRequest()->isPost()) {
-            $data = array_merge_recursive(
-                $this->getRequest()->getPost()->toArray(),
-                // Notice: make certain to merge the Files also to the post data
-                $this->getRequest()->getFiles()->toArray()
-                );
+            $data = $this->getRequest()->getPost()->toArray();
             $form->setData($data);
             if($form->isValid()) {
                 $entityManager = $this->serviceLocator->get('entity-manager');

@@ -76,13 +76,37 @@ return array(
     ),
     'service_manager' => array(
         'factories'  => array(
-            'mail-transport' => 'Exam\Service\Factory\MailTransport'
+            'mail-transport'        => 'Exam\Service\Factory\MailTransport',
+            'entity-manager'        => 'Exam\Service\Factory\EntityManager',
+            'database'              => 'Exam\Service\Factory\Database',
+            'test'                  => 'Exam\Service\Factory\Test',
+            'test-attempt'          => 'Exam\Service\Factory\TestAttempt',
+            'test-attempt-answer'   => 'Exam\Service\Factory\TestAttemptAnswer',
         ),
         'invokables' => array(
-            'test-manager' => 'Exam\Model\TestManager',
-            'pdf'          => 'Exam\Service\Invokable\Pdf',
-            'mail'		   => 'Exam\Service\Invokable\Mail',
+            'doctrine-profiler'             => 'Exam\Service\Invokable\DoctrineProfiler',
+            'table-gateway'                 => 'Exam\Service\Invokable\TableGateway',
+            'test-manager'                  => 'Exam\Model\TestManager',
+            'test-entity'                   => 'Exam\Model\Entity\Test',
+            'test-attempt-manager'          => 'Exam\Model\TestAttemptManager',
+            'test-attempt-answer-manager'   => 'Exam\Model\TestAttemptAnswerManager',
+            'test-attempt-entity'           => 'Exam\Model\Entity\TestAttempt',
+            'test-attempt-answer-entity'    => 'Exam\Model\Entity\TestAttemptAnswer',
+            'pdf'                           => 'Exam\Service\Invokable\Pdf',
+            'mail'		                    => 'Exam\Service\Invokable\Mail',
         )
+    ),
+    'table-gateway' => array(
+        'map' => array(
+            'tests'                         => 'Exam\Model\Tests',
+            'x_users_tests_attempts'        => 'Exam\Model\TestAttempt',
+            'x_users_tests_attempts_answers'=> 'Exam\Model\TestAttemptAnswer',
+        )
+    ),
+    'doctrine' => array(
+        'entity_path' => array (
+                __DIR__ . '/../src/Exam/Model/Entity/',
+        ),
     ),
     'acl' => array(
         'resource' => array (

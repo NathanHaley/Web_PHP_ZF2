@@ -1,0 +1,75 @@
+<?php
+namespace Exam\Model;
+
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Form\Factory as FormFactory;
+
+class TestAttemptAnswerManager implements ServiceLocatorAwareInterface
+{
+    /**
+     * @var ServiceLocatorInterface
+     */
+    protected $services;
+
+    /**
+     * @var array
+     */
+    protected $cache;
+
+    /**
+     * Creates form element for a test
+     * @param string $id
+     * @return \Zend\Form\Form
+     */
+    public function createForm($id)
+    {
+        //...@TODO
+    }
+
+    public function get($id)
+    {
+        if (! isset($this->cache[$id])) {
+            // The TestAttemptAnswer class is a table gateway class
+            $model = new TestAttemptAnswer();
+            $result = $model->select(array('id' => $id));
+            $data = $result->current();
+
+            if ($data['answer'] !== null) {
+                $data['answer'] = $this->services->get('cipher')->decrypt($data['answer']);
+            }
+
+            $this->cache[$id] = $data;
+        }
+
+        return $this->cache[$id];
+    }
+
+    public function store($data)
+    {
+        $model = new TestAttemptAnswer();
+
+        if ($data['answer'] === '') {
+            $data['answer'] = null;
+        }
+
+        if ($data['answer'] !== null) {
+            $data['answer'] = $this->services->get('cipher')->encrypt($data['answer']);
+        }
+
+        return $model->insert($data);
+    }
+
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        $this->services = $serviceLocator;
+    }
+
+    /* (non-PHPdoc)
+     * @see \Zend\ServiceManager\ServiceLocatorAwareInterface::getServiceLocator()
+     */
+    public function getServiceLocator()
+    {
+        return $this->services;
+    }
+ }

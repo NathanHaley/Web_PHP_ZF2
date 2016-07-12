@@ -13,7 +13,8 @@ class EntityManager implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('config');
-        // Mapping zf2 db settings to doctrine
+        // The parameters in Doctrine 2 and ZF2 are slightly different.
+        // Below is an example how we can reuse the db settings
         $doctrineDbConfig = (array)$config['db'];
         $doctrineDbConfig['driver'] = strtolower($doctrineDbConfig['driver']);
         if(!isset($doctrineDbConfig['dbname'])) {

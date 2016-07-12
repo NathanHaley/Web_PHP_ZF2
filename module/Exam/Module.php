@@ -37,7 +37,10 @@ class Module implements AutoloaderProviderInterface
 
     public function onBootstrap(MvcEvent $event)
     {
-        $services           = $event->getApplication()->getServiceManager();
+        $services = $event->getApplication()->getServiceManager();
+        $dbAdapter = $services->get('database');
+        \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::setStaticAdapter($dbAdapter);
+
         $sharedEventManager = $event->getApplication()->getEventManager()->getSharedManager();
 
         $sharedEventManager->attach('exam','certificate-generated', function ($event) use ($services) {
@@ -64,5 +67,7 @@ class Module implements AutoloaderProviderInterface
                     'pdf'  => $pdfDocument
             ));
         });
+
+
     }
 }

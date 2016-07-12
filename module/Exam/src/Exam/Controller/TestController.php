@@ -36,6 +36,11 @@ class TestController extends AbstractActionController
 
     public function takeAction()
     {
+
+        if(! isset($user->examStartTime)){
+            $user->examStartTime = time();
+        }
+
         $id = $this->params('id');
         if (! $id) {
             return $this->redirect()->toRoute('exam/list');
@@ -61,18 +66,64 @@ class TestController extends AbstractActionController
 
         if ($this->getRequest()->isPost()) {
             // If we have post request -> check how many correct answers are correct
+            $user = $this->serviceLocator->get('user');
             $data = $this->getRequest()->getPost();
             $form->setData($data);
             $correct = 0;
             $total = 0;
 
-            if ($form->isValid()) {
+            //get the duration
+            $duration = time() - $startTime;
+
+            $attemptEntity = $this->serviceLocator->get('test-attempt-entity');
+
+            $attemptEntity->setUser_id($user->getId());
+            $attemptEntity->setTest_id($id);
+            $attemptEntity->setStime($startTime);var_dump(time() - $startTime);
+            $attemptEntity->setDuration($duration);
+
+            $entityManager = $this->serviceLocator->get('entity-manager');
+
+            $entityManager->persist($attemptEntity);
+            $entityManager->flush();
+
+            $testAttemptAnswerManager = $this->serviceLocator->get('test-attempt-answer-manager');
+
+            foreach ($form as $k => $element) {
+
+                if ($element instanceof QuestionInterface) {
+                    $total ++;
+                    $form->setValidationGroup($element->getName());
+
+                    $isValid = $form->isValid();
+
+                    if ($isValid) {
+                        $correct ++;
+                    }
+
+                    $answerEntity = $this->serviceLocator->get('test-attempt-answer-entity');
+
+                    $answerEntity->setXuta_id($attemptEntity->getId());
+                    $answerEntity->setXeq_id(str_replace('q','',$element->getName()));
+                    $answerEntity->setAnswer($element->getValue());
+                    $answerEntity->setValid(intval($isValid));
+
+
+                    $testAttemptAnswerManager->store($answerEntity->toArray());
+                }
+            }
+
+
+            $score = round($correct/$total*100);
+
+            if ($score === 0) {
+
+                $this->flashmessenger()->addErrorMessage('You failed. That is sad but you can try again.');
+
+            } elseif ($score === 100) {
+
                 // All answers were answered correctly.
                 $this->flashmessenger()->addSuccessMessage('Great! You have 100% correct answers. You should recieve your certificate in email soon.');
-
-                $user = $this->serviceLocator->get('user');
-
-                //var_dump($id);die();
 
                 $newEvent = new EventManager('exam');
                 $newEvent->trigger('taken-excellent', $this, array (
@@ -81,25 +132,16 @@ class TestController extends AbstractActionController
                 ));
 
             } else {
-                // Check how many answers were correct using validation groups for partial validation.
-                foreach ($form as $k => $element) {
 
-                    if ($element instanceof QuestionInterface) {
-                        $total ++;
-                        $form->setValidationGroup($element->getName());
+                $this->flashmessenger()->addMessage(sprintf('Score = %d%%, %d out of total %d correct.100%% correct needed for certificate.', $score, $correct, $total));
 
-                        if ($form->isValid()) {
-                            $correct ++;
-                        }
-                    }
-                }
-
-                if ($correct === 0) {
-                    $this->flashmessenger()->addErrorMessage('You failed. That is sad but you can try again.');
-                } else {
-                    $this->flashmessenger()->addMessage(sprintf('Correct %d out of total %d.100%% correct needed for certificate.', $correct, $total));
-                }
             }
+
+            $attemptEntity->setPass(intval($score === 100));
+            $attemptEntity->setScore_pct($score);
+
+            $entityManager->persist($attemptEntity);
+            $entityManager->flush();
 
             return $this->redirect()->toRoute('exam/list');
         }

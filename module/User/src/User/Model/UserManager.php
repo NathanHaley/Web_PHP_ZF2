@@ -13,17 +13,17 @@ class UserManager implements ServiceLocatorAwareInterface
     protected $services;
 
     /**
-     * Creates and fills the user entity identified by user identity
+     * Creates and fills the user entity identified by user identity/email
      * @param string $identity
      * @return Entity\User
      */
-    public function create($identity)
+    public function create($email)
     {
         $user = $this->services->get('user-entity');
         $entityManager = $this->services->get('entity-manager');
 
         $user = $entityManager->getRepository(get_class($user))
-                              ->findOneByEmail($identity);
+                              ->findOneByEmail($email);
 
         return $user;
     }

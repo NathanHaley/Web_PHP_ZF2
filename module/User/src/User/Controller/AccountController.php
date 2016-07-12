@@ -39,7 +39,6 @@ class AccountController extends AbstractActionController
             $data = array_merge_recursive($this->getRequest()
                 ->getPost()
                 ->toArray(),
-                // Notice: make certain to merge the Files also to the post data
                 $this->getRequest()
                     ->getFiles()
                     ->toArray());
@@ -160,7 +159,7 @@ class AccountController extends AbstractActionController
 
 
         } else {
-            //Remove password fields, admin do not set passwords for now
+            //Remove password fields, admins do not set passwords for now
             $form->remove('password');
             $form->setValidationGroup(['email','name','role','phone','csrf']);
         }
@@ -170,13 +169,12 @@ class AccountController extends AbstractActionController
             $data = array_merge_recursive($this->getRequest()
                 ->getPost()
                 ->toArray(),
-                // Notice: make certain to merge the Files also to the post data
                 $this->getRequest()
                     ->getFiles()
                     ->toArray());
-            $form->setData($data);//die("|".$form->isValid()."|");
+            $form->setData($data);
             if ($form->isValid()) {
-                // We use now the Doctrine 2 entity manager to save user data to the database
+                // Save data
                 $entityManager = $this->serviceLocator->get('entity-manager');
 
                 $entity = $entityManager->merge($entity);
@@ -334,7 +332,7 @@ class AccountController extends AbstractActionController
                 ]
             ],
             'password_verify_flag' => [
-                'priority' => $form->get('password')->getOption('priority')
+                'priority' => $form->get('password')->getOption('priority') - 100
             ]
         ];
 

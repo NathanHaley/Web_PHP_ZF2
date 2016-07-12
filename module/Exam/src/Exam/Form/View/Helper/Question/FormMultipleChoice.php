@@ -15,8 +15,7 @@ class FormMultipleChoice extends FormMultiCheckbox
      * @param array                $attributes
      * @return string
      */
-    protected function renderOptions(MultipleChoice $element, array $options, array $selectedOptions,
-            array $attributes)
+    protected function renderOptions(MultipleChoice $element, array $options, array $selectedOptions, array $attributes)
     {
         $question = $element->getQuestion();
         $header   = $element->getHeader();

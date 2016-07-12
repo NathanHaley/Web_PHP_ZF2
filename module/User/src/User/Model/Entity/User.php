@@ -88,7 +88,7 @@ class User implements PasswordAwareInterface
      *                           }
      *                       })
      * @Annotation\Attributes({"type":"tel","pattern":"^[\d-/]+$","messages":{"regexNotMatch":"Only numbers, 0-9, and dashes '-'"}})
-     * @Annotation\Flags({"priority": "200"})
+     * @Annotation\Flags({"priority": "100"})
      *
      * @Column(type="string")
      */
