@@ -47,15 +47,15 @@ return array(
                             'route' => '/contactus/list[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => array(
                                 'page' => '[0-9]*',
-                                'orderby' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'order' => 'ASC|DESC'
+                                'orderby' => 'email|name|comments|time',
+                                'order' => 'asc|desc'
                             ),
                             'defaults' => array(
                                 'controller' => 'Index',
                                 'action' => 'list',
                                 'page' => '1',
                                 'orderby' => 'time',
-                                'order' => 'DESC'
+                                'order' => 'desc'
                             )
                         )
                     )

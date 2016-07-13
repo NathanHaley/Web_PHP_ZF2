@@ -96,23 +96,27 @@ class IndexController extends AbstractActionController
     //Lists messages for admins
     public function listAction()
     {
-        $currentPage = $this->params('page', 1);
-        $orderby = $this->params('orderby', 'CDATE');
-        $order = $this->params('order', 'DESC');
+        $currentPage = $this->params()->fromRoute('page', 1);
+
+        //orderby,order whitelisted in list route config
+        $orderby = $this->params()->fromRoute('orderby', 'cdate');
+        $order = $this->params()->fromRoute('order', 'desc');
 
 
-        $orderby_tmp = strtoupper($orderby);
-
-        if ($orderby_tmp === 'TIME') {
-            $orderby_tmp = 'CDATE';
-        }
-
-        if ($orderby_tmp === 'NAME') {
-            $orderby_tmp = 'FULLNAME';
-        }
+        $orderby_tmp = strtolower($orderby);
 
         $contactUsModel = new ContactUsModel;
-        $result = $contactUsModel->getSql()->select()->order("$orderby_tmp $order");
+
+        $result = $contactUsModel->getSql()
+                    ->select()
+                        ->columns([
+                            'id'        => 'id',
+                            'name'      => 'fullname',
+                            'email'     => 'email',
+                            'comments'  => 'comments',
+                            'time'      => 'cdate'
+                        ])
+                    ->order("$orderby_tmp $order");
 
         $adapter = new PaginatorDbAdapter($result, $contactUsModel->getAdapter());
         $paginator = new Paginator($adapter);
@@ -124,10 +128,10 @@ class IndexController extends AbstractActionController
 
         //top keys match db columns
         $columns = [
-            'email'     =>['text'=>'email', 'attributes'=>['nowrap'=>'true']],
-            'fullname'  =>['text'=>'name', 'attributes'=>['nowrap'=>'true']],
-            'comments'  =>['text'=>'comments', 'attributes'=>['width'=>'40%']],
-            'cdate'     =>['text'=>'time', 'attributes'=>['nowrap'=>'true']],
+            'email'     =>['th_text'=>'email', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+            'name'      =>['th_text'=>'name', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+            'comments'  =>['th_text'=>'comments', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+            'time'      =>['th_text'=>'time', 'th_attributes'=>['nowrap'=>'true'], 'td_attributes'=>[],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
 
         ];
 

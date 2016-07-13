@@ -249,9 +249,11 @@ class AccountController extends AbstractActionController
 
     public function listAction()
     {
-        $currentPage = $this->params('page', 1);
-        $orderby = $this->params('orderby', 'ID');
-        $order = $this->params('order', 'DESC');
+        $currentPage = $this->params()->fromRoute('page', 1);
+
+        //orderby,order whitelisted in list route config
+        $orderby = $this->params()->fromRoute('orderby', 'id');
+        $order = $this->params()->fromRoute('order', 'desc');
 
         $orderby_tmp = strtoupper($orderby);
 
@@ -266,10 +268,10 @@ class AccountController extends AbstractActionController
 
         $acl = $this->serviceLocator->get('acl');
         $columns = [
-                'id'    =>['text'=>'id',    'attributes'=>['nowrap'=>'true', 'width'=>'6%']],
-                'email' =>['text'=>'email', 'attributes'=>['nowrap'=>'true']],
-                'name'  =>['text'=>'name',  'attributes'=>['nowrap'=>'true']],
-                'role'  =>['text'=>'role',  'attributes'=>['nowrap'=>'true']]
+                'id'    =>['th_text'=>'id',    'th_attributes'=>['nowrap'=>'true', 'width'=>'6%'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+                'email' =>['th_text'=>'email', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+                'name'  =>['th_text'=>'name', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+                'role'  =>['th_text'=>'role', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
 
         ];
 

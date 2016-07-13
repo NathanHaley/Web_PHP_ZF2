@@ -16,15 +16,15 @@
 <thead>
     <tr>
         <?php foreach ($columnsA as $columnKey=>$column): 
-                $text = $column['text'];
+                $text = $column['th_text'];
         ?>
-            <th<?php foreach ($column['attributes'] as $k=>$v){ echo " $k='$v'"; } ?>><?= $this->translate(ucfirst($text)) ?> 
+            <th<?php if (isset($column['th_attributes'])) {foreach ($column['th_attributes'] as $k=>$v){ echo " $k='$v'"; }} ?>><?= $this->translate(ucfirst($text)) ?> 
             	&nbsp;
-            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $columnKey, 'order'=> 'DESC')) ?>">
-            		<span class="glyphicon glyphicon-triangle-bottom <?php if (($orderby === $columnKey) && ($order === 'DESC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text descending") ?>"></span>
+            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $columnKey, 'order'=> 'desc')) ?>">
+            		<span class="glyphicon glyphicon-triangle-bottom <?php if (($orderby === $columnKey) && ($order === 'desc')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text descending") ?>"></span>
             	</a>
-            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $columnKey, 'order'=> 'ASC')) ?>">
-            		<span class="glyphicon glyphicon-triangle-top <?php if (($orderby === $columnKey) && ($order === 'ASC')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text ascending") ?>"></span>
+            	<a class="list_order" href="<?= $this->url($routeBase.'/list', array('controller'=> $controller, 'action'=>'list', 'page'=> $page, 'orderby' => $columnKey, 'order'=> 'asc')) ?>">
+            		<span class="glyphicon glyphicon-triangle-top <?php if (($orderby === $columnKey) && ($order === 'asc')): ?>ordered_by<?php endif; ?>" title="<?= $this->translate("Order by $text ascending") ?>"></span>
             	</a>
           	</th>          	
         <?php endforeach; ?>
@@ -37,8 +37,16 @@
 <?php if (count($this->entities)): ?>
 <?php foreach ($this->entities as $entity): ?>
    <tr>
-        <?php foreach ($columnsA as $k=>$column): ?>
-            <td><?= $this->escapehtml($entity[$k]) ?></td>
+        <?php foreach ($columnsA as $k=>$column): 
+                       
+               $format = $column['td_formats']['tcDefaultCellFormat'];
+               if (isset($column['td_formats'][$entity[$k]])) {
+                   $format = $column['td_formats'][$entity[$k]];
+               }
+               
+               $text = sprintf($format, $entity[$k]);
+        ?>
+            <td<?php if (isset($column['td_attributes'])) {foreach ($column['td_attributes'] as $k=>$v){ echo " $k='$v'"; }} ?>><?= $this->translate($text) ?></td>
         <?php endforeach; ?>
         
         <?php foreach ($listActionsA as $actionKey=>$action): 

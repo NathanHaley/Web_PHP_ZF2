@@ -47,15 +47,15 @@ return array(
                             'route' => '/user/list[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => array(
                                 'page'     => '[0-9]*',
-                                'orderby' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'order' => 'ASC|DESC'
+                                'orderby' => 'id|email|name|role',
+                                'order' => 'asc|desc'
                             ),
                             'defaults' => array(
                                 'controller'    => 'Account',
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby' => 'id',
-                                'order' => 'DESC'
+                                'order' => 'desc'
                             ),
                         )
                     )

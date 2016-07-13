@@ -45,15 +45,15 @@ return array(
                             'route' => '/test/list[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => array(
                                 'page'     => '[0-9]*',
-                                'orderby' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'order' => 'ASC|DESC'
+                                'orderby' => 'name|description|duration|score',
+                                'order' => 'asc|desc'
                             ),
                             'defaults' => array(
                                 'controller'    => 'Test',
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby' => 'name',
-                                'order' => 'DESC'
+                                'order' => 'desc'
                             ),
                         )
                     )

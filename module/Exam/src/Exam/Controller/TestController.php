@@ -15,7 +15,7 @@ use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use Zend\EventManager\EventManager;
 use Application\Model\Application;
-use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Select;
 
 class TestController extends AbstractActionController
 {
@@ -37,8 +37,10 @@ class TestController extends AbstractActionController
 
     public function takeAction()
     {
-
-        $startTime = time();//@todo doesn't work as is just yet
+        $startTime = time();
+        if(! isset($user->examStartTime)){
+            $user->examStartTime = time();
+        }
 
         $id = $this->params('id');
         if (! $id) {
@@ -78,7 +80,7 @@ class TestController extends AbstractActionController
 
             $attemptEntity->setUser_id($user->getId());
             $attemptEntity->setTest_id($id);
-            $attemptEntity->setStime($startTime);var_dump(time() - $startTime);
+            $attemptEntity->setStime($startTime);
             $attemptEntity->setDuration($duration);
 
             $entityManager = $this->serviceLocator->get('entity-manager');
@@ -174,79 +176,44 @@ class TestController extends AbstractActionController
     public function listAction()
     {
         $user = $this->serviceLocator->get('user');
-        $currentPage = $this->params('page', 1);
-        $orderby = $this->params('orderby', 'NAME');
-        $order = $this->params('order', 'DESC');
+        $currentPage = $this->params()->fromRoute('page', 1);
 
-        $orderby_tmp = strtoupper($orderby);
+        //orderby, order values whitelisted in list route config
+        $orderby = $this->params()->fromRoute('orderby', 'name');
+        $order = $this->params()->fromRoute('order', 'desc');
 
-        $dbAdapter = $this->serviceLocator->get('database');
+        $sql = new Select();
+        $sql->columns([
+            'score' => new \Zend\Db\Sql\Expression("MAX(score_pct)"),
+            'pass'  => 'pass',
+            'test_id' => 'test_id'
+        ])
+        ->from('x_users_tests_attempts')
+        ->where(['user_id' => $user->getId()])
+        ->group('test_id');
 
-        /* saving for later use as doesn't return proper results just yet
         $testModel = new Test();
         $result = $testModel->getSql()
-            ->select()
-                ->columns([
-                        'id',
-                        'name',
-                        'description',
-                        'duration',
-                        //'score' => new \Zend\Db\Sql\Expression("MAX(score_pct)"),
-                        //'pass'
-                ])
-            ->join(
-                ['ta' => 'x_users_tests_attempts'],
-                'tests.id = ta.test_id',
-                [
-                    'score' => new \Zend\Db\Sql\Expression("MAX(score_pct)"),
-                    'pass'  => 'pass'
-
-                ],
-                'LEFT')
+        ->select()
+        ->columns([
+            'id',
+            'name',
+            'description',
+            'duration',
+        ])
+        ->join(
+            ['ta' => $sql
+            ],
+            'tests.id = ta.test_id',
+            ['score','pass'],Select::JOIN_LEFT)
             ->where([
-                'active' => 1, 'user_id' => 1
-            ])->order("$orderby_tmp $order");
-         */
-
-        $sql = "SELECT
-                      id,
-                      name,
-                      description,
-                      duration,
-                      pass,
-                      score
-                    FROM
-                      tests AS t
-                    LEFT JOIN
-                      (
-                      SELECT
-                        MAX(score_pct) AS 'score',
-                        pass,
-                        test_id
-                      FROM
-                        x_users_tests_attempts
-                      WHERE
-                        user_id = ?
-                      GROUP BY test_id
-                    ) AS ua
-                    ON
-                      t.id = ua.test_id
-                    WHERE
-                      t.active = 1
-                    ORDER BY
-                        ? ?";
-
-        $stmt = $dbAdapter->createStatement($sql, [$user->getId(), $orderby, $order]);
-        $stmt->prepare($sql);
-
-        $result = $stmt->execute();
-        $resultSet = new ResultSet();
-        $resultSet->initialize($result);
-
-        $result = $resultSet->toArray();
+                'active' => 1
+            ])->order("$orderby $order");
 
 
-        $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($result));
+
+        $adapter = new PaginatorDbAdapter($result, $testModel->getAdapter());
+        $paginator = new Paginator($adapter);
 
         $paginator->setCurrentPageNumber($currentPage);
         $paginator->setItemCountPerPage(4);
@@ -255,10 +222,10 @@ class TestController extends AbstractActionController
 
         //top keys match db columns
         $columns = [
-            'name'         =>['text'=>'name', 'attributes'=>['nowrap'=>'true']],
-            'description'  =>['text'=>'description', 'attributes'=>['nowrap'=>'true']],
-            'duration'     =>['text'=>'duration (minutes)', 'attributes'=>['nowrap'=>'true']],
-            'score'        =>['text'=>'Score %', 'attributes'=>['nowrap'=>'true']],
+            'name'         =>['th_text'=>'name', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+            'description'  =>['th_text'=>'description', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+            'duration'     =>['th_text'=>'duration (minutes)', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
+            'score'        =>['th_text'=>'Score %', 'th_attributes'=>['nowrap'=>'true'], 'td_attributes'=>['class'=>'list_exam_score'],'td_formats'=>['tcDefaultCellFormat'=>'%s%%', null=>'%s']],
         ];
 
         $listActions = [
