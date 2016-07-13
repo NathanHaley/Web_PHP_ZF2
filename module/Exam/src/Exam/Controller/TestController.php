@@ -210,8 +210,6 @@ class TestController extends AbstractActionController
                 'active' => 1
             ])->order("$orderby $order");
 
-
-
         $adapter = new PaginatorDbAdapter($result, $testModel->getAdapter());
         $paginator = new Paginator($adapter);
 
@@ -229,9 +227,9 @@ class TestController extends AbstractActionController
         ];
 
         $listActions = [
-            'take'       =>['text'=>'take', 'styleClass'=>Application::BTN_TAKE_DEFAULT],
-            'edit'       =>['text'=>'edit', 'styleClass'=>Application::BTN_EDIT_DEFAULT],
-            'delete'     =>['text'=>'delete', 'styleClass'=>Application::BTN_DELETE_DEFAULT],
+            'take'          =>['text'=>'take', 'styleClass'=>Application::BTN_TAKE_DEFAULT],
+            //'edit'       =>['text'=>'edit', 'styleClass'=>Application::BTN_EDIT_DEFAULT],
+            //'delete'     =>['text'=>'delete', 'styleClass'=>Application::BTN_DELETE_DEFAULT],
         ];
         return array(
             'entities'      => $paginator,

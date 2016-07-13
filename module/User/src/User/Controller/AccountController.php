@@ -147,8 +147,8 @@ class AccountController extends AbstractActionController
 
         $form = $this->setupUserDetailForm($entity);
 
-        //Adjust according to user's role
-        if ($currentUser->getRole() !== 'admin') {
+        //Every can edit thier own password
+        if (($currentUser->getRole() !== 'admin') || (($currentUser->getRole() === 'admin') && ($currentUser->getId() === $id))) {
 
             //Add password verify field
             $form = $this->formAddFields($form, ['password_verify']);
@@ -157,13 +157,12 @@ class AccountController extends AbstractActionController
             $form->remove('role');
             $form->setValidationGroup(['email','name','password','password_verify','phone','csrf']);
 
-
         } else {
-            //Remove password fields, admins do not set passwords for now
-            $form->remove('password');
-            $form->setValidationGroup(['email','name','role','phone','csrf']);
-        }
 
+            //Remove password fields, admins do not set others's passwords for now
+                $form->remove('password');
+                $form->setValidationGroup(['email','name','role','phone','csrf']);
+        }
 
         if ($this->getRequest()->isPost()) {
             $data = array_merge_recursive($this->getRequest()
@@ -176,6 +175,15 @@ class AccountController extends AbstractActionController
             if ($form->isValid()) {
                 // Save data
                 $entityManager = $this->serviceLocator->get('entity-manager');
+
+                $demoAccounts = [1 => 'demoadmin@nathanhaley.com', 2 => 'demouser@nathanhaley.com'];
+
+                if (array_key_exists($entity->getId(), $demoAccounts) === true) {
+                    $this->flashmessenger()->addSuccessMessage("NOTE: demo accounts' username/email and passwords are ignored for edits.");
+
+                    $entity->setEmail($demoAccounts[$entity->getId()]);
+                    $entity->setPassword('pass123');
+                }
 
                 $entity = $entityManager->merge($entity);
                 $entityManager->flush();
@@ -223,12 +231,21 @@ class AccountController extends AbstractActionController
         $entityManager = $this->serviceLocator->get('entity-manager');
         $userEntity = $this->serviceLocator->get('user-entity');
         $userEntity->setId($id);
-        $userEntity = $entityManager->merge($userEntity);
+
+        $demoAccounts = [1 => 'demoadmin@nathanhaley.com', 2 => 'demouser@nathanhaley.com'];
+
+        if (array_key_exists($userEntity->getId(), $demoAccounts) === true) {
+
+            $this->flashmessenger()->addSuccessMessage("NOTE: demo accounts are ignored for delete.");
+
+        } else {
+
+            $userEntity = $entityManager->merge($userEntity);
+            $entityManager->remove($userEntity);
+            $entityManager->flush();
+        }
 
         $this->flashmessenger()->addSuccessMessage("User id: $id removed successfully.");
-
-        $entityManager->remove($userEntity);
-        $entityManager->flush();
 
         // For now redirect to only the list page
         return $this->redirect()->toRoute('user/default', array(

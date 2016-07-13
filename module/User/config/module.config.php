@@ -58,6 +58,20 @@ return array(
                                 'order' => 'desc'
                             ),
                         )
+                    ),
+                    'autologin' => array(
+                        'type'    => 'Segment',
+                        'options' => array (
+                            'route' => '/autologin[/username/:username]',
+                            'constraints'   => array(
+                                'username'  => '[a-zA-Z][a-zA-Z]*',
+                            ),
+                            'defaults' => array(
+                                'controller'=> 'Log',
+                                'action'    => 'autologin',
+                                'username'  => 'demouser'
+                            ),
+                        )
                     )
 
                 ),
@@ -71,19 +85,19 @@ return array(
     ),
     'service_manager' => array (
         'factories' => array(
-            'database' 	       => 'User\Service\Factory\Database',
-            'entity-manager'   => 'User\Service\Factory\EntityManager',
-            'log'	       => 'User\Service\Factory\Log',
-            'password-adapter' => 'User\Service\Factory\PasswordAdapter',
-            'auth' 	       => 'User\Service\Factory\Authentication',
-            'acl'	       => 'User\Service\Factory\Acl',
-            'user'	       => 'User\Service\Factory\User',
+            'database' 	        => 'User\Service\Factory\Database',
+            'entity-manager'    => 'User\Service\Factory\EntityManager',
+            'log'	            => 'User\Service\Factory\Log',
+            'password-adapter'  => 'User\Service\Factory\PasswordAdapter',
+            'auth' 	            => 'User\Service\Factory\Authentication',
+            'acl'	            => 'User\Service\Factory\Acl',
+            'user'	            => 'User\Service\Factory\User',
         ),
         'invokables' => array(
             'table-gateway'     => 'User\Service\Invokable\TableGateway',
             'user-entity'       => 'User\Model\Entity\User',
             'doctrine-profiler' => 'User\Service\Invokable\DoctrineProfiler',
-            'auth-adapter' 	=> 'User\Authentication\Adapter',
+            'auth-adapter' 	    => 'User\Authentication\Adapter',
         ),
         'shared' => array(
             'user-entity' => false,
@@ -116,20 +130,19 @@ return array(
         ),
         'resource' => array (
                 // resource -> single parent
-                'account' => null,
-                'log'     => null,
+                'account'   => null,
+                'log'       => null,
         ),
         'allow' => array (
                 // array('role', 'resource', array('permission-1', 'permission-2', ...)),
-                array('guest', 'log', 'in'),
+                array('guest', 'log', ['in', 'autologin']),
                 array('guest', 'account', 'register'),
-                array('member', 'account', array('me', 'edit')), // the member can only see his account
-                array('member', 'log', 'out'), // the member can log out
-                array('admin', 'account', array('list', 'view', 'delete', 'edit', 'add')),
+                array('member', 'account', ['me', 'edit']),
+                array('member', 'log', ['out', 'autologin']),
+                array('admin', 'account', ['list', 'view', 'delete', 'edit', 'add']),
         ),
         'deny'  => array (
-                array('guest', null, 'delete') // null as second parameter means
-                // all resources
+                array('guest', null, 'delete') // null as second parameter means all resources
 
 
         ),

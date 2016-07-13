@@ -14,6 +14,41 @@ class LogController extends AbstractActionController
         return $this->redirect()->toRoute('home');
     }
 
+    public function autoLoginAction()
+    {
+        $username = $this->params()->fromRoute('username');
+        $autoLoginUsernames = ['demouser', 'demoadmin'];
+
+        if (array_search($username, $autoLoginUsernames) === false ) {
+            $this->flashmessenger()->addErrorMessage("Auto Login only works for the demo accounts at this time.");
+
+            // just show the login form
+            return $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
+
+        }
+
+        $username = $username.'@nathanhaley.com';
+        $password = 'pass123';
+
+        $user = $this->logUserIn($username, $password);
+
+        if($user !== false) {
+
+            $this->flashMessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
+
+            return $this->redirect()->toRoute('user/default', array (
+                'controller' => 'account',
+                'action'     => 'me',
+            ));
+        } else {
+            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
+            $event = new EventManager('user');
+            $event->trigger('log-fail', $this, array('username'=> $username));
+
+            return $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
+        }
+    }
+
     public function inAction()
     {
         if (!$this->getRequest()->isPost()) {
@@ -23,16 +58,39 @@ class LogController extends AbstractActionController
 
         $username = $this->params()->fromPost('username');
 
-        //forward from register action
+        //adjust for forward from register action
         If($this->params()->fromPost('email')) {
             $username = $this->params()->fromPost('email');
-
         }
 
         $password = $this->params()->fromPost('password');
 
+        $user = $this->logUserIn($username, $password);
+
+        if($user !== false) {
+
+            $this->flashMessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
+
+            return $this->redirect()->toRoute('user/default', array (
+                'controller' => 'account',
+                'action'     => 'me',
+            ));
+        } else {
+            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
+            $event = new EventManager('user');
+            $event->trigger('log-fail', $this, array('username'=> $username));
+
+
+            return [];//array('errors' => $result->getMessages());
+        }
+
+    }
+
+    protected function logUserIn($username, $password)
+    {
         $auth = $this->serviceLocator->get('auth');
         $authAdapter = $auth->getAdapter();
+
         // below we pass the username and the password to the authentication adapter for verification
         $authAdapter->setIdentity($username);
         $authAdapter->setCredential($password);
@@ -40,6 +98,7 @@ class LogController extends AbstractActionController
         // here we do the actual verification
         $result = $auth->authenticate();
         $isValid = $result->isValid();
+
         if($isValid) {
             // upon successful validation the getIdentity method returns
             // the user entity for the provided credentials
@@ -48,19 +107,10 @@ class LogController extends AbstractActionController
 
             // @todo: upon successful validation store additional information about him in the auth storage
 
-            $this->flashMessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
-
-            return $this->redirect()->toRoute('user/default', array (
-                    'controller' => 'account',
-                    'action'     => 'me',
-            ));
+            return $user;
         } else {
-            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
-            $event = new EventManager('user');
-            $event->trigger('log-fail', $this, array('username'=> $username));
 
-
-            return array('errors' => $result->getMessages());
+            return false;
         }
     }
 }
