@@ -58,4 +58,14 @@ span.ordered_by {
     border-bottom:2px solid #68b604;
 }
 
+html,body {
+    height:101%;
+}
+
+.badge-exam-score-100 {
+	background-color: #ffd700 !important;
+	color: #0028ff !important;
+	border: 1px solid #eeb111 !important;
+}
+
 

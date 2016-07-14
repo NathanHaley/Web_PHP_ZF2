@@ -20,7 +20,7 @@
                                       ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
 
     </head>
-    <body>
+    <body class="container">    
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -79,32 +79,42 @@
 					</div><!--/.nav-collapse -->
                 </div>
             </div>
-            <div class="breadcrumb">
+            <div class="container breadcrumb">
             	<?php 
-            	   echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(1)->setseparator(' >>'.PHP_EOL);
-            	?>
-            </div>    
-<?php 
-$namespaces = array ('error','success','info','default');
-foreach ($namespaces as $namespace) {
-	$flashMessages = $this->flashmessenger()->render($namespace);
-    if (!empty($flashMessages)) {
-?>
-<div id="myAlert" class="alert alert-<?= $namespace ?>" data-alert="alert">
-    <a class="close" data-dismiss="alert">×</a>
-    <?= $this->translate($flashMessages )?>
-</div>
-<?php 	
-	}
-}    
-?>  
+            	$serviceLocator = $this->getHelperPluginManager()->getServiceLocator();
+            	$routeMatch = $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch();
+            	
+                $homeLink = '<a href="/">Home</a> >> ';
+                if (($routeMatch->getMatchedRouteName() === 'home') || ($routeMatch->getMatchedRouteName() === 'application/default')){
+                    $homeLink = '';
+                }
+                echo $homeLink.$this->navigation('navigation')->breadcrumbs()->setMinDepth(1)->setseparator(' >> ');
+            	?> 
+        	</div>
+        <?php 
+        $namespaces = array ('error','success','info','default','warning');
+        foreach ($namespaces as $namespace) {
+        	$flashMessages = $this->flashmessenger()->render($namespace);
+            if (!empty($flashMessages)) {
+        ?>
         <div class="container">
-        	<?php if(isset($currentPageLabel)){ printf("<div class=\"page-header\"><h1>%s</h1></div>", $currentPageLabel); /*alway null currently*/} ?>
-            <?php echo $this->content; ?>
+            <div class="alert alert-<?= str_replace('error', 'danger', $namespace) ?>" data-alert="alert">
+                <a class="close" data-dismiss="alert">×</a>
+                <?= '<strong>'.ucfirst($namespace)."!</strong> ".$this->translate($flashMessages )?>
+            </div>
+        </div>
+        <?php 	
+        	}
+        }    
+        ?>  
+        <div class="container">
+        	<?php 
+        	   if(isset($currentPageLabel)){ printf("<div class=\"page-header\"><h1>%s</h1></div>", $currentPageLabel); /*always null currently*/}
+             	echo $this->content; 
+            ?>
         </div>
         <hr>
-        <footer>
-        	<div class="container">
+        <footer class="container">
             	<div class="row">
                     <div class="col-md-4">
                     	<p>&copy; <?php if(date('Y')==2016){ echo '2016'; } else { echo '2016 - '.date('Y');} ?> by PHPtc.com. <?php echo $this->translate('All rights reserved.'); ?></p>
@@ -113,7 +123,6 @@ foreach ($namespaces as $namespace) {
                     	<a href="<?php printf("%s", '/application/index/privacy'); ?>"><?php echo $this->translate('Privacy'); ?></a>
                     </div>
                 </div>
-            </div>
         </footer>
         <?php echo $this->inlineScript() ?>
     </body>

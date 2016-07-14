@@ -179,7 +179,7 @@ class AccountController extends AbstractActionController
                 $demoAccounts = [1 => 'demoadmin@nathanhaley.com', 2 => 'demouser@nathanhaley.com'];
 
                 if (array_key_exists($entity->getId(), $demoAccounts) === true) {
-                    $this->flashmessenger()->addSuccessMessage("NOTE: demo accounts' username/email and passwords are ignored for edits.");
+                    $this->flashmessenger()->addWarningMessage("NOTE: demo accounts' username/email and passwords are ignored for edits.");
 
                     $entity->setEmail($demoAccounts[$entity->getId()]);
                     $entity->setPassword('pass123');
@@ -236,7 +236,7 @@ class AccountController extends AbstractActionController
 
         if (array_key_exists($userEntity->getId(), $demoAccounts) === true) {
 
-            $this->flashmessenger()->addSuccessMessage("NOTE: demo accounts are ignored for delete.");
+            $this->flashmessenger()->addWarningMessage("NOTE: demo accounts are ignored for delete.");
 
         } else {
 

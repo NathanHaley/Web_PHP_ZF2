@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-13: Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added.
+
 2016-07-13: Added auto login feature for demoadmin and demouser accounts for visitors on homepage. Added ignore demo accounts for edit and delete. Lists page action fields' header tied to actions array.
 
 2016-07-12: Add showing user's highest score for given test/exam in exam list.

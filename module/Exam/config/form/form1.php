@@ -156,7 +156,7 @@ try {
 echo $e instanceof NonExistentException ? 1: 0;
 ?>',
                                 'answers' => array(
-                                        'bad!0'
+                                        'Bad!0'
                                 )
                         )
                 )

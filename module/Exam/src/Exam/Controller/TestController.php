@@ -38,9 +38,9 @@ class TestController extends AbstractActionController
     public function takeAction()
     {
         $startTime = time();
-        if(! isset($user->examStartTime)){
-            $user->examStartTime = time();
-        }
+        //if(! isset($user->examStartTime)){
+        //   $user->examStartTime = time();
+        //}
 
         $id = $this->params('id');
         if (! $id) {
@@ -115,11 +115,11 @@ class TestController extends AbstractActionController
             }
 
 
-            $score = round($correct/$total*100);
+            $score = intval(round($correct/$total*100));
 
             if ($score === 0) {
 
-                $this->flashmessenger()->addErrorMessage('You failed. That is sad but you can try again.');
+                $this->flashmessenger()->addInfoMessage('No correct answers. That is sad... but you can try again.');
 
             } elseif ($score === 100) {
 
@@ -134,7 +134,7 @@ class TestController extends AbstractActionController
 
             } else {
 
-                $this->flashmessenger()->addMessage(sprintf('Score = %d%%, %d out of total %d correct.100%% correct needed for certificate.', $score, $correct, $total));
+                $this->flashmessenger()->addInfoMessage(sprintf('Score = %d%%, %d out of total %d correct.100%% correct needed for certificate.', $score, $correct, $total));
 
             }
 
@@ -223,7 +223,7 @@ class TestController extends AbstractActionController
             'name'         =>['th_text'=>'name', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
             'description'  =>['th_text'=>'description', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
             'duration'     =>['th_text'=>'duration (minutes)', 'th_attributes'=>['nowrap'=>'true'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
-            'score'        =>['th_text'=>'Score %', 'th_attributes'=>['nowrap'=>'true'], 'td_attributes'=>['class'=>'list_exam_score'],'td_formats'=>['tcDefaultCellFormat'=>'%s%%', null=>'%s']],
+            'score'        =>['th_text'=>'Score %', 'th_attributes'=>['nowrap'=>'true'], 'td_attributes'=>['class'=>'list_exam_score'],'td_formats'=>['tcDefaultCellFormat'=>'%s%%', null=>'%s', '100'=>'<span class="badge badge-exam-score-100"><strong>%s</strong></span>']],
         ];
 
         $listActions = [

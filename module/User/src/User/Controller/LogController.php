@@ -41,9 +41,12 @@ class LogController extends AbstractActionController
                 'action'     => 'me',
             ));
         } else {
-            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
+            //Really shouldn't get here.
+            
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('username'=> $username));
+            
+            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
 
             return $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
         }
