@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-14: layout.php,module.configs Refactoring, nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level.
+
 2016-07-13: Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added.
 
 2016-07-13: Added auto login feature for demoadmin and demouser accounts for visitors on homepage. Added ignore demo accounts for edit and delete. Lists page action fields' header tied to actions array.

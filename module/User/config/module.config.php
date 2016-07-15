@@ -1,90 +1,90 @@
 <?php
-return array(
-    'controllers' => array(
-        'invokables' => array(
+return [
+    'controllers' => [
+        'invokables' => [
            // below is key              and below is the fully qualified class name
            'User\Controller\Account' => 'User\Controller\AccountController',
            'User\Controller\Log'     => 'User\Controller\LogController',
-        ),
-    ),
-    'router' => array(
-        'routes' => array(
-            'user' => array(
+        ],
+    ],
+    'router' => [
+        'routes' => [
+            'user' => [
                 'type'    => 'Literal',
-                'options' => array(
+                'options' => [
                     // Change this to something specific to your module
                     'route'    => '/user',
-                    'defaults' => array(
+                    'defaults' => [
                         // Change this value to reflect the namespace in which
                         // the controllers for your module are found
                         '__NAMESPACE__' => 'User\Controller',
                         'controller'    => 'Account',
                         'action'        => 'me',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
+                'child_routes' => [
                     // This route is a sane default when developing a module;
                     // as you solidify the routes for your module, however,
                     // you may want to remove it and replace it with more
                     // specific routes.
-                    'default' => array(
+                    'default' => [
                         'type'    => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:controller[/:action[/:id]]]',
-                            'constraints' => array(
+                            'constraints' => [
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'         => '[0-9]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                    'list' => array(
+                            ],
+                            'defaults' => [
+                            ],
+                        ],
+                    ],
+                    'list' => [
                         'type'    => 'Segment',
-                        'options' => array (
-                            'route' => '/user/list[/page/:page][/orderby/:orderby][/order/:order]',
-                            'constraints' => array(
+                        'options' => [
+                            'route' => '/list[/page/:page][/orderby/:orderby][/order/:order]',
+                            'constraints' => [
                                 'page'     => '[0-9]*',
                                 'orderby' => 'id|email|name|role',
                                 'order' => 'asc|desc'
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller'    => 'Account',
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby' => 'id',
                                 'order' => 'desc'
-                            ),
-                        )
-                    ),
-                    'autologin' => array(
+                            ],
+                        ]
+                    ],
+                    'autologin' => [
                         'type'    => 'Segment',
-                        'options' => array (
+                        'options' => [
                             'route' => '/autologin[/username/:username]',
-                            'constraints'   => array(
+                            'constraints'   => [
                                 'username'  => '[a-zA-Z][a-zA-Z]*',
-                            ),
-                            'defaults' => array(
+                            ],
+                            'defaults' => [
                                 'controller'=> 'Log',
                                 'action'    => 'autologin',
                                 'username'  => 'demouser'
-                            ),
-                        )
-                    )
+                            ],
+                        ]
+                    ]
 
-                ),
-            ),
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
+                ],
+            ],
+        ],
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
             'User' => __DIR__ . '/../view',
-        ),
-    ),
-    'service_manager' => array (
-        'factories' => array(
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
             'database' 	        => 'User\Service\Factory\Database',
             'entity-manager'    => 'User\Service\Factory\EntityManager',
             'log'	            => 'User\Service\Factory\Log',
@@ -92,170 +92,175 @@ return array(
             'auth' 	            => 'User\Service\Factory\Authentication',
             'acl'	            => 'User\Service\Factory\Acl',
             'user'	            => 'User\Service\Factory\User',
-        ),
-        'invokables' => array(
+        ],
+        'invokables' => [
             'table-gateway'     => 'User\Service\Invokable\TableGateway',
             'user-entity'       => 'User\Model\Entity\User',
             'doctrine-profiler' => 'User\Service\Invokable\DoctrineProfiler',
             'auth-adapter' 	    => 'User\Authentication\Adapter',
-        ),
-        'shared' => array(
+        ],
+        'shared' => [
             'user-entity' => false,
-        ),
-        'initializers' => array (
+        ],
+        'initializers' => [
             'User\Service\Initializer\Password'
-        ),
-    ),
-    'table-gateway' => array(
-        'map' => array(
+        ],
+    ],
+    'table-gateway' => [
+        'map' => [
             'users' => 'User\Model\User',
-        )
-    ),
-    'doctrine' => array(
-        'entity_path' => array (
+        ]
+    ],
+    'doctrine' => [
+        'entity_path' => [
                 __DIR__ . '/../src/User/Model/Entity/',
-        ),
-        'initializers' => array (
+        ],
+        'initializers' => [
             // add here the list of initializers for Doctrine 2 entities..
             'User\Service\Initializer\Password'
-        ),
-    ),
+        ],
+    ],
 
-    'acl' => array(
-        'role' => array (
+    'acl' => [
+        'role' => [
                 // role -> multiple parents
                 'guest'   => null,
                 'member'  => null,
                 'admin'   => 'member',
-        ),
-        'resource' => array (
+        ],
+        'resource' => [
                 // resource -> single parent
                 'account'   => null,
                 'log'       => null,
-        ),
-        'allow' => array (
-                // array('role', 'resource', array('permission-1', 'permission-2', ...)),
-                array('guest', 'log', ['in', 'autologin']),
-                array('guest', 'account', 'register'),
-                array('member', 'account', ['me', 'edit']),
-                array('member', 'log', ['out', 'autologin']),
-                array('admin', 'account', ['list', 'view', 'delete', 'edit', 'add']),
-        ),
-        'deny'  => array (
-                array('guest', null, 'delete') // null as second parameter means all resources
+        ],
+        'allow' => [
+                // ['role', 'resource', ['permission-1', 'permission-2', ...]],
+                ['guest', 'log', ['in', 'autologin']],
+                ['guest', 'account', 'register'],
+                ['member', 'account', ['me', 'edit']],
+                ['member', 'log', ['out', 'autologin']],
+                ['admin', 'account', ['list', 'view', 'delete', 'edit', 'add']],
+        ],
+        'deny'  => [
+                ['guest', null, 'delete'] // null as second parameter means all resources
 
 
-        ),
-        'defaults' => array (
+        ],
+        'defaults' => [
                 'guest_role' => 'guest',
                 'member_role' => 'member',
                 'default_role' => 'member',
                 'admin_role' => 'admin'
-        ),
-        'resource_aliases' => array (
+        ],
+        'resource_aliases' => [
                 'User\Controller\Account' => 'account',
-        ),
+        ],
 
         // List of modules to apply the ACL. This is how we can specify if we have to protect the pages in our current module.
-        'modules' => array (
+        'modules' => [
                 'User',
-        ),
-    ),
+        ],
+    ],
     // Below is the menu navigation for this module
-    'navigation' => array(
-        'default' => array(
-            array(
-                'label' => 'User',
-                'route' => 'user/default',
-                'controller'=> 'account',
-                'pages' => array(
-                        array(
-                            'label' => 'Me',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'me',
-                            'resource' => 'account',
-                            'privilege' => 'me',
-                        ),
-                        array(
-                            'label' => 'Log in',
+    'navigation' => [
+        'default' => [
+            [
+                'label'         => 'User',
+                'title'         => 'User',
+                'route'         => 'user/default',
+                'controller'    => 'account',
+                'pages' => [
+                        [
+                            'label'         => 'Me',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'me',
+                            'resource'      => 'account',
+                            'privilege'     => 'me',
+                            'title'         => 'My Account'
+                        ],
+                        [
+                            'label'         => 'Log in',
                             // uri
-                            'route' => 'user/default',
-                            'controller' => 'log',
-                            'action'    => 'in',
+                            'route'         => 'user/default',
+                            'controller'    => 'log',
+                            'action'        => 'in',
                             // acl
-                            'resource'  => 'log',
-                            'privilege' => 'in'
-                        ),
-                        array(
-                            'label' => 'Register',
+                            'resource'      => 'log',
+                            'privilege'     => 'in',
+                            'title'         => 'Log In'
+                        ],
+                        [
+                            'label'         => 'Register',
                             // uri
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action'     => 'register',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'register',
                             // acl
-                            'resource' => 'account',
-                            'privilege' => 'register'
-                        ),
-                        array(
-                            'label' => 'Log out',
-                            'route' => 'user/default',
-                            'controller' => 'log',
-                            'action'    => 'out',
-                            'resource'  => 'log',
-                            'privilege' => 'out'
-                        ),
-                        array(
-                            'label' => 'List',
-                            'route' => 'user/list',
-                            'resource' => 'account',
-                            'privilege' => 'list', //Only for admins
-                        ),
-                        array(
-                            'label' => 'Add',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'add',
-                            'resource' => 'account',
-                            'privilege' => 'add',
-                        ),
-                        array(
-                            'label' => 'Edit',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'edit',
-                            'resource' => 'account',
-                            'privilege' => 'edit',
-                        ),
-                        /* Accessed from the list page
-                        array(
-                            'label' => 'View',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'view',
-                            'resource' => 'account',
-                            'privilege' => 'view',//Only for admins
-                        ),
-                        array(
-                            'label' => 'Edit',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'edit',
-                            'resource' => 'account',
-                            'privilege' => 'edit',
-                        ),
-                        array(
-                            'label' => 'Delete',
-                            'route' => 'user/default',
-                            'controller' => 'account',
-                            'action' => 'delete',
-                            'resource' => 'account',
-                            'privilege' => 'delete',
-                        ),*/
+                            'resource'      => 'account',
+                            'privilege'     => 'register',
+                            'title'         => 'Create/Register An Account'
+                        ],
+                        [
+                            'label'         => 'Log out',
+                            'route'         => 'user/default',
+                            'controller'    => 'log',
+                            'action'        => 'out',
+                            'resource'      => 'log',
+                            'privilege'     => 'out',
+                            'title'         => 'Log Out'
+                        ],
+                        [
+                            'label'         => 'List',
+                            'route'         => 'user/list',
+                            'resource'      => 'account',
+                            'privilege'     => 'list',
+                            'title'         => 'Users Account List'
+                        ],
+                        [
+                            'label'         => 'Add',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'add',
+                            'resource'      => 'account',
+                            'privilege'     => 'add',
+                            'title'         => 'Add/Create User Account'
+                        ],
+                        [
+                            'label'         => 'Edit',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'edit',
+                            'resource'      => 'account',
+                            'privilege'     => 'edit',
+                            'title'         => 'Edit User Account'
+                        ],
+                        /* Accessed from the list page */
+                        [
+                            'label'         => 'View',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'view',
+                            'resource'      => 'account',
+                            'privilege'     => 'view',
+                            'visible'       => false,
+                            'title'         => 'View User Account Details'
+                        ],
+                        [
+                            'label'         => 'Delete',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'delete',
+                            'resource'      => 'account',
+                            'privilege'     => 'delete',
+                            'visible'       => false,
+                            'title'         => 'Delete User Account'
+                            
+                        ],
 
-                )
-            )
-        )
-    ),
+                ]
+            ]
+        ]
+    ],
 
-);
+];

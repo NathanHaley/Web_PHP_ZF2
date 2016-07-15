@@ -1,41 +1,11 @@
 body {
     padding-top: 60px;
     padding-bottom: 40px;
+    color: #5a5a5a;
 }
 
 .zf-green {
     color: #68b604;
-}
-
-.btn-success {
-  background-color: #57a900;
-  background-image: -moz-linear-gradient(top, #70d900, #57a900);
-  background-image: -ms-linear-gradient(top, #70d900, #57a900);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
-  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
-  background-image: -o-linear-gradient(top, #70d900, #57a900);
-  background-image: linear-gradient(top, #70d900, #57a900);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
-}
-
-.btn-success:hover,
-.btn-success:active,
-.btn-success.active,
-.btn-success.disabled,
-.btn-success[disabled] {
-  background-color: #57a900;
-}
-
-.btn-success:active, .btn-success.active {
-  background-color: #57a900;
-}
-
- #navbar-brand-1 {
-    background: url("../images/phptcicon.png") no-repeat scroll 0 10px transparent !important;
-    background-size: 28px !important;
-    margin-left: 0 !important;
-    padding: 15px 20px 12px 36px !important;
-    background-position: left center !important;
 }
 
 div.breadcrumb {
@@ -68,4 +38,16 @@ html,body {
 	border: 1px solid #eeb111 !important;
 }
 
+.brand {
+	background-color: #68b604 !important;
+	color: #1e1f1f!important;
+	border-bottom: 1px solid #68b604;
+}
+.navbar-default .navbar-brand {
+  color: #777;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  background-color: #8ae234;
+}
 

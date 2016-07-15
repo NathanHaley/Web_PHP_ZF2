@@ -22,3 +22,5 @@ prep*
 Vagrantfile
 module/Album/*
 demo*.zip
+logs
+my-http*

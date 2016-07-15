@@ -1,90 +1,86 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
+ * Zend Framework (http://framework.zend.com/]
  *
  * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c] 2005-2012 Zend Technologies USA Inc. (http://www.zend.com]
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-return array(
-    'application' => array (
-        'name' 	  => 'Training Center',
-        'version' => '0.0.2'
-    ),
-    'router' => array(
-        'routes' => array(
-            'home' => array(
+return [
+    'application' => [
+        'name' 	        => 'Training Center',
+        'version'       => '0.0.2',
+        'admin-email'   => 'demoadmin@nathanhaley.com'
+    ],
+    'router' => [
+        'routes' => [
+            'home' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
-                    ),
-                ),
-            ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'application' => array(
+                    ],
+                ],
+            ],
+            'application' => [
                 'type'    => 'Literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/application',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
+                'child_routes' => [
+                    'default' => [
                         'type'    => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
+                            'constraints' => [
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+                            ],
+                            'defaults' => [],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'cipher'     => 'Application\Service\Factory\SymmetricCipher',
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-        ),
-    ),
-    'translator' => array(
+        ],
+    ],
+    'translator' => [
         'locale' => 'en_US',
-        'translation_file_patterns' => array(
-            array(
+        'translation_file_patterns' => [
+            [
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
+            ],
+        ],
+    ],
+    'controllers' => [
+        'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ),
-    ),
-    'view_manager' => array(
+        ],
+    ],
+    'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
+        'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
@@ -93,35 +89,40 @@ return array(
             'paginator/sliding'       => __DIR__ . '/../view/paginator/sliding.phtml',
             //data/entity lists
             'forms/entity_list'       => __DIR__ . '/../view/share/forms/entity_list.phtml',
-        ),
-        'template_path_stack' => array(
+        ],
+        'template_path_stack' => [
             __DIR__ . '/../view',
-        ),
-    ),
-    'navigation' => array(
-        'default' => array(
-            array(
-                'label' => 'Home',
-                'route' => 'home',
-                'pages' => array (
-                    array(
-                        'label' => 'About',
-                        'route' => 'application/default',
-                        'controller' => 'index',
-                        'action' => 'about'
-                    ),
-                    array(
-                        'label' => 'Book',
-                        'uri'   => 'http://learnzf2.com',
-                    ),
-                    array(
-                        'label' => 'Privacy',
-                        'route' => 'application/default',
-                        'controller' => 'index',
-                        'action' => 'privacy'
-                    )
-                )
-            ),
-        )
-    ),
-);
+        ],
+    ],
+    'navigation' => [
+        'default' => [
+            [
+                'label'         => 'Home',
+                'title'         => 'Home',
+                'route'         => 'home',
+                'controller'    => 'index',
+                'pages' => [
+                    [
+                        'label'         => 'About',
+                        'route'         => 'application/default',
+                        'controller'    => 'index',
+                        'action'        => 'about',
+                        'title'         => 'About Us'
+                    ],
+                    [
+                        'label'     => 'Book',
+                        'uri'       => 'http://learnzf2.com',
+                        'title'     => 'Book Learnzf2'
+                    ],
+                    [
+                        'label'         => 'Privacy',
+                        'route'         => 'application/default',
+                        'controller'    => 'index',
+                        'action'        => 'privacy',
+                        'title'         => 'Privacy Statement'
+                    ]
+                ]
+            ],
+        ]
+    ],
+];

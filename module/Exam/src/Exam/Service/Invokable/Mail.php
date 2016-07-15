@@ -29,6 +29,9 @@ class Mail implements ServiceLocatorAwareInterface
 
         $testManager = $this->services->get('test-manager');
         $exam = $testManager->get($examId);
+        
+        $config = $this->services->get('config');
+        $adminEmail = $config['application']['admin-email'];
 
 $text = 'You are genius!
 For exam '.$exam['name'].' you answered all the questions correctly.
@@ -40,7 +43,7 @@ Therefore we are sending you as a gratitude this free award certificate. NOTE: n
         // create the original body as part
         $textPart = new MimePart($text);
         $textPart->type = "text/plain";
-        // add the pdf document as a second part
+        // add the pdf document as a second part NOTE: disabled for now
         //$pdfPart = new MimePart($pdf->render());
         //$pdfPart->type = 'application/pdf';
         //$mimeMessage->setParts(array($textPart, $pdfPart));
@@ -49,7 +52,7 @@ Therefore we are sending you as a gratitude this free award certificate. NOTE: n
 
         $mail->setBody($mimeMessage);
 
-        $mail->setFrom('demoadmin@nathanhaley.com');
+        $mail->setFrom($adminEmail);
         $mail->setSubject($translator->translate('Congratulations'));
 
         $transport = $this->services->get('mail-transport');

@@ -1,25 +1,25 @@
 <?php
-return array(
-    'view_manager' => array(
-        'template_path_stack' => array(
+return [
+    'view_manager' => [
+        'template_path_stack' => [
             'Debug' => __DIR__ . '/../view',
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
             'timer' => 'Debug\Service\Factory\Timer'
-        ),
-        'initializers' => array(
+        ],
+        'initializers' => [
             'Debug\Service\Initializer\DbProfiler',
-        ),
-        'aliases' => array(
+        ],
+        'aliases' => [
             'Application\Timer' => 'timer',
-        )
-    ),
-    'timer' => array (
+        ]
+    ],
+    'timer' => [
         'times_as_float' => true,
-    ),
-    'debug' => array(
+    ],
+    'debug' => [
         'isDisplayed' => false,
-    ),
-);
+    ],
+];

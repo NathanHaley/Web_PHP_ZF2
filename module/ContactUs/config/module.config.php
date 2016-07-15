@@ -1,128 +1,127 @@
 <?php
-return array(
-    'view_manager' => array(
-        'template_path_stack' => array(
+return [
+    'view_manager' => [
+        'template_path_stack' => [
             'ContactUs' => __DIR__ . '/../view'
-        )
-    ),
-    'controllers' => array(
-        'invokables' => array(
+        ]
+    ],
+    'controllers' => [
+        'invokables' => [
             'ContactUs\Controller\Index' => 'ContactUs\Controller\IndexController'
-        )
-    ),
-    'router' => array(
-        'routes' => array(
-            'contactus' => array(
+        ]
+    ],
+    'router' => [
+        'routes' => [
+            'contactus' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/contactus',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'ContactUs\Controller',
-                        'controller' => 'Index',
-                        'action' => 'index'
-                    )
-                ),
+                        'controller'    => 'Index',
+                        'action'        => 'index'
+                    ]
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    // This route is a sane default when developing a module;
-                    // as you solidify the routes for your module, however,
-                    // you may want to remove it and replace it with more
-                    // specific routes.
-                    'default' => array(
+                'child_routes' => [
+                    'default' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route' => '/[:controller[/:action[/:id]]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'id' => '[0-9]*'
-                            ),
-                            'defaults' => array()
-                        )
-                    ),
+                            'constraints' => [
+                                'controller'    => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'        => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'            => '[0-9]*'
+                            ],
+                            'defaults' => []
+                        ]
+                    ],
 
-                    'list' => array(
+                    'list' => [
                         'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/contactus/list[/page/:page][/orderby/:orderby][/order/:order]',
-                            'constraints' => array(
-                                'page' => '[0-9]*',
-                                'orderby' => 'email|name|comments|time',
-                                'order' => 'asc|desc'
-                            ),
-                            'defaults' => array(
-                                'controller' => 'Index',
-                                'action' => 'list',
-                                'page' => '1',
-                                'orderby' => 'time',
-                                'order' => 'desc'
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    ),
-    'service_manager' => array(
-        'factories' => array(
-            'database' => 'ContactUs\Service\Factory\Database',
-            'entity-manager' => 'ContactUs\Service\Factory\EntityManager'
-        ),
-        'invokables' => array(
-            'table-gateway' => 'ContactUs\Service\Invokable\TableGateway',
-            'contactus-entity' => 'ContactUs\Model\Entity\ContactUs',
+                        'options' => [
+                            'route' => '/list[/page/:page][/orderby/:orderby][/order/:order]',
+                            'constraints' => [
+                                'page'      => '[0-9]*',
+                                'orderby'   => 'email|name|comments|time',
+                                'order'     => 'asc|desc'
+                            ],
+                            'defaults' => [
+                                'controller'    => 'Index',
+                                'action'        => 'list',
+                                'page'          => '1',
+                                'orderby'       => 'time',
+                                'order'         => 'desc'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    'service_manager' => [
+        'factories' => [
+            'database'          => 'ContactUs\Service\Factory\Database',
+            'entity-manager'    => 'ContactUs\Service\Factory\EntityManager'
+        ],
+        'invokables' => [
+            'table-gateway'     => 'ContactUs\Service\Invokable\TableGateway',
+            'contactus-entity'  => 'ContactUs\Model\Entity\ContactUs',
             'doctrine-profiler' => 'ContactUs\Service\Invokable\DoctrineProfiler'
-        ),
-        'shared' => array(
+        ],
+        'shared' => [
             'contactUs-entity' => false
-        )
-    ),
-    'table-gateway' => array(
-        'map' => array(
+        ]
+    ],
+    'table-gateway' => [
+        'map' => [
             'contactus' => 'ContactUs\Model\ContactUs'
-        )
-    ),
-    'doctrine' => array(
+        ]
+    ],
+    'doctrine' => [
         __DIR__ . '/../src/ContactUs/Model/Entity/'
-    ),
-    'initializers' => array()
+    ],
+    'initializers' => []
     // add here the list of initializers for Doctrine 2 entities..
     ,
-    'acl' => array(
-        'resource' => array(
+    'acl' => [
+        'resource' => [
             'index' => null
-        ),
-        'allow' => array(
-            array('guest','index','index'),
-            array('member','index','index'),
-            array('admin','index',array('index', 'list', 'view', 'edit', 'delete'))
-        ),
-        'modules' => array(
+        ],
+        'allow' => [
+            ['guest','index','index'],
+            ['member','index','index'],
+            ['admin','index',['index', 'list', 'view', 'edit', 'delete']]
+        ],
+        'modules' => [
             'ContactUs'
-        )
-    ),
-    'navigation' => array(
-        'default' => array(
-            array(
-                'label' => 'Contact',
-                'route' => 'contactus',
-                'pages' => array(
-                    array(
-                        'label' => 'List',
-                        'route' => 'contactus/list',
+        ]
+    ],
+    'navigation' => [
+        'default' => [
+            [
+                'label'         => 'Contact Us',
+                'title'         => 'Contact Us',
+                'route'         => 'contactus/default',
+                'controller'    => 'index',
+                'pages'         => [
+                    [
+                        'label'         => 'List',
+                        'route'         => 'contactus/list',
+                        'resource'      => 'index',
+                        'privilege'     => 'list',
+                        'title'         => 'Contact Us Submissions'
+                    ],
+                    [
+                        'label'         => 'Contact Us',
+                        'route'         => 'contactus/default',
                         // acl
-                        'resource' => 'index',
-                        'privilege' => 'list'
-                    ),
-                    array(
-                        'label' => 'Contact Us',
-                        'route' => 'contactus',
-                        // acl
-                        'resource' => 'index',
-                        'privilege' => 'index'
-                    )
-                )
-            )
-        )
-    )
-);
+                        'resource'      => 'index',
+                        'privilege'     => 'index',
+                        'title'         => 'Contact Us'
+                    ]
+                ]
+            ]
+        ]
+    ]
+];

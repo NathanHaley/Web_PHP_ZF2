@@ -17,7 +17,7 @@ use Zend\EventManager\EventManager;
 use Application\Model\Application;
 use Zend\Db\Sql\Select;
 
-class TestController extends AbstractActionController
+class ExamController extends AbstractActionController
 {
 
     public function indexAction()
@@ -241,7 +241,7 @@ class TestController extends AbstractActionController
             'listActions'   => $listActions,
             'pageTitle'     => 'Exam List',
             'route'         => 'exam',
-            'controller'    => 'test'
+            'controller'    => 'exam'
         );
     }
 

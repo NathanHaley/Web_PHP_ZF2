@@ -1,21 +1,21 @@
-<div class="container jumbotron">
+<div class="jumbotron">
     <h2><?php 
         echo sprintf($this->translate('Welcome to %s '), $this->applicationName);
         echo sprintf($this->translate('version: %s'), $this->version) ?>
     </h2>
-    <h4>This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov</h4>
+    <h4>This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov.</h4>
 </div>
 
-<div class="container well">
+<div class="well">
 	<div class="row">
 		<div class="col-md-4">
-            <h3>Demo user: </h3>
+            <h3>Demo User</h3>
             <p>demouser@nathanhaley.com </p>
           	<p>pass123</p>
           	<p><a class="btn btn-sm btn-primary" href="user/autologin/username/demouser">Auto login me in as demouser</a></p>
         </div>
         <div class="col-md-4">
-            <h3>Demo admin:</h3>
+            <h3>Demo Admin</h3>
             <p>demoadmin@nathanhaley.com</p>
             <p>pass123</p>
             <p><a class="btn btn-sm btn-danger" href="user/autologin/username/demoadmin">Auto login me in as demoadmin</a></p>
@@ -29,9 +29,11 @@
     </div>
 </div>
 
-<div class="container well">
+<div class="well">
 
 <h4>Site Change log:</h4>
+
+<p>2016-07-14: layout.php,module.configs Refactoring, nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level.</p>
 
 <p>2016-07-13: Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added.</p>
 
