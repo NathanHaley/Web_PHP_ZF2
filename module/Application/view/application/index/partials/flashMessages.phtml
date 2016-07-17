@@ -1,0 +1,18 @@
+<?php 
+   
+    $namespaces = array ('error','success','info','default','warning');
+    
+    foreach ($namespaces as $namespace) {
+    	$flashMessages = $this->flashmessenger()->render($namespace);
+        if (!empty($flashMessages)) {
+?>
+        <div class="container">
+            <div class="alert alert-<?= str_replace('error', 'danger', $namespace) ?>" data-alert="alert">
+                <a class="close" data-dismiss="alert">×</a>
+                <?= '<strong>'.ucfirst($namespace)."!</strong> ".$this->translate($flashMessages )?>
+            </div>
+        </div>
+<?php 	
+        }
+    }    
+?>  

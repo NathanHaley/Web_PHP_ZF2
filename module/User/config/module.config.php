@@ -255,7 +255,7 @@ return [
                             'privilege'     => 'delete',
                             'visible'       => false,
                             'title'         => 'Delete User Account'
-                            
+
                         ],
 
                 ]

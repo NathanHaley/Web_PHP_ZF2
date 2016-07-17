@@ -29,7 +29,7 @@ class Mail implements ServiceLocatorAwareInterface
 
         $testManager = $this->services->get('test-manager');
         $exam = $testManager->get($examId);
-        
+
         $config = $this->services->get('config');
         $adminEmail = $config['application']['admin-email'];
 

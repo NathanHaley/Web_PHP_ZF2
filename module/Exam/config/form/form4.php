@@ -18,12 +18,12 @@ return array(
                 'options' => array(
                     'question' => 'Which scalar types does PHP have?',
                     'value_options' => array(
-                        '1' => ' long',
-                        '2' => ' boolean',
-                        '3' => ' integer',
-                        '4' => ' float (aka double)',
-                        '5' => ' string',
-                        '6' => ' char'
+                        '1' => ' - long',
+                        '2' => ' - boolean',
+                        '3' => ' - integer',
+                        '4' => ' - float (aka double)',
+                        '5' => ' - string',
+                        '6' => ' - char'
                     ),
                     'answers' => array(
                         '2',
@@ -68,14 +68,14 @@ echo (int) ( (0.1+0.7) * 10 );
                 'options' => array(
                     'question' => 'Which code snippets generate output: bool(false)',
                     'value_options' => array(
-                        '1' => 'var_dump((bool) "");',
-                        '2' => 'var_dump((bool) 1);',
-                        '3' => 'var_dump((bool) -2);',
-                        '4' => 'var_dump((bool) "foo");',
-                        '5' => 'var_dump((bool) 2.3e5);',
-                        '6' => 'var_dump((bool) array(12));',
-                        '7' => 'var_dump((bool) array());',
-                        '8' => 'var_dump((bool) "false")'
+                        '1' => ' - var_dump((bool) "");',
+                        '2' => ' - var_dump((bool) 1);',
+                        '3' => ' - var_dump((bool) -2);',
+                        '4' => ' - var_dump((bool) "foo");',
+                        '5' => ' - var_dump((bool) 2.3e5);',
+                        '6' => ' - var_dump((bool) array(12));',
+                        '7' => ' - var_dump((bool) array());',
+                        '8' => ' - var_dump((bool) "false")'
                     ),
                     'answers' => array(
                         '1',
@@ -98,11 +98,11 @@ $c = 7E-10;
 
                     ',
                     'value_options' => array(
-                        '1' => '$a',
-                        '2' => '$a and $b',
-                        '3' => '$b and $a',
-                        '4' => '$a, $b, and $c',
-                        '5' => 'none'
+                        '1' => ' - $a',
+                        '2' => ' - $a and $b',
+                        '3' => ' - $b and $a',
+                        '4' => ' - $a, $b, and $c',
+                        '5' => ' - none'
                     ),
                     'answers' => array(
                         '4'

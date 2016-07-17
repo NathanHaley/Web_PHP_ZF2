@@ -48,6 +48,8 @@ class ExamController extends AbstractActionController
         }
 
         $testManager = $this->serviceLocator->get('test-manager');
+
+        $formDetails = $testManager->get($id);
         $form = $testManager->createForm($id);
 
         $form->setAttribute('method', 'POST');
@@ -124,7 +126,8 @@ class ExamController extends AbstractActionController
             } elseif ($score === 100) {
 
                 // All answers were answered correctly.
-                $this->flashmessenger()->addSuccessMessage('Great! You have 100% correct answers. You should recieve your certificate in email soon.');
+                $this->flashmessenger()->addSuccessMessage('Awsome! You have 100% correct answers.');
+                $this->flashmessenger()->addSuccessMessage('You should recieve your certificate in email soon.');
 
                 $newEvent = new EventManager('exam');
                 $newEvent->trigger('taken-excellent', $this, array (
@@ -134,8 +137,8 @@ class ExamController extends AbstractActionController
 
             } else {
 
-                $this->flashmessenger()->addInfoMessage(sprintf('Score = %d%%, %d out of total %d correct.100%% correct needed for certificate.', $score, $correct, $total));
-
+                $this->flashmessenger()->addInfoMessage(sprintf('Score = %d%%, %d out of total %d correct.', $score, $correct, $total));
+                $this->flashmessenger()->addInfoMessage('100%% correct needed for certificate.');
             }
 
             $attemptEntity->setPass(intval($score === 100));
@@ -148,7 +151,8 @@ class ExamController extends AbstractActionController
         }
 
         return array(
-            'form' => $form
+            'form'          => $form,
+            'formDetails'   => $formDetails
         );
     }
 

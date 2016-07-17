@@ -8,8 +8,8 @@ class YesNo extends SingleChoice
     public function init()
     {
         parent::setValueOptions(array(
-            '0' => 'No',
-            '1' => 'Yes',
+            '0' => ' - No',
+            '1' => ' - Yes',
         ));
     }
 

@@ -1,4 +1,9 @@
 <?php
+
+$formDetails = $this->formDetails;
+
+echo "<h2>$formDetails->name: <small>duration $formDetails->duration minutes</h2>";
+
 $form->prepare();
 echo $this->form()->openTag($form);
 foreach ($form as $formElement) {

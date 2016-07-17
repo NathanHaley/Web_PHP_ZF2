@@ -1,7 +1,37 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
     padding-top: 60px;
-    padding-bottom: 40px;
-    color: #5a5a5a;
+    padding-bottom: 80px;
+    margin-bottom:60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #080808;
+}
+
+.footer .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+footer a,
+footer a:visited {
+    text-decoration: none;
+    color: #9d9d9d;
+}
+
+footer a:hover,
+footer a:active {
+    text-decoration: none;
+    color: #fff;
 }
 
 .zf-green {
@@ -13,23 +43,24 @@ div.breadcrumb {
 }
 
 a.list_order {
-    color: #000;
+    color: #333;
 }
 
+a.list_order:visited,
 a.list_order:hover,
-a.list_order:active,
-a.list_order:visited {
+a.list_order:active
+{
     text-decoration: none;
-    color: #000
+    color: #333;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #9d9d9d;
 }
 
 span.ordered_by {
-    color: #68b604;
-    border-bottom:2px solid #68b604;
-}
-
-html,body {
-    height:101%;
+    color: #00ccff;
+    border-bottom:2px solid #00ccff;
 }
 
 .badge-exam-score-100 {
@@ -38,16 +69,81 @@ html,body {
 	border: 1px solid #eeb111 !important;
 }
 
-.brand {
-	background-color: #68b604 !important;
-	color: #1e1f1f!important;
-	border-bottom: 1px solid #68b604;
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #222 !important;
 }
-.navbar-default .navbar-brand {
-  color: #777;
+
+.icon-bar {
+    color: #00ccff !important;
 }
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  background-color: #8ae234;
+
+.navbar-toggle {
+    border: none !important;
+
+}
+
+.navbar-toggle .icon-bar {
+    transition: all 0.2s;
+}
+
+.navbar-toggle .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+
+.navbar-toggle .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggle .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+
+.navbar-toggle.collapsed .top-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggle.collapsed .middle-bar {
+    opacity: 1;
+}
+
+.navbar-toggle.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggle.collapsed .navbar-logo {
+    opacity: 0;
+}
+
+
+.go-action {
+	width: 300px;
+    height: 300px;
+    text-align: center;
+    line-height: 300px;
+    margin-top: 10px;
+    
+ }
+ .center-text {
+    width: 250px;
+    height: 250px;
+    border: 2px solid #00ccff;
+    border-radius: 125px;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1.0;
+    display: table-cell;
+    padding-bottom: 25px;
+ }
+
+.hip {
+    width: 400px;
+    height: 400px;
+    border-radius: 200px;
+    border: 2px solid #222;
+    border-color: rgba(0, 204, 255, 1.0) rgba(0, 204, 255, 1.0) rgba(0, 204, 255, 1.0) rgba(0, 204, 255, 1.0);
+    vertical-align: middle;
+    text-align: center;
 }
 

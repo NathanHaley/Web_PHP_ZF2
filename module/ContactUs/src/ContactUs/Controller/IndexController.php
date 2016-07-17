@@ -158,7 +158,7 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $entity = $this->serviceLocator->get('contactus-entity');
-        
+
         $config = $this->serviceLocator->get('config');
         $adminEmail = $config['application']['admin-email'];
 
@@ -190,19 +190,19 @@ class IndexController extends AbstractActionController
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
                 $entityManager->flush();
-                
+
                 $name = $data['fullname'];
                 $email = $data['email'];
                 $comments = $data['comments'];
-                
+
                 $headers   = array();
                 $headers[] = "MIME-Version: 1.0";
                 $headers[] = "Content-type: text/plain; charset=iso-8859-1";
                 $headers[] = "From: $email";;
                 $headers[] = "Reply-To: $email";
-                
+
                 mail($adminEmail, "Comment from $name", $comments, implode("\r\n", $headers));
-                    
+
                 $this->flashmessenger()->addSuccessMessage('Message sent successfully.');
 
                 // redirect the user to the view user action

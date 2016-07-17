@@ -22,6 +22,9 @@ class FormMultipleChoice extends FormMultiCheckbox
 
         $content  = "<dd><pre>".$this->getView()->escapeHtml($question)."</pre></dd>";
         $content .= "<dl>$header</dl>";
+
+        //Put each on it's own line
+        $this->setSeparator('<br>');
         $content .= parent::renderOptions($element, $options, $selectedOptions, $attributes);
 
         return $content;

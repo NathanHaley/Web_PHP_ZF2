@@ -1,0 +1,80 @@
+<div class="navbar-wrapper">
+	<div class="container">
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+  			<div class="container">
+    	 		<div class="navbar-header">
+              		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar top-bar"></span>
+                        <span class="icon-bar middle-bar"></span>
+                        <span class="icon-bar bottom-bar"></span>
+                    </button>
+                    <a class="navbar-brand brand" title="<?= $this->translate('Link to home page') ?>" href="<?= $this->url('home') ?>">PHPtc</a>    
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                    	<?php 
+                            $navHelper = $this->navigation('navigation');
+                            $containers = $navHelper->getContainer(); 
+                            $currentPageTitle = null;
+                            
+                            foreach ($containers->getPages() as $page) {
+                                $class = "";
+                                
+                                if (count($page)) {
+                                                                               
+                                    // Render subpages
+                                    $title  = $page->getTitle();
+                                    $title  = $this->translate($title);
+                                    $title  = $this->escapehtml($title);
+                                    $label  = $page->getLabel();
+                                    $label  = $this->translate($label);
+                                    $label  = $this->escapehtml($label);
+                                    
+                                    if ($page->isActive()) {
+                                     $class = "active";
+                                     $currentPageTitle = $title;
+                                    }
+                                    
+                                    $subPages = '';
+                                    foreach ($page as $subPage) {
+                                        if(!$navHelper->accept($subPage)) {
+                                            continue;
+                                        }
+                                        $subPages .= sprintf("<li>%s</li>\n",$navHelper->htmlify($subPage));
+                                         
+                                         
+                                        if ($subPage->isActive()) {
+                                            $class = "active";
+                                            $currentPageTitle  = $subPage->getTitle();
+                                            $currentPageTitle  = $this->translate($currentPageTitle);
+                                            $currentPageTitle  = $this->escapehtml($currentPageTitle);
+                                             
+                                        }
+                                    }
+                                    
+                                    printf('<li class="dropdown%s">'."\n",($class?' '.$class:''));
+                                    
+                                    printf('    <a href="%s" class="dropdown-toggle" data-toggle="dropdown" role="button" title="%s, click to open menu">%s<b class="caret" title="'.$this->translate('Click to open menu').'"></b></a>'."\n",
+                                             $page->getHref(), 
+                                             $title,
+                                             $label
+                                    );
+                                    echo '<ul class="dropdown-menu">'."\n";
+                                    
+                                    echo $subPages;
+                                    
+                                    echo "</ul></li>\n";
+                                 } else {
+                                    printf("<li class=\"%s\">%s</li>\n",$class,$navHelper->htmlify($page));	
+                                 }	
+                            }
+                            
+                            $this->currentPageTitle = $currentPageTitle;
+                        ?>
+                    </ul>
+                </div><!--/.nav-collapse end -->
+    		</div>
+		</nav>   
+	</div>
+</div>     

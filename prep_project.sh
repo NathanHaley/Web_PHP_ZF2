@@ -29,7 +29,7 @@ if [ "$1" = "zip" ]; then
 	echo "Creating file named: ".$FILENAME
 	echo "$hr"
 
-	zip -r $FILENAME * -x \*_bak* *database.local.php module/*/tests/**\* data/**\* tests/**\* module/Album/**\* module/Stub/**\* composer.* *.git* Vagrantfile php-cs-fixer.phar php_errors.log phpunitVerify.sh prep_project.sh vendor\* vendor_bak\*
+	zip -r $FILENAME * -x \*_bak* *database.local.php module/*/tests/**\* data/**\* tests/**\* module/Album/**\* module/Stub/**\* composer.* *.git* Vagrantfile php-cs-fixer.phar php_errors.log phpunitVerify.sh prep_project.sh vendor\* vendor_bak\* my-httpd.* logs/**\*
 
 fi
 

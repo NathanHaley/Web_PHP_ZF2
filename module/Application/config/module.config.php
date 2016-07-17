@@ -81,14 +81,23 @@ return [
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => [
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'layout/layout'                             => __DIR__ . '/../view/layout/layout.phtml',
+            'application/index/index'                   => __DIR__ . '/../view/application/index/index.phtml',
+            //Layout Partials
+            'application/index/partials/head'           => __DIR__ . '/../view/application/index/partials/head.phtml',
+            'application/index/partials/navTop'         => __DIR__ . '/../view/application/index/partials/navTop.phtml',
+            'application/index/partials/breadcrumb'     => __DIR__ . '/../view/application/index/partials/breadcrumb.phtml',
+            'application/index/partials/flashMessages'  => __DIR__ . '/../view/application/index/partials/flashMessages.phtml',
+            'application/index/partials/footer'         => __DIR__ . '/../view/application/index/partials/footer.phtml',
+            // Tiny Partials
+            'partials/pageHeader'                       => __DIR__ . '/../view/share/partials/pageHeader.phtml',
+            //Errors
+            'error/404'                                 => __DIR__ . '/../view/error/404.phtml',
+            'error/index'                               => __DIR__ . '/../view/error/index.phtml',
             // paginator views
-            'paginator/sliding'       => __DIR__ . '/../view/paginator/sliding.phtml',
+            'paginator/sliding'                         => __DIR__ . '/../view/paginator/sliding.phtml',
             //data/entity lists
-            'forms/entity_list'       => __DIR__ . '/../view/share/forms/entity_list.phtml',
+            'forms/entity_list'                         => __DIR__ . '/../view/share/forms/entity_list.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

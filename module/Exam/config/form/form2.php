@@ -16,10 +16,10 @@ return array(
                 'name' => 'q1',
                 'options' => array(
                     'value_options' => array(
-                        '1' => 'Compile error: in a namespace you cannot declare functions',
-                        '2' => '5',
-                        '3' => '4',
-                        '4' => 'Compile error: you cannot have a function with the same name as a built-in function'
+                        '1' => ' - Compile error: in a namespace you cannot declare functions',
+                        '2' => ' - 5',
+                        '3' => ' - 4',
+                        '4' => ' - Compile error: you cannot have a function with the same name as a built-in function'
                     ),
                     'question' => 'What is the result from the following code:
 <?php
@@ -44,10 +44,10 @@ echo strlen(\'test\');
                 'name' => 'q2',
                 'options' => array(
                     'value_options' => array(
-                        'phptag' => 'Before the <?php tag',
-                        'first' => 'It has to be the first php command. Or after the declare statement.',
-                        'everywhere' => 'You can place a namespace declaration everywhere in a PHP file',
-                        'events' => 'Only before a class name',
+                        'phptag'        => ' - Before the <?php tag',
+                        'first'         => ' - It has to be the first php command. Or after the declare statement.',
+                        'everywhere'    => ' - You can place a namespace declaration everywhere in a PHP file',
+                        'events'        => ' - Only before a class name',
                     ),
                     'question' => 'Where must the namespace declaration be placed?',
                     'answers' => array(
@@ -88,9 +88,9 @@ class User
     }
 }',
                                 'value_options' => array(
-                                        '1' => 'The method createFactory will return instance of Custom\User',
-                                        '2' => 'The method createFactory will return instance of Third\\Party\\User',
-                                        '3' => 'Compile error.',
+                                        '1' => ' - The method createFactory will return instance of Custom\User',
+                                        '2' => ' - The method createFactory will return instance of Third\\Party\\User',
+                                        '3' => ' - Compile error.',
                                 ),
                                 'answers' => array(
                                         '3',
@@ -121,10 +121,10 @@ class User
 What can be written in <fill-the-code> to return an instance of the class RegisteredUser in the same namespace as the User class.        				    '
                             ,
                                 'value_options' => array(
-                                        '1' => 'RegisteredUser',
-                                        '2' => '\Custom\RegistedUser',
-                                        '3' => 'Custom\RegistedUser',
-                                        '4' => '\Global\Custom\RegistedUser',
+                                        '1' => ' - RegisteredUser',
+                                        '2' => ' - \Custom\RegistedUser',
+                                        '3' => ' - Custom\RegistedUser',
+                                        '4' => ' - \Global\Custom\RegistedUser',
                                 ),
                                 'answers' => array(
                                         '1','2'

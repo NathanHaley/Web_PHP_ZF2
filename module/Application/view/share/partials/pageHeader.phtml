@@ -1,0 +1,6 @@
+<?php 
+    
+    //Expects $this->currentpageTitle to be set, for main pages this is set in navTop partial
+    if (isset($this->currentPageTitle)) { 
+       printf("<div class=\"page-header\"><h1>%s</h1></div>", $this->currentPageTitle);
+    }

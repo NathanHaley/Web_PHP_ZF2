@@ -1,0 +1,19 @@
+<?php 
+
+$serviceLocator = $this->getHelperPluginManager()->getServiceLocator();
+$routeMatch = $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch();
+ 
+if ($routeMatch->getMatchedRouteName() !== 'home'){
+    echo '<div class="container breadcrumb">';
+     
+    $homeLink = '';
+    if ($routeMatch->getMatchedRouteName() !== 'application/default') {
+        $homeLink = '<a href="/" title="'.$this->translate('Link to home page').'">Home</a> >> ';
+    }
+
+    echo $homeLink.$this->navigation('navigation')->breadcrumbs()->setMinDepth(1)->setseparator(' >> ');
+    echo '</div>';
+} else {
+    echo '<br>';
+}
+

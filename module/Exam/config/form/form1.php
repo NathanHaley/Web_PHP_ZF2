@@ -17,10 +17,10 @@ return array(
                 'name' => 'q'.++$i,
                 'options' => array(
                     'value_options' => array(
-                        'namespaces' => 'namespaces',
-                        'classes' => 'classes',
-                        'traits' => 'traits',
-                        'multi' => 'multiple inheritance'
+                        'namespaces'    => ' - namespaces',
+                        'classes'       => ' - classes',
+                        'traits'        => ' - traits',
+                        'multi'         => ' - multiple inheritance'
                     ),
                     'question' => 'What is new in PHP 5.4',
                     'answers' => array(
@@ -68,10 +68,10 @@ switch(strtolower($name)) {
 }
 ?>',
                             'value_options' => array(
-                                'error' => 'Error - you cannot use array(1) in the case statement',
-                                'sonia' => 'Text: sonia',
-                                'angbartat' => 'Text: tat',
-                                'tatangArrbar' => 'Text: tatangArrbar',
+                                'error'         => ' - Error - you cannot use array(1) in the case statement',
+                                'sonia'         => ' - Text: sonia',
+                                'angbartat'     => ' - Text: tat',
+                                'tatangArrbar'  => ' - Text: tatangArrbar',
                             ),
                             'answers' => array(
                                     'tatangArrbar'
@@ -113,11 +113,11 @@ echo \$object->get();
 ?>
                             ",
                             'value_options' => array(
-                                    'compile-error' => 'Compile error - method getValue in class B can not be declared as private.
+                                    'compile-error' => ' - Compile error - method getValue in class B can not be declared as private.
 Public and protected are allowed.',
-                                    '10' => '10',
-                                    '5' => '5',
-                                    'error' => 'Run-time error: method get is not defined in class B and cannot be called.',
+                                    '10'            => ' - 10',
+                                    '5'             => ' - 5',
+                                    'error'         => ' - Run-time error: method get is not defined in class B and cannot be called.',
                             ),
                             'answers' => array(
                                     'compile-error'
