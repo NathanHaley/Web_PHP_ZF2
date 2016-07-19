@@ -12,6 +12,7 @@ return array(
         'User',
         'Exam',
         'ContactUs',
+        'Company'
         //'Album',
         //'Stub',
     ),

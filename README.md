@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-18: Initial version of Angular RESTful app for Projects of interest on homepage.
+
 2016-07-15: Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates.
 
 2016-07-14: layout.php,module.configs Refactoring, nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level.

@@ -34,12 +34,24 @@ footer a:active {
     color: #fff;
 }
 
+.alert-sm {
+     padding: 5px;
+     margin: 5px 0;
+     display:inline-block;
+     white-space: nowrap;
+   }
+
 .zf-green {
     color: #68b604;
 }
 
 div.breadcrumb {
 	background-color: #fff;
+}
+
+form.projectsForm textarea,
+form.projectsForm input {
+	width: 180px;
 }
 
 a.list_order {

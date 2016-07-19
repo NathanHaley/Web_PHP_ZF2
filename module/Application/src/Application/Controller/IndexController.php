@@ -10,7 +10,7 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
@@ -18,19 +18,29 @@ class IndexController extends AbstractActionController
     {
         //$serviceLocator = $this->getServiceLocator();
         $config = $this->serviceLocator->get('config');
-        return array(
+        
+        $view = new ViewModel();
+        
+        $view->setVariables([
                     'version'=> $config['application']['version'],
                     'applicationName' => $config['application']['name']
-                );
+                ]);
+        
+        $projectsSidebarView = new ViewModel();
+        $projectsSidebarView->setTemplate('company/projects');
+    
+        $view->addChild($projectsSidebarView, 'projectsSidebar');
+        
+        return $view;
     }
 
     public function aboutAction()
     {
-        return array();
+        return [];
     }
 
     public function privacyAction()
     {
-        return array();
+        return [];
     }
 }

@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-md-9">
 <div class="jumbotron">
     <h2><?= sprintf($this->translate('Welcome to PHP %s '), $this->applicationName) ?>
     </h2>
@@ -35,6 +37,8 @@
 <div class="well">
 
 <h4>Site Change log:</h4>
+
+<p>2016-07-18: Initial version of Angular RESTful app for Projects of interest on homepage.</p>
 
 <p>2016-07-15: Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates.</p>
 
@@ -79,3 +83,12 @@
 <p>2016-06-17: Implemented initial add user account functionality at route: account/add</p>
 
 </div>
+</div>
+<div class="col-md-3">
+	<?= $this->projectsSidebar ?>
+</div>
+</div>
+
+
+
+

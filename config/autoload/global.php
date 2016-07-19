@@ -18,4 +18,9 @@ return array(
                      => 'Zend\Db\Adapter\AdapterServiceFactory',
          ),
      ),
+    'zf-content-negotiation' => array(
+        'selectors' => array(
+            'mySelector' => array(),
+        ),
+    ),
 );
