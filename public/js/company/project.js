@@ -1,7 +1,7 @@
 angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
 
 .factory('ProjectsDS', [ '$resource', function($resource) {
-	return $resource('http://company/projects/:id', {
+	return $resource('http://demo.nathanhaley.com/projects/:id', {
         id: '@_id'
     }, {
         update: {
@@ -75,6 +75,7 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
 	};
 
 	projectList.destroy = function(id) {
+		projectList.rotateRefresh('projectsListRefresh', 'on');
 		ProjectsDS.delete({id: projectList.project.id}, (function(data) {
     		data.$promise.then(function(data) {
     			
@@ -84,6 +85,7 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
     };
     
     projectList.add = function(projectForm) {
+    	projectList.rotateRefresh('projectsListRefresh', 'on');
   	  	ProjectsDS.save(projectList.project, (function(data) {
   	  		data.$promise.then(function(data) {
   	  			  			
@@ -93,6 +95,7 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
     };
 
     projectList.save = function() {
+    	projectList.rotateRefresh('projectsListRefresh', 'on');
     	ProjectsDS.update({id: projectList.project.id}, projectList.project, (function(data) {
     		data.$promise.then(function(data) {
     			
