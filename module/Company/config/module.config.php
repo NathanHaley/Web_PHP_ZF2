@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
      'controllers' => [
@@ -24,8 +24,8 @@ return [
                      ],
                  ],
              ],
-           
-            
+
+
          ],
      ],
 

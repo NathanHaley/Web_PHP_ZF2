@@ -18,19 +18,19 @@ class IndexController extends AbstractActionController
     {
         //$serviceLocator = $this->getServiceLocator();
         $config = $this->serviceLocator->get('config');
-        
+
         $view = new ViewModel();
-        
+
         $view->setVariables([
                     'version'=> $config['application']['version'],
                     'applicationName' => $config['application']['name']
                 ]);
-        
+
         $projectsSidebarView = new ViewModel();
         $projectsSidebarView->setTemplate('company/projects');
-    
+
         $view->addChild($projectsSidebarView, 'projectsSidebar');
-        
+
         return $view;
     }
 

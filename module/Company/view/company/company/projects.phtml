@@ -1,68 +1,117 @@
-<!DOCTYPE html>
-    <html ng-app="project">
-      <head>
-		<script src="/js/angular.min.js"></script>
-    	<script src="/js/angular-route.min.js"></script>
-    	<script src="/js/angular-resource.js"></script>
-    	<script src="/js/company/project.js"></script>
-      </head>
-      <body ng-controller="ProjectListController as projectList">
-        <h2>Some Projects</h2>
-        <form name="projectsForm" class="projectsForm">
-        	<div class="control-group" ng-class="{error: projectsForm.name.$invalid && !projectsForm.name.$pristine}">
-        		<label></label> 
-        		<input type="text" ng-model="projectList.search" class="search-query" id="projects_search" placeholder="Search">
-        	</div>
-        </form>
-        <form name="projectsForm" id="projectsForm" ng-show="projectList.projectsFormShow" class="projectsForm">
-        	<div class="control-group" ng-class="{error: projectsForm.name.$invalid && !projectsForm.name.$pristine}">
-        		<label></label> 
-        		<input type="text" name="name" ng-model="projectList.project.name" placeholder="name..." required> 
-        		<div ng-show="projectsForm.name.$error.required && !projectsForm.name.$pristine" class="alert alert-danger alert-sm">Name is required</div>
-        	</div>
-        
-        	<div class="control-group"ng-class="{error: projectsForm.site.$invalid && !projectsForm.site.$pristine}">
-        		<label></label> 
-        		<input type="url" name="site" ng-model="projectList.project.site" placeholder="URL: http://example.com..."  required> 
-        		<div ng-show="projectsForm.site.$error.required && !projectsForm.site.$pristine" class="alert alert-danger alert-sm ">Site URL required</div> 
-        		<div ng-show="projectsForm.site.$error.url && !projectsForm.site.$pristine" class="alert alert-danger alert-sm"> Format: http://example.com</div>
-        	</div>
-        
-        	<label></label>
-        	<textarea name="description" ng-model="projectList.project.description" placeholder="Description..." col="10"></textarea>
-        
-        	<br> 
-        	<button ng-click="projectList.resetForm()" name="projectsFormReset" id="projectsFormReset" type="reset" value="Cancel" class="btn btn-default">Cancel</button>
-        	<button ng-model="projectList.project.id" ng-click="projectList.add()" ng-show="!projectList.project.id" ng-disabled="projectsForm.$invalid" class="btn btn-primary">Add</button>
-        	<button ng-model="projectList.project.id" ng-click="projectList.save(projectList.project.id)" ng-show="projectList.project.id" ng-disabled="projectsForm.$invalid" class="btn btn-primary">Save</button>
-        	<button ng-model="projectList.project.id" ng-click="projectList.destroy(projectList.project.id)" ng-show="projectList.project.id" class="btn btn-danger">Delete</button>
-        </form>
-        <div ng-model="projectList">
-            <table>
-              <thead>
-              <tr>
-                <th>Project</th>
-                <th>Description</th>
-                <th>
-                <a href="" ng-model="projectList.projectsFormShow" ng-click="projectList.resetForm()"><i class="glyphicon glyphicon-plus-sign"></i></a>
-                <a href="" ng-click="projectList.fetch()"><i class="glyphicon glyphicon-refresh"></i></a>
-                </th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="project in projectList.projects | projectNameDescFilter:projectList.search:name:description | orderBy:name">
-                <td><a ng-href="{{project.site}}" target="_blank">{{project.name}}</a></td>
-                <td>{{project.description}}</td>
-                <td>
-                  <a href="" ng-click="projectList.setProject(project)"><i class="glyphicon glyphicon-pencil"></i></a>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-        </div>
-      </body>
-    </html>
-    
-   
-    
+<script src="/js/angular.min.js"></script>
+<script src="/js/angular-route.min.js"></script>
+<script src="/js/angular-resource.min.js"></script>
+<script src="/js/angular-animate.min.js"></script>
+<script src="/js/company/project.js"></script>
 
+<div ng-app="project" ng-controller="ProjectListController as projectList" class="panel panel-default" >
+	<div class="panel-heading"><h3 class="panel-title">Projects Of Interest</h3></div>
+  	<div class="panel-body">
+  		<div  class="container-fluid">
+    		<div class="row">
+    	        <div class="col-xs-12">
+    				<div class="row">    				
+        				<div class="col-xs-1"></div>
+        				<div class="col-xs-10">
+        					<form name="projectsSearchForm"
+        						class="projectsForm form-horizontal">
+        						<div class="form-group"
+        							ng-class="{error: projectsForm.name.$invalid && !projectsForm.name.$pristine}">
+        							<label class="sr-only" for="projects_search">Search projects</label>
+        							<input type="text" ng-model="projectList.search"
+        								class="search-query form-control" id="projects_search" placeholder="Search">
+        						</div>
+        					</form>
+        				</div>
+        				<div class="col-xs-1"></div>
+        			</div>
+    				<div class="row">
+    					<div class="col-xs-1"></div>
+    					<div class="col-xs-10">
+    					<form name="projectsForm" id="projectsForm" ng-model="projectList.projectsFormShow"
+    						ng-show="projectList.projectsFormShow==1"
+    						class="form-horizontal projectsForm animate-show">
+    						<div class="form-group alert-show"
+    							ng-show="(projectsForm.name.$error.required && !projectsForm.name.$pristine )|| (projectsForm.site.$error.required && !projectsForm.site.$pristine) || (projectsForm.site.$error.url && !projectsForm.site.$pristine)">
+        						<div
+        							ng-show="projectsForm.name.$error.required && !projectsForm.name.$pristine"
+        							class="alert alert-danger alert-projects-sm alert-show">Name is required</div>
+        						<div
+        							ng-show="projectsForm.site.$error.required && !projectsForm.site.$pristine"
+        							class="alert alert-danger alert-projects-sm alert-show">Site URL required</div>
+        						<div
+        							ng-show="projectsForm.site.$error.url && !projectsForm.site.$pristine"
+        							class="alert alert-danger alert-projects-sm alert-show">Format:
+        							http://example.com</div>
+        					</div>
+    						<div class="form-group"
+    							ng-class="{error: projectsForm.name.$invalid && !projectsForm.name.$pristine}">
+    							<label class="sr-only" for="name">Name to be shown</label> <input class=" form-control"
+    								type="text" name="name" id="name"
+    								ng-model="projectList.project.name" placeholder="name..."
+    								required>
+    						</div>        					
+    						<div class="form-group"
+    							ng-class="{error: projectsForm.site.$invalid && !projectsForm.site.$pristine}">
+    							<label class="sr-only" for="name">Site URL as formate:
+    								http://example.com</label> <input type="url" name="site" class=" form-control"
+    								id="site" ng-model="projectList.project.site"
+    								placeholder="URL: http://example.com..." required>
+    						</div>
+    						<div class="form-group">
+    							<label class="sr-only" for="name">Description</label>
+    							<textarea name="description" id="description" class=" form-control"
+    								ng-model="projectList.project.description"
+    								placeholder="Description..." col="10"></textarea>
+    						</div>
+    						<div class="form-group" ng-model="projectList.project.id">
+    							<button ng-click="projectList.resetForm(0)"
+    								name="projectsFormReset" id="projectsFormReset" type="reset"
+    								value="Cancel" class="btn btn-default btn-small">Cancel</button>
+    
+    							<button ng-click="projectList.add()"
+    								ng-disabled="projectsForm.$invalid"
+    								class="btn btn-primary btn-small"
+    								ng-show="!projectList.project.id">Add</button>
+    							<button ng-click="projectList.save(projectList.project.id)"
+    								ng-disabled="projectsForm.$invalid"
+    								class="btn btn-primary btn-small"
+    								ng-show="projectList.project.id">Save</button>
+    							<button ng-click="projectList.destroy(projectList.project.id)"
+    								class="btn btn-danger btn-small"
+    								ng-show="projectList.project.id">Delete</button>
+    						</div>
+    					</form>
+    					</div>
+    					<div class="col-xs-1"></div>
+    				</div>
+    				<div class="row">
+    					<div class="col-xs-4"><strong>Project</strong></div>
+    					<div class="col-xs-4"><strong>Description</strong></div>
+    					<div class="col-xs-4 text-right">
+    						<a href="" ng-model="projectList.projectsFormShow"
+    							ng-click="projectList.resetForm(1)"><i
+    							class="glyphicon glyphicon-plus-sign"></i></a> 
+    						<a href=""
+    							ng-click="projectList.fetch()">
+    								<i class="glyphicon glyphicon-refresh" id="projectsListRefresh">
+    							</i>
+    						</a>
+    					</div>
+    				</div>
+    				<div class="row" ng-model="projectList"
+    					ng-repeat="project in projectList.projects | projectNameDescFilter:projectList.search:name:description | orderBy:name">
+    					<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+    						<a ng-href="{{project.site}}" target="_blank">{{project.name}}</a>
+    					</div>
+    					<div class="col-xs-6 col-sm-7 col-md-7 col-lg-7">{{project.description}}</div>
+    					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+    						<a href="" ng-click="projectList.setProject(project)"><i
+    							class="glyphicon glyphicon-pencil"></i></a>
+    					</div>   
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+	</div>
+	</div>

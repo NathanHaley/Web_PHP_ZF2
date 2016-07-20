@@ -1,4 +1,4 @@
-angular.module('project', [ 'ngRoute', 'ngResource' ])
+angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
 
 .factory('ProjectsDS', [ '$resource', function($resource) {
 	return $resource('http://company/projects/:id', {
@@ -28,24 +28,38 @@ angular.module('project', [ 'ngRoute', 'ngResource' ])
 })
 .controller('ProjectListController', function($scope, Projects, ProjectsDS) {
     var projectList = this;
-    projectList.projectsFormShow = false;
+    projectList.projectsFormShow = 0;
+    
+    projectList.rotateRefresh = function (id, varOnoff) {
+    	
+    	if (varOnoff == 'on') {
+    		$('#' + id).addClass('rotateProjectsListRefresh');
+    	} else {
+    		$('#' + id).removeClass('rotateProjectsListRefresh');
+    	}
+        
+    };
     
     projectList.fetch = function() {
+    	projectList.rotateRefresh('projectsListRefresh', 'on');
 		Projects.fetch().then(function(projects){
-		projectList.projects = projects;
+			projectList.projects = projects;
+			projectList.rotateRefresh('projectsListRefresh', 'off');
 	})};
 	
 	projectList.fetch();
 	
 	projectList.setProject = function(project){
-		projectList.resetForm()
+		projectList.resetForm(1)
 		projectList.project = project;
-		projectList.projectsFormShow = true;
 		projectList.fetch();
 	};
 	
-	projectList.resetForm = function(){
-		projectList.projectsFormShow = !projectList.projectsFormShow;
+	/*
+	 * setFormVisible 0 = hide form, 1 = show form
+	 */
+	projectList.resetForm = function(setFormVisible){
+		projectList.projectsFormShow = setFormVisible;
 		projectList.project={};
 		projectForm = $scope.projectsForm;
 		projectForm.$setPristine();
@@ -64,7 +78,7 @@ angular.module('project', [ 'ngRoute', 'ngResource' ])
 		ProjectsDS.delete({id: projectList.project.id}, (function(data) {
     		data.$promise.then(function(data) {
     			
-    			projectList.resetForm();
+    			projectList.resetForm(0);
     		});
 	    }));
     };
@@ -73,7 +87,7 @@ angular.module('project', [ 'ngRoute', 'ngResource' ])
   	  	ProjectsDS.save(projectList.project, (function(data) {
   	  		data.$promise.then(function(data) {
   	  			  			
-  	  		projectList.resetForm();
+  	  		projectList.resetForm(0);
   	  		});
          }));
     };
@@ -82,10 +96,11 @@ angular.module('project', [ 'ngRoute', 'ngResource' ])
     	ProjectsDS.update({id: projectList.project.id}, projectList.project, (function(data) {
     		data.$promise.then(function(data) {
     			
-    			projectList.resetForm();
+    			projectList.resetForm(0);
     		});
         }));
     };
+    
 })
 .filter('projectNameDescFilter', function(){
 	  return function(projectArray, searchQuery) {

@@ -10,4 +10,3 @@ class GenericController extends AbstractActionController
  {
  }
 }
-

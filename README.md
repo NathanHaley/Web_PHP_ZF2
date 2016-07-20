@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-19: Project list app on homepage: styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load.
+
 2016-07-18: Initial version of Angular RESTful app for Projects of interest on homepage.
 
 2016-07-15: Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates.

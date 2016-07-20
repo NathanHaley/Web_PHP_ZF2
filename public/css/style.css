@@ -1,3 +1,39 @@
+/* Colors
+-------------------------------------------------- */
+.zf-green {
+    color: #68b604;
+}
+
+.neutral-darkest {
+    color: #080808;
+}
+
+.neutral-dark{
+    color: #222;
+}
+
+.neutral-base{
+    color: #9d9d9d;
+}
+
+.neutral-lightest{
+    color: #fff;
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.gold-base{
+    color: #ffd700;
+}
+
+.gold-darker{
+    color: #eeb111;
+}
+
+/* Top level layout styles
+-------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
@@ -15,6 +51,7 @@ body {
   width: 100%;
   height: 60px;
   border-top: 1px solid #080808;
+  background-color: #222;
 }
 
 .footer .container {
@@ -34,64 +71,98 @@ footer a:active {
     color: #fff;
 }
 
-.alert-sm {
-     padding: 5px;
-     margin: 5px 0;
-     display:inline-block;
-     white-space: nowrap;
-   }
-
-.zf-green {
-    color: #68b604;
+/* Panel styles
+-------------------------------------------------- */
+.panel-dark {
+	background-color: #222;
 }
 
+/* Projects form styles
+-------------------------------------------------- */
+.alert-projects-sm {
+     padding: 4px;
+     margin: 4px 0;
+     white-space: nowrap;
+     width:100%;
+}
+
+/* Generic animations
+-------------------------------------------------- */
+.animate-show {
+   opacity: 1;
+}
+ 
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+   transition: 1s linear all;
+   -webkit-transition: 1s linear all;
+   
+}
+ 
+.animate-show.ng-hide {
+   line-height: 0;
+   opacity: 0;
+   padding: 0;
+} 
+
+.alert-show {
+   opacity: 1;
+}
+ 
+.alert-show.ng-hide-add, .alert-show.ng-hide-remove {
+   transition: 0.3s linear all;
+   -webkit-transition: 0.3s linear all;
+   
+}
+ 
+.alert-show.ng-hide {
+   line-height: 0;
+   opacity: 0;
+   padding: 0;
+}  
+
+.rotateProjectsListRefresh {
+    -webkit-animation: spin 1000ms infinite linear;
+    animation: spin 1000ms infinite linear;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+/* Breadcrumb top
+-------------------------------------------------- */
 div.breadcrumb {
 	background-color: #fff;
 }
 
-form.projectsForm textarea,
-form.projectsForm input {
-	width: 180px;
-}
-
-a.list_order {
-    color: #333;
-}
-
-a.list_order:visited,
-a.list_order:hover,
-a.list_order:active
-{
-    text-decoration: none;
-    color: #333;
-}
-
+/* Navbar top
+-------------------------------------------------- */
 .navbar-inverse .navbar-nav li a {
     color: #9d9d9d;
-}
-
-span.ordered_by {
-    color: #00ccff;
-    border-bottom:2px solid #00ccff;
-}
-
-.badge-exam-score-100 {
-	background-color: #ffd700 !important;
-	color: #0028ff !important;
-	border: 1px solid #eeb111 !important;
 }
 
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
     background-color: #222 !important;
 }
 
-.icon-bar {
-    color: #00ccff !important;
-}
-
 .navbar-toggle {
     border: none !important;
-
 }
 
 .navbar-toggle .icon-bar {
@@ -128,7 +199,35 @@ span.ordered_by {
     opacity: 0;
 }
 
+/* Entity lists
+-------------------------------------------------- */
+span.ordered_by {
+    color: #00ccff;
+    border-bottom:2px solid #00ccff;
+}
 
+a.list_order {
+    color: #333;
+}
+
+a.list_order:visited,
+a.list_order:hover,
+a.list_order:active
+{
+    text-decoration: none;
+    color: #333;
+}
+
+/* Exams
+-------------------------------------------------- */
+.badge-exam-score-100 {
+    background-color: #ffd700 !important;
+    color: #0028ff !important;
+    border: 1px solid #eeb111 !important;
+}
+
+/* Misc experiments
+-------------------------------------------------- */
 .go-action {
 	width: 300px;
     height: 300px;

@@ -1,92 +1,94 @@
 <div class="row">
-<div class="col-md-9">
-<div class="jumbotron">
-    <h2><?= sprintf($this->translate('Welcome to PHP %s '), $this->applicationName) ?>
-    </h2>
-    <h4>This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov.</h4>
-</div>
-<div class="well">
-	<div class="row">
-		<div class="col-md-4">
-			<div>
-                <h3>Demo User</h3>
-                <p>demouser@nathanhaley.com </p>
-              	<p>pass123</p>
-              	<p><a class="btn btn-sm btn-primary" href="user/autologin/username/demouser">Auto login me in as demouser</a></p>
+    <div class="col-sm-7 col-md-8">
+        <div class="jumbotron">
+            <h2><?= sprintf($this->translate('Welcome to PHP %s '), $this->applicationName) ?>
+            </h2>
+            <h4>This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov.</h4>
+        </div>
+        <div class="well">
+        	<div class="row">
+        		<div class="col-md-4">
+        			<div>
+                        <h3>Demo User</h3>
+                        <p>demouser@nathanhaley.com </p>
+                      	<p>pass123</p>
+                      	<p><a class="btn btn-sm btn-primary" href="user/autologin/username/demouser">Auto login me in as demouser</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+        			<div>
+                        <h3>Demo Admin</h3>
+                        <p>demoadmin@nathanhaley.com</p>
+                        <p>pass123</p>
+                        <p><a class="btn btn-sm btn-danger" href="user/autologin/username/demoadmin">Auto login me in as demoadmin</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+        			<div>
+                        <h3>See The Code</h3>
+                        <p>Project name: Web_PHP_ZF2</p>
+                        <p>&nbsp;</p>
+                        <p><a class="btn btn-sm btn-info" href="https://github.com/NathanHaley/Web_PHP_ZF2" target="_blank">Take me to the Github project</a></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-			<div>
-                <h3>Demo Admin</h3>
-                <p>demoadmin@nathanhaley.com</p>
-                <p>pass123</p>
-                <p><a class="btn btn-sm btn-danger" href="user/autologin/username/demoadmin">Auto login me in as demoadmin</a></p>
-            </div>
-        </div>
-        <div class="col-md-4">
-			<div>
-                <h3>See The Code</h3>
-                <p>Project name: Web_PHP_ZF2</p>
-                <p>&nbsp;</p>
-                <p><a class="btn btn-sm btn-info" href="https://github.com/NathanHaley/Web_PHP_ZF2" target="_blank">Take me to the Github project</a></p>
-            </div>
+
+        <div class="well">
+        
+            <h4>Site Change log:</h4>
+            
+            <p>2016-07-19: Project list app on homepage: styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load.</p>
+            
+            <p>2016-07-18: Initial version of Angular RESTful app for Projects of interest on homepage.</p>
+            
+            <p>2016-07-15: Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates.</p>
+            
+            <p>2016-07-14: layout.php,module.configs Refactoring,nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level.</p>
+            
+            <p>2016-07-13: Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added.</p>
+            
+            <p>2016-07-13: Added auto login feature for demoadmin and demouser accounts for visitors on homepage. Added ignore demo accounts for edit and delete. Lists page action fields' header tied to actions array.</p>
+            
+            <p>2016-07-12: Add showing user's highest score for given test/exam in exam list.</p>
+            
+            <p>2016-07-11: Add storing user exam/test attempts and answers.</p>
+            
+            <p>2016-07-09: Add member update/edit account page. Added Role administration to admin account edit. Removed password fields from admin edit user account. Phone fields not required, validations added.</p>
+            
+            <p>2016-07-08: Implemented list template for exams. Extended list template for dynamic actions designation.</p>
+            
+            <p>2016-07-08: Created shared list page template including pagination/sort, implemented for user and contact us lists. Bug fix: User list breadcrumb.</p>
+            
+            <p>2016-07-07: Added order by functionality for admin list page for contact us form submissions.</p>
+            
+            <p>2016-07-06: Added logging in newly registered users and fix allowing admins to add accounts.</p>
+            
+            <p>2016-07-05: Adding unit tests for Application Index Controller and User log in.</p>
+            
+            <p>2016-06-27: Updated to latest Bootstrap css/js. Fix/update nav for current Bootstrap. Login: failure message added, responsive styling started: Contact Us add/edit, User login/add/register/edit. Contextual menu fix;</p>
+            
+            <p>2016-06-26: Added: Contact Us module with contact form submission, and admin functions for list/edit/delete; breadcrumb; Minor style updates;</p>
+            
+            <p>2016-06-24: Fixed exam/test scoring, added exam name and user's name to certificate.</p>
+            
+            <p>2016-06-23: Completed pdf certificate generation and send by email.</p>
+            
+            <p>2016-06-22: Account menu mods: view/edit/delete only accessible from list page. View page updated with buttons to edit|delete. Some AccountController refactoring for reusable chunks for methods findUserEntity and formAddFields. Button style updates on list pages for users and tests.</p>
+            
+            <p>2016-06-21: Added debug display switch, initial view and me pages, and initial admin pages for user list, edit, delete</p>
+            
+            <p>2016-06-20: Completed through the pagination chapter, includes exam, reseting/loading exam from file, exam list page</p>
+            
+            <p>2016-06-18: Added basic nav, initial ACL, log in/out</p>
+            
+            <p>2016-06-17: Implemented initial add user account functionality at route: account/add</p>
+        
         </div>
     </div>
-</div>
-
-<div class="well">
-
-<h4>Site Change log:</h4>
-
-<p>2016-07-18: Initial version of Angular RESTful app for Projects of interest on homepage.</p>
-
-<p>2016-07-15: Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates.</p>
-
-<p>2016-07-14: layout.php,module.configs Refactoring,nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level.</p>
-
-<p>2016-07-13: Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added.</p>
-
-<p>2016-07-13: Added auto login feature for demoadmin and demouser accounts for visitors on homepage. Added ignore demo accounts for edit and delete. Lists page action fields' header tied to actions array.</p>
-
-<p>2016-07-12: Add showing user's highest score for given test/exam in exam list.</p>
-
-<p>2016-07-11: Add storing user exam/test attempts and answers.</p>
-
-<p>2016-07-09: Add member update/edit account page. Added Role administration to admin account edit. Removed password fields from admin edit user account. Phone fields not required, validations added.</p>
-
-<p>2016-07-08: Implemented list template for exams. Extended list template for dynamic actions designation.</p>
-
-<p>2016-07-08: Created shared list page template including pagination/sort, implemented for user and contact us lists. Bug fix: User list breadcrumb.</p>
-
-<p>2016-07-07: Added order by functionality for admin list page for contact us form submissions.</p>
-
-<p>2016-07-06: Added logging in newly registered users and fix allowing admins to add accounts.</p>
-
-<p>2016-07-05: Adding unit tests for Application Index Controller and User log in.</p>
-
-<p>2016-06-27: Updated to latest Bootstrap css/js. Fix/update nav for current Bootstrap. Login: failure message added, responsive styling started: Contact Us add/edit, User login/add/register/edit. Contextual menu fix;</p>
-
-<p>2016-06-26: Added: Contact Us module with contact form submission, and admin functions for list/edit/delete; breadcrumb; Minor style updates;</p>
-
-<p>2016-06-24: Fixed exam/test scoring, added exam name and user's name to certificate.</p>
-
-<p>2016-06-23: Completed pdf certificate generation and send by email.</p>
-
-<p>2016-06-22: Account menu mods: view/edit/delete only accessible from list page. View page updated with buttons to edit|delete. Some AccountController refactoring for reusable chunks for methods findUserEntity and formAddFields. Button style updates on list pages for users and tests.</p>
-
-<p>2016-06-21: Added debug display switch, initial view and me pages, and initial admin pages for user list, edit, delete</p>
-
-<p>2016-06-20: Completed through the pagination chapter, includes exam, reseting/loading exam from file, exam list page</p>
-
-<p>2016-06-18: Added basic nav, initial ACL, log in/out</p>
-
-<p>2016-06-17: Implemented initial add user account functionality at route: account/add</p>
-
-</div>
-</div>
-<div class="col-md-3">
-	<?= $this->projectsSidebar ?>
-</div>
+    <div class="col-sm-5 col-md-4">
+    	<?= $this->projectsSidebar ?>
+    </div>
 </div>
 
 
