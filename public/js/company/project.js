@@ -1,4 +1,4 @@
-angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
+angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap' ])
 
 .factory('ProjectsDS', [ '$resource', function($resource) {
 	return $resource('http://company/projects/:id', {
@@ -9,6 +9,10 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
         }
     });
 } ])
+
+.factory('CarouselDS', function($resource) {
+	return $resource('/js/carousel/data.json');
+})
 
 .service('Projects', function($q, ProjectsDS) {
 
@@ -26,6 +30,24 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
 	}
 
 })
+
+.service('CarouselItems', function($q, CarouselDS) {
+
+	var self = this;
+	this.fetch = function() {
+		
+		var deferred = $q.defer();
+
+		CarouselDS.get(function(data) {
+
+			self.logs = data.logs;
+			deferred.resolve(self.logs);
+		});
+		return deferred.promise;
+	}
+
+})
+
 .controller('ProjectListController', function($scope, Projects, ProjectsDS) {
     var projectList = this;
     projectList.projectsFormShow = 0;
@@ -127,3 +149,21 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
 	      } 
 	  }    
 	})
+	
+.controller('CarouselController', function (CarouselItems) {
+	
+	var carouselList = this;
+	carouselList.slides = [];
+	
+	carouselList.myInterval = 2000;
+	carouselList.noWrapSlides = false;
+	carouselList.active = 0;
+	  
+	carouselList.fetch = function() {
+		CarouselItems.fetch().then(function(items){
+				carouselList.items = items;
+	})};
+	
+	carouselList.fetch();
+
+});

@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-21: Added ui.bootstrap to project and implemented initial carousel to display site change log items.
+
 2016-07-21: Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper.
 
 2016-07-19: Project list app on homepage: styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load.
