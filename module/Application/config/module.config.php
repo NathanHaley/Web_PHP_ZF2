@@ -58,6 +58,13 @@ return [
             'cipher'     => 'Application\Service\Factory\SymmetricCipher',
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ],
+        'aliases' => [
+            'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+        ],
+        'invokables' => [
+            'my_auth_service' => 'Zend\Authentication\AuthenticationService',
+        ],
+
     ],
     'translator' => [
         'locale' => 'en_US',

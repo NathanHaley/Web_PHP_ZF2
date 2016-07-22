@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-21: Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper.
+
 2016-07-19: Project list app on homepage: styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load.
 
 2016-07-18: Initial version of Angular RESTful app for Projects of interest on homepage.

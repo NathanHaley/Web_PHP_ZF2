@@ -1,9 +1,11 @@
 <div class="row">
     <div class="col-sm-7 col-md-8">
         <div class="jumbotron">
-            <h2><?= sprintf($this->translate('Welcome to PHP %s '), $this->applicationName) ?>
-            </h2>
-            <h4>This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov.</h4>
+        	
+            <h1><?= sprintf($this->translate('Welcome to PHP %s '), $this->applicationName) ?></h1>
+            <p>
+            	This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov.
+            </p>
         </div>
         <div class="well">
         	<div class="row">
@@ -37,6 +39,8 @@
         <div class="well">
         
             <h4>Site Change log:</h4>
+            
+            <p>2016-07-21: Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper.</p>
             
             <p>2016-07-19: Project list app on homepage: styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load.</p>
             

@@ -1,7 +1,7 @@
 angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
 
 .factory('ProjectsDS', [ '$resource', function($resource) {
-	return $resource('http://demo.nathanhaley.com/projects/:id', {
+	return $resource('http://company/projects/:id', {
         id: '@_id'
     }, {
         update: {
@@ -33,9 +33,9 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate' ])
     projectList.rotateRefresh = function (id, varOnoff) {
     	
     	if (varOnoff == 'on') {
-    		$('#' + id).addClass('rotateProjectsListRefresh');
+    		$('#' + id).addClass('rotateRefresh');
     	} else {
-    		$('#' + id).removeClass('rotateProjectsListRefresh');
+    		$('#' + id).removeClass('rotateRefresh');
     	}
         
     };

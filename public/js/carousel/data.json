@@ -1,0 +1,30 @@
+{
+    "logs": [
+             {"id": "0", "date": "2016-07-21", "description": "Added ui.bootstrap to project and implemented initial carousel to display site change log items."},
+             {"id": "0", "date": "2016-07-21", "description": "Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper."},
+             {"id": "1", "date": "2016-07-19", "description": "Project list app on homepage styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load."},
+             {"id": "2", "date": "2016-07-18", "description": "Initial version of Angular RESTful app for Projects of interest on homepage."},
+             {"id": "3", "date": "2016-07-15", "description": "Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates."},
+             {"id": "4", "date": "2016-07-14", "description": "layout.php,module.configs Refactoring,nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level."},
+             {"id": "5", "date": "2016-07-13", "description": "Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added."},
+             {"id": "6", "date": "2016-07-13", "description": "Added auto login feature for demoadmin and demouser accounts for visitors on homepage. Added ignore demo accounts for edit and delete. Lists page action fields' header tied to actions array."},
+             {"id": "7", "date": "2016-07-12", "description": "Add showing user's highest score for given test/exam in exam list."},
+             {"id": "8", "date": "2016-07-11", "description": "Add storing user exam/test attempts and answers."},
+             {"id": "9", "date": "2016-07-09", "description": "Add member update/edit account page. Added Role administration to admin account edit. Removed password fields from admin edit user account. Phone fields not required, validations added."},
+             {"id": "10", "date": "2016-07-08", "description": "Implemented list template for exams. Extended list template for dynamic actions designation."},
+             {"id": "11", "date": "2016-07-08", "description": "Created shared list page template including pagination/sort, implemented for user and contact us lists. Bug fix User list breadcrumb."},
+             {"id": "12", "date": "2016-07-07", "description": "Added order by functionality for admin list page for contact us form submissions."},
+             {"id": "13", "date": "2016-07-06", "description": "Added logging in newly registered users and fix allowing admins to add accounts."},
+             {"id": "14", "date": "2016-07-05", "description": "Adding unit tests for Application Index Controller and User log in."},
+             {"id": "15", "date": "2016-06-27", "description": "Updated to latest Bootstrap css/js. Fix/update nav for current Bootstrap. Login failure message added, responsive styling started Contact Us add/edit, User login/add/register/edit. Contextual menu fix;"},
+             {"id": "16", "date": "2016-06-26", "description": "Added Contact Us module with contact form submission, and admin functions for list,edit,delete; breadcrumb Minor style updates"},
+             {"id": "17", "date": "2016-06-24", "description": "Fixed exam/test scoring, added exam name and user's name to certificate."},
+             {"id": "18", "date": "2016-06-23", "description": "Completed pdf certificate generation and send by email."},
+             {"id": "19", "date": "2016-06-22", "description": "Account menu mods view/edit/delete only accessible from list page. View page updated with buttons to edit delete. Some AccountController refactoring for reusable chunks for methods findUserEntity and formAddFields. Button style updates on list pages for users and tests."},
+             {"id": "20", "date": "2016-06-21", "description": "Added debug display switch, initial view and me pages, and initial admin pages for user list, edit, delete"},
+             {"id": "21", "date": "2016-06-20", "description": "Completed through the pagination chapter, includes exam, reseting/loading exam from file, exam list page"},
+             {"id": "22", "date": "2016-06-18", "description": "Added basic nav, initial ACL, log in out"},
+             {"id": "23", "date": "2016-06-17", "description": "Implemented initial add user account functionality at route account/add"}
+      ]
+   
+}

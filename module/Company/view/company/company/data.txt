@@ -1,0 +1,204 @@
+<div ng-controller="CarouselController as carousel" id="siteChangeLogCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li ng-repeat="carousel.items as item" data-target="#siteChangeLogCarousel" data-slide-to="{{$index}}" ng-class="{active:$first}"></li>
+            </ol>
+            
+            <div ng-repeat="carousel.items as item" class="carousel-inner" role="listbox">
+                <div class="item" ng-class="{active:$first}">
+                    <div class="carousel-caption">
+                        <h3>{{date}}</h3>
+                        <p>{{description}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+                <div ng-controller="CarouselController as carousel" ng-model="carousel" id="siteChangeLogCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li ng-repeat="item in carousel.items" data-target="#siteChangeLogCarousel" data-slide-to="{{$index}}" ng-class="{active:$first}"></li>
+            </ol>
+            
+            <div ng-repeat="item in carousel.items" class="carousel-inner" role="listbox">
+                <div class="item" ng-class="{active:$first}">
+                    <div class=".carousel-content">
+                        <h3>{{item.date}}</h3>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="siteChangeLogCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="siteChangeLogCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            
+        </div>
+        <script>
+        setCarouselHeight('#siteChangeLogCarousel');
+
+        function setCarouselHeight(id)
+        {
+            var slideHeight = [];
+            $(id+' .item').each(function()
+            {
+                // add all slide heights to an array
+                slideHeight.push($(this).height());
+            });
+
+            // find the tallest item
+            max = Math.max.apply(null, slideHeight);
+
+            // set the slide's height
+            $(id+' .carousel-content').each(function()
+            {
+                $(this).css('height',max+'px');
+            });
+        }
+        </script>
+
+{"_embedded": {
+    "logs": [
+                {"id": "0", "date": "2016-07-21", "description": "Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper."},
+                {"id": "1", "date": "2016-07-19", "description": "Project list app on homepage styles updated for all devices, animations added for user friendliness, refresh indicator coordinated to data load."},
+                {"id": "2", "date": "2016-07-18", "description": "Initial version of Angular RESTful app for Projects of interest on homepage."},
+                {"id": "0", "2016-07-15": "Refactoring layout into partials. Fix Exam form layout issues. Pass Exam details data and display name,duration on take page. Minor style updates."},
+                {"id": "0", "2016-07-14": "layout.php,module.configs Refactoring,nav style,titles update. Added page headers. Setup email for Contact Us form. Menu fix for active top level."},
+                {"id": "0", "2016-07-13": "Layout adjustments, alert message style updates and fix for error/danger alerts. Fix 100% scoring issue, 100% score list table badge added."},
+                {"id": "0", "2016-07-13": "Added auto login feature for demoadmin and demouser accounts for visitors on homepage. Added ignore demo accounts for edit and delete. Lists page action fields' header tied to actions array."},
+                {"id": "0", "2016-07-12": "Add showing user's highest score for given test/exam in exam list."},
+                {"id": "0", "2016-07-11": "Add storing user exam/test attempts and answers."},
+                {"id": "0", "2016-07-09": "Add member update/edit account page. Added Role administration to admin account edit. Removed password fields from admin edit user account. Phone fields not required, validations added."},
+                {"id": "0", "2016-07-08": "Implemented list template for exams. Extended list template for dynamic actions designation."},
+                {"id": "0", "2016-07-08": "Created shared list page template including pagination/sort, implemented for user and contact us lists. Bug fix User list breadcrumb."},
+                {"id": "0", "2016-07-07": "Added order by functionality for admin list page for contact us form submissions."},
+                {"id": "0", "2016-07-06": "Added logging in newly registered users and fix allowing admins to add accounts."},
+                {"id": "0", "2016-07-05": "Adding unit tests for Application Index Controller and User log in."},
+                {"id": "0", "2016-06-27": "Updated to latest Bootstrap css/js. Fix/update nav for current Bootstrap. Login failure message added, responsive styling started Contact Us add/edit, User login/add/register/edit. Contextual menu fix;"},
+                {"id": "0", "2016-06-26": "Added Contact Us module with contact form submission, and admin functions for list/edit/delete; breadcrumb; Minor style updates;"},
+                {"id": "0", "2016-06-24": "Fixed exam/test scoring, added exam name and user's name to certificate."},
+                {"id": "0", "2016-06-23": "Completed pdf certificate generation and send by email."},
+                {"id": "0", "2016-06-22": "Account menu mods view/edit/delete only accessible from list page. View page updated with buttons to edit|delete. Some AccountController refactoring for reusable chunks for methods findUserEntity and formAddFields. Button style updates on list pages for users and tests."},
+                {"id": "0", "2016-06-21": "Added debug display switch, initial view and me pages, and initial admin pages for user list, edit, delete"},
+                {"id": "0", "2016-06-20": "Completed through the pagination chapter, includes exam, reseting/loading exam from file, exam list page"},
+                {"id": "0", "2016-06-18": "Added basic nav, initial ACL, log in/out"},
+                {"id": "0", "2016-06-17": "Implemented initial add user account functionality at route account/add"}
+
+      ]
+}};
+
+{
+      
+      "_embedded": {
+        "projects": [
+          {
+            "id": "7",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "1",
+            "name": "PHPtc",
+            "site": "https://www.nathanhaley.com",
+            "description": "Starting to work",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/7"
+              }
+            }
+          },
+          {
+            "id": "12",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "1",
+            "name": "My Project2",
+            "site": "http://zend.com",
+            "description": "Zend project",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/12"
+              }
+            }
+          },
+          {
+            "id": "21",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "0",
+            "name": "tre111",
+            "site": "http://bbc.com",
+            "description": "fasdf",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/21"
+              }
+            }
+          },
+          {
+            "id": "24",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "0",
+            "name": "tesyt",
+            "site": "http://zend.com",
+            "description": "astesaf",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/24"
+              }
+            }
+          },
+          {
+            "id": "27",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "0",
+            "name": "test2",
+            "site": "http://bbc.com",
+            "description": "safasfd",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/27"
+              }
+            }
+          },
+          {
+            "id": "34",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "0",
+            "name": "test33",
+            "site": "http://bbc.com",
+            "description": "fasdfasf",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/34"
+              }
+            }
+          },
+          {
+            "id": "38",
+            "message": null,
+            "timestamp": null,
+            "user": null,
+            "user_id": "0",
+            "name": "test",
+            "site": "http://zend.com",
+            "description": "test",
+            "_links": {
+              "self": {
+                "href": "http://company/projects/38"
+              }
+            }
+          }
+        ]
+      }
+    }
