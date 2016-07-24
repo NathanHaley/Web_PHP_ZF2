@@ -69,15 +69,11 @@ return [
     'service_manager' => [
         'factories'  => [
             'mail-transport'        => 'Exam\Service\Factory\MailTransport',
-            'entity-manager'        => 'Exam\Service\Factory\EntityManager',
-            'database'              => 'Exam\Service\Factory\Database',
             'test'                  => 'Exam\Service\Factory\Test',
             'test-attempt'          => 'Exam\Service\Factory\TestAttempt',
             'test-attempt-answer'   => 'Exam\Service\Factory\TestAttemptAnswer',
         ],
         'invokables' => [
-            'doctrine-profiler'             => 'Exam\Service\Invokable\DoctrineProfiler',
-            'table-gateway'                 => 'Exam\Service\Invokable\TableGateway',
             'test-manager'                  => 'Exam\Model\TestManager',
             'test-entity'                   => 'Exam\Model\Entity\Test',
             'test-attempt-manager'          => 'Exam\Model\TestAttemptManager',

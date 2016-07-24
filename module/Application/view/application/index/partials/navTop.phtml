@@ -77,16 +77,20 @@
                         if ($this->identity()):
                     ?>
                         <form class="navbar-form navbar-right" method="get" action="/user/log/out">
-                            <button type="submit" class="btn btn-default navbar-btn-signup">Sign Out</button>
+                            <button type="submit" class="btn btn-default navbar-btn-signout">Sign Out</button>
                     	</form>
                 	<?php
                         else:
                     ?>
                     	<form class="navbar-form navbar-right" method="get" action="/user/account/register">
-                            <button type="submit" class="btn btn-success navbar-btn-signup">Sign up</button>
+                            <button type="submit" class="btn btn-success navbar-btn-signup"><strong>Sign up</strong></button>
                     	</form>
                         <form class="navbar-form navbar-right" method="get" action="/user/log/in">
-                            <button type="submit" class="btn btn-default navbar-btn-login">Sign in</button>
+                            <button type="submit" class="btn btn-default navbar-btn-signin"><strong>Sign in</strong></button>
+                    	</form>
+                    	<form class="navbar-form navbar-right" method="get" action="/user/fb/fbLogin">
+                            <button type="submit" class="btn btn-default navbar-btn-fb"><strong><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i>
+                            Log in</strong></button>
                     	</form>
                     <?php
                         endif;
@@ -96,4 +100,6 @@
     		</div>
 		</nav>   
 	</div>
-</div>     
+</div>
+<div id="fb-root"></div>
+

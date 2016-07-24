@@ -1,5 +1,5 @@
 <?php
-namespace Test\Service\Factory;
+namespace Exam\Service\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

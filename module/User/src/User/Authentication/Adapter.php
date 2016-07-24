@@ -22,13 +22,23 @@ class Adapter extends AbstractAdapter implements ServiceLocatorAwareInterface
         $entityManager = $this->serviceLocator->get('entity-manager');
         $userEntityClassName = get_class($this->serviceLocator->get('user-entity'));
 
-        // We ask the Doctrine 2 entity manager to find a user with the specified email
+        // authenticate by email
         $user = $entityManager->getRepository($userEntityClassName)->findOneByEmail($this->identity);
         // And if we have such an user we check if his password is matching
         if ($user && $user->verifyPassword($this->credential)) {
             // upon successful validation we can return the user entity object
             return new Result(Result::SUCCESS, $user);
         }
+
+        // authenticate by Facebook access token
+        if ($user && $user->verifyFaceBookAccessToken($this->credential)) {
+            // upon successful validation we can return the user entity object
+            return new Result(Result::SUCCESS, $user);
+        }
+
+        //@todo do I need to add refresh token verification?
+
+
 
         return new Result(Result::FAILURE, $this->identity);
 

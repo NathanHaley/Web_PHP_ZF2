@@ -79,7 +79,7 @@ class User implements PasswordAwareInterface
      * @Annotation\Filter({"name":"StripTags"})
      * @Annotation\Filter({"name":"StringTrim"})
      * @Annotation\Options({"label":"Your Phone Number:"})
-     * @Annotation\Validator({"name":"StringLength","options":{"min":5,"max":50}})
+     * @Annotation\Validator({"name":"StringLength","options":{"min":5,"max":255}})
      * @Annotation\Validator({"name":"RegEx",
      *                          "options": {
      *                              "pattern": "/^[\d-\/]+$/",
@@ -100,6 +100,55 @@ class User implements PasswordAwareInterface
      * @Column(type="string")
      */
     protected $photo;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Column(type="string")
+     */
+    protected $fb_user_id;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Column(type="string")
+     */
+    protected $fb_access_token;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Fb_access_token_expire_dt @GeneratedValue @Column(type="datetime")
+     */
+    protected $fb_access_token_expire_dt;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Column(type="string")
+     */
+    protected $fb_refresh_token;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Column(type="datetime")
+     */
+    protected $fb_refresh_token_expire_dt;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Cdate @GeneratedValue @Column(type="datetime")
+     */
+    protected $cdate;
+
+    /**
+     * @Annotation\Exclude()
+     *
+     * @Mdate @GeneratedValue @Column(type="datetime")
+     */
+    protected $mdate;
 
     /**
      * @Annotation\Exclude()
@@ -187,17 +236,137 @@ class User implements PasswordAwareInterface
         $this->name = $name;
     }
 
+    /**
+     * @return $photo
+     */
     public function getPhoto()
     {
         return $this->photo;
     }
 
+    /**
+     * @param field_type $photo
+     */
     public function setPhoto($photo)
     {
         if(isset($photo['tmp_name'])) {
             $this->photo = $photo['tmp_name'];
         }
     }
+
+    /**
+     * @return $fb_user_id
+     */
+    public function getFb_user_id()
+    {
+        return $this->fb_user_id;
+    }
+
+    /**
+     * @param field_type $fb_user_id
+     */
+    public function setFb_user_id($fb_user_id)
+    {
+        $this->fb_user_id = $fb_user_id;
+    }
+
+    /**
+     * @return $fb_access_token
+     */
+    public function getFb_access_token()
+    {
+        return $this->fb_access_token;
+    }
+
+    /**
+     * @param field_type $fb_access_token
+     */
+    public function setFb_access_token($fb_access_token)
+    {
+        $this->fb_access_token = $fb_access_token;
+    }
+
+    /**
+     * @return $fb_access_token_expire_dt
+     */
+    public function getFb_access_token_expire_dt()
+    {
+        return $this->fb_access_token_expire_dt;
+    }
+
+    /**
+     * @param field_type $fb_access_token_expire_dt
+     */
+    public function setFb_access_token_expire_dt($fb_access_token_expire_dt)
+    {
+        $this->fb_access_token_expire_dt = $fb_access_token_expire_dt;
+    }
+
+    /**
+     * @return $fb_refresh_token
+     */
+    public function getFb_refresh_token()
+    {
+        return $this->fb_refresh_token;
+    }
+
+    /**
+     * @param field_type $fb_refresh_token
+     */
+    public function setFb_refresh_token($fb_refresh_token)
+    {
+        $this->fb_refresh_token = $fb_refresh_token;
+    }
+
+    /**
+     * @return $fb_refresh_token_expire_dt
+     */
+    public function getFb_refresh_token_expire_dt()
+    {
+        return $this->fb_refresh_token_expire_dt;
+    }
+
+    /**
+     * @param field_type $fb_refresh_token_expire_dt
+     */
+    public function setFb_refresh_token_expire_dt($fb_refresh_token_expire_dt)
+    {
+        $this->fb_refresh_token_expire_dt = $fb_refresh_token_expire_dt;
+    }
+
+    /**
+     * @return $cdate
+     */
+    public function getCdate()
+    {
+        return $this->cdate;
+    }
+
+    /**
+     * @param field_type $cdate
+     */
+    public function setCdate($cdate)
+    {
+        $this->cdate = $cdate;
+    }
+
+    /**
+     * @return $mdate
+     */
+    public function getMdate()
+    {
+        return $this->mdate;
+    }
+
+    /**
+     * @param field_type $mdate
+     */
+    public function setMdate($mdate)
+    {
+        $this->mdate = $mdate;
+    }
+
+
 
     /**
      * Gets the current password hash
@@ -228,6 +397,17 @@ class User implements PasswordAwareInterface
     public function verifyPassword($password)
     {
         return $this->passwordAdapter->verify($password, $this->password);
+    }
+
+    /**
+     * Verifies if the provided Facebook token matches the stored one.
+     *
+     * @param string $token in clear text
+     * @return boolean
+     */
+    public function verifyFaceBookAccessToken($token)
+    {
+        return $token === $this->fb_access_token;
     }
 
     /**

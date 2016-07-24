@@ -60,14 +60,8 @@ return [
         ]
     ],
     'service_manager' => [
-        'factories' => [
-            'database'          => 'ContactUs\Service\Factory\Database',
-            'entity-manager'    => 'ContactUs\Service\Factory\EntityManager'
-        ],
         'invokables' => [
-            'table-gateway'     => 'ContactUs\Service\Invokable\TableGateway',
             'contactus-entity'  => 'ContactUs\Model\Entity\ContactUs',
-            'doctrine-profiler' => 'ContactUs\Service\Invokable\DoctrineProfiler'
         ],
         'shared' => [
             'contactUs-entity' => false
@@ -81,9 +75,6 @@ return [
     'doctrine' => [
         __DIR__ . '/../src/ContactUs/Model/Entity/'
     ],
-    'initializers' => []
-    // add here the list of initializers for Doctrine 2 entities..
-    ,
     'acl' => [
         'resource' => [
             'index' => null

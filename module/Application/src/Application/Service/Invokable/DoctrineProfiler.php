@@ -1,5 +1,5 @@
 <?php
-namespace User\Service\Invokable;
+namespace Application\Service\Invokable;
 
 use Zend\Db\Adapter\ParameterContainer;
 use Zend\Db\Adapter\Profiler\ProfilerAwareInterface;

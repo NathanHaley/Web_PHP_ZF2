@@ -8,7 +8,7 @@
 return array(
     'modules' => array(
         'Application',
-        'Debug',
+        //'Debug',
         'User',
         'Exam',
         'ContactUs',

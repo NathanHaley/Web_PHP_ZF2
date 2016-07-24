@@ -1,5 +1,5 @@
 <?php
-namespace ContactUs\Service\Invokable;
+namespace Application\Service\Invokable;
 
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

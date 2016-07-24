@@ -1,5 +1,5 @@
 <?php
-namespace ContactUs\Service\Factory;
+namespace Application\Service\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\Db\Adapter\Adapter as DbAdapter;

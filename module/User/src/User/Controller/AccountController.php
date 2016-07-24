@@ -21,10 +21,11 @@ class AccountController extends AbstractActionController
     {
         $currentUser = $this->serviceLocator->get('user');
         $entity = $this->serviceLocator->get('user-entity');
+        $aclDefaults = $config = $this->serviceLocator->get('config')['acl']['defaults'];
 
         $form = $this->setupUserDetailForm($entity);
 
-        if ($currentUser->getRole() === 'guest') {
+        if ($currentUser->getRole() !== $aclDefaults['admin_role']) {
             //Remove the role fields, only for admins
             $form->remove('role');
 
@@ -46,6 +47,12 @@ class AccountController extends AbstractActionController
             $form->setData($data);
 
             if ($form->isValid()) {
+
+
+                //Default registering user to member role
+                if ($currentUser->getRole() === $aclDefaults['guest_role']) {
+                    $entity->setRole($aclDefaults['member_role']);
+                }
                 // We use now the Doctrine 2 entity manager to save user data to the database
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
@@ -59,7 +66,7 @@ class AccountController extends AbstractActionController
                 ));
 
 
-                if ($currentUser->getRole() === 'guest') {
+                if ($currentUser->getRole() === $aclDefaults['guest_role']) {
                     //Log in new account
                     $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
                 } else {
@@ -125,11 +132,14 @@ class AccountController extends AbstractActionController
     public function editAction()
     {
         $currentUser = $this->serviceLocator->get('user');
+        $aclDefaults = $config = $this->serviceLocator->get('config')['acl']['defaults'];
         $selfEdit = false;
+
+        $admin_role = $aclDefaults['admin_role'];
 
         $id = $this->params('id');
 
-        if ((! $id) || (($id) && ($currentUser->getRole() !== 'admin'))){
+        if ((! $id) || (($id) && ($currentUser->getRole() !== $admin_role))){
 
             $id = $currentUser->getId();
 
@@ -148,7 +158,7 @@ class AccountController extends AbstractActionController
         $form = $this->setupUserDetailForm($entity);
 
         //Every can edit thier own password
-        if (($currentUser->getRole() !== 'admin') || (($currentUser->getRole() === 'admin') && ($currentUser->getId() === $id))) {
+        if (($currentUser->getRole() !== $admin_role) || (($currentUser->getRole() === $admin_role) && ($currentUser->getId() === $id))) {
 
             //Add password verify field
             $form = $this->formAddFields($form, ['password_verify']);

@@ -11,7 +11,7 @@ return [
     'application' => [
         'name' 	        => 'Training Center',
         'version'       => '0.0.2',
-        'admin-email'   => 'demoadmin@nathanhaley.com'
+        'admin-email'   => 'demoadmin@nathanhaley.com',
     ],
     'router' => [
         'routes' => [
@@ -54,17 +54,23 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-            'cipher'     => 'Application\Service\Factory\SymmetricCipher',
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'translator'        => 'Zend\I18n\Translator\TranslatorServiceFactory',
+            'cipher'            => 'Application\Service\Factory\SymmetricCipher',
+            'navigation'        => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'entity-manager'    => 'Application\Service\Factory\EntityManager',
+        'database'              => 'Application\Service\Factory\Database',
         ],
         'aliases' => [
             'Zend\Authentication\AuthenticationService' => 'my_auth_service',
         ],
         'invokables' => [
+            'doctrine-profiler'             => 'Application\Service\Invokable\DoctrineProfiler',
+            'table-gateway'                 => 'Application\Service\Invokable\TableGateway',
             'my_auth_service' => 'Zend\Authentication\AuthenticationService',
         ],
-
+        'initializers' => [
+            'Application\Service\Initializer\DbProfiler',
+        ],
     ],
     'translator' => [
         'locale' => 'en_US',

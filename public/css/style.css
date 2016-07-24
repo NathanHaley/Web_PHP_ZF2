@@ -162,12 +162,52 @@ div.breadcrumb {
 	
 } 
 
-.navbar-btn-login {
-	
+.navbar-btn-signin {
+    color: #fdff00;
+    background-color: #222;
+    border-color: #fdff00;
+}
+
+.navbar-btn-signin:hover {
+    color: #222;
+    background-color: #fdff00;
+    border-color: #222;
+}
+
+.navbar-btn-signout {
+    color: #c0c0c0;
+    background-color: #222;
+    border-color: #c0c0c0;
+}
+
+.navbar-btn-signout:hover {
+    color: #222;
+    background-color: #c0c0c0;
+    border-color: #222;
 }
 
 .navbar-btn-signup {
-    
+    color: #89ff00;
+    background-color: #222;
+    border-color: #89ff00;
+}
+
+.navbar-btn-signup:hover {
+    color: #222;
+    background-color: #89ff00;
+    border-color: #222;
+}
+
+.navbar-btn-fb {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #222;
+}
+
+.navbar-btn-fb:hover {
+    color: #fff;
+    background-color: #2d4373;
+    border-color: #222;
 }
 
 .navbar-inverse .navbar-nav li a {
@@ -189,15 +229,18 @@ div.breadcrumb {
 .navbar-toggle .top-bar {
     transform: rotate(45deg);
     transform-origin: 10% 10%;
+    background-color: #89ff00 !important;
 }
 
 .navbar-toggle .middle-bar {
     opacity: 0;
+    background-color: #fdff00 !important;
 }
 
 .navbar-toggle .bottom-bar {
     transform: rotate(-45deg);
     transform-origin: 10% 90%;
+    background-color: #89ff00 !important;
 }
 
 .navbar-toggle.collapsed .top-bar {

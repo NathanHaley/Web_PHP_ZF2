@@ -25,10 +25,7 @@ class IndexController extends AbstractActionController
         $entityManager = $this->serviceLocator->get('entity-manager');
 
         if(!$id) {
-            return $this->redirect()->toRoute('contactus/default', array(
-                'controller' => 'index',
-                'action' => 'list',
-            ));
+            return $this->redirect()->toRoute('contactus/list');
         }
 
         $entity = $this->findCommentEntity($id, $entityManager);
@@ -50,10 +47,8 @@ class IndexController extends AbstractActionController
                 $this->flashmessenger()->addSuccessMessage("Contact Us Comment id: {$entity->getId()} was updated successfully.");
 
                 // redirect the user to the view user action
-                return $this->redirect()->toRoute('contactus/default', array (
-                    'controller' => 'index',
-                    'action'     => 'list',
-                    'id'		 => $entity->getId()
+                return $this->redirect()->toRoute('contactus/list', array (
+                    'id' => $entity->getId()
                 ));
             }
         }
@@ -68,10 +63,7 @@ class IndexController extends AbstractActionController
     {
         $id = $this->params('id');
         if(!$id) {
-            return $this->redirect()->toRoute('contactus/default', array(
-                'controller' => 'contactus',
-                'action' => 'list',
-            ));
+            return $this->redirect()->toRoute('contactus/list');
         }
 
         $entityManager = $this->serviceLocator->get('entity-manager');
@@ -86,10 +78,7 @@ class IndexController extends AbstractActionController
         $entityManager->flush();
 
         // For now redirect to only the list page
-        return $this->redirect()->toRoute('contactus/default', array (
-            'controller' => 'contactus',
-            'action'     => 'list'
-        ));
+        return $this->redirect()->toRoute('contactus/list');
 
     }
 
@@ -205,11 +194,7 @@ class IndexController extends AbstractActionController
 
                 $this->flashmessenger()->addSuccessMessage('Message sent successfully.');
 
-                // redirect the user to the view user action
-                return $this->redirect()->toRoute('contactus', array (
-                    'controller' => 'Index',
-                    'action'     => 'index',
-                ));
+                return $this->redirect()->toRoute('contactus');
 
             }
         }
@@ -221,12 +206,9 @@ class IndexController extends AbstractActionController
     {
         $id = $this->params('id');
 
-        //If no id then send to Me page to see themselves
+
         if(!$id) {
-            return $this->redirect()->toRoute('contactus/default', array(
-                'controller' => 'contactus',
-                'action' => 'list',
-            ));
+            return $this->redirect()->toRoute('contactus/list');
         }
 
         $commentToView = $this->findCommentEntity($id);

@@ -54,7 +54,7 @@ class LogController extends AbstractActionController
 
     public function inAction()
     {
-        if (!$this->getRequest()->isPost()) {
+        if (! $this->getRequest()->isPost()) {
             // just show the login form
             return array();
         }
@@ -83,7 +83,7 @@ class LogController extends AbstractActionController
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('username'=> $username));
 
-
+            //show login form
             return [];//array('errors' => $result->getMessages());
         }
 
@@ -108,7 +108,7 @@ class LogController extends AbstractActionController
             $user = $result->getIdentity();
 
 
-            // @todo: upon successful validation store additional information about him in the auth storage
+            // @todo: upon successful validation store additional information in the auth storage
 
             return $user;
         } else {
