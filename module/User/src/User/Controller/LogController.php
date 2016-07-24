@@ -20,7 +20,7 @@ class LogController extends AbstractActionController
         $autoLoginUsernames = ['demouser', 'demoadmin'];
 
         if (array_search($username, $autoLoginUsernames) === false ) {
-            $this->flashmessenger()->addErrorMessage("Auto Login only works for the demo accounts at this time.");
+            $this->flashMessenger()->addErrorMessage("Auto Login only works for the demo accounts at this time.");
 
             // just show the login form
             return $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
@@ -46,7 +46,7 @@ class LogController extends AbstractActionController
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('username'=> $username));
 
-            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
+            $this->flashMessenger()->addErrorMessage('Please enter a valid Username and Password combination.');
 
             return $this->forward()->dispatch('User/Controller/Log', array('action' => 'in'));
         }
@@ -79,7 +79,7 @@ class LogController extends AbstractActionController
                 'action'     => 'me',
             ));
         } else {
-            $this->flashMessenger()->addErrorMessage(sprintf('Please enter a valid Username and Password combination.'));
+            $this->flashMessenger()->addErrorMessage('Please enter a valid Username and Password combination.');
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('username'=> $username));
 

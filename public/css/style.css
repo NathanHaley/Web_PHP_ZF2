@@ -204,10 +204,12 @@ div.breadcrumb {
     border-color: #222;
 }
 
-.navbar-btn-fb:hover {
-    color: #fff;
-    background-color: #2d4373;
-    border-color: #222;
+.navbar-btn-fb:hover,
+.navbar-btn-fb:active,
+.navbar-btn-fb:focus {
+    color: #fff !important;;
+    background-color: #2d4373 !important;;
+    border-color: #222 !important;;
 }
 
 .navbar-inverse .navbar-nav li a {

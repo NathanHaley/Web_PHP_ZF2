@@ -55,9 +55,9 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap'
     projectList.rotateRefresh = function (id, varOnoff) {
     	
     	if (varOnoff == 'on') {
-    		$('#' + id).addClass('rotateRefresh');
+    		$('#' + id).addClass('fa-spin');
     	} else {
-    		$('#' + id).removeClass('rotateRefresh');
+    		$('#' + id).removeClass('fa-spin');
     	}
         
     };

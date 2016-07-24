@@ -3,7 +3,7 @@
     $namespaces = array ('error','success','info','default','warning');
     
     foreach ($namespaces as $namespace) {
-    	$flashMessages = $this->flashmessenger()->render($namespace);
+    	$flashMessages = $this->flashMessenger()->render($namespace);
         if (!empty($flashMessages)) {
 ?>
         <div class="container">

@@ -12,6 +12,7 @@ composer.phar
 php_errors.*
 *.old
 database.local.*
+config/autoload/local.php
 *_bak
 *.zip
 data/cache/module/*

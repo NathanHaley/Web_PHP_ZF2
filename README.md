@@ -19,6 +19,8 @@ pass123
 
 Change log:
 
+2016-07-24: Refactoring, user role default fix, minor styling, Initial Facebook login integration.
+
 2016-07-21: Added ui.bootstrap to project and implemented initial carousel to display site change log items.
 
 2016-07-21: Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper.

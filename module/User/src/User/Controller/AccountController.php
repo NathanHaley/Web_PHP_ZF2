@@ -54,6 +54,9 @@ class AccountController extends AbstractActionController
                     $entity->setRole($aclDefaults['member_role']);
                 }
                 // We use now the Doctrine 2 entity manager to save user data to the database
+
+                $entity->setCDate(new \DateTime);
+
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
                 $entityManager->flush();

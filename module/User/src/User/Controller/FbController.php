@@ -38,47 +38,74 @@ class FbController extends AbstractActionController
 
         $helper = $fb->getRedirectLoginHelper();
 
+
+        $FbCommunicationIssueMsgs = [
+            'Sorry! We could not get Facebook login to work for some reason.',
+            'Try again later or Sign up/in with a local account to get started now.',
+            //'We have notified the Administrators of this site.',
+            'Thank you for your patience.'
+        ];
+
+        // Can we talk to FB and local SDK?
         try {
             $accessToken = $helper->getAccessToken();
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            // When Graph returns an error
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
+            //@todo log and alert admin to Facebook issue
+            throw new \Exception('Facebook: response exception');
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            // When validation fails or other local issues
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
+            //@todo log and alert admin to local Facebook SDK isssues
+            throw new \Exception('Facebook: local SDK exception');
+        } catch(\Exception $e) {
+            //@todo log and alert admin
+            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+
+            return $this->redirect()->toRoute('home');
         }
 
-        if (! isset($accessToken)) {
-            if ($helper->getError()) {
-                header('HTTP/1.0 401 Unauthorized');
-                echo "Error: " . $helper->getError() . "\n";
-                echo "Error Code: " . $helper->getErrorCode() . "\n";
-                echo "Error Reason: " . $helper->getErrorReason() . "\n";
-                echo "Error Description: " . $helper->getErrorDescription() . "\n";
-            } else {
-                header('HTTP/1.0 400 Bad Request');
-                echo 'Bad request';
+        //Did we get an access token?
+        try{
+            if (! isset($accessToken)) {
+                if ($helper->getError()) {
+                    $exceptionMsg = 'HTTP/1.0 401 Unauthorized'.PHP_EOL;
+                    $exceptionMsg .= "Error: " . $helper->getError().PHP_EOL;
+                    $exceptionMsg .= "Error Code: " . $helper->getErrorCode().PHP_EOL;
+                    $exceptionMsg .= "Error Reason: " . $helper->getErrorReason().PHP_EOL;
+                    $exceptionMsg .= "Error Description: " . $helper->getErrorDescription().PHP_EOL;
+                } else {
+                    $exceptionMsg = 'HTTP/1.0 400 Bad Request'.PHP_EOL;
+                    $exceptionMsg .= 'Bad request'.PHP_EOL;
+                }
+                throw new \Exception($exceptionMsg);
             }
-            exit;
+        } catch (\Exception $e) {
+            //@todo log and alert admin
+            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+
+            return $this->redirect()->toRoute('home');
         }
 
         // Logged in
-        //echo '<h3>Access Token</h3>';
-        //var_dump($accessToken->getValue());
 
         // The OAuth 2.0 client handler helps us manage access tokens
         $oAuth2Client = $fb->getOAuth2Client();
 
         // Get the access token metadata from /debug_token
         $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-        //echo '<h3>Metadata</h3>';
-        //var_dump($tokenMetadata);
 
-        // Validation (these will throw FacebookSDKException's when they fail)
-        $tokenMetadata->validateAppId($fbConfig['app_id']); // Replace {app-id} with your app id
+        // Validate our app id
+        try {
+            $tokenMetadata->validateAppId($fbConfig['app_id']);
+
+        } catch (Exception $e) {
+            //@todo log and alert admin
+            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+
+            return $this->redirect()->toRoute('home');
+        }
+
+
         // If you know the user ID this access token belongs to, you can validate it here
+        //@todo can I validate user fb id and access token reliably?
         //$tokenMetadata->validateUserId('123');
         $tokenMetadata->validateExpiration();
 
@@ -87,29 +114,31 @@ class FbController extends AbstractActionController
             try {
                 $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
             } catch (Facebook\Exceptions\FacebookSDKException $e) {
-                echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
-                exit;
-            }
+                //@todo log and alert admin
+                $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
 
-            //echo '<h3>Long-lived</h3>';
-            //var_dump($accessToken->getValue());
+                return $this->redirect()->toRoute('home');
+            }
         }
 
         $_SESSION['fb_access_token'] = (string) $accessToken;
 
         // User is logged in with a long-lived access token.
-        // You can redirect them to a members-only page.
-        //header('Location: https://example.com/members.php');
+
+        //Store or update FB details, create new account with FB email
 
         try {
             // Returns a `Facebook\FacebookResponse` object
             $response = $fb->get('/me?fields=id,name,email', $accessToken);
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
+            throw new \Exception('Facebook: get(/me?fields=id,name,email) response issue');
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
+            throw new \Exception('Facebook: local SDK issue');
+        } catch(Exception $e) {
+            //@todo log and alert admin
+            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+
+            return $this->redirect()->toRoute('home');
         }
 
         $fbUser = $response->getGraphUser();
@@ -122,7 +151,7 @@ class FbController extends AbstractActionController
         if ($localUser = $this->identity()) {
             $entity = $this->findUserEntity($localUser->getId());
 
-        // Not logged in but look for user account by email returned from Facebook
+        // Not logged locally in but look for user account by email returned from Facebook
         } elseif ($entity = $entityManager->getRepository($userEntityClassName)->findOneByEmail($fbUser->getEmail())) {
 
             //@todo do stuff
@@ -143,9 +172,6 @@ class FbController extends AbstractActionController
         $entity->setFb_access_token($accessToken->getValue());
         $entity->setFb_user_id($tokenMetadata->getUserId());
         $entity->setFb_access_token_expire_dt($accessToken->getExpiresAt());
-//var_dump($entity);
-//$this->shareProgressOnFacebook($fb, $accessToken);
-
 
         $entity = $entityManager->merge($entity);
         $entityManager->flush();
@@ -161,18 +187,48 @@ class FbController extends AbstractActionController
                 'action'     => 'me',
             ));
         } else {
-            $this->flashMessenger()->addErrorMessage(sprintf('Error! Could not create account. Be sure to allow access to your Facebook email address.'));
+            $this->flashMessenger()->addErrorMessage('Error! Could not create account. Be sure to allow access to your Facebook email address.');
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('Facebook Name'=> $fbUser->getName()));
 
-            //show page
-            return [];//array('errors' => $result->getMessages());
+            //return $this->redirect()->toRoute('home');
+
 
             $logOutUrl = $helper->getLogoutUrl($accessToken, 'http://localhost.phptc.com/user/log/out');
 
             return ['user' => $entity, 'logOutLink' => '<a href="' . htmlspecialchars($logOutUrl) . '">Log out with Facebook!</a>'];
+
         }
 
+    }
+
+    public function issueAction()
+    {
+        return [];
+    }
+
+    protected function fbIssuesHandler($messages, $type)
+    {
+        switch ($type) {
+            case 'error':
+                break;
+            case 'info':
+                break;
+            case 'success':
+                break;
+            case 'warning':
+                break;
+            default:
+                return false;
+        }
+
+        $addFunc = 'add'.ucfirst($type).'Message';
+
+        foreach ($messages as $message) {
+            $this->flashMessenger()->$addFunc($message);
+        }
+
+        return true;
     }
 
     protected function findUserEntity($id)
@@ -213,6 +269,8 @@ class FbController extends AbstractActionController
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
           echo 'Facebook SDK returned an error: ' . $e->getMessage();
           exit;
+        } catch(Exception $e) {
+            //@todo something
         }
 
         $graphNode = $response->getGraphNode();
