@@ -1,16 +1,25 @@
 <?php
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use NHUtils\Controller\NHUtilsBaseController;
 use Zend\EventManager\EventManager;
+use Facebook\Facebook;
 
-class LogController extends AbstractActionController
+class LogController extends NHUtilsBaseController
 {
 
     public function outAction()
     {
         $auth = $this->serviceLocator->get('auth');
         $auth->clearIdentity();
+
+        //FB logout
+        if (isset($_SESSION['fb_access_token'])) {
+
+           $this->fbLogout(null, 'home');
+
+        }
+
         return $this->redirect()->toRoute('home');
     }
 
@@ -34,7 +43,7 @@ class LogController extends AbstractActionController
 
         if($user !== false) {
 
-            $this->flashMessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
+           $this->flashMessengerMulti([sprintf('Welcome %s.',$user->getName()),'You are now logged in.'],'success');
 
             return $this->redirect()->toRoute('user/default', array (
                 'controller' => 'account',
@@ -115,5 +124,40 @@ class LogController extends AbstractActionController
 
             return false;
         }
+    }
+
+    public function fbLogout($fb = null, $landingRoute = 'home')
+    {
+        $fbtoken = $_SESSION['fb_access_token'];
+
+        //Not logged into FB just takem to landing page
+        if ($fbtoken == null) {
+            return $this->redirect->toRoute($landingRoute);
+        }
+
+        if (! $fb instanceof Facebook) {
+            $fb = $this->createFacebook();
+        }
+
+        $fbHelper = $fb->getRedirectLoginHelper();
+
+        $url = $fbHelper->getLogoutUrl($fbtoken, $this->url()->fromRoute($landingRoute, [], ['force_canonical' => true]));
+
+        return $this->redirect()->toUrl($url);
+
+    }
+
+    private function createFacebook()
+    {
+        $config = $this->serviceLocator->get('config');
+        $fbConfig = $config['application']['fb'];
+
+        $fb = new Facebook([
+            'app_id' => $fbConfig['app_id'],
+            'app_secret' => $fbConfig['app_secret'],
+            'default_graph_version' => $fbConfig['default_graph_version'],
+        ]);
+
+        return $fb;
     }
 }

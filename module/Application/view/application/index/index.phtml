@@ -9,14 +9,14 @@
 
 <div ng-app="project" class="row">
     <div class="col-sm-7 col-md-8">
-        <div class="jumbotron">
+        <div class="jumbotron container-dark">
         	
             <h1><?= sprintf($this->translate('Welcome to PHP %s '), $this->applicationName) ?></h1>
             <p>
             	This project is for demonstration and learning for PHP and Zend Framework 2. Based initially on the project in the Learnzf2 book by Slavey Karadzhov.
             </p>
         </div>
-        <div class="well">
+        <div class="well container-dark">
         	<div class="row">
         		<div class="col-md-4">
         			<div>
@@ -44,24 +44,27 @@
                 </div>
             </div>
         </div>
-        <div ng-controller="CarouselController as carousel">
-            <div class="carousel-container">
-                <div uib-carousel active="active" interval="carousel.myInterval" no-wrap="noWrapSlides">
-                    <div uib-slide ng-repeat="item in carousel.items track by $index" index="$index">
-                    	
-                        <div class="item-container">
-
-                                <div class="carousel-item">
-                                    <h4>{{item.date}}</h4>
-                                    <p>{{item.description}}</p>
-                                </div>
-                               
+        <div class="well container-dark">
+            <h2>Check Out The Carousel O'Site Change Logs</h2>
+            <div ng-controller="CarouselController as carousel">
+                <div class="carousel-container">
+                    <div uib-carousel active="active" interval="carousel.myInterval" no-wrap="noWrapSlides">
+                        <div uib-slide ng-repeat="item in carousel.items track by $index" index="$index">
+                        	
+                            <div class="item-container">
+    
+                                    <div class="carousel-item">
+                                        <h4>{{item.date}}</h4>
+                                        <p>{{item.description}}</p>
+                                    </div>
+                                   
+                            </div>
+                           
                         </div>
-                       
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
 	</div>
     <div class="col-sm-5 col-md-4">
     	<?= $this->projectsSidebar ?>

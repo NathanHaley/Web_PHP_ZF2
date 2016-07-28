@@ -1,11 +1,12 @@
 <?php
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use NHUtils\Controller\NHUtilsBaseController;
 use Facebook\Facebook;
 use Facebook\FacebookResponse;
+use Zend\EventManager\EventManager;
 
-class FbController extends AbstractActionController
+class FbController extends NHUtilsBaseController
 {
 
     public function indexAction()
@@ -30,7 +31,6 @@ class FbController extends AbstractActionController
 
     public function fbCallbackAction()
     {
-
         $config = $this->serviceLocator->get('config');
         $fbConfig = $config['application']['fb'];
 
@@ -41,12 +41,12 @@ class FbController extends AbstractActionController
 
         $FbCommunicationIssueMsgs = [
             'Sorry! We could not get Facebook login to work for some reason.',
-            'Try again later or Sign up/in with a local account to get started now.',
-            //'We have notified the Administrators of this site.',
+            'Try again later or Sign up/in with a PHPtc account to get started now.',
+            //'We have notified the PHPtc Administrators.',
             'Thank you for your patience.'
         ];
 
-        // Can we talk to FB and local SDK?
+        // Can we talk to FB and local SDK
         try {
             $accessToken = $helper->getAccessToken();
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
@@ -57,9 +57,9 @@ class FbController extends AbstractActionController
             throw new \Exception('Facebook: local SDK exception');
         } catch(\Exception $e) {
             //@todo log and alert admin
-            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+            $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
 
-            return $this->redirect()->toRoute('home');
+            return $this->logUserOutAll();
         }
 
         //Did we get an access token?
@@ -79,35 +79,42 @@ class FbController extends AbstractActionController
             }
         } catch (\Exception $e) {
             //@todo log and alert admin
-            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+            $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
 
-            return $this->redirect()->toRoute('home');
+            return $this->logUserOutAll();
         }
 
-        // Logged in
 
-        // The OAuth 2.0 client handler helps us manage access tokens
-        $oAuth2Client = $fb->getOAuth2Client();
+        // Logged in FB
 
-        // Get the access token metadata from /debug_token
-        $tokenMetadata = $oAuth2Client->debugToken($accessToken);
 
-        // Validate our app id
         try {
+            // The OAuth 2.0 client handler helps us manage access tokens
+            $oAuth2Client = $fb->getOAuth2Client();
+
+            // Get the access token metadata from /debug_token
+            $tokenMetadata = $oAuth2Client->debugToken($accessToken);
+
+            // Validate our app id and expiration
             $tokenMetadata->validateAppId($fbConfig['app_id']);
 
-        } catch (Exception $e) {
-            //@todo log and alert admin
-            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+            // If you know the user ID the access token belongs to, you can validate it here
+            //@todo can I validate user FB id and access token reliably?
+            //$tokenMetadata->validateUserId('123');
+            $tokenMetadata->validateExpiration();
 
-            return $this->redirect()->toRoute('home');
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            //@todo log and alert admin to local Facebook SDK isssues
+            throw new \Exception('Facebook: local SDK exception');
+
+        } catch (\Exception $e) {
+            //@todo log and alert admin
+            $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
+
+            return $this->logUserOutAll();
         }
 
 
-        // If you know the user ID this access token belongs to, you can validate it here
-        //@todo can I validate user fb id and access token reliably?
-        //$tokenMetadata->validateUserId('123');
-        $tokenMetadata->validateExpiration();
 
         if (! $accessToken->isLongLived()) {
             // Exchanges a short-lived access token for a long-lived one
@@ -115,9 +122,9 @@ class FbController extends AbstractActionController
                 $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
             } catch (Facebook\Exceptions\FacebookSDKException $e) {
                 //@todo log and alert admin
-                $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+                $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
 
-                return $this->redirect()->toRoute('home');
+                return $this->logUserOutAll();
             }
         }
 
@@ -136,99 +143,145 @@ class FbController extends AbstractActionController
             throw new \Exception('Facebook: local SDK issue');
         } catch(Exception $e) {
             //@todo log and alert admin
-            $this->fbIssuesHandler($FbCommunicationIssueMsgs, 'error');
+            $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
 
-            return $this->redirect()->toRoute('home');
+            return $this->logUserOutAll();
         }
 
-        $fbUser = $response->getGraphUser();
+        try {
+            //@todo login log
+            //throw new \Exception('Facebook: unknown exception'); //testing
 
-        //@todo handle no email situations and errors
-        $entityManager = $this->serviceLocator->get('entity-manager');
-        $userEntityClassName = get_class($this->serviceLocator->get('user-entity'));
+            $fbUser = $response->getGraphUser();
 
-        //User with logged in local account
-        if ($localUser = $this->identity()) {
-            $entity = $this->findUserEntity($localUser->getId());
+            //@todo handle no email situations and errors
+            $entityManager = $this->serviceLocator->get('entity-manager');
+            $userEntityClassName = get_class($this->serviceLocator->get('user-entity'));
 
-        // Not logged locally in but look for user account by email returned from Facebook
-        } elseif ($entity = $entityManager->getRepository($userEntityClassName)->findOneByEmail($fbUser->getEmail())) {
+            //User with logged in local account
+            if ($localUser = $this->identity()) {
+                $entity = $this->findUserEntity($localUser->getId());
 
-            //@todo do stuff
+                // Not logged locally in but look for user account by email returned from Facebook
+            } elseif ($entity = $entityManager->getRepository($userEntityClassName)->findOneByEmail($fbUser->getEmail())) {
 
-        } else {
-            $entity = $this->serviceLocator->get('user-entity');
-            $aclDefaults = $config = $this->serviceLocator->get('config')['acl']['defaults'];
+                //@todo do stuff
 
-            $entity->setName($fbUser->getName());
+            } else {
+                //If we are here user has no matching account where local email = FB email
+                //FB email might not exist, could be phone number based account
 
-            // @todo handle dups
-            $entity->setEmail($fbUser->getEmail());
-            $entity->setRole($aclDefaults['member_role']);
+                $entity = $this->serviceLocator->get('user-entity');
+                $aclDefaults = $config = $this->serviceLocator->get('config')['acl']['defaults'];
 
-            $entity->setPassword($accessToken->getValue());
+                $entity->setName($fbUser->getName());
+
+                // @todo handle dups
+                $entity->setEmail($fbUser->getEmail());
+                $entity->setRole($aclDefaults['member_role']);
+
+                $entity->setPassword($accessToken->getValue());
+            }
+
+            $entity->setFb_access_token($accessToken->getValue());
+            $entity->setFb_user_id($tokenMetadata->getUserId());
+            $entity->setFb_access_token_expire_dt($accessToken->getExpiresAt());
+
+            $entity = $entityManager->merge($entity);
+            $entityManager->flush();
+
+            $user = $this->logUserInByCredential($entity->getEmail(), $accessToken->getValue());
+
+        } catch (\Exception $e) {
+
+            $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
+            // Just log out for now
+            return $this->logUserOutAll();
         }
 
-        $entity->setFb_access_token($accessToken->getValue());
-        $entity->setFb_user_id($tokenMetadata->getUserId());
-        $entity->setFb_access_token_expire_dt($accessToken->getExpiresAt());
+        try {
 
-        $entity = $entityManager->merge($entity);
-        $entityManager->flush();
+            if($user !== false) {
 
-        $user = $this->logUserInByCredential($entity->getEmail(), $accessToken->getValue());
+                //All good, send them to user page
+                $this->flashMessengerMulti([sprintf('Welcome %s.',$user->getName()),'You are now logged in.'],'success');
 
-        if($user !== false) {
+                return $this->redirect()->toRoute('user/default', array (
+                    'controller' => 'account',
+                    'action'     => 'me',
+                ));
+            } else {
+                //Really shouldn't get here
 
-            $this->flashMessenger()->addSuccessMessage(sprintf('Welcome %s. You are now logged in.',$user->getName()));
+                throw new \Exception('Facebook login tail: user is not valid exception');
 
-            return $this->redirect()->toRoute('user/default', array (
-                'controller' => 'account',
-                'action'     => 'me',
-            ));
-        } else {
-            $this->flashMessenger()->addErrorMessage('Error! Could not create account. Be sure to allow access to your Facebook email address.');
+                //$fbLogOutUrl = $this->getFbLogoutURL($accessToken->getValue(), $fb);
+                //return ['user' => $entity, 'logOutLink' => '<a href="' . htmlspecialchars($fbLogOutUrl) . '">Log out with Facebook!</a>'];
+
+            }
+
+        } catch (\Exception $e) {
+
             $event = new EventManager('user');
             $event->trigger('log-fail', $this, array('Facebook Name'=> $fbUser->getName()));
 
-            //return $this->redirect()->toRoute('home');
-
-
-            $logOutUrl = $helper->getLogoutUrl($accessToken, 'http://localhost.phptc.com/user/log/out');
-
-            return ['user' => $entity, 'logOutLink' => '<a href="' . htmlspecialchars($logOutUrl) . '">Log out with Facebook!</a>'];
-
+            $this->flashMessengerMulti($FbCommunicationIssueMsgs, 'error');
+            // Just log out for now
+            return $this->logUserOutAll();
         }
+    }
+
+    private function logUserOutAll()
+    {
+        $auth = $this->serviceLocator->get('auth');
+        $auth->clearIdentity();
+
+        //FB logout
+        return $this->fbLogout(null, 'home');
 
     }
 
-    public function issueAction()
+    private function fbLogout($fb = null, $landingRoute = 'home')
     {
-        return [];
+        $fbtoken = $_SESSION['fb_access_token'];
+
+        //Not logged into FB just takem to landing page
+        if ($fbtoken == null) {
+            return $this->redirect()->toRoute($landingRoute);
+        }
+
+        if (! $fb instanceof Facebook) {
+            $fb = $this->createFacebook();
+        }
+
+        $fbHelper = $fb->getRedirectLoginHelper();
+
+        $url = $fbHelper->getLogoutUrl($fbtoken, $this->url()->fromRoute($landingRoute, [], ['force_canonical' => true]));
+
+        //die(var_dump($this->url()->fromRoute($landingRoute, null, ['force_canonical' => true])));
+
+        return $this->redirect()->toUrl($url);
+
     }
 
-    protected function fbIssuesHandler($messages, $type)
+    public function getFbLogoutURL($landingRoute = 'home')
     {
-        switch ($type) {
-            case 'error':
-                break;
-            case 'info':
-                break;
-            case 'success':
-                break;
-            case 'warning':
-                break;
-            default:
-                return false;
+        //@todo find better check here
+        $fbtoken = $_SESSION['fb_access_token'];
+
+        //Not logged into FB just takem to landing page
+        if ($fbtoken == null) {
+            return $this->url($landingRoute);
         }
 
-        $addFunc = 'add'.ucfirst($type).'Message';
+        $fb = $this->createFacebook();
 
-        foreach ($messages as $message) {
-            $this->flashMessenger()->$addFunc($message);
-        }
+        $fbHelper = $fb->getRedirectLoginHelper();
 
-        return true;
+        $url = $fbHelper->getLogoutUrl($fbtoken, $this->url()->fromRoute($landingRoute, [], ['force_canonical' => true]));
+
+        return $url;
+
     }
 
     protected function findUserEntity($id)

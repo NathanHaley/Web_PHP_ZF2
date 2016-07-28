@@ -16,8 +16,11 @@ demoadmin@nathanhaley.com
 pass123
 
 
-
 Change log:
+
+2016-07-27: Initial application of site wide styles and custom theme.
+
+2016-07-26: Facebook login initial error handling. Refactor entity lists into own controllers. Introduce NHUtils module into project. Refactor controllers to inherit from a shared controller.
 
 2016-07-24: Refactoring, user role default fix, minor styling, Initial Facebook login integration.
 

@@ -1,15 +1,11 @@
 <?php
 namespace User\Controller;
 
-use User\Model\User as UserModel;
-use Zend\Mvc\Controller\AbstractActionController;
+use NHUtils\Controller\NHUtilsBaseController;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\EventManager\EventManager;
-use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
-use Zend\Paginator\Paginator;
-use Application\Model\Application;
 
-class AccountController extends AbstractActionController
+class AccountController extends NHUtilsBaseController
 {
 
     public function indexAction()
@@ -216,11 +212,7 @@ class AccountController extends AbstractActionController
                     ));
                 } else {
                     //Admins updating members get routed back to list page
-                    return $this->redirect()->toRoute('user/default', array(
-                        'controller' => 'account',
-                        'action' => 'list',
-                        'id' => $entity->getId()
-                    ));
+                    return $this->redirect()->toRoute('user/list', ['id' => $entity->getId()]);
                 }
             }
         }
@@ -261,10 +253,7 @@ class AccountController extends AbstractActionController
         $this->flashmessenger()->addSuccessMessage("User id: $id removed successfully.");
 
         // For now redirect to only the list page
-        return $this->redirect()->toRoute('user/default', array(
-            'controller' => 'account',
-            'action' => 'list'
-        ));
+        return $this->redirect()->toRoute('user/list');
     }
 
     public function meAction()
@@ -275,54 +264,6 @@ class AccountController extends AbstractActionController
     public function deniedAction()
     {
         return array();
-    }
-
-    public function listAction()
-    {
-        $currentPage = $this->params()->fromRoute('page', 1);
-
-        //orderby,order whitelisted in list route config
-        $orderby = $this->params()->fromRoute('orderby', 'id');
-        $order = $this->params()->fromRoute('order', 'desc');
-
-        $orderby_tmp = strtoupper($orderby);
-
-        $userModel = new UserModel();
-        $result = $userModel->getSql()->select()->order("$orderby_tmp $order");
-
-        $adapter = new PaginatorDbAdapter($result, $userModel->getAdapter());
-        $paginator = new Paginator($adapter);
-
-        $paginator->setCurrentPageNumber($currentPage);
-        $paginator->setItemCountPerPage(4);
-
-        $acl = $this->serviceLocator->get('acl');
-        $columns = [
-                'id'    =>['th_text'=>'id',    'th_attributes'=>['nowrap'=>'true', 'width'=>'6%'],'td_formats'=>['tcDefaultCellFormat'=>'%s']],
-                'email' =>['th_text'=>'email', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
-                'name'  =>['th_text'=>'name', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
-                'role'  =>['th_text'=>'role', 'th_attributes'=>['nowrap'=>'true'], 'td_formats'=>['tcDefaultCellFormat'=>'%s']],
-
-        ];
-
-        $listActions = [
-            'view'       =>['text'=>'view', 'styleClass'=>Application::BTN_TAKE_DEFAULT],
-            'edit'       =>['text'=>'edit', 'styleClass'=>Application::BTN_EDIT_DEFAULT],
-            'delete'     =>['text'=>'delete', 'styleClass'=>Application::BTN_DELETE_DEFAULT],
-        ];
-
-        return array(
-            'entities'      => $paginator,
-            'acl'           => $acl,
-            'page'          => $currentPage,
-            'orderby'       => $orderby,
-            'order'         => $order,
-            'columns'       => $columns,
-            'listActions'   => $listActions,
-            'pageTitle'     => 'Admin User List',
-            'route'         => 'user',
-            'controller'    => 'account'
-        );
     }
 
     protected function findUserEntity($id)

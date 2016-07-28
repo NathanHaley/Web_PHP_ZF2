@@ -1,6 +1,5 @@
-
 <div class="container-fluid">
- <div class="row well">
+ <div class="row">
   <div class="col-sm-12">
     <h4><?php echo sprintf($this->translate('Id: %s'), $this->userToView->getId()) ?></h4>
     <h4><?php echo sprintf($this->translate('Emal: %s'), $this->userToView->getEmail()) ?></h4>
@@ -11,9 +10,9 @@
  </div>
  <div class="row">
   <div class="col-sm-12">
-   <a class="btn btn-lg btn-primary" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Edit') ?></a>
+   <a class="btn btn-lg btn-primary btn-sm" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Edit') ?></a>
 
-   <a class="btn btn-lg btn-danger" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'delete', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Delete') ?></a>
+   <a class="btn btn-lg btn-danger btn-sm" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'delete', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Delete') ?></a>
   </div>
  </div>
 </div>

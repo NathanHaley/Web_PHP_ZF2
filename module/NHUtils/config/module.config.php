@@ -2,22 +2,22 @@
 return [
     'view_manager' => [
         'template_path_stack' => [
-            'Stub' => __DIR__ . '/../view',
+            'NHUtils' => __DIR__ . '/../view',
         ],
     ],
     'controllers' => [
         'invokables' => [
-            'Stub\Controller\Index' => 'Stub\Controller\IndexController'
         ]
     ],
+    //@todo what should routing be like if at all for utility module?
     'router' => [
         'routes' => [
-            'stub' => [
+            'nh' => [
                 'type' => 'Literal',
                 'options' => [
-                    'route' => '/stub',
+                    'route' => '/nh',
                     'defaults' => [
-                        '__NAMESPACE__' => 'Stub\Controller',
+                        '__NAMESPACE__' => 'NHUtils\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ]
@@ -43,6 +43,6 @@ return [
                 ]
             ]
         ]
-    ]
+    ],
 ]
 ;

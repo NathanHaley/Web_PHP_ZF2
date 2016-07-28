@@ -2,9 +2,10 @@
 return [
     'controllers' => [
         'invokables' => [
-           'User\Controller\Account' => 'User\Controller\AccountController',
-           'User\Controller\Log'     => 'User\Controller\LogController',
-           'User\Controller\Fb'      => 'User\Controller\FbController',
+           'User\Controller\Account'        => 'User\Controller\AccountController',
+           'User\Controller\AccountList'    => 'User\Controller\AccountListController',
+           'User\Controller\Log'            => 'User\Controller\LogController',
+           'User\Controller\Fb'             => 'User\Controller\FbController',
         ],
     ],
     'router' => [
@@ -44,7 +45,7 @@ return [
                                 'order' => 'asc|desc'
                             ],
                             'defaults' => [
-                                'controller'    => 'Account',
+                                'controller'    => 'AccountList',
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby' => 'id',
@@ -64,6 +65,16 @@ return [
                                 'action'    => 'autologin',
                                 'username'  => 'demouser'
                             ],
+                        ]
+                    ],
+                    'logout' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route' => '/logout',
+                            'defaults' => [
+                                'controller'=> 'Log',
+                                'action'    => 'out',
+                             ],
                         ]
                     ]
 
@@ -109,7 +120,6 @@ return [
             'User\Service\Initializer\Password'
         ],
     ],
-
     'acl' => [
         'role' => [
                 // role -> multiple parents
@@ -119,9 +129,10 @@ return [
         ],
         'resource' => [
                 // resource -> single parent
-                'account'   => null,
-                'log'       => null,
-                'fb'        => null,
+                'account'       => null,
+                'accountlist'   => null,
+                'log'           => null,
+                'fb'            => null,
         ],
         'allow' => [
                 // ['role', 'resource', ['permission-1', 'permission-2', ...]],
@@ -131,12 +142,11 @@ return [
                 ['member', 'account', ['me', 'edit']],
                 ['member', 'log', ['out', 'autologin']],
                 ['member', 'fb', ['index', 'fbLogin', 'fbCallback']],
-                ['admin', 'account', ['list', 'view', 'delete', 'edit', 'add']],
+                ['admin', 'account', ['view', 'delete', 'edit', 'add']],
+                ['admin', 'accountlist', 'list'],
         ],
         'deny'  => [
                 ['guest', null, 'delete'] // null as second parameter means all resources
-
-
         ],
         'defaults' => [
                 'guest_role' => 'guest',
@@ -145,10 +155,10 @@ return [
                 'admin_role' => 'admin'
         ],
         'resource_aliases' => [
-                'User\Controller\Account'   => 'account',
-                'User\Controller\Fb'        => 'fb'
+                'User\Controller\Account'       => 'account',
+                'User\Controller\AccountList'   => 'accountlist',
+                'User\Controller\Fb'            => 'fb'
         ],
-
         // List of modules to apply the ACL. Protect current Module's pages.
         'modules' => [
                 'User',
@@ -175,9 +185,9 @@ return [
                             'label'         => 'Log in',
                             // uri
                             'route'         => 'user/default',
+                            // acl
                             'controller'    => 'log',
                             'action'        => 'in',
-                            // acl
                             'resource'      => 'log',
                             'privilege'     => 'in',
                             'title'         => 'Log In'
@@ -195,9 +205,7 @@ return [
                         ],
                         [
                             'label'         => 'Log out',
-                            'route'         => 'user/default',
-                            'controller'    => 'log',
-                            'action'        => 'out',
+                            'route'         => 'user/logout',
                             'resource'      => 'log',
                             'privilege'     => 'out',
                             'title'         => 'Log Out'
@@ -205,9 +213,9 @@ return [
                         [
                             'label'         => 'List',
                             'route'         => 'user/list',
-                            'resource'      => 'account',
+                            'resource'      => 'accountlist',
                             'privilege'     => 'list',
-                            'title'         => 'Users Account List'
+                            'title'         => 'Users Accounts List'
                         ],
                         [
                             'label'         => 'Add',

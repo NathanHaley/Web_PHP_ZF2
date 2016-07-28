@@ -7,7 +7,7 @@
     </h1>
    </div>
   </div>
- <div class="row well">
+ <div class="row">
   <div class="col-sm-12">
     <h4><?php echo sprintf($this->translate('Id: %s'), $this->commentToView->getId()) ?></h4>
     <h4><?php echo sprintf($this->translate('Emal: %s'), $this->commentToView->getEmail()) ?></h4>
@@ -18,9 +18,9 @@
  </div>
  <div class="row">
   <div class="col-sm-12">
-   <a class="btn btn-lg btn-primary" href="<?= $this->url('contactus/default', array('controller'=> 'index', 'action'=>'edit', 'id'=> $this->commentToView->getId())) ?>"><?= $this->translate('Edit') ?></a>
+   <a class="btn btn-lg btn-primary btn-sm" href="<?= $this->url('contactus/default', array('controller'=> 'index', 'action'=>'edit', 'id'=> $this->commentToView->getId())) ?>"><?= $this->translate('Edit') ?></a>
 
-   <a class="btn btn-lg btn-danger" href="<?= $this->url('contactus/default', array('controller'=> 'index', 'action'=>'delete', 'id'=> $this->commentToView->getId())) ?>"><?= $this->translate('Delete') ?></a>
+   <a class="btn btn-lg btn-danger btn-sm" href="<?= $this->url('contactus/default', array('controller'=> 'index', 'action'=>'delete', 'id'=> $this->commentToView->getId())) ?>"><?= $this->translate('Delete') ?></a>
   </div>
  </div>
 </div>

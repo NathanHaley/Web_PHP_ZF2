@@ -2,7 +2,8 @@
 return [
     'controllers' => [
         'invokables' => [
-            'Exam\Controller\Exam' => 'Exam\Controller\ExamController',
+            'Exam\Controller\Exam'      => 'Exam\Controller\ExamController',
+            'Exam\Controller\ExamList'  => 'Exam\Controller\ExamListController',
         ],
     ],
     'router' => [
@@ -41,7 +42,7 @@ return [
                                 'order' => 'asc|desc'
                             ],
                             'defaults' => [
-                                'controller'    => 'Exam',
+                                'controller'    => 'ExamList',
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby'       => 'name',
@@ -99,11 +100,15 @@ return [
     'acl' => [
         'resource' => [
             'exam' => null,
+            'examlist' => null,
         ],
         'allow' => [
             ['guest', 'exam', 'list'],
+            ['guest', 'examlist', 'list'],
             ['member', 'exam', ['list','take']],
-            ['admin', 'exam', ['reset','certificate', 'view', 'edit', 'delete', 'take', 'list']],
+            ['member', 'examlist', 'list'],
+            ['admin', 'exam', ['reset','certificate', 'view', 'edit', 'delete', 'take']],
+            ['admin', 'examlist', 'list'],
         ],
         'modules' => [
             'Exam',
@@ -121,7 +126,7 @@ return [
                         'label'         => 'List',
                         'route'         => 'exam/list',
                         // acl
-                        'resource'      => 'exam',
+                        'resource'      => 'examlist',
                         'privilege'     => 'list',
                         'title'         => 'Exam List'
                     ],

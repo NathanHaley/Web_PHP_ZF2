@@ -7,7 +7,8 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'ContactUs\Controller\Index' => 'ContactUs\Controller\IndexController'
+            'ContactUs\Controller\Index'            => 'ContactUs\Controller\IndexController',
+            'ContactUs\Controller\ContactUsList'    => 'ContactUs\Controller\ContactUsListController'
         ]
     ],
     'router' => [
@@ -36,7 +37,6 @@ return [
                             'defaults' => []
                         ]
                     ],
-
                     'list' => [
                         'type' => 'Segment',
                         'options' => [
@@ -47,7 +47,7 @@ return [
                                 'order'     => 'asc|desc'
                             ],
                             'defaults' => [
-                                'controller'    => 'Index',
+                                'controller'    => 'ContactUsList',
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby'       => 'time',
@@ -77,12 +77,15 @@ return [
     ],
     'acl' => [
         'resource' => [
-            'index' => null
+            'index'     => null,
+            'contactus' => null,
+            'contactuslist' => null
         ],
         'allow' => [
             ['guest','index','index'],
             ['member','index','index'],
-            ['admin','index',['index', 'list', 'view', 'edit', 'delete']]
+            ['admin','index',['index', 'view', 'edit', 'delete']],
+            ['admin','contactuslist','list']
         ],
         'modules' => [
             'ContactUs'
@@ -99,7 +102,7 @@ return [
                     [
                         'label'         => 'List',
                         'route'         => 'contactus/list',
-                        'resource'      => 'index',
+                        'resource'      => 'contactuslist',
                         'privilege'     => 'list',
                         'title'         => 'Contact Us Submissions'
                     ],

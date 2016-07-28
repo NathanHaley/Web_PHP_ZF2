@@ -1,5 +1,7 @@
 {
     "logs": [
+             {"id": "0", "date": "2016-07-27", "description": "Initial application of site wide styles and custom theme."},
+             {"id": "0", "date": "2016-07-26", "description": "Facebook login initial error handling. Refactor entity lists into own controllers. Introduce NHUtils module into project. Refactor controllers to inherit from a shared base controller."},
              {"id": "0", "date": "2016-07-24", "description": "Refactoring, user role default fix, minor styling, Initial Facebook login integration."},
              {"id": "0", "date": "2016-07-21", "description": "Added ui.bootstrap to project and implemented initial carousel to display site change log items."},
              {"id": "0", "date": "2016-07-21", "description": "Initial Sign in/up/out buttons added. Remove Bootstrap-theme. Add authentication view helper."},
