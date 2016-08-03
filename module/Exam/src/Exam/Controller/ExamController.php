@@ -8,14 +8,13 @@
  */
 namespace Exam\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Exam\Form\Element\Question\QuestionInterface;
 use Exam\Model\Test;
 use Zend\EventManager\EventManager;
-use Application\Model\Application;
 
 
-class ExamController extends NHUtilsBaseController
+class ExamController extends UtilBaseController
 {
 
     public function indexAction()
@@ -35,20 +34,21 @@ class ExamController extends NHUtilsBaseController
 
     public function takeAction()
     {
+        //@todo how best to handle timer/duration
         $startTime = time();
         //if(! isset($user->examStartTime)){
         //   $user->examStartTime = time();
         //}
 
-        $id = $this->params('id');
-        if (! $id) {
+        $examId = $this->params('id');
+        if (! $examId) {
             return $this->redirect()->toRoute('exam/list');
         }
 
         $testManager = $this->serviceLocator->get('test-manager');
 
-        $formDetails = $testManager->get($id);
-        $form = $testManager->createForm($id);
+        $formDetails = $testManager->get($examId);
+        $form = $testManager->createForm($examId);
 
         $form->setAttribute('method', 'POST');
 
@@ -66,7 +66,7 @@ class ExamController extends NHUtilsBaseController
         ));
 
         if ($this->getRequest()->isPost()) {
-            // If we have post request -> check how many correct answers are correct
+            // If we have post request -> check how many answers are correct
             $user = $this->serviceLocator->get('user');
             $data = $this->getRequest()->getPost();
             $form->setData($data);
@@ -74,21 +74,24 @@ class ExamController extends NHUtilsBaseController
             $total = 0;
 
             //get the duration
-            $duration = time() - $startTime;
+            $duration = intval(time() - $startTime);
 
             $attemptEntity = $this->serviceLocator->get('test-attempt-entity');
+            //$attemptAnswerEntity = $this->serviceLocator->get('test-attempt-answer-entity');
 
-            $attemptEntity->setUser_id($user->getId());
-            $attemptEntity->setTest_id($id);
-            $attemptEntity->setStime($startTime);
-            $attemptEntity->setDuration($duration);
+            $attemptEntity->setaUserId($user->getId());
+            $attemptEntity->setEeId($examId);
+            //$attemptEntity->setStartTs($startTime);
+            //$attemptEntity->setDuration($duration);
 
             $entityManager = $this->serviceLocator->get('entity-manager');
+            //$attemptAnswerManager = $this->serviceLocator->get('test-attempt-answer-manager');
+
+            $attemptEntity->setAddStamp($user->getId());
 
             $entityManager->persist($attemptEntity);
             $entityManager->flush();
 
-            $testAttemptAnswerManager = $this->serviceLocator->get('test-attempt-answer-manager');
 
             foreach ($form as $k => $element) {
 
@@ -104,16 +107,19 @@ class ExamController extends NHUtilsBaseController
 
                     $answerEntity = $this->serviceLocator->get('test-attempt-answer-entity');
 
-                    $answerEntity->setXuta_id($attemptEntity->getId());
-                    $answerEntity->setXeq_id(str_replace('q','',$element->getName()));
+                    $answerEntity->setEeaId($attemptEntity->getId());
+                    $answerEntity->setEeqId(str_replace('q','',$element->getName()));
                     $answerEntity->setAnswer($element->getValue());
-                    $answerEntity->setValid(intval($isValid));
+                    $answerEntity->setIsValid(intval($isValid));
 
+                    $answerEntity->setAddStamp($user->getId());
+                    //$testAttemptAnswerManager->store($answerEntity->toArray());
 
-                    $testAttemptAnswerManager->store($answerEntity->toArray());
+                    $entityManager->persist($answerEntity);
+                    $entityManager->flush();
+                    $entityManager->clear();
                 }
             }
-
 
             $score = intval(round($correct/$total*100));
 
@@ -130,7 +136,7 @@ class ExamController extends NHUtilsBaseController
                 $newEvent = new EventManager('exam');
                 $newEvent->trigger('taken-excellent', $this, array (
                     'user' => $user,
-                    'examId' => $id
+                    'examId' => $examId
                 ));
 
             } else {
@@ -140,7 +146,7 @@ class ExamController extends NHUtilsBaseController
             }
 
             $attemptEntity->setPass(intval($score === 100));
-            $attemptEntity->setScore_pct($score);
+            $attemptEntity->setScorePct($score);
 
             $entityManager->persist($attemptEntity);
             $entityManager->flush();
@@ -175,30 +181,4 @@ class ExamController extends NHUtilsBaseController
         return $this->redirect()->toRoute('exam/list');
     }
 
-    public function certificateAction()
-    {
-        $id = $this->params('id');
-        if (! $id) {
-            return $this->redirect()->toRoute('exam/list');
-        }
-
-        $pdfService = $this->serviceLocator->get('pdf');
-        $user = $this->serviceLocator->get('user');
-
-
-        $pdf = $pdfService->generateCertificate($user, $id);
-
-        $response = $this->getResponse();
-
-        // We need to set a content-type header so that the
-        // browser is able to recognize our pdf and display it
-        $response->getHeaders()->addHeaderLine('Content-Type: application/pdf');
-
-        $response->setContent($pdf->render());
-
-        // if we want to shortcut the execution we just return the
-        // response object and then the view and the layout are not
-        // rendered at all
-        return $response;
-    }
 }

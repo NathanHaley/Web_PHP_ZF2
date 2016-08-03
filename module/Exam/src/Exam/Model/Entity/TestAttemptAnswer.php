@@ -5,71 +5,53 @@ use Zend\Form\Annotation;
 
 /**
  * @Annotation\Name("testAttemptAnswer")
- * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+ * @Annotation\Hydrator({"type": "Zend\Stdlib\Hydrator\ClassMethods", "options": {"underscoreSeparatedKeys": false}})
  *
- * @Entity @Table(name="x_users_tests_attempts_answers")
+ * @Entity @Table(name="e_exam_attempt_answer")
  */
 class TestAttemptAnswer
 {
+    use \Util\Model\Entity\Traits\EntityBase;
+
     /**
      * @Annotation\Exclude()
      *
-     * @Id @GeneratedValue @Column(type="integer")
+     * @Id @GeneratedValue
+     * @Column(name="id", type="integer")
      */
     protected $id;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Xuta_id @GeneratedValue @Column(type="integer")
+     * @Column(name="eea_id", type="integer")
      */
-    protected $xuta_id;
+    protected $EeaId;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Xeq_id @GeneratedValue @Column(type="integer")
+     * @Column(name="eeq_id", type="integer")
      */
-    protected $xeq_id;
+    protected $EeqId;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Answer @GeneratedValue @Column(type="integer")
+     * @Column(name="answer", type="string")
      */
     protected $answer;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Valid @GeneratedValue @Column(type="boolean")
+     * @Column(name="isvalid", type="integer")
      */
-    protected $valid;
+    protected $IsValid;
 
     /**
-     * @Annotation\Exclude()
      *
-     * @Cdate @GeneratedValue @Column(type="timestamp")
-     */
-    protected $cdate;
-
-    /**
-     * @Annotation\Exclude()
-     *
-     * @Mdate @GeneratedValue @Column(type="timestamp")
-     */
-    protected $mdate;
-
-    /**
-     * @Annotation\Exclude()
-     *
-     * @Muser_id @GeneratedValue @Column(type="integer")
-     */
-    protected $muser_id;
-
-
-    /**
-     * @return the $id
+     * @return the unknown_type
      */
     public function getId()
     {
@@ -77,47 +59,56 @@ class TestAttemptAnswer
     }
 
     /**
-     * @param field_type $id
+     *
+     * @param unknown_type $id
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * @return the $xuta_id
+     *
+     * @return the unknown_type
      */
-    public function getXuta_id()
+    public function getEeaId()
     {
-        return $this->xuta_id;
+        return $this->EeaId;
     }
 
     /**
-     * @param field_type $xuta_id
+     *
+     * @param unknown_type $EeaId
      */
-    public function setXuta_id($xuta_id)
+    public function setEeaId($EeaId)
     {
-        $this->xuta_id = $xuta_id;
+        $this->EeaId = $EeaId;
+        return $this;
     }
 
     /**
-     * @return the $xeq_id
+     *
+     * @return the unknown_type
      */
-    public function getXeq_id()
+    public function getEeqId()
     {
-        return $this->xeq_id;
+        return $this->EeqId;
     }
 
     /**
-     * @param field_type $xeq_id
+     *
+     * @param unknown_type $EeqId
      */
-    public function setXeq_id($xeq_id)
+    public function setEeqId($EeqId)
     {
-        $this->xeq_id = $xeq_id;
+        $this->EeqId = $EeqId;
+        return $this;
     }
 
     /**
-     * @return the $answer
+     *
+     * @return the unknown_type
      */
     public function getAnswer()
     {
@@ -125,80 +116,35 @@ class TestAttemptAnswer
     }
 
     /**
-     * @param field_type $answer
+     *
+     * @param unknown_type $answer
      */
     public function setAnswer($answer)
     {
+
+        $answer = json_encode($answer);
+
         $this->answer = $answer;
+        return $this;
     }
 
     /**
-     * @return the $valid
+     *
+     * @return the unknown_type
      */
-    public function getValid()
+    public function getIsValid()
     {
-        return $this->valid;
+        return $this->IsValid;
     }
 
     /**
-     * @param field_type $valid
+     *
+     * @param unknown_type $IsValid
      */
-    public function setValid($valid)
+    public function setIsValid($IsValid)
     {
-        $this->valid = $valid;
-    }
-
-    /**
-     * @return the $cdate
-     */
-    public function getCdate()
-    {
-        return $this->cdate;
-    }
-
-    /**
-     * @param field_type $cdate
-     */
-    public function setCdate($cdate)
-    {
-        $this->cdate = $cdate;
-    }
-
-    /**
-     * @return the $mdate
-     */
-    public function getMdate()
-    {
-        return $this->mdate;
-    }
-
-    /**
-     * @param field_type $mdate
-     */
-    public function setMdate($mdate)
-    {
-        $this->mdate = $mdate;
-    }
-
-    /**
-     * @return the $muser_id
-     */
-    public function getMuser_id()
-    {
-        return $this->muser_id;
-    }
-
-    /**
-     * @param field_type $muser_id
-     */
-    public function setMuser_id($muser_id)
-    {
-        $this->muser_id = $muser_id;
-    }
-
-    public function toArray()
-    {
-        return get_object_vars($this);
+        $this->IsValid = $IsValid;
+        return $this;
     }
 
 

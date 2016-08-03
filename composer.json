@@ -11,8 +11,8 @@
         "php": ">=5.5",
         "zendframework/zendframework": "~2.5",
         "zendframework/zftool": "dev-master",
-        "doctrine/common": ">=2.5.3",
-        "doctrine/orm": ">=2.5.4",
+        "doctrine/common": "v2.5.3",
+        "doctrine/orm": "v2.5.4",
         "zendframework/zendpdf": "2.*",
         "zfcampus/zf-deploy": "~1.0-dev",
         "facebook/php-sdk-v4" : "~5.0"

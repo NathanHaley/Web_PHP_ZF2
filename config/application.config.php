@@ -8,9 +8,10 @@
 return array(
     'modules' => array(
         'Application',
-        'NHUtils',
+        'Util',
         //'Debug',
-        'User',
+        //'User',
+        'Account',
         'Exam',
         'ContactUs',
         'Company'

@@ -5,12 +5,14 @@ use Zend\Form\Annotation;
 
 /**
  * @Annotation\Name("contactUs")
- * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+ * @Annotation\Hydrator({"type": "Zend\Stdlib\Hydrator\ClassMethods", "options": {"underscoreSeparatedKeys": false}})
  *
- * @Entity @Table(name="contact_us_form")
+ * @Entity @Table(name="cu_form_submission")
  */
 class ContactUs
 {
+    use \Util\Model\Entity\Traits\EntityBase;
+
     /**
      * @Annotation\Exclude()
      *
@@ -53,13 +55,6 @@ class ContactUs
      * @Column(type="string")
      */
     protected $comments;
-
-    /**
-     * @Annotation\Exclude()
-     *
-     * @cdate @GeneratedValue @Column(type="datetime")
-     */
-    protected $cdate;
 
 
     /**
@@ -124,22 +119,6 @@ class ContactUs
     public function setComments($comment)
     {
         $this->comments = $comment;
-    }
-
-    /**
-     * @return the $cdate
-     */
-    public function getCdate()
-    {
-        return $this->cdate;
-    }
-
-    /**
-     * @param field_type $comments
-     */
-    public function setCdate($cdate)
-    {
-        $this->cdate = $cdate;
     }
 
 }

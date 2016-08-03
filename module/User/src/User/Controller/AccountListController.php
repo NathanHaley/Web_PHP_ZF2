@@ -2,12 +2,12 @@
 namespace User\Controller;
 
 use User\Model\User as UserModel;
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use Application\Model\Application;
 
-class AccountListController extends NHUtilsBaseController
+class AccountListController extends UtilBaseController
 {
 
     public function indexAction()

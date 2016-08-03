@@ -8,14 +8,14 @@
  */
 namespace Exam\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Exam\Model\Test;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use Application\Model\Application;
 use Zend\Db\Sql\Select;
 
-class ExamListController extends NHUtilsBaseController
+class ExamListController extends UtilBaseController
 {
 
     public function indexAction()
@@ -36,11 +36,11 @@ class ExamListController extends NHUtilsBaseController
         $sql->columns([
             'score' => new \Zend\Db\Sql\Expression("MAX(score_pct)"),
             'pass'  => 'pass',
-            'test_id' => 'test_id'
+            'ee_id' => 'ee_id'
         ])
-        ->from('x_users_tests_attempts')
-        ->where(['user_id' => $user->getId()])
-        ->group('test_id');
+        ->from('e_exam_attempt')
+        ->where(['a_user_id' => $user->getId()])
+        ->group('ee_id');
 
         $testModel = new Test();
         $result = $testModel->getSql()
@@ -54,10 +54,10 @@ class ExamListController extends NHUtilsBaseController
         ->join(
             ['ta' => $sql
             ],
-            'tests.id = ta.test_id',
+            'e_exam.id = ta.ee_id',
             ['score','pass'],Select::JOIN_LEFT)
             ->where([
-                'active' => 1
+                'stat_id' => 1
             ])->order("$orderby $order");
 
         $adapter = new PaginatorDbAdapter($result, $testModel->getAdapter());

@@ -6,145 +6,177 @@
  * @copyright Copyright (c] 2005-2012 Zend Technologies USA Inc. (http://www.zend.com]
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 return [
     'application' => [
-        'name' 	        => 'Training Center',
-        'version'       => '0.0.2',
-        'admin-email'   => 'demoadmin@nathanhaley.com',
+        'name' => 'Training Center',
+        'version' => '0.0.2',
+        'admin-email' => 'demoadmin@nathanhaley.com',
+        'forms' => [
+            //Set of default, or common, field elements for adding to forms
+            'default_fields' => [
+                //Add to every form
+                'csrf' => [
+                    'name' => 'csrf',
+                    'type' => 'Zend\Form\Element\Csrf'
+                ],
+                'submit' => [
+                    'name' => 'submit',
+                    'type' => 'Zend\Form\Element\Submit',
+                    'attributes' => [
+                        'value' => 'Submit',
+                        'required' => 'false'
+                    ]
+                ],
+                'passwordVerify' => [
+                    'name' => 'passwordVerify',
+                    'type' => 'Zend\Form\Element\Password',
+                    'attributes' => [
+                        'placeholder' => 'Verify Password Here...',
+                        'required' => 'required'
+                    ],
+                    'options' => [
+                        'label' => 'Verify Password:'
+                    ]
+                ],
+                'passwordVerify_flag' => [
+                    // Adjust according to password field - 100
+                    'priority' => '200'
+                ]
+            ]
+        ]
     ],
     'router' => [
         'routes' => [
             'home' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
-                    'route'    => '/',
+                    'route' => '/',
                     'defaults' => [
                         'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
-                    ],
-                ],
+                        'action' => 'index'
+                    ]
+                ]
             ],
             'application' => [
-                'type'    => 'Literal',
+                'type' => 'Literal',
                 'options' => [
-                    'route'    => '/application',
+                    'route' => '/application',
                     'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                    ],
+                        'controller' => 'Index',
+                        'action' => 'index'
+                    ]
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
                     'default' => [
-                        'type'    => 'Segment',
+                        'type' => 'Segment',
                         'options' => [
-                            'route'    => '/[:controller[/:action]]',
+                            'route' => '/[:controller[/:action]]',
                             'constraints' => [
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                             ],
-                            'defaults' => [],
-                        ],
-                    ],
-                ],
-            ],
-        ],
+                            'defaults' => []
+                        ]
+                    ]
+                ]
+            ]
+        ]
     ],
     'service_manager' => [
         'factories' => [
-            'translator'        => 'Zend\I18n\Translator\TranslatorServiceFactory',
-            'cipher'            => 'Application\Service\Factory\SymmetricCipher',
-            'navigation'        => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'entity-manager'    => 'Application\Service\Factory\EntityManager',
-        'database'              => 'Application\Service\Factory\Database',
+            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
+            'cipher' => 'Application\Service\Factory\SymmetricCipher',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'entity-manager' => 'Application\Service\Factory\EntityManager',
+            'database' => 'Application\Service\Factory\Database'
         ],
         'aliases' => [
-            'Zend\Authentication\AuthenticationService' => 'my_auth_service',
+            'Zend\Authentication\AuthenticationService' => 'my_auth_service'
         ],
         'invokables' => [
-            'doctrine-profiler'             => 'Application\Service\Invokable\DoctrineProfiler',
-            'table-gateway'                 => 'Application\Service\Invokable\TableGateway',
-            'my_auth_service' => 'Zend\Authentication\AuthenticationService',
+            'doctrine-profiler' => 'Application\Service\Invokable\DoctrineProfiler',
+            'table-gateway' => 'Application\Service\Invokable\TableGateway',
+            'my_auth_service' => 'Zend\Authentication\AuthenticationService'
         ],
         'initializers' => [
-            'Application\Service\Initializer\DbProfiler',
-        ],
+            'Application\Service\Initializer\DbProfiler'
+        ]
     ],
     'translator' => [
         'locale' => 'en_US',
         'translation_file_patterns' => [
             [
-                'type'     => 'gettext',
+                'type' => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ],
-        ],
+                'pattern' => '%s.mo'
+            ]
+        ]
     ],
     'controllers' => [
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ],
+        ]
     ],
     'view_manager' => [
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
         'template_map' => [
-            'layout/layout'                             => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index'                   => __DIR__ . '/../view/application/index/index.phtml',
-            //Layout Partials
-            'application/index/partials/head'           => __DIR__ . '/../view/application/index/partials/head.phtml',
-            'application/index/partials/navTop'         => __DIR__ . '/../view/application/index/partials/navTop.phtml',
-            'application/index/partials/breadcrumb'     => __DIR__ . '/../view/application/index/partials/breadcrumb.phtml',
-            'application/index/partials/flashMessages'  => __DIR__ . '/../view/application/index/partials/flashMessages.phtml',
-            'application/index/partials/footer'         => __DIR__ . '/../view/application/index/partials/footer.phtml',
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            // Layout Partials
+            'application/index/partials/head' => __DIR__ . '/../view/application/index/partials/head.phtml',
+            'application/index/partials/navTop' => __DIR__ . '/../view/application/index/partials/navTop.phtml',
+            'application/index/partials/breadcrumb' => __DIR__ . '/../view/application/index/partials/breadcrumb.phtml',
+            'application/index/partials/flashMessages' => __DIR__ . '/../view/application/index/partials/flashMessages.phtml',
+            'application/index/partials/footer' => __DIR__ . '/../view/application/index/partials/footer.phtml',
             // Tiny Partials
-            'partials/pageHeader'                       => __DIR__ . '/../view/share/partials/pageHeader.phtml',
-            //Errors
-            'error/404'                                 => __DIR__ . '/../view/error/404.phtml',
-            'error/index'                               => __DIR__ . '/../view/error/index.phtml',
+            'partials/pageHeader' => __DIR__ . '/../view/share/partials/pageHeader.phtml',
+            // Errors
+            'error/404' => __DIR__ . '/../view/error/404.phtml',
+            'error/index' => __DIR__ . '/../view/error/index.phtml',
             // paginator views
-            'paginator/sliding'                         => __DIR__ . '/../view/paginator/sliding.phtml',
-            //data/entity lists
-            'forms/entity_list'                         => __DIR__ . '/../view/share/forms/entity_list.phtml',
+            'paginator/sliding' => __DIR__ . '/../view/paginator/sliding.phtml',
+            // data/entity lists
+            'forms/entity_list' => __DIR__ . '/../view/share/forms/entity_list.phtml'
         ],
         'template_path_stack' => [
-            __DIR__ . '/../view',
-        ],
+            __DIR__ . '/../view'
+        ]
     ],
     'navigation' => [
         'default' => [
             [
-                'label'         => 'Home',
-                'title'         => 'Home',
-                'route'         => 'home',
-                'controller'    => 'index',
+                'label' => 'Home',
+                'title' => 'Home',
+                'route' => 'home',
+                'controller' => 'index',
                 'pages' => [
                     [
-                        'label'         => 'About',
-                        'route'         => 'application/default',
-                        'controller'    => 'index',
-                        'action'        => 'about',
-                        'title'         => 'About Us'
+                        'label' => 'About',
+                        'route' => 'application/default',
+                        'controller' => 'index',
+                        'action' => 'about',
+                        'title' => 'About Us'
                     ],
                     [
-                        'label'     => 'Book',
-                        'uri'       => 'http://learnzf2.com',
-                        'title'     => 'Book Learnzf2'
+                        'label' => 'Book',
+                        'uri' => 'http://learnzf2.com',
+                        'title' => 'Book Learnzf2'
                     ],
                     [
-                        'label'         => 'Privacy',
-                        'route'         => 'application/default',
-                        'controller'    => 'index',
-                        'action'        => 'privacy',
-                        'title'         => 'Privacy Statement'
+                        'label' => 'Privacy',
+                        'route' => 'application/default',
+                        'controller' => 'index',
+                        'action' => 'privacy',
+                        'title' => 'Privacy Statement'
                     ]
                 ]
-            ],
+            ]
         ]
-    ],
+    ]
 ];

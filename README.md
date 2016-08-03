@@ -18,6 +18,10 @@ pass123
 
 Change log:
 
+2016-08-02: Added My Home and Admin Tools pages. Contact Us form submission fix. Added edit button on My Profile page.
+
+2016-08-02: Completely new data model implemented. Removed User module, added Account module. Switch storage mechanics for exam attempt answers. Facebook login iterations.
+
 2016-07-27: Initial application of site wide styles and custom theme.
 
 2016-07-26: Facebook login initial error handling. Refactor entity lists into own controllers. Introduce NHUtils module into project. Refactor controllers to inherit from a shared controller.

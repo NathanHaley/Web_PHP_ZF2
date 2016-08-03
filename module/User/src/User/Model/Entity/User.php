@@ -427,7 +427,15 @@ class User implements PasswordAwareInterface
     public function setPasswordAdapter(PasswordInterface $adapter)
     {
         $this->passwordAdapter = $adapter;
-    }
+    }if(! isset($this->id)) {
+            $this->setId($id);
+            $this->addNewUserStamp($id);
+            return;
+        } else {
+            //@todo log
+
+            throw new \Exception('Illegal Operation: Can not change a user id');
+        }
 
     /**
      * Gets the password adapter
@@ -437,5 +445,6 @@ class User implements PasswordAwareInterface
     {
         return $this->passwordAdapter;
     }
+
 
 }

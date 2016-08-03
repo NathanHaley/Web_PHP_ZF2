@@ -5,84 +5,66 @@ use Zend\Form\Annotation;
 
 /**
  * @Annotation\Name("testAttempt")
- * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+ * @Annotation\Hydrator({"type": "Zend\Stdlib\Hydrator\ClassMethods", "options": {"underscoreSeparatedKeys": false}})
  *
- * @Entity @Table(name="x_users_tests_attempts")
+ * @Entity @Table(name="e_exam_attempt")
  */
 class TestAttempt
 {
+    use \Util\Model\Entity\Traits\EntityBase;
+
     /**
      * @Annotation\Exclude()
      *
-     * @Id @GeneratedValue @Column(type="integer")
+     * @Id @GeneratedValue
+     * @Column(name="id", type="integer")
      */
     protected $id;
 
     /**
      * @Annotation\Exclude()
      *
-     * @User_id @GeneratedValue @Column(type="integer")
+     * @Column(name="a_user_id", type="integer")
      */
-    protected $user_id;
+    protected $aUserId;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Test_id @GeneratedValue @Column(type="integer")
+     * @Column(name="ee_id", type="integer")
      */
-    protected $test_id;
+    protected $eeId;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Score_pct @GeneratedValue @Column(type="integer")
+     * @Column(name="score_pct", type="integer")
      */
-    protected $score_pct;
+    protected $scorePct;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Pass @GeneratedValue @Column(type="boolean")
+     * @Column(name="pass", type="integer")
      */
     protected $pass;
 
     /**
      * @Annotation\Exclude()
      *
-     * @Stime @GeneratedValue @Column(type="integer")
+     * @Column(name="start_ts", type="datetime")
      */
-    protected $stime;
+    protected $startTs;
     /**
      * @Annotation\Exclude()
      *
-     * @Duration @GeneratedValue @Column(type="integer")
+     * @Column(name="duration", type="integer")
      */
     protected $duration;
 
     /**
-     * @Annotation\Exclude()
      *
-     * @Cdate @GeneratedValue @Column(type="integer")
-     */
-    protected $cdate;
-
-    /**
-     * @Annotation\Exclude()
-     *
-     * @Mdate @GeneratedValue @Column(type="integer")
-     */
-    protected $mdate;
-
-    /**
-     * @Annotation\Exclude()
-     *
-     * @Muser_id @Column(type="integer")
-     */
-    protected $muser_id;
-
-
-    /**
-     * @return the $id
+     * @return the unknown_type
      */
     public function getId()
     {
@@ -90,63 +72,75 @@ class TestAttempt
     }
 
     /**
-     * @param field_type $id
+     *
+     * @param unknown_type $id
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * @return the $user_id
+     *
+     * @return the unknown_type
      */
-    public function getUser_Id()
+    public function getAUserId()
     {
-        return $this->user_id;
+        return $this->aUserId;
     }
 
     /**
-     * @param field_type $user_id
+     *
+     * @param unknown_type $aUserId
      */
-    public function setUser_Id($user_id)
+    public function setAUserId($aUserId)
     {
-        $this->user_id = $user_id;
+        $this->aUserId = $aUserId;
+        return $this;
     }
 
     /**
-     * @return the $test_id
+     *
+     * @return the unknown_type
      */
-    public function getTest_id()
+    public function getEetId()
     {
-        return $this->test_id;
+        return $this->eeId;
     }
 
     /**
-     * @param field_type $test_id
+     *
+     * @param unknown_type $testId
      */
-    public function setTest_id($test_id)
+    public function setEeId($eeId)
     {
-        $this->test_id = $test_id;
+        $this->eeId = $eeId;
+        return $this;
     }
 
     /**
-     * @return the $score_pct
+     *
+     * @return the unknown_type
      */
-    public function getScore_pct()
+    public function getScorePct()
     {
-        return $this->score_pct;
+        return $this->scorePct;
     }
 
     /**
-     * @param field_type $score_pct
+     *
+     * @param unknown_type $scorePct
      */
-    public function setScore_pct($score_pct)
+    public function setScorePct($scorePct)
     {
-        $this->score_pct = $score_pct;
+        $this->scorePct = $scorePct;
+        return $this;
     }
 
     /**
-     * @return the $pass
+     *
+     * @return the unknown_type
      */
     public function getPass()
     {
@@ -154,98 +148,52 @@ class TestAttempt
     }
 
     /**
-     * @param field_type $pass
+     *
+     * @param unknown_type $pass
      */
     public function setPass($pass)
     {
         $this->pass = $pass;
+        return $this;
     }
 
     /**
-     * @return the $stime
+     *
+     * @return the unknown_type
      */
-    public function getStime()
+    public function getStartTs()
     {
-        return $this->stime;
+        return $this->startTs;
     }
 
     /**
-     * @param field_type $stime
+     *
+     * @param unknown_type $startTs
      */
-    public function setStime($stime)
+    public function setStartTs($startTs)
     {
-        $this->stime = $stime;
+        $this->startTs = $startTs;
+        return $this;
     }
 
     /**
-     * @return the $duration
+     *
+     * @return the unknown_type
      */
     public function getDuration()
     {
-        return $this->id;
+        return $this->duration;
     }
 
     /**
-     * @param field_type $duration
+     *
+     * @param unknown_type $duration
      */
     public function setDuration($duration)
     {
         $this->duration = $duration;
+        return $this;
     }
-
-    /**
-     * @return the $cdate
-     */
-    public function getCdate()
-    {
-        return $this->cdate;
-    }
-
-    /**
-     * @param field_type $cdate
-     */
-    public function setCdate($cdate)
-    {
-        $this->cdate = $cdate;
-    }
-
-    /**
-     * @return the $mdate
-     */
-    public function getMdate()
-    {
-        return $this->mdate;
-    }
-
-    /**
-     * @param field_type $mdate
-     */
-    public function setMdate($mdate)
-    {
-        $this->mdate = $mdate;
-    }
-
-    /**
-     * @return the $muser_id
-     */
-    public function getMuser_id()
-    {
-        return $this->muser_id;
-    }
-
-    /**
-     * @param field_type $muser_id
-     */
-    public function setMuser_id($muser_id)
-    {
-        $this->muser_id = $muser_id;
-    }
-
-    public function toArray()
-    {
-        return get_object_vars($this);
-    }
-
 
 
 }

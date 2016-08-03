@@ -1,0 +1,20 @@
+<?php
+$user = $this->identity();
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<h2><?= sprintf($this->translate('%s, welcome to the Admin Tools area.'), $user->getDisplayName()) ?></h2>
+    	<p>You are a privileged site Administrator and have access to manage user accounts and contact us form submissions.</p>
+    	<p>View, add, edit, or even delete user accounts and contact us form submissions.</p>
+    	<p>These features are accessed starting at the list pages in each section in the dropdown menu OR by these dandy buttons.</p>
+    </div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<br /><br />
+		<a class="btn btn-lg btn-info btn-sm"
+			href="<?= $this->url('user/list') ?>"><?= $this->translate('Go To User List') ?></a>
+		<a class="btn btn-lg btn-info btn-sm"
+			href="<?= $this->url('contactus/list') ?>"><?= $this->translate('To Contact Us List') ?></a>
+	</div>
+</div>

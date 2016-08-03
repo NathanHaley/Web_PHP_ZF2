@@ -1,12 +1,12 @@
 <?php
 namespace User\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Facebook\Facebook;
 use Facebook\FacebookResponse;
 use Zend\EventManager\EventManager;
 
-class FbController extends NHUtilsBaseController
+class FbController extends UtilBaseController
 {
 
     public function indexAction()
@@ -174,7 +174,7 @@ class FbController extends NHUtilsBaseController
                 $entity = $this->serviceLocator->get('user-entity');
                 $aclDefaults = $config = $this->serviceLocator->get('config')['acl']['defaults'];
 
-                $entity->setName($fbUser->getName());
+                $entity->setDisplayName($fbUser->getName());
 
                 // @todo handle dups
                 $entity->setEmail($fbUser->getEmail());

@@ -1,15 +1,16 @@
 <?php
 namespace User\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\EventManager\EventManager;
 
-class AccountController extends NHUtilsBaseController
+class AccountController extends UtilBaseController
 {
 
     public function indexAction()
     {
+        
         return array();
     }
 

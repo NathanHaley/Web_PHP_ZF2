@@ -8,7 +8,7 @@ class TestAttempt extends AbstractTableGateway
 {
     public function __construct()
     {
-        $this->table = 'x_users_tests_attempts';
+        $this->table = 'e_exam_attempt';
         $this->featureSet = new Feature\FeatureSet();
         $this->featureSet->addFeature(new Feature\GlobalAdapterFeature());
         $this->initialize();

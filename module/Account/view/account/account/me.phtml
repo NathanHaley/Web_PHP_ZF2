@@ -1,0 +1,12 @@
+<h4><?= sprintf($this->translate('Email/Username: %s'), $user->getEmail()) ?></h4>
+<h4><?= sprintf($this->translate('Display Name: %s'), $user->getDisplayName()) ?></h4>
+<h4><?= sprintf($this->translate('First Name: %s'), $user->getFirstName()) ?></h4>
+<h4><?= sprintf($this->translate('Middle Name: %s'), $user->getMiddleName()) ?></h4>
+<h4><?= sprintf($this->translate('Last Name: %s'), $user->getLastName()) ?></h4>
+<h4><?= sprintf($this->translate('Role: %s'), $user->getRole()) ?></h4>
+<h4><?= sprintf($this->translate('Phone: %s'), $user->getPhone()) ?></h4>
+
+
+<br /><br />
+<a class="btn btn-lg btn-primary btn-sm"
+	href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit')) ?>"><?= $this->translate('Edit Profle') ?></a>

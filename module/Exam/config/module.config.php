@@ -87,9 +87,9 @@ return [
     ],
     'table-gateway' => [
         'map' => [
-            'tests'                         => 'Exam\Model\Tests',
-            'x_users_tests_attempts'        => 'Exam\Model\TestAttempt',
-            'x_users_tests_attempts_answers'=> 'Exam\Model\TestAttemptAnswer',
+            'e_exam'                        => 'Exam\Model\Tests',
+            'e_exam_attemtp'                => 'Exam\Model\TestAttempt',
+            'e_exam_attempt_answer'         => 'Exam\Model\TestAttemptAnswer',
         ]
     ],
     'doctrine' => [

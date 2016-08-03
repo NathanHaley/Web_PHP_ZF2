@@ -1,5 +1,7 @@
 {
     "logs": [
+             {"id": "0", "date": "2016-08-03", "description": "Added My Home and Admin Tools pages. Contact Us form submission fix. Added edit button on My Profile page."},
+             {"id": "0", "date": "2016-08-03", "description": "Completely new data model implemented. Removed User module, added Account module. Switch storage mechanics for exam attempt answers. Facebook login iterations."},
              {"id": "0", "date": "2016-07-27", "description": "Initial application of site wide styles and custom theme."},
              {"id": "0", "date": "2016-07-26", "description": "Facebook login initial error handling. Refactor entity lists into own controllers. Introduce NHUtils module into project. Refactor controllers to inherit from a shared base controller."},
              {"id": "0", "date": "2016-07-24", "description": "Refactoring, user role default fix, minor styling, Initial Facebook login integration."},

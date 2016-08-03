@@ -1,0 +1,24 @@
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-sm-12">
+    <h4><?= sprintf($this->translate('Email/Username: %s'), $this->userToView->getEmail()) ?></h4>
+    <h4><?= sprintf($this->translate('Display Name: %s'), $this->userToView->getDisplayName()) ?></h4>
+    <h4><?= sprintf($this->translate('First Name: %s'), $this->userToView->getFirstName()) ?></h4>
+    <h4><?= sprintf($this->translate('Middle Name: %s'), $this->userToView->getMiddleName()) ?></h4>
+    <h4><?= sprintf($this->translate('Last Name: %s'), $this->userToView->getLastName()) ?></h4>
+    <h4><?= sprintf($this->translate('Role: %s'), $this->userToView->getRole()) ?></h4>
+    <h4><?= sprintf($this->translate('Phone: %s'), $this->userToView->getPhone()) ?></h4>
+   </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-12">
+   <a class="btn btn-lg btn-primary btn-sm" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Edit') ?></a>
+
+   <a class="btn btn-lg btn-danger btn-sm" href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'delete', 'id'=> $this->userToView->getId())) ?>"><?= $this->translate('Delete') ?></a>
+  </div>
+ </div>
+</div>
+
+
+
+

@@ -1,11 +1,11 @@
 <?php
 namespace User\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Zend\EventManager\EventManager;
 use Facebook\Facebook;
 
-class LogController extends NHUtilsBaseController
+class LogController extends UtilBaseController
 {
 
     public function outAction()

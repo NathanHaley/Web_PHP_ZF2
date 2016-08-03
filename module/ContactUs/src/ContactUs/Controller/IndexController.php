@@ -1,11 +1,11 @@
 <?php
 namespace ContactUs\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Application\Model\Application;
 
-class IndexController extends NHUtilsBaseController
+class IndexController extends UtilBaseController
 {
 
     public function addAction()
@@ -35,6 +35,16 @@ class IndexController extends NHUtilsBaseController
                 );
             $form->setData($data);
             if($form->isValid()) {
+                
+                if ($this->identity()) {
+                    $userId = $this->identity()->getId();
+                    $entity->setModStamp($userId);
+                
+                    //@todo add field to entity
+                    //$entity->setAUserId($userId);
+                } else {
+                    $entity->setModStamp(0);
+                }
 
                 $entity = $entityManager->merge($entity);
                 $entityManager->flush();
@@ -108,6 +118,17 @@ class IndexController extends NHUtilsBaseController
             $data = $this->getRequest()->getPost()->toArray();
             $form->setData($data);
             if($form->isValid()) {
+                
+                if ($this->identity()) {
+                    $userId = $this->identity()->getId();
+                    $entity->setAddStamp($userId);
+                    
+                    //@todo add field to entity
+                    //$entity->setAUserId($userId);
+                } else {
+                    $entity->setAddStamp(0);
+                }
+                
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
                 $entityManager->flush();

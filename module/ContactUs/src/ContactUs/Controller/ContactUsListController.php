@@ -1,7 +1,7 @@
 <?php
 namespace ContactUs\Controller;
 
-use NHUtils\Controller\NHUtilsBaseController;
+use Util\Controller\UtilBaseController;
 use Zend\Paginator\Adapter\DbSelect as PaginatorDbAdapter;
 use Zend\Paginator\Paginator;
 use ContactUs\Model\ContactUs as ContactUsModel;
@@ -9,7 +9,7 @@ use Application\Model\Application;
 
 
 
-class ContactUsListController extends NHUtilsBaseController
+class ContactUsListController extends UtilBaseController
 {
     //Lists contact us messages for admins
     public function listAction()
@@ -32,7 +32,7 @@ class ContactUsListController extends NHUtilsBaseController
                             'name'      => 'fullname',
                             'email'     => 'email',
                             'comments'  => 'comments',
-                            'time'      => 'cdate'
+                            'time'      => 'add_ts'
                         ])
                     ->order("$orderby_tmp $order");
 

@@ -12,7 +12,7 @@
     <h4><?php echo sprintf($this->translate('Id: %s'), $this->commentToView->getId()) ?></h4>
     <h4><?php echo sprintf($this->translate('Emal: %s'), $this->commentToView->getEmail()) ?></h4>
     <h4><?php echo sprintf($this->translate('Name: %s'), $this->commentToView->getFullname()) ?></h4>
-    <h4><?php echo sprintf($this->translate('Time: %s'), $this->commentToView->getCdate()->format('Y-m-d H:i:s')) ?></h4>
+    <h4><?php echo sprintf($this->translate('Time: %s'), $this->commentToView->getAddTs()->format('Y-m-d H:i:s')) ?></h4>
     <h4><?php echo sprintf($this->translate('Comments: %s'), $this->commentToView->getComments()) ?></h4>
    </div>
  </div>
