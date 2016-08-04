@@ -47,7 +47,7 @@ class LogController extends UtilBaseController
 
             return $this->redirect()->toRoute('user/default', array (
                 'controller' => 'account',
-                'action'     => 'me',
+                'action'     => 'index',
             ));
         } else {
             //Really shouldn't get here.
@@ -85,7 +85,7 @@ class LogController extends UtilBaseController
 
             return $this->redirect()->toRoute('user/default', array (
                 'controller' => 'account',
-                'action'     => 'me',
+                'action'     => 'index',
             ));
         } else {
             $this->flashMessenger()->addErrorMessage('Please enter a valid Username and Password combination.');

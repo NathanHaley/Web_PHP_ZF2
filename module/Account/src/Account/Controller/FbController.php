@@ -208,7 +208,7 @@ class FbController extends UtilBaseController
 
                 return $this->redirect()->toRoute('user/default', array (
                     'controller' => 'account',
-                    'action'     => 'me',
+                    'action'     => 'index',
                 ));
             } else {
                 //Really shouldn't get here

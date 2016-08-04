@@ -35,11 +35,11 @@ class IndexController extends UtilBaseController
                 );
             $form->setData($data);
             if($form->isValid()) {
-                
+
                 if ($this->identity()) {
                     $userId = $this->identity()->getId();
                     $entity->setModStamp($userId);
-                
+
                     //@todo add field to entity
                     //$entity->setAUserId($userId);
                 } else {
@@ -118,17 +118,17 @@ class IndexController extends UtilBaseController
             $data = $this->getRequest()->getPost()->toArray();
             $form->setData($data);
             if($form->isValid()) {
-                
+
                 if ($this->identity()) {
                     $userId = $this->identity()->getId();
                     $entity->setAddStamp($userId);
-                    
+
                     //@todo add field to entity
                     //$entity->setAUserId($userId);
                 } else {
                     $entity->setAddStamp(0);
                 }
-                
+
                 $entityManager = $this->serviceLocator->get('entity-manager');
                 $entityManager->persist($entity);
                 $entityManager->flush();

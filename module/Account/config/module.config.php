@@ -203,7 +203,7 @@ return [
                             'privilege'     => 'register',
                             'title'         => 'Create/Register An Account'
                         ],
-                            [
+                        [
                             'label'         => 'My Profile',
                             'route'         => 'user/default',
                             'controller'    => 'account',
@@ -211,6 +211,15 @@ return [
                             'resource'      => 'account',
                             'privilege'     => 'me',
                             'title'         => 'My Profile'
+                        ],
+                        [
+                            'label'         => 'Edit',
+                            'route'         => 'user/default',
+                            'controller'    => 'account',
+                            'action'        => 'edit',
+                            'resource'      => 'account',
+                            'privilege'     => 'edit',
+                            'title'         => 'Edit User Account'
                         ],
                         [
                             'label'         => 'Log out',
@@ -244,15 +253,6 @@ return [
                             'resource'      => 'account',
                             'privilege'     => 'add',
                             'title'         => 'Add/Create User Account'
-                        ],
-                        [
-                            'label'         => 'Edit',
-                            'route'         => 'user/default',
-                            'controller'    => 'account',
-                            'action'        => 'edit',
-                            'resource'      => 'account',
-                            'privilege'     => 'edit',
-                            'title'         => 'Edit User Account'
                         ],
                         /* Accessed from the list page */
                         [

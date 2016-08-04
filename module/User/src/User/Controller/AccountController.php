@@ -10,7 +10,7 @@ class AccountController extends UtilBaseController
 
     public function indexAction()
     {
-        
+
         return array();
     }
 

@@ -4,22 +4,113 @@ namespace Account\Controller;
 use Util\Controller\UtilBaseController;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\EventManager\EventManager;
-use Zend\View\Model\ViewModel;
+use Account\Model\User as UserModel;
 
 class AccountController extends UtilBaseController
 {
+    //cache userModel
+    private $userModel;
+
+    const DUP_EMAIL_MESSAGE         = 'Email/Username already exists.';
+    const DUP_DISPLAY_NAME_MESSAGE  = 'Display Name is already in use.';
+
     //Member homepage
     public function indexAction()
     {
         return [];
-        
+
     }
-    
+
     //Admin Tools page
     public function adminAction()
     {
         return [];
-    
+
+    }
+
+    public function getUserModel()
+    {
+        if (! isset($this->userModel)) {
+            $this->userModel = new UserModel;
+        }
+
+        return $this->userModel;
+
+    }
+
+    //Expects associative array with [memberName => value]
+    protected function findUserBy($where)
+    {
+        $userModel = $this->getUserModel();
+        $userModel->select()->
+
+        $select = $userModel->getSql()
+            ->select()
+            ->columns(['id'])
+            ->where($where);
+
+        $result = $userModel->executeSelect($select);
+
+        if ($result) {
+            return $result;
+        }
+
+        return false;
+    }
+
+    //Handles looking for duplicate user records and setting form error messages for such.
+    // expects form object, request data array, fields as array of entity member names
+    protected function isDuplicatesByEmailOrDisplayName($em, $form, $data)
+    {
+        $isDup = false;
+
+        $repository = $em->getRepository('Account\Model\Entity\User');
+
+        $existingAcount = $repository
+            ->findOneBy(['email' => $data['email']]);
+
+        // Return invalid on duplicate email/username
+        if ($existingAcount) {
+            $form->get('email')->setMessages([
+                'Email/Username already exists.'
+            ]);
+
+            $isDup = true;
+        }
+
+        $existingAcount = $repository
+            ->findOneBy(['displayName' => $data['displayName']]);
+
+        if ($existingAcount) {
+            $form->get('displayName')->setMessages([
+                'Display Name is already in use.'
+            ]);
+
+            $isDup = true;
+        }
+
+        return $isDup;
+    }
+
+
+    //@todo can I make generic and move to utils
+    protected function isDuplicateBy($em, $form, $fieldName, $fieldValue, $message)
+    {
+        $isDup = false;
+        $config = $this->serviceLocator->get('config');
+
+        $repository = $em->getRepository($config['service_manager']['invokables']['user-entity']);
+
+        $existingAcount = $repository
+            ->findOneBy([$fieldName => $fieldValue]);
+
+        if ($existingAcount) {
+            $form->get($fieldName)->setMessages([$message]);
+
+            $isDup = true;
+        }
+
+        return $isDup;
     }
 
     public function addAction()
@@ -60,7 +151,25 @@ class AccountController extends UtilBaseController
 
             $form->setData($data);
 
+            //die(var_dump($data));
+            //$this->handleDuplicatesByEmailAndDisplayName($form, $data);
+
+
             if ($form->isValid()) {
+
+                $entityManager = $this->serviceLocator->get('entity-manager');
+
+                $dupCnt = 0;
+
+                $dupCnt += intval($this->isDuplicateBy($entityManager, $form, 'email', $data['email'], self::DUP_EMAIL_MESSAGE));
+
+                $dupCnt += intval($this->isDuplicateBy($entityManager, $form, 'displayName', $data['displayName'], self::DUP_DISPLAY_NAME_MESSAGE));
+
+
+                //If dups, return them to the form
+                if ($dupCnt !== 0) {
+                    return array('form1' => $form);
+                }
 
                 $entity = $form->getData();
 
@@ -69,10 +178,8 @@ class AccountController extends UtilBaseController
                 if ($currentUser->getRole() === $aclDefaults['guest_role']) {
                     $entity->setRole($aclDefaults['member_role']);
                 }
-                // We use now the Doctrine 2 entity manager to save user data to the database
 
-                $entityManager = $this->serviceLocator->get('entity-manager');
-
+                //$entityManager = $this->serviceLocator->get('entity-manager');
 
                 $entityManager->persist($entity);
                 $entityManager->flush();
@@ -109,6 +216,11 @@ class AccountController extends UtilBaseController
 
         // pass the data to the view for visualization
         return array('form1' => $form);
+    }
+
+    public function addUniqueCheck()
+    {
+
     }
 
     protected function setupUserDetailForm($entity)
@@ -149,7 +261,7 @@ class AccountController extends UtilBaseController
             ));
         }
 
-        $userToView = $this->findUserEntity($id);
+        $userToView = $this->findUserEntityById($id);
 
         return array(
             'userToView' => $userToView
@@ -180,7 +292,10 @@ class AccountController extends UtilBaseController
             }
         }
 
-        $entity = $this->findUserEntity($id);
+        $entity = $this->findUserEntityById($id);
+
+        $entityEmail = $entity->getEmail();
+        $entityDisplayName = $entity->getDisplayName();
 
         $form = $this->setupUserDetailForm($entity);
 
@@ -245,9 +360,41 @@ class AccountController extends UtilBaseController
 
             $form->setData($data);
 
+
+
             if ($form->isValid()) {
-                // Save data
+
                 $entityManager = $this->serviceLocator->get('entity-manager');
+
+                $emailToCheck = $data['email'];
+                $displayNameToCheck = $data['displayName'];
+                $dupCnt = 0;
+
+                if ($selfEdit) {
+
+                    if ($currentUser->getEmail() !== $emailToCheck) {
+                        $dupCnt += intval($this->isDuplicateBy($entityManager, $form, 'email', $emailToCheck, self::DUP_EMAIL_MESSAGE));
+                    }
+
+                    if ($currentUser->getDisplayName() !== $displayNameToCheck) {
+                        $dupCnt += intval($this->isDuplicateBy($entityManager, $form, 'displayName', $displayNameToCheck, self::DUP_DISPLAY_NAME_MESSAGE));
+                    }
+
+                } else {
+
+                    if ($emailToCheck !== $entityEmail) {
+                        $dupCnt += intval($this->isDuplicateBy($entityManager, $form, 'email', $emailToCheck, self::DUP_EMAIL_MESSAGE));
+                    }
+
+                    if ($displayNameToCheck !== $entityDisplayName) {
+                        $dupCnt += intval($this->isDuplicateBy($entityManager, $form, 'displayName', $displayNameToCheck, self::DUP_DISPLAY_NAME_MESSAGE));
+                    }
+                }
+
+                //If dups, return them to the form
+                if ($dupCnt !== 0) {
+                    return array('form1' => $form);
+                }
 
                 $demoAccounts = [1 => 'demoadmin', 2 => 'demouser'];
 
@@ -331,7 +478,7 @@ class AccountController extends UtilBaseController
         return array();
     }
 
-    protected function findUserEntity($id)
+    protected function findUserEntityById($id)
     {
         $entityManager = $this->serviceLocator->get('entity-manager');
         $config = $this->serviceLocator->get('config');

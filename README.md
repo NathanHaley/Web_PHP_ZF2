@@ -18,6 +18,8 @@ pass123
 
 Change log:
 
+2016-08-04: Implemented duplicate email/username and display name validations.
+
 2016-08-02: Added My Home and Admin Tools pages. Contact Us form submission fix. Added edit button on My Profile page.
 
 2016-08-02: Completely new data model implemented. Removed User module, added Account module. Switch storage mechanics for exam attempt answers. Facebook login iterations.

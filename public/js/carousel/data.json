@@ -1,5 +1,6 @@
 {
     "logs": [
+             {"id": "0", "date": "2016-08-04", "description": "Implemented duplicate email/username and display name validations."},
              {"id": "0", "date": "2016-08-03", "description": "Added My Home and Admin Tools pages. Contact Us form submission fix. Added edit button on My Profile page."},
              {"id": "0", "date": "2016-08-03", "description": "Completely new data model implemented. Removed User module, added Account module. Switch storage mechanics for exam attempt answers. Facebook login iterations."},
              {"id": "0", "date": "2016-07-27", "description": "Initial application of site wide styles and custom theme."},
