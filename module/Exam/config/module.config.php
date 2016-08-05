@@ -4,6 +4,7 @@ return [
         'invokables' => [
             'Exam\Controller\Exam'      => 'Exam\Controller\ExamController',
             'Exam\Controller\ExamList'  => 'Exam\Controller\ExamListController',
+            'Exam\Controller\Cert'      => 'Exam\Controller\CertController',
         ],
     ],
     'router' => [
@@ -46,6 +47,24 @@ return [
                                 'action'        => 'list',
                                 'page'          => '1',
                                 'orderby'       => 'name',
+                                'order'         => 'desc'
+                            ],
+                        ]
+                    ],
+                    'usercertlist' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route' => '/usercertlist[/page/:page][/orderby/:orderby][/order/:order]',
+                            'constraints' => [
+                                'page'     => '[0-9]*',
+                                'orderby' => 'add_ts|description|duration|score',
+                                'order' => 'asc|desc'
+                            ],
+                            'defaults' => [
+                                'controller'    => 'Cert',
+                                'action'        => 'usercertlist',
+                                'page'          => '1',
+                                'orderby'       => 'add_ts',
                                 'order'         => 'desc'
                             ],
                         ]
@@ -99,16 +118,18 @@ return [
     ],
     'acl' => [
         'resource' => [
-            'exam' => null,
-            'examlist' => null,
+            'exam'          => null,
+            'examlist'      => null,
+            'cert'          => null,
         ],
         'allow' => [
-            ['guest', 'exam', 'list'],
-            ['guest', 'examlist', 'list'],
-            ['member', 'exam', ['list','take']],
-            ['member', 'examlist', 'list'],
-            ['admin', 'exam', ['reset','certificate', 'view', 'edit', 'delete', 'take']],
-            ['admin', 'examlist', 'list'],
+            ['guest',   'exam', 'list'],
+            ['guest',   'examlist', 'list'],
+            ['member',  'exam', ['list','take']],
+            ['member',  'examlist', 'list'],
+            ['member',  'cert', 'usercertlist'],
+            ['admin',   'exam', ['reset','certificate', 'view', 'edit', 'delete', 'take']],
+            ['admin',   'examlist', 'list'],
         ],
         'modules' => [
             'Exam',
@@ -129,6 +150,14 @@ return [
                         'resource'      => 'examlist',
                         'privilege'     => 'list',
                         'title'         => 'Exam List'
+                    ],
+                    [
+                        'label'         => 'My Certs',
+                        'route'         => 'exam/usercertlist',
+                        // acl
+                        'resource'      => 'cert',
+                        'privilege'     => 'usercertlist',
+                        'title'         => 'My Certs'
                     ],
                     /*
                     [

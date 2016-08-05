@@ -1,10 +1,9 @@
 <?php
-
 namespace Exam\Controller;
 
 use Util\Controller\UtilBaseController;
-use Application\Model\Application;
-
+use Zend\Paginator\Paginator;
+use Zend\Paginator\Adapter\ArrayAdapter;
 
 class CertController extends UtilBaseController
 {
@@ -14,41 +13,48 @@ class CertController extends UtilBaseController
 
     }
 
-    public function userCertListAction()
+    public function usercertlistAction() 
     {
+        $user = $this->identity();
+        $currentPage = $this->params()->fromRoute('page', 1);
+        
+        //orderby, order values whitelisted in list route config
+        $orderby = $this->params()->fromRoute('orderby', 'add_ts');
+        $order = $this->params()->fromRoute('order', 'desc');
+        
         $em = $this->serviceLocator->get('entity-manager');
+            
+        $conn = $em->getConnection();
+        
+        $queryBuilder = $conn->createQueryBuilder();
+        
+        $queryBuilder
+            ->select('*')
+            ->from('e_exam_attempt_pass_view')
+            ->where('a_user_id = ?')
+            ->setParameter(0, $user->getId())
+            ->orderby("$orderby");
+        
+        $query = $queryBuilder->execute();
+       
+        $result = $query->fetchAll();
+           // var_dump($result);die(__LINE__);
 
-        $qb = $em->createQueryBuilder();
+        $paginator = new Paginator(new ArrayAdapter($result));
 
-        $qb->select(['id', 'title',])
+        $paginator->setCurrentPageNumber($currentPage);
+        $paginator->setItemCountPerPage(4);
 
-        $userCerts = $entityManager->
-
+        $acl = $this->serviceLocator->get('acl');
+        
+        return array(
+            'entities'      => $paginator,
+            'acl'           => $acl,
+            'page'          => $currentPage,
+            'orderby'       => $orderby,
+            'order'         => $order,
+            'route'         => 'usercertlist',
+            'controller'    => 'cert'
+        );
     }
-
-    public function viewAction()
-    {
-        $id = $this->params('id');
-        if (! $id) {
-            return $this->redirect()->toRoute('exam/list');
-        }
-
-        $pdfService = $this->serviceLocator->get('pdf');
-        $user = $this->serviceLocator->get('user');
-
-
-        $pdf = $pdfService->generateCertificate($user, $id);
-
-        $response = $this->getResponse();
-
-        // We need to set a content-type header so that the
-        // browser is able to recognize our pdf and display it
-        $response->getHeaders()->addHeaderLine('Content-Type: application/pdf');
-
-        $response->setContent($pdf->render());
-
-        // Just return the object by itself to display without layout
-        return $response;
-    }
-
 }

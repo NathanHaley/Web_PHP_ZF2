@@ -1,0 +1,74 @@
+<?php 
+
+    $page           = $this->page;
+    $orderby        = strtolower($this->orderby);
+    $order          = $this->order;
+    $routeBase      = $this->route;
+    $controller     = $this->controller;
+    
+?>
+
+
+<div class="row">
+	<div class="col-xs-4">
+		<a href="">
+			<img src="" />
+		</a>
+		<p>Title: </p>
+		<p>Taken: </p>
+		<p>Duration: </p>
+		<p>Score: </p>		
+	</div>
+	<div class="col-xs-4">
+	
+	</div>
+	<div class="col-xs-4">
+	
+	</div>
+</div>
+
+<div class="row">
+<?php 
+    $cnt = 0;
+    if (count($this->entities)) {
+?>
+<?php 
+    foreach ($this->entities as $entity) {
+        $cnt++;
+    
+?>
+	<div class="col-xs-4">
+		<a href="exam/cert/<?= $entity['id'] ?>">
+			<img src="<?= $entity['image'] ?>" alt="Image of certificate" />
+		</a>
+		<p>Title: <?= $entity['description'] ?></p>
+		<p>Taken: <?= $entity['add_ts'] ?></p>
+		<p>Duration: <?= $entity['duration'] ?></p>
+		<p>Score: <?= $entity['score'] ?></p>
+	</div>
+	
+<?php 
+
+            if ($cnt === 3) {
+                $cnt = 0;
+                
+?>
+	</div>
+	<div class="row">
+<?php 
+            
+            }
+    
+        }
+    
+    } else { ?>
+	<div class="col-xs-12">
+		No Certificates passed at this time...
+	</div>
+<?php } ?>
+</div>
+<?php echo $this->paginationControl($this->entities,
+                                    'Sliding',
+                                    'paginator/sliding',
+                                    array('route' => $routeBase.'/usercertlist')
+                                    );

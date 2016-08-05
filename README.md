@@ -18,7 +18,9 @@ pass123
 
 Change log:
 
-2016-08-04: Implemented duplicate email/username and display name validations.
+2016-08-05: Added initial My Certs Page under Exams menu.
+
+2016-08-04: Implemented duplicate email/username and display name validations for local accounts.
 
 2016-08-02: Added My Home and Admin Tools pages. Contact Us form submission fix. Added edit button on My Profile page.
 

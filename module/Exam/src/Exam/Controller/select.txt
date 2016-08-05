@@ -1,0 +1,16 @@
+SELECT 
+    eea.*,
+    ee.description,
+    eect.title,
+    eect.file,
+    eect.location,
+    eect.img_location
+FROM 
+    `e_exam` ee,
+    `e_exam_attempt` eea,
+    `e_exam_cert_template` eect
+WHERE 
+    eea.a_user_id = 1,
+    eea.ee_id = ee.id,
+    ee.eect_id = eect.id;
+    

@@ -17,8 +17,9 @@ class AccountController extends UtilBaseController
     //Member homepage
     public function indexAction()
     {
+        
+        
         return [];
-
     }
 
     //Admin Tools page
@@ -57,41 +58,6 @@ class AccountController extends UtilBaseController
 
         return false;
     }
-
-    //Handles looking for duplicate user records and setting form error messages for such.
-    // expects form object, request data array, fields as array of entity member names
-    protected function isDuplicatesByEmailOrDisplayName($em, $form, $data)
-    {
-        $isDup = false;
-
-        $repository = $em->getRepository('Account\Model\Entity\User');
-
-        $existingAcount = $repository
-            ->findOneBy(['email' => $data['email']]);
-
-        // Return invalid on duplicate email/username
-        if ($existingAcount) {
-            $form->get('email')->setMessages([
-                'Email/Username already exists.'
-            ]);
-
-            $isDup = true;
-        }
-
-        $existingAcount = $repository
-            ->findOneBy(['displayName' => $data['displayName']]);
-
-        if ($existingAcount) {
-            $form->get('displayName')->setMessages([
-                'Display Name is already in use.'
-            ]);
-
-            $isDup = true;
-        }
-
-        return $isDup;
-    }
-
 
     //@todo can I make generic and move to utils
     protected function isDuplicateBy($em, $form, $fieldName, $fieldValue, $message)
