@@ -56,9 +56,9 @@ return [
                         'options' => [
                             'route' => '/usercertlist[/page/:page][/orderby/:orderby][/order/:order]',
                             'constraints' => [
-                                'page'     => '[0-9]*',
-                                'orderby' => 'add_ts|description|duration|score',
-                                'order' => 'asc|desc'
+                                'page'      => '[0-9]*',
+                                'orderby'   => 'add_ts|description|duration|score',
+                                'order'     => 'asc|desc'
                             ],
                             'defaults' => [
                                 'controller'    => 'Cert',
@@ -66,6 +66,19 @@ return [
                                 'page'          => '1',
                                 'orderby'       => 'add_ts',
                                 'order'         => 'desc'
+                            ],
+                        ]
+                    ],
+                    'view' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'         => '/view[/:id]',
+                            'constraints'   => [
+                                'id'            => '[0-9]*'
+                            ],
+                            'defaults'      => [
+                                'controller'    => 'Cert',
+                                'action'        => 'view'
                             ],
                         ]
                     ]
@@ -127,7 +140,7 @@ return [
             ['guest',   'examlist', 'list'],
             ['member',  'exam', ['list','take']],
             ['member',  'examlist', 'list'],
-            ['member',  'cert', 'usercertlist'],
+            ['member',  'cert', ['usercertlist', 'view']],
             ['admin',   'exam', ['reset','certificate', 'view', 'edit', 'delete', 'take']],
             ['admin',   'examlist', 'list'],
         ],

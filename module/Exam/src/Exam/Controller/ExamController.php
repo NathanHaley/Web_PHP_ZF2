@@ -14,7 +14,7 @@ class ExamController extends UtilBaseController
     {
         return array();
     }
-  
+
     public function editAction()
     {
         return array();
@@ -123,7 +123,7 @@ class ExamController extends UtilBaseController
             } elseif ($score === 100) {
 
                 // All answers were answered correctly.
-                $this->flashmessenger()->addSuccessMessage('Awsome! You have 100% correct answers.');
+                $this->flashmessenger()->addSuccessMessage('Awesome! You have 100% correct answers.');
                 $this->flashmessenger()->addSuccessMessage('You should recieve your certificate in email soon.');
 
                 $newEvent = new EventManager('exam');

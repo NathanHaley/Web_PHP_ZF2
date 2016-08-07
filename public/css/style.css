@@ -523,6 +523,23 @@ span.ordered_by {
     border: 1px solid #eeb111 !important;
 }
 
+/* Certifications
+-------------------------------------------------- */
+.cert-container {
+	padding: 20px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.cert-container-title {
+	height: 40px;
+}
+
+.cert-container img,
+.cert-container p {
+    margin: 10px;
+}
+
 /* Carousel
 -------------------------------------------------- */
 .carousel-container {

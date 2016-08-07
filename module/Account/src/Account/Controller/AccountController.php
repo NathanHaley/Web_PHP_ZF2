@@ -17,8 +17,8 @@ class AccountController extends UtilBaseController
     //Member homepage
     public function indexAction()
     {
-        
-        
+
+
         return [];
     }
 

@@ -18,6 +18,8 @@ pass123
 
 Change log:
 
+2016-08-06: Added initial view/printable certifications page. My Certs page layout updates, add logo file fields for exams and cert templates.
+
 2016-08-05: Added initial My Certs Page under Exams menu.
 
 2016-08-04: Implemented duplicate email/username and display name validations for local accounts.

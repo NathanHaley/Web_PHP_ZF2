@@ -5,7 +5,7 @@ $user = $this->identity();
 	<div class="col-xs-12">
 		<h2><?= sprintf($this->translate('%s, welcome to your home page!'), $user->getDisplayName()) ?></h2>
 		<p>From here you can go to the exam list page to see what exams are
-			availble and your scores for the ones you have take.</p>
+			available and your scores for the ones you have taken AND view your Certificates for passed exams.</p>
 		<p>You can also
 			view your profile details, and edit your profile as needed.</p>
 		<p>These features are available in the dropdown menu when you are
@@ -21,6 +21,8 @@ $user = $this->identity();
 			href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'edit')) ?>"><?= $this->translate('Edit Profle') ?></a>
 		<a class="btn btn-lg btn-info btn-sm"
 			href="<?= $this->url('exam/list') ?>"><?= $this->translate('Go To Exams') ?></a>
+		<a class="btn btn-lg btn-success btn-sm"
+			href="<?= $this->url('exam/usercertlist') ?>"><?= $this->translate('My Certificates') ?></a>
 		<?php if ($user->getRole() === 'admin'): ?>
 			<a class="btn btn-lg btn-danger btn-sm"
 			href="<?= $this->url('user/default', array('controller'=> 'account', 'action'=>'admin')) ?>"><?= $this->translate('Admin Tools') ?></a>

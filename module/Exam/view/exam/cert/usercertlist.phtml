@@ -18,14 +18,20 @@
         $cnt++;
     
 ?>
-	<div class="col-xs-4">
-		<a href="cert/<?= $entity['id'] ?>">
-			<img src="<?= $entity['image'] ?>" alt="Image of certificate" />
-		</a>
-		<p>Title: <?= $entity['description'] ?></p>
-		<p>Taken: <?= $entity['add_ts'] ?></p>
-		<p>Duration: <?= $entity['duration'] ?></p>
-		<p>Score: <?= $entity['score_pct'] ?></p>
+	<div class="col-md-4">
+		<div class="cert-container container-dark">
+			<h3 class="cert-container-title"><?= $entity['name'] ?></h3>
+    		<a href="view/<?= $entity['ee_id'] ?>" target="_blank">
+    			<img src="<?= $entity['image'] ?>" alt="Image of certificate" />
+    		</a>
+    		<p><span class="text-muted">Taken:</span> <?= $entity['add_ts'] ?></p>
+    		<p><span class="text-muted">Duration:</span> <?= $entity['duration'] ?></p>
+    		<p><span class="text-muted">Score:</span> <?= $entity['score_pct'] ?></p>
+    		<a class="btn btn-lg btn-info btn-sm"
+			href="view/<?= $entity['ee_id'] ?>" target="_blank"><?= $this->translate('View') ?></a>
+    		<a class="btn btn-lg btn-primary btn-sm"
+			href="view/<?= $entity['ee_id'] ?>" target="_blank"><?= $this->translate('Printable Version') ?></a>
+    	</div>
 	</div>
 	
 <?php 
@@ -41,15 +47,23 @@
             }
     
         }
+?>
+      
+        </div>
+        <br /><br />
+<?php echo $this->paginationControl($this->entities,
+            'Sliding',
+            'paginator/sliding',
+            array('route' => $routeBase.'/usercertlist.phtml')
+            );
     
     } else { ?>
 	<div class="col-xs-12">
-		No Certificates passed at this time...
+		No Certificates passed at this time... 
+		<br /><br />
+		<a class="btn btn-lg btn-info btn-sm"
+			href="<?= $this->url('exam/list') ?>"><?= $this->translate('Go To Exams') ?></a>
 	</div>
-<?php } ?>
 </div>
-<?php echo $this->paginationControl($this->entities,
-                                    'Sliding',
-                                    'paginator/sliding',
-                                    array('route' => $routeBase.'/usercertlist.phtml')
-                                    );
+<?php } ?>
+
