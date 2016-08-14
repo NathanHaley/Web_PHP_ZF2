@@ -12,17 +12,17 @@ class ExamController extends UtilBaseController
 
     public function indexAction()
     {
-        return array();
+        return [];
     }
 
     public function editAction()
     {
-        return array();
+        return [];
     }
 
     public function deleteAction()
     {
-        return array();
+        return [];
     }
 
     public function takeAction()

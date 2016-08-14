@@ -1,0 +1,28 @@
+<?php
+namespace ChangeLog\Form;
+
+use Zend\Form\Form;
+
+class ChangeLogForm extends Form
+{
+    public function __construct($name = null, $options = [])
+    {
+        parent::__construct($name, $options);
+        
+        $this->add([
+            'name' => 'changeLog-fieldset',
+            'type' => 'ChangeLog\Form\ChangeLogFieldset',
+            'options' => [
+                'use_as_base_fieldset' => true
+            ]
+        ]);
+        
+        $this->add([
+            'type' => 'submit',
+            'name' => 'submit',
+            'attributes' => [
+                'value' => 'Add Change Log Entry'
+            ]
+        ]);
+    }
+}

@@ -50,6 +50,11 @@ gold dark:
 
 */
 
+div.container a.brand img {
+    display: inline-block;
+    margin-right: 12px;
+}
+
 
 /* Top level layout styles
 -------------------------------------------------- */
@@ -280,6 +285,8 @@ div.breadcrumb span {
 .navbar-nav > li > .dropdown-menu a:hover {
     background-color: rgba(0, 0, 0, 0.6) !important;
 }
+
+.navbar {}
 
 .navbar-btn {
 	

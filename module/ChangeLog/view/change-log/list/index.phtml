@@ -1,0 +1,10 @@
+<h1>Change Log</h1>
+
+<?php foreach ($this->changeLogs as $log): ?>
+<article>
+	<h1 id="post<?= $log->getId() ?>"><?= $log->getAddTs() ?></h1>
+	<p>
+		<?= $log->getDescription() ?>
+	</p>
+</article>
+<?php endforeach ?>

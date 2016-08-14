@@ -1,0 +1,11 @@
+<h1>DeleteController::deleteAction()</h1>
+<p>
+Are you sure that you want to delete
+'<?php echo $this->escapeHtml($this->changeLog->getAddTs()); ?>'
+<br />
+'<?php echo $this->escapeHtml($this->changeLog->getDescription()); ?>'?
+</p>
+<form action="<?php echo $this->url('changelog/delete', [], true) ?>" method="post">
+<input type="submit" name="delete_confirmation" value="yes">
+<input type="submit" name="delete_confirmation" value="no">
+</form>

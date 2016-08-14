@@ -14,9 +14,10 @@ return array(
         'Account',
         'Exam',
         'ContactUs',
-        'Company'
+        'Company',
         //'Album',
         //'Stub',
+        'ChangeLog'
     ),
     'module_listener_options' => array(
         'config_glob_paths' => array(

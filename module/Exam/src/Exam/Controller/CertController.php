@@ -78,6 +78,7 @@ class CertController extends UtilBaseController
             ->setParameter(0, $user->getId())
             ->orderby($orderby,$order) ;
 
+
         $query = $queryBuilder->execute();
 
         $result = $query->fetchAll();
