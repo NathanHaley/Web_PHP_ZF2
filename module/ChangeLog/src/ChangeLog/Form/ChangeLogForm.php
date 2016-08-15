@@ -18,10 +18,16 @@ class ChangeLogForm extends Form
         ]);
         
         $this->add([
+            'name' => 'csrf',
+            'type' => 'Zend\Form\Element\Csrf'
+        ]);
+        
+        $this->add([
             'type' => 'submit',
             'name' => 'submit',
             'attributes' => [
-                'value' => 'Add Change Log Entry'
+                'value' => 'Save Log',
+                'class' => 'btn btn-primary btn-sm'
             ]
         ]);
     }

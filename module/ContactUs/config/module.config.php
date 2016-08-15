@@ -76,6 +76,9 @@ return [
         __DIR__ . '/../src/ContactUs/Model/Entity/'
     ],
     'acl' => [
+        'modules' => [
+            'ContactUs'
+        ],
         'resource' => [
             'index'     => null,
             'contactus' => null,
@@ -87,9 +90,6 @@ return [
             ['admin','index',['index', 'view', 'edit', 'delete']],
             ['admin','contactuslist','list']
         ],
-        'modules' => [
-            'ContactUs'
-        ]
     ],
     'navigation' => [
         'default' => [

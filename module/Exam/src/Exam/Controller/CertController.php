@@ -76,7 +76,7 @@ class CertController extends UtilBaseController
             ->from('e_exam_attempt_pass_view')
             ->where('a_user_id = ?')
             ->setParameter(0, $user->getId())
-            ->orderby($orderby,$order) ;
+            ->orderby($orderby,$order);
 
 
         $query = $queryBuilder->execute();

@@ -28,25 +28,24 @@ class WriteController extends UtilBaseController
             
             if ($this->changeLogForm->isValid()) { 
                 try {
-                    $config = $this->serviceLocator->get('config');
-                    $dateTimeFormat = $config['application']['date_time_format'];
-                     
+                           
                     $changeLogObject = $this->changeLogForm->getData();
                     
                     $userId = $this->identity()->getId();
-                    
+                        
                     $changeLogObject->setAUserId($userId);
                     $changeLogObject->setAddId($userId);
                     $changeLogObject->setStatId(10);
+                    $changeLogObject->setAddTs();
                                       
                     $this->changeLogService->saveChangeLog($changeLogObject);
                     
                     $this->flashMessengerMulti(['Change log added.'], 'success');
-                                     
-                    return $this->redirect()->toRoute('changelog');
+                    
+                    return $this->redirect()->toRoute('changelog/list');
                 } catch (\Exception $e) {
                     $this->flashMessengerMulti(['Try again later.','Error code: '.$e->getLine(), 'Error file: '.$e->getFile(), 'Error messege: '.$e->getMessage()], 'error');
-                    return $this->redirect()->toRoute('changelog');
+                    return $this->redirect()->toRoute('changelog/list');
                 }
             }
         }
@@ -80,23 +79,30 @@ class WriteController extends UtilBaseController
             if ($this->changeLogForm->isValid()) {
                 try {
                     
-                    $changeLogObject = $this->changeLogForm->getData();
+                    $changeLogObject = $this->changeLogForm->getData();//die($changeLogObject->getStatId());
                     
-                    $userId = $this->identity()->getId();
-                    
-                    $changeLogObject->setModId($userId);
-                    $changeLogObject->setModTs();
-                    $changeLogObject->setStatId(11);
-                    
-                    $this->changeLogService->saveChangeLog($changeLogObject);
-                    
-                    $this->flashMessengerMulti(['Change log saved.'], 'success');
-                    return $this->redirect()->toRoute('changelog');
+                    //Check if protecte status
+                    if ($changeLogObject->getStatId() == 7) {
+                        $this->flashMessengerMulti(['Sorry, that change log has protected status.','From the dropdown menu, try adding your own and edit/deleting it.'], 'warning');
+                    } else {
+                        
+                        $userId = $this->identity()->getId();
+                        
+                        $changeLogObject->setModId($userId);
+                        $changeLogObject->setModTs();
+                        $changeLogObject->setStatId(11);
+                        
+                        $this->changeLogService->saveChangeLog($changeLogObject);
+                        
+                        $this->flashMessengerMulti(['Change log saved.'], 'success');
+                    }
+                        
+                    return $this->redirect()->toRoute('changelog/list');
                 } catch (\Exception $e) {
                     
                     var_dump($e->getTrace());
                     $this->flashMessengerMulti(['Try again later.','Error code: '.$e->getLine(),'Error messege: '.$e->getMessage()], 'error');
-                    return $this->redirect()->toRoute('changelog');
+                    return $this->redirect()->toRoute('changelog/list');
                 }
             }
         }

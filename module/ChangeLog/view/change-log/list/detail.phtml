@@ -1,8 +1,24 @@
-<h1>Change Log Details</h1>
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-sm-12">
+    <h4><?= sprintf($this->translate('Time Stamp: %s'), $this->changeLog->getAddTs()) ?></h4>
+    <h4><?= sprintf($this->translate('Description: %s'), $this->changeLog->getDescription()) ?></h4>
+   </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-12">
+  <br />
+  <br />
+   <a class="btn btn-primary btn-sm" href="<?= $this->url('changelog/edit', array('controller'=> 'write', 'action'=>'edit', 'id'=> $this->changeLog->getId())) ?>"><?= $this->translate('Edit') ?></a>
+   
+   <a class="btn btn-info btn-sm" href="<?= $this->url('changelog/list', array('controller'=> 'list', 'action'=>'list')) ?>"><?= $this->translate('List') ?></a>
 
- <dl>
-     <dt>Log Time</dt>
-     <dd><?php echo $this->escapeHtml($this->changeLog->getAddTs());?></dd>
-     <dt>Change Description</dt>
-     <dd><?php echo $this->escapeHtml($this->changeLog->getDescription());?></dd>
- </dl>
+   <a class="btn btn-danger btn-sm" href="<?= $this->url('changelog/delete', array('controller'=> 'delete', 'action'=>'delete', 'id'=> $this->changeLog->getId())) ?>"><?= $this->translate('Delete') ?></a>
+  </div>
+ </div>
+</div>
+
+
+
+
+ 

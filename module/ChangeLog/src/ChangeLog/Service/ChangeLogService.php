@@ -23,9 +23,9 @@ class ChangeLogService implements ChangeLogServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchAllChangeLogs()
+    public function fetchAllChangeLogs($orderby = 'id', $order = 'asc')
     {
-        return $this->changeLogMapper->fetchAll();
+        return $this->changeLogMapper->fetchAll($orderby, $order);
         
         
     }

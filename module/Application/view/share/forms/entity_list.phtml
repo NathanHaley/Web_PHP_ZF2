@@ -52,7 +52,12 @@
                 $actionText = $action['text'];
         ?>
             <td><?php
-            if($this->acl->isAllowed($this->user->getRole(),$controller, $actionText)) :
+            
+            if (isset($action['controller'])) {
+                $controller = $action['controller'];
+            }
+            
+            if($this->acl->isAllowed($this->user->getRole(),$controller, $actionKey)) :
             ?>
             <a class="<?php echo $this->escapehtml($action['styleClass']); ?>" href="<?= $this->url($routeBase.'/default', array('controller'=> $controller, 'action'=>$actionKey, 'id'=> $entity['id'])) ?>"><?= $this->translate(ucfirst($actionText)) ?></a>
             <?php

@@ -33,11 +33,16 @@ class DeleteController extends UtilBaseController
             $del = $request->getPost('delete_confirmation', 'no');
             
             if ($del === 'yes') {
-                $this->changeLogService->deleteChangeLog($changeLog);
+                //Check if protecte status
+                if ($changeLog->getStatId() == 7) {
+                    $this->flashMessengerMulti(['Sorry, that change log has protected status.','From the dropdown menu, try adding your own and edit/deleting it.'], 'warning');
+                } else {
+                    $this->changeLogService->deleteChangeLog($changeLog);
+                    $this->flashMessenger()->addSuccessMessage('Change log deleted with id: '.$id);
+                }
             }
-            
-            $this->flashMessenger()->addSuccessMessage('Change log deleted with id: '.$id);
-            return $this->redirect()->toRoute('changelog');
+                        
+            return $this->redirect()->toRoute('changelog/list');
         }
         
         return [ 'changeLog' => $changeLog];

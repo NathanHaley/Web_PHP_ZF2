@@ -3,10 +3,34 @@ namespace ChangeLog\Form;
 
 use Zend\Form\Fieldset;
 use ChangeLog\Model\ChangeLog;
-use Zend\Stdlib\Hydrator\ClassMethods;
+use Zend\Hydrator\ClassMethods;
+use Zend\InputFilter\InputFilterProviderInterface;
 
-class ChangeLogFieldset extends Fieldset
+class ChangeLogFieldset extends Fieldset implements InputFilterProviderInterface
 {
+    public function getInputFilterSpecification()
+    {
+        return [
+            'description' => [
+                'required'  => true,
+                'filters'   => [
+                    ['name' => 'Zend\Filter\StringTrim']
+                ],
+                'validators' => [
+                    [
+                    'name' => 'Zend\Validator\StringLength',
+                    'options' => [
+                        'min' => '1',
+                        'max' => '255'
+                        ]
+                    ]
+                ]
+                
+            ]
+        ];
+        
+    }
+    
     public function __construct($name = null, $options = [])
     {
         
@@ -21,10 +45,15 @@ class ChangeLogFieldset extends Fieldset
         ]);
         
         $this->add([
-            'type' => 'text',
+            'type' => 'textarea',
             'name' => 'description',
             'options' => [
-                'label' => 'Description'
+                'label' => 'Description:',
+                'label_attributes' => ['class' => 'control-label']
+            ],
+            'attributes' => [
+                'required' => 'true',
+                'class' => 'form-control'
             ]
         ]);
        

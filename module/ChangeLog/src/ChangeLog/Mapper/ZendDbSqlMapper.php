@@ -70,10 +70,10 @@ class ZendDbSqlMapper implements ChangeLogMapperInterface
     /**
      * @return array|ChangeLogInterface[]
      */
-    public function fetchAll()
+    public function fetchAll($orderby = 'id', $order = 'asc')
     {
         $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('cl_change_log');
+        $select = $sql->select('cl_change_log')->order("$orderby $order");
         
         $stmt = $sql->prepareStatementForSqlObject($select);
         $result = $stmt->execute();

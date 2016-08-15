@@ -1,11 +1,18 @@
-<h1>DeleteController::deleteAction()</h1>
-<p>
-Are you sure that you want to delete
-'<?php echo $this->escapeHtml($this->changeLog->getAddTs()); ?>'
-<br />
-'<?php echo $this->escapeHtml($this->changeLog->getDescription()); ?>'?
-</p>
-<form action="<?php echo $this->url('changelog/delete', [], true) ?>" method="post">
-<input type="submit" name="delete_confirmation" value="yes">
-<input type="submit" name="delete_confirmation" value="no">
-</form>
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-sm-12">
+    <h4><?= sprintf($this->translate('Time Stamp: %s'), $this->changeLog->getAddTs()) ?></h4>
+    <h4><?= sprintf($this->translate('Description: %s'), $this->changeLog->getDescription()) ?></h4>
+   </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-12">
+  <br />
+  <br />
+    <form action="<?php echo $this->url('changelog/delete', [], true) ?>" method="post">
+    <input type="submit" class="btn btn-danger btn-sm" name="delete_confirmation" value="yes">
+    <input type="submit" class="btn btn-info btn-sm" name="delete_confirmation" value="no">
+    </form>
+  </div>
+ </div>
+</div>

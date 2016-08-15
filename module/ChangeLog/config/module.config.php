@@ -15,9 +15,9 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            'ChangeLog\Controller\List' => 'ChangeLog\Factory\ListControllerFactory',
-            'ChangeLog\Controller\Write' => 'ChangeLog\Factory\WriteControllerFactory',
-            'ChangeLog\Controller\Delete' => 'ChangeLog\Factory\DeleteControllerFactory'
+            'ChangeLog\Controller\List'     => 'ChangeLog\Factory\ListControllerFactory',
+            'ChangeLog\Controller\Write'    => 'ChangeLog\Factory\WriteControllerFactory',
+            'ChangeLog\Controller\Delete'   => 'ChangeLog\Factory\DeleteControllerFactory'
         ],
     ],
     'router' => [
@@ -33,22 +33,54 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes'  => [
+                    'default' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'    => '/[:controller[/:action[/:id]]]',
+                            'constraints' => [
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'         => '[0-9]*',
+                            ],
+                            'defaults' => [
+                            ],
+                        ],
+                    ],
                     'detail' => [
                         'type' => 'segment',
                         'options' => [
-                            'route' => '/:id',
+                            'route' => '/list/detail[/:id]',
                             'defaults' => [
-                                'action' => 'detail'
+                                'controller' => 'ChangeLog\Controller\List',
+                                'action'     => 'detail'
                             ],
                             'constraints' => [
                                 'id' => '[1-9]\d*'
                             ]
                         ]
                     ],
+                    'list' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route' => '/list[/page/:page][/orderby/:orderby][/order/:order]',
+                            'constraints' => [
+                                'page'     => '[0-9]*',
+                                'orderby' => 'id|add_ts|description',
+                                'order' => 'asc|desc'
+                            ],
+                            'defaults' => [
+                                'controller'    => 'ChangeLog\Controller\List',
+                                'action'        => 'list',
+                                'page'          => '1',
+                                'orderby' => 'id',
+                                'order' => 'asc'
+                            ],
+                        ]
+                    ],
                     'add' => [
                         'type' => 'literal',
                         'options' => [
-                            'route' => '/add',
+                            'route' => '/write/add',
                                 'defaults' => [
                                     'controller'    => 'ChangeLog\Controller\Write',
                                     'action'        => 'add'
@@ -58,7 +90,7 @@ return [
                     'edit' => [
                         'type' => 'segment',
                         'options' => [
-                            'route' => '/edit[/:id]',
+                            'route' => '/write/edit[/:id]',
                                 'defaults' => [
                                     'controller'    => 'ChangeLog\Controller\Write',
                                     'action'        => 'edit'
@@ -71,7 +103,7 @@ return [
                     'delete' => [
                         'type' => 'segment',
                         'options' => [
-                            'route' => '/delete[/:id]',
+                            'route' => '/delete/delete[/:id]',
                                 'defaults' => [
                                     'controller'    => 'ChangeLog\Controller\Delete',
                                     'action'        => 'delete'
@@ -84,5 +116,58 @@ return [
                 ]
             ]
         ]
-    ] 
+    ],
+    'acl' => [
+        // List of modules to apply the ACL. Protect current Module's pages.
+        'modules' => [
+            'ChangeLog',
+        ],
+        'resource' => [
+            // resource -> single parent
+            'write'     => null,
+            'delete'    => null,
+            'list'      => null,
+        ],
+        'allow' => [
+            // ['role', 'resource', ['permission-1', 'permission-2', ...]],
+            ['guest',   'list',     'index'],
+            ['member',  'list',     'index'],
+            ['admin',   'write',    ['add', 'edit']],
+            ['admin',   'delete',   'delete'],
+            ['admin',   'list',     ['index', 'detail']],
+        ],
+        'resource_aliases' => [
+            'ChangeLog\Controller\Write'    => 'write',
+            'ChangeLog\Controller\Delete'   => 'delete',
+            'ChangeLog\Controller\List'     => 'list'
+        ],
+        
+    ],
+    'navigation' => [
+        'default' => [
+            [
+                'label'         => 'Change Log',
+                'title'         => 'Change Log',
+                'route'         => 'changelog',
+                'controller'    => 'list',
+                'pages' => [
+                    [
+                        'label'         => 'List',
+                        'route'         => 'changelog/list',
+                        'resource'      => 'list',
+                        'privilege'     => 'index',
+                        'title'         => 'List'
+                    ],
+                    [
+                        'label'         => 'Add',
+                        'route'         => 'changelog/add',
+                        'resource'      => 'write',
+                        'privilege'     => 'add',
+                        'title'         => 'Add Change Log'
+                    ],
+                        
+                ]
+            ]
+        ]
+    ]
 ];

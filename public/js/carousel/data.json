@@ -1,5 +1,6 @@
 {
     "logs": [
+             {"id": "0", "date": "2016-08-14", "description": "Added initial Change Log admin/management module."},
              {"id": "0", "date": "2016-08-06", "description": "Added initial view/printable certifications page. My Certs page layout updates, add logo file fields for exams and cert templates."},
              {"id": "0", "date": "2016-08-05", "description": "Added initial My Certs Page under Exams menu."},
              {"id": "0", "date": "2016-08-04", "description": "Implemented duplicate email/username and display name validations for local accounts."},
