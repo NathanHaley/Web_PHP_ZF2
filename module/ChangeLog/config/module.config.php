@@ -59,6 +59,22 @@ return [
                             ]
                         ]
                     ],
+                    'json' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route' => '/json[/orderby/:orderby][/order/:order]',
+                            'constraints' => [
+                                'orderby' => 'id|add_ts|description',
+                                'order' => 'asc|desc'
+                            ],
+                            'defaults' => [
+                                'controller'    => 'ChangeLog\Controller\List',
+                                'action'        => 'listJSON',
+                                'orderby' => 'id',
+                                'order' => 'desc'
+                            ],
+                        ]
+                    ],
                     'list' => [
                         'type'    => 'Segment',
                         'options' => [
@@ -141,7 +157,7 @@ return [
             'ChangeLog\Controller\Delete'   => 'delete',
             'ChangeLog\Controller\List'     => 'list'
         ],
-        
+
     ],
     'navigation' => [
         'default' => [
@@ -165,7 +181,7 @@ return [
                         'privilege'     => 'add',
                         'title'         => 'Add Change Log'
                     ],
-                        
+
                 ]
             ]
         ]

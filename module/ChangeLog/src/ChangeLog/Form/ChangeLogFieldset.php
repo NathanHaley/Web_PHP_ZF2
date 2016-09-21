@@ -25,25 +25,25 @@ class ChangeLogFieldset extends Fieldset implements InputFilterProviderInterface
                         ]
                     ]
                 ]
-                
+
             ]
         ];
-        
+
     }
-    
+
     public function __construct($name = null, $options = [])
     {
-        
+
         parent::__construct($name = null, $options = []);
-        
+
         $this->setHydrator(new ClassMethods(false));
         $this->setObject(new ChangeLog());
-        
+
         $this->add([
             'type' => 'hidden',
             'name' => 'id'
         ]);
-        
+
         $this->add([
             'type' => 'textarea',
             'name' => 'description',
@@ -56,6 +56,6 @@ class ChangeLogFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'form-control'
             ]
         ]);
-       
+
     }
 }

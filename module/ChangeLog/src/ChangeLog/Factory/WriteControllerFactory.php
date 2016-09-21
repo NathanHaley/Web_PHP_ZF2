@@ -12,7 +12,7 @@ class WriteControllerFactory implements FactoryInterface
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $changeLogService   = $realServiceLocator->get('ChangeLog\Service\ChangeLogServiceInterface');
         $changeLogInsertForm= $realServiceLocator->get('FormElementManager')->get('ChangeLog\Form\ChangeLogForm');
-        
+
         return new WriteController (
             $changeLogService,
             $changeLogInsertForm

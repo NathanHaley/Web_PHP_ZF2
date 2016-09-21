@@ -18,7 +18,7 @@ class DeleteControllerFactory implements FactoryInterface
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $changeLogService        = $realServiceLocator->get('ChangeLog\Service\ChangeLogServiceInterface');
-    
+
         return new DeleteController($changeLogService);
     }
 }

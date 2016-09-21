@@ -11,7 +11,7 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap'
 } ])
 
 .factory('CarouselDS', function($resource) {
-	return $resource('/js/carousel/data.json');
+	return $resource('/changelog/json');
 })
 
 .service('Projects', function($q, ProjectsDS) {
@@ -165,5 +165,7 @@ angular.module('project', [ 'ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap'
 	})};
 	
 	carouselList.fetch();
+	
+	console.log(carouselList.items);
 
 });

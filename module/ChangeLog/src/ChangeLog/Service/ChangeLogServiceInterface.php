@@ -8,29 +8,36 @@ interface ChangeLogServiceInterface
 {
     /**
      * Fetch all active change log entries.
-     * 
+     *
      * @return array\ChangeLogInterface[]
      */
     public function fetchAllChangeLogs();
-    
+
+    /**
+     * Fetch all active change log entries, columns id, add_ts, description.
+     *
+     * @return array\ChangeLogInterface[]
+     */
+    public function fetchAllChangeLogsBase3();
+
     /**
      * Fetch one post by id
-     * 
+     *
      * @return ChangeLogInteface
      */
     public function fetchChangeLog($id);
-    
+
     /**
      * Updates or adds the provided ChangeLog.
-     * 
+     *
      * @param ChangeLogInterface $changeLog
      * @return ChangeLogInterface
      */
     public function saveChangeLog(ChangeLogInterface $changeLog);
-    
+
     /**
      * Delete provided Change Log entry. Return true on success, otherwise false.
-     * 
+     *
      * @param ChangeLogInterface $changeLog
      * @return bool
      */

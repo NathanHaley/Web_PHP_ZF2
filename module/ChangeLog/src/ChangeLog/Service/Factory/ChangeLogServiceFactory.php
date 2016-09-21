@@ -9,7 +9,7 @@ class ChangeLogServiceFactory implements FactoryInterface
 {
     /**
      * Create service
-     * 
+     *
      * @param ServiceLocatorInterface $serviceLocator
      * @return mixed
      */

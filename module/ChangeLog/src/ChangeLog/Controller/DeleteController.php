@@ -11,14 +11,14 @@ class DeleteController extends UtilBaseController
      * @var \ChangeLog\Service\ChangeLogServiceInterface
      */
     protected $changeLogService;
-    
+
     public function __construct(ChangeLogServiceInterface $changeLogService)
     {
         $this->changeLogService = $changeLogService;
     }
-    
+
     public function deleteAction()
-    {    
+    {
         $id = intval($this->params()->fromRoute('id'));
         try {
             $changeLog = $this->changeLogService->fetchChangeLog($id);
@@ -26,12 +26,12 @@ class DeleteController extends UtilBaseController
             $this->flashMessenger()->addErrorMessage('Try again later.');
             return $this->redirect()->toRoute('changelog');
         }
-        
+
         $request = $this->getRequest();
-        
+
         if ($request->isPost()) {
             $del = $request->getPost('delete_confirmation', 'no');
-            
+
             if ($del === 'yes') {
                 //Check if protecte status
                 if ($changeLog->getStatId() == 7) {
@@ -41,11 +41,10 @@ class DeleteController extends UtilBaseController
                     $this->flashMessenger()->addSuccessMessage('Change log deleted with id: '.$id);
                 }
             }
-                        
+
             return $this->redirect()->toRoute('changelog/list');
         }
-        
+
         return [ 'changeLog' => $changeLog];
     }
 }
-

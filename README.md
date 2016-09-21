@@ -18,6 +18,8 @@ pass123
 
 Change log:
 
+2016-09-21: Back after time playing with Drupal, wired change log carousel to change log entries from database.
+
 2016-08-14: Added initial Change Log admin/management module.
 
 2016-08-06: Added initial view/printable certifications page. My Certs page layout updates, add logo file fields for exams and cert templates.

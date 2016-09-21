@@ -11,7 +11,7 @@ class ChangeLogService implements ChangeLogServiceInterface
      * @var \ChangeLog\Mapper\ChangeLogMapperInterface
      */
     protected $changeLogMapper;
-    
+
     /**
      * @param ChangeLogMapperInterface $changeLogMapper
      */
@@ -19,17 +19,23 @@ class ChangeLogService implements ChangeLogServiceInterface
     {
         $this->changeLogMapper = $changeLogMapper;
     }
-    
+
     /**
      * {@inheritDoc}
      */
     public function fetchAllChangeLogs($orderby = 'id', $order = 'asc')
     {
         return $this->changeLogMapper->fetchAll($orderby, $order);
-        
-        
     }
-    
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchAllChangeLogsBase3($orderby = 'id', $order = 'desc')
+    {
+        return $this->changeLogMapper->fetchAllForBase3($orderby, $order);
+    }
+
     /**
      * {@inheritDoc}
      * @param unknown $id
@@ -38,7 +44,7 @@ class ChangeLogService implements ChangeLogServiceInterface
     {
         return $this->changeLogMapper->fetch($id);
     }
-    
+
     /**
      * {@inheretDoc}
      */
@@ -46,7 +52,7 @@ class ChangeLogService implements ChangeLogServiceInterface
     {
         return $this->changeLogMapper->save($changeLog);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -54,6 +60,6 @@ class ChangeLogService implements ChangeLogServiceInterface
     {
         return $this->changeLogMapper->delete($changeLog);
     }
-    
-    
+
+
 }

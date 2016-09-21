@@ -9,7 +9,7 @@ class Module implements ConfigProviderInterface
     {
         return include __DIR__.'/config/module.config.php';
     }
-    
+
     public function getAutoloaderConfig()
     {
         return array(
@@ -25,4 +25,3 @@ class Module implements ConfigProviderInterface
         );
     }
 }
-
